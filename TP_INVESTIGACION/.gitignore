@@ -4,3 +4,4 @@
 **/.vscode/**
 
 **/*.md
+!prompt_tecnico.md
