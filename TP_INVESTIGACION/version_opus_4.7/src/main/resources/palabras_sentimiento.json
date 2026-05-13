@@ -1,0 +1,35 @@
+{
+  "positivas": [
+    "bueno", "buena", "buenos", "buenas",
+    "excelente", "excelentes",
+    "genial", "geniales",
+    "feliz", "felices",
+    "amor", "amores",
+    "increíble", "increible", "increíbles", "increibles",
+    "hermoso", "hermosa", "hermosos", "hermosas",
+    "maravilloso", "maravillosa",
+    "encantador", "encantadora",
+    "fantástico", "fantastico", "fantástica", "fantastica",
+    "perfecto", "perfecta",
+    "divertido", "divertida",
+    "alegre", "alegres", "alegría", "alegria",
+    "agradable", "agradables",
+    "espectacular", "espectaculares"
+  ],
+  "negativas": [
+    "malo", "mala", "malos", "malas",
+    "terrible", "terribles",
+    "horrible", "horribles",
+    "triste", "tristes",
+    "odio",
+    "pésimo", "pesimo", "pésima", "pesima",
+    "lamentable", "lamentables",
+    "decepcionante", "decepcionantes",
+    "asqueroso", "asquerosa",
+    "deprimente", "deprimentes",
+    "feo", "fea", "feos", "feas",
+    "mediocre", "mediocres",
+    "frustrante", "frustrantes",
+    "espantoso", "espantosa"
+  ]
+}
