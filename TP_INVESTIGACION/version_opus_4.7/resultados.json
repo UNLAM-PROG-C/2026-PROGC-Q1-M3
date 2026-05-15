@@ -1,21 +1,21 @@
 [
   {
-    "post_id": 2,
-    "texto": "El servicio al cliente fue excelente, lo recomiendo a todos.",
-    "spam_score": 0.0,
-    "sentimiento": "positivo",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 33
-  },
-  {
     "post_id": 1,
     "texto": "Hoy es un día maravilloso, estoy muy feliz con el trabajo nuevo.",
     "spam_score": 0.0,
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 77
+    "tiempo_procesamiento_ms": 18
+  },
+  {
+    "post_id": 2,
+    "texto": "El servicio al cliente fue excelente, lo recomiendo a todos.",
+    "spam_score": 0.0,
+    "sentimiento": "positivo",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 19
   },
   {
     "post_id": 3,
@@ -24,7 +24,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 33
+    "tiempo_procesamiento_ms": 21
   },
   {
     "post_id": 4,
@@ -33,7 +33,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 89
+    "tiempo_procesamiento_ms": 52
   },
   {
     "post_id": 5,
@@ -42,7 +42,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 89
+    "tiempo_procesamiento_ms": 53
   },
   {
     "post_id": 6,
@@ -51,16 +51,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 91
-  },
-  {
-    "post_id": 9,
-    "texto": "El concierto fue perfecto, una experiencia inolvidable.",
-    "spam_score": 0.0,
-    "sentimiento": "positivo",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 97
+    "tiempo_procesamiento_ms": 55
   },
   {
     "post_id": 7,
@@ -69,7 +60,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 98
+    "tiempo_procesamiento_ms": 61
   },
   {
     "post_id": 8,
@@ -78,16 +69,16 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 99
+    "tiempo_procesamiento_ms": 62
   },
   {
-    "post_id": 10,
-    "texto": "Mi hija dio sus primeros pasos hoy, qué amor de criatura.",
+    "post_id": 9,
+    "texto": "El concierto fue perfecto, una experiencia inolvidable.",
     "spam_score": 0.0,
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 104
+    "tiempo_procesamiento_ms": 63
   },
   {
     "post_id": 11,
@@ -96,16 +87,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 105
-  },
-  {
-    "post_id": 14,
-    "texto": "Probé yoga por primera vez y me sentí genial.",
-    "spam_score": 0.0,
-    "sentimiento": "positivo",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 107
+    "tiempo_procesamiento_ms": 69
   },
   {
     "post_id": 12,
@@ -114,7 +96,16 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 111
+    "tiempo_procesamiento_ms": 69
+  },
+  {
+    "post_id": 10,
+    "texto": "Mi hija dio sus primeros pasos hoy, qué amor de criatura.",
+    "spam_score": 0.0,
+    "sentimiento": "positivo",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 71
   },
   {
     "post_id": 13,
@@ -123,16 +114,16 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 111
+    "tiempo_procesamiento_ms": 76
   },
   {
-    "post_id": 17,
-    "texto": "El partido se transmite por el canal cinco a las nueve.",
+    "post_id": 14,
+    "texto": "Probé yoga por primera vez y me sentí genial.",
     "spam_score": 0.0,
-    "sentimiento": "neutro",
+    "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 114
+    "tiempo_procesamiento_ms": 76
   },
   {
     "post_id": 15,
@@ -141,7 +132,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 119
+    "tiempo_procesamiento_ms": 78
   },
   {
     "post_id": 16,
@@ -150,7 +141,16 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 119
+    "tiempo_procesamiento_ms": 83
+  },
+  {
+    "post_id": 17,
+    "texto": "El partido se transmite por el canal cinco a las nueve.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 83
   },
   {
     "post_id": 18,
@@ -159,7 +159,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 121
+    "tiempo_procesamiento_ms": 85
   },
   {
     "post_id": 19,
@@ -168,7 +168,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 125
+    "tiempo_procesamiento_ms": 89
   },
   {
     "post_id": 20,
@@ -177,16 +177,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 125
-  },
-  {
-    "post_id": 23,
-    "texto": "La cita médica está confirmada para el martes a las dieciocho.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 126
+    "tiempo_procesamiento_ms": 90
   },
   {
     "post_id": 21,
@@ -195,25 +186,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 132
-  },
-  {
-    "post_id": 25,
-    "texto": "El curso empieza la próxima semana en el aula tres.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 133
-  },
-  {
-    "post_id": 28,
-    "texto": "Hay que confirmar la lista de invitados antes del jueves.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 137
+    "tiempo_procesamiento_ms": 95
   },
   {
     "post_id": 22,
@@ -222,7 +195,16 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 142
+    "tiempo_procesamiento_ms": 96
+  },
+  {
+    "post_id": 23,
+    "texto": "La cita médica está confirmada para el martes a las dieciocho.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 96
   },
   {
     "post_id": 24,
@@ -231,7 +213,16 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 143
+    "tiempo_procesamiento_ms": 101
+  },
+  {
+    "post_id": 25,
+    "texto": "El curso empieza la próxima semana en el aula tres.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 101
   },
   {
     "post_id": 26,
@@ -240,25 +231,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 145
-  },
-  {
-    "post_id": 30,
-    "texto": "El informe se entrega el último día del mes a la oficina central.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 152
-  },
-  {
-    "post_id": 31,
-    "texto": "El servicio fue terrible, jamás vuelvo a ese restaurante.",
-    "spam_score": 0.0,
-    "sentimiento": "negativo",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 154
+    "tiempo_procesamiento_ms": 102
   },
   {
     "post_id": 27,
@@ -267,25 +240,16 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 158
+    "tiempo_procesamiento_ms": 107
   },
   {
-    "post_id": 33,
-    "texto": "Qué día tan triste, llovió y se cortó la luz toda la tarde.",
+    "post_id": 28,
+    "texto": "Hay que confirmar la lista de invitados antes del jueves.",
     "spam_score": 0.0,
-    "sentimiento": "negativo",
+    "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 166
-  },
-  {
-    "post_id": 34,
-    "texto": "El producto llegó roto y la atención fue pésima en general.",
-    "spam_score": 0.0,
-    "sentimiento": "negativo",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 167
+    "tiempo_procesamiento_ms": 107
   },
   {
     "post_id": 29,
@@ -294,7 +258,25 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 168
+    "tiempo_procesamiento_ms": 108
+  },
+  {
+    "post_id": 30,
+    "texto": "El informe se entrega el último día del mes a la oficina central.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 112
+  },
+  {
+    "post_id": 31,
+    "texto": "El servicio fue terrible, jamás vuelvo a ese restaurante.",
+    "spam_score": 0.0,
+    "sentimiento": "negativo",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 113
   },
   {
     "post_id": 32,
@@ -303,25 +285,25 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 175
+    "tiempo_procesamiento_ms": 114
   },
   {
-    "post_id": 36,
-    "texto": "Trato frustrante con la línea de atención, una hora de espera.",
+    "post_id": 33,
+    "texto": "Qué día tan triste, llovió y se cortó la luz toda la tarde.",
     "spam_score": 0.0,
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 175
+    "tiempo_procesamiento_ms": 119
   },
   {
-    "post_id": 37,
-    "texto": "El servicio público está deprimente, todo cuesta más cada día.",
+    "post_id": 34,
+    "texto": "El producto llegó roto y la atención fue pésima en general.",
     "spam_score": 0.0,
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 178
+    "tiempo_procesamiento_ms": 120
   },
   {
     "post_id": 35,
@@ -330,7 +312,7 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 179
+    "tiempo_procesamiento_ms": 121
   },
   {
     "post_id": 38,
@@ -339,7 +321,25 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 180
+    "tiempo_procesamiento_ms": 126
+  },
+  {
+    "post_id": 36,
+    "texto": "Trato frustrante con la línea de atención, una hora de espera.",
+    "spam_score": 0.0,
+    "sentimiento": "negativo",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 127
+  },
+  {
+    "post_id": 37,
+    "texto": "El servicio público está deprimente, todo cuesta más cada día.",
+    "spam_score": 0.0,
+    "sentimiento": "negativo",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 128
   },
   {
     "post_id": 39,
@@ -348,7 +348,7 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 184
+    "tiempo_procesamiento_ms": 129
   },
   {
     "post_id": 40,
@@ -357,7 +357,7 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 184
+    "tiempo_procesamiento_ms": 130
   },
   {
     "post_id": 41,
@@ -368,7 +368,7 @@
       "violencia"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 186
+    "tiempo_procesamiento_ms": 135
   },
   {
     "post_id": 42,
@@ -379,7 +379,7 @@
       "violencia"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 190
+    "tiempo_procesamiento_ms": 136
   },
   {
     "post_id": 43,
@@ -390,7 +390,7 @@
       "violencia"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 191
+    "tiempo_procesamiento_ms": 136
   },
   {
     "post_id": 44,
@@ -401,7 +401,7 @@
       "violencia"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 193
+    "tiempo_procesamiento_ms": 141
   },
   {
     "post_id": 45,
@@ -412,7 +412,7 @@
       "violencia"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 197
+    "tiempo_procesamiento_ms": 141
   },
   {
     "post_id": 46,
@@ -423,7 +423,7 @@
       "odio"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 198
+    "tiempo_procesamiento_ms": 142
   },
   {
     "post_id": 47,
@@ -434,18 +434,7 @@
       "odio"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 207
-  },
-  {
-    "post_id": 50,
-    "texto": "Esa actitud es despreciable, no tiene perdón ni excusa alguna.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [
-      "odio"
-    ],
-    "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 208
+    "tiempo_procesamiento_ms": 146
   },
   {
     "post_id": 48,
@@ -456,18 +445,7 @@
       "odio"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 209
-  },
-  {
-    "post_id": 49,
-    "texto": "Me parece repugnante cómo trata a su familia esa persona.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [
-      "odio"
-    ],
-    "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 210
+    "tiempo_procesamiento_ms": 147
   },
   {
     "post_id": 51,
@@ -478,7 +456,29 @@
       "adulto"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 213
+    "tiempo_procesamiento_ms": 147
+  },
+  {
+    "post_id": 49,
+    "texto": "Me parece repugnante cómo trata a su familia esa persona.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [
+      "odio"
+    ],
+    "decision": "RECHAZADO",
+    "tiempo_procesamiento_ms": 152
+  },
+  {
+    "post_id": 50,
+    "texto": "Esa actitud es despreciable, no tiene perdón ni excusa alguna.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [
+      "odio"
+    ],
+    "decision": "RECHAZADO",
+    "tiempo_procesamiento_ms": 153
   },
   {
     "post_id": 52,
@@ -489,7 +489,7 @@
       "adulto"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 214
+    "tiempo_procesamiento_ms": 153
   },
   {
     "post_id": 53,
@@ -500,7 +500,7 @@
       "adulto"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 215
+    "tiempo_procesamiento_ms": 157
   },
   {
     "post_id": 54,
@@ -511,16 +511,7 @@
       "adulto"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 219
-  },
-  {
-    "post_id": 57,
-    "texto": "COMPRAR YA ESTA OFERTA LIMITADA AHORA MISMO ANTES QUE SE TERMINE!!!",
-    "spam_score": 0.7,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 190
+    "tiempo_procesamiento_ms": 158
   },
   {
     "post_id": 55,
@@ -531,7 +522,7 @@
       "adulto"
     ],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 193
+    "tiempo_procesamiento_ms": 148
   },
   {
     "post_id": 56,
@@ -540,7 +531,16 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 194
+    "tiempo_procesamiento_ms": 152
+  },
+  {
+    "post_id": 57,
+    "texto": "COMPRAR YA ESTA OFERTA LIMITADA AHORA MISMO ANTES QUE SE TERMINE!!!",
+    "spam_score": 0.7,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 152
   },
   {
     "post_id": 58,
@@ -549,16 +549,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 193
-  },
-  {
-    "post_id": 60,
-    "texto": "Suscribite gratis y recibí descuentos cada día click aqui ahora mismo",
-    "spam_score": 0.4,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 192
+    "tiempo_procesamiento_ms": 152
   },
   {
     "post_id": 59,
@@ -567,7 +558,16 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 193
+    "tiempo_procesamiento_ms": 153
+  },
+  {
+    "post_id": 60,
+    "texto": "Suscribite gratis y recibí descuentos cada día click aqui ahora mismo",
+    "spam_score": 0.4,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 150
   },
   {
     "post_id": 61,
@@ -576,7 +576,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 192
+    "tiempo_procesamiento_ms": 148
   },
   {
     "post_id": 62,
@@ -585,16 +585,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 193
-  },
-  {
-    "post_id": 65,
-    "texto": "Click aqui y empezá a ganar dinero hoy mismo desde internet sin invertir",
-    "spam_score": 0.4,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 187
+    "tiempo_procesamiento_ms": 149
   },
   {
     "post_id": 63,
@@ -603,16 +594,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 192
-  },
-  {
-    "post_id": 67,
-    "texto": "ok",
-    "spam_score": 0.3,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 191
+    "tiempo_procesamiento_ms": 148
   },
   {
     "post_id": 64,
@@ -621,16 +603,16 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "RECHAZADO",
-    "tiempo_procesamiento_ms": 197
+    "tiempo_procesamiento_ms": 147
   },
   {
-    "post_id": 69,
-    "texto": "El año pasado decidí mudarme a otra ciudad por motivos laborales y al principio fue muy difícil adaptarme al ritmo nuevo, a la gente nueva, a las costumbres distintas, pero con el tiempo y con paciencia logré armar una rutina que me hace sentir cómodo y motivado para seguir creciendo profesionalmente sin perder el equilibrio.",
-    "spam_score": 0.3,
+    "post_id": 65,
+    "texto": "Click aqui y empezá a ganar dinero hoy mismo desde internet sin invertir",
+    "spam_score": 0.4,
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 192
+    "tiempo_procesamiento_ms": 150
   },
   {
     "post_id": 66,
@@ -639,16 +621,25 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 198
+    "tiempo_procesamiento_ms": 149
   },
   {
-    "post_id": 70,
-    "texto": "no",
+    "post_id": 69,
+    "texto": "El año pasado decidí mudarme a otra ciudad por motivos laborales y al principio fue muy difícil adaptarme al ritmo nuevo, a la gente nueva, a las costumbres distintas, pero con el tiempo y con paciencia logré armar una rutina que me hace sentir cómodo y motivado para seguir creciendo profesionalmente sin perder el equilibrio.",
     "spam_score": 0.3,
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 196
+    "tiempo_procesamiento_ms": 141
+  },
+  {
+    "post_id": 67,
+    "texto": "ok",
+    "spam_score": 0.3,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 149
   },
   {
     "post_id": 68,
@@ -657,7 +648,16 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 200
+    "tiempo_procesamiento_ms": 148
+  },
+  {
+    "post_id": 70,
+    "texto": "no",
+    "spam_score": 0.3,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 144
   },
   {
     "post_id": 71,
@@ -666,25 +666,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 195
-  },
-  {
-    "post_id": 74,
-    "texto": "El nuevo restaurante de la esquina abre el lunes próximo.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 196
-  },
-  {
-    "post_id": 75,
-    "texto": "La obra de teatro fue increíble, una noche perfecta y mágica.",
-    "spam_score": 0.0,
-    "sentimiento": "positivo",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 195
+    "tiempo_procesamiento_ms": 142
   },
   {
     "post_id": 72,
@@ -693,7 +675,7 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 200
+    "tiempo_procesamiento_ms": 143
   },
   {
     "post_id": 73,
@@ -702,7 +684,25 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 199
+    "tiempo_procesamiento_ms": 142
+  },
+  {
+    "post_id": 74,
+    "texto": "El nuevo restaurante de la esquina abre el lunes próximo.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 139
+  },
+  {
+    "post_id": 75,
+    "texto": "La obra de teatro fue increíble, una noche perfecta y mágica.",
+    "spam_score": 0.0,
+    "sentimiento": "positivo",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 139
   },
   {
     "post_id": 76,
@@ -711,16 +711,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 195
-  },
-  {
-    "post_id": 79,
-    "texto": "Reparé la bici y ya puedo volver a usarla en la rutina diaria.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 188
+    "tiempo_procesamiento_ms": 137
   },
   {
     "post_id": 77,
@@ -729,7 +720,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 193
+    "tiempo_procesamiento_ms": 136
   },
   {
     "post_id": 78,
@@ -738,16 +729,16 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 192
+    "tiempo_procesamiento_ms": 136
   },
   {
-    "post_id": 82,
-    "texto": "Recibí un descuento sorpresa en mi compra del super del barrio.",
+    "post_id": 79,
+    "texto": "Reparé la bici y ya puedo volver a usarla en la rutina diaria.",
     "spam_score": 0.0,
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 184
+    "tiempo_procesamiento_ms": 135
   },
   {
     "post_id": 80,
@@ -756,7 +747,16 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 190
+    "tiempo_procesamiento_ms": 135
+  },
+  {
+    "post_id": 82,
+    "texto": "Recibí un descuento sorpresa en mi compra del super del barrio.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 134
   },
   {
     "post_id": 81,
@@ -765,16 +765,7 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 186
-  },
-  {
-    "post_id": 83,
-    "texto": "El mercado abre hoy hasta las nueve de la noche según el cartel.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 185
+    "tiempo_procesamiento_ms": 136
   },
   {
     "post_id": 84,
@@ -783,7 +774,16 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 182
+    "tiempo_procesamiento_ms": 130
+  },
+  {
+    "post_id": 83,
+    "texto": "El mercado abre hoy hasta las nueve de la noche según el cartel.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 137
   },
   {
     "post_id": 85,
@@ -792,7 +792,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 182
+    "tiempo_procesamiento_ms": 134
   },
   {
     "post_id": 86,
@@ -801,7 +801,7 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 181
+    "tiempo_procesamiento_ms": 132
   },
   {
     "post_id": 87,
@@ -810,7 +810,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 180
+    "tiempo_procesamiento_ms": 136
   },
   {
     "post_id": 88,
@@ -819,7 +819,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 179
+    "tiempo_procesamiento_ms": 135
   },
   {
     "post_id": 89,
@@ -828,7 +828,7 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 175
+    "tiempo_procesamiento_ms": 132
   },
   {
     "post_id": 90,
@@ -837,7 +837,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 174
+    "tiempo_procesamiento_ms": 132
   },
   {
     "post_id": 91,
@@ -846,7 +846,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 173
+    "tiempo_procesamiento_ms": 138
   },
   {
     "post_id": 92,
@@ -855,25 +855,7 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 169
-  },
-  {
-    "post_id": 95,
-    "texto": "Vimos una serie nueva que tiene episodios geniales todos los días.",
-    "spam_score": 0.0,
-    "sentimiento": "positivo",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 162
-  },
-  {
-    "post_id": 96,
-    "texto": "El barrio amaneció tranquilo, sin tráfico ni ruido en la mañana.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 161
+    "tiempo_procesamiento_ms": 138
   },
   {
     "post_id": 93,
@@ -882,7 +864,7 @@
     "sentimiento": "negativo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 169
+    "tiempo_procesamiento_ms": 136
   },
   {
     "post_id": 94,
@@ -891,34 +873,7 @@
     "sentimiento": "positivo",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 168
-  },
-  {
-    "post_id": 97,
-    "texto": "Llegó el paquete que pedí hace dos semanas, todo bien embalado.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 162
-  },
-  {
-    "post_id": 100,
-    "texto": "Vi una película de terror y terminé asustada toda la noche larga.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 154
-  },
-  {
-    "post_id": 98,
-    "texto": "El gimnasio está lleno los lunes a la mañana, hay que ir antes.",
-    "spam_score": 0.0,
-    "sentimiento": "neutro",
-    "categorias": [],
-    "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 158
+    "tiempo_procesamiento_ms": 135
   },
   {
     "post_id": 99,
@@ -927,6 +882,51 @@
     "sentimiento": "neutro",
     "categorias": [],
     "decision": "APROBADO",
-    "tiempo_procesamiento_ms": 156
+    "tiempo_procesamiento_ms": 125
+  },
+  {
+    "post_id": 95,
+    "texto": "Vimos una serie nueva que tiene episodios geniales todos los días.",
+    "spam_score": 0.0,
+    "sentimiento": "positivo",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 135
+  },
+  {
+    "post_id": 96,
+    "texto": "El barrio amaneció tranquilo, sin tráfico ni ruido en la mañana.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 132
+  },
+  {
+    "post_id": 97,
+    "texto": "Llegó el paquete que pedí hace dos semanas, todo bien embalado.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 131
+  },
+  {
+    "post_id": 98,
+    "texto": "El gimnasio está lleno los lunes a la mañana, hay que ir antes.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 129
+  },
+  {
+    "post_id": 100,
+    "texto": "Vi una película de terror y terminé asustada toda la noche larga.",
+    "spam_score": 0.0,
+    "sentimiento": "neutro",
+    "categorias": [],
+    "decision": "APROBADO",
+    "tiempo_procesamiento_ms": 126
   }
 ]

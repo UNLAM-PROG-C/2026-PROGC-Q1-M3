@@ -20,6 +20,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryUsage;
+import java.lang.management.ThreadMXBean;
 import java.util.logging.Logger;
 
 public class Main {
@@ -40,6 +43,15 @@ public class Main {
     private static final int CAPACIDAD_COLA = 50;
 
     public static void main(String[] args) throws Exception {
+        // --- Instrumentacion: metricas 3 (threads) y 4 (CPU/memoria) ---
+        ThreadMXBean tmx = ManagementFactory.getThreadMXBean();
+        if (tmx.isThreadCpuTimeSupported()) tmx.setThreadCpuTimeEnabled(true);
+
+        // Acumuladores de CPU time por pool. Cada worker los escribe al terminar (ver namedCpu).
+        LongAdder cpuNanosA = new LongAdder();
+        LongAdder cpuNanosB = new LongAdder();
+        LongAdder cpuNanosC = new LongAdder();
+
         LOG.info("Iniciando pipeline con K_A=" + K_A + ", K_B=" + K_B + ", K_C=" + K_C);
 
         BlockingQueue<PipelineMessage> colaEntrada = new LinkedBlockingQueue<>(CAPACIDAD_COLA);
@@ -51,13 +63,18 @@ public class Main {
         LongAdder tiempoEtapaB = new LongAdder();
         LongAdder tiempoEtapaC = new LongAdder();
 
-        ExecutorService poolA = Executors.newFixedThreadPool(K_A, named("EtapaA"));
-        ExecutorService poolB = Executors.newFixedThreadPool(K_B, named("EtapaB"));
-        ExecutorService poolC = Executors.newFixedThreadPool(K_C, named("EtapaC"));
+        ExecutorService poolA = Executors.newFixedThreadPool(K_A, namedCpu("EtapaA", tmx, cpuNanosA));
+        ExecutorService poolB = Executors.newFixedThreadPool(K_B, namedCpu("EtapaB", tmx, cpuNanosB));
+        ExecutorService poolC = Executors.newFixedThreadPool(K_C, namedCpu("EtapaC", tmx, cpuNanosC));
 
         EtapaSentimiento etapaA = new EtapaSentimiento(colaEntrada, colaAB, K_A, K_B, tiempoEtapaA);
         EtapaCategorias  etapaB = new EtapaCategorias(colaAB, colaBC, K_B, K_C, tiempoEtapaB);
         EtapaSpam        etapaC = new EtapaSpam(colaBC, resultados, K_C, tiempoEtapaC);
+
+        // Snapshot de heap ANTES del pipeline y reset del peak counter para que el
+        // peak refleje solo los threads creados por el pipeline, no los de init de la JVM.
+        long heapAntesBytes = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage().getUsed();
+        tmx.resetPeakThreadCount();
 
         long t0 = System.nanoTime();
 
@@ -84,6 +101,7 @@ public class Main {
 
         volcarResultados(resultados);
         imprimirMetricas(resultados, elapsedNanos, tiempoEtapaA, tiempoEtapaB, tiempoEtapaC);
+        imprimirMetricasSistema(tmx, heapAntesBytes, cpuNanosA, cpuNanosB, cpuNanosC);
     }
 
     private static void volcarResultados(ConcurrentLinkedQueue<Resultado> resultados) throws Exception {
@@ -120,12 +138,51 @@ public class Main {
         System.out.println("======================================================");
     }
 
-    private static java.util.concurrent.ThreadFactory named(String prefijo) {
+    // Reemplaza a named(): además de dar nombre al thread, captura el CPU time
+    // de cada worker justo antes de que el thread muera (momento más confiable para leerlo).
+    private static java.util.concurrent.ThreadFactory namedCpu(String prefijo,
+                                                                ThreadMXBean tmx,
+                                                                LongAdder cpuAccum) {
         java.util.concurrent.atomic.AtomicInteger n = new java.util.concurrent.atomic.AtomicInteger(0);
         return r -> {
-            Thread t = new Thread(r, prefijo + "-W" + n.incrementAndGet());
+            Thread t = new Thread(() -> {
+                r.run();
+                if (tmx.isCurrentThreadCpuTimeSupported()) {
+                    long cpu = tmx.getCurrentThreadCpuTime();
+                    if (cpu > 0) cpuAccum.add(cpu);
+                }
+            }, prefijo + "-W" + n.incrementAndGet());
             t.setDaemon(false);
             return t;
         };
+    }
+
+    private static void imprimirMetricasSistema(ThreadMXBean tmx,
+                                                long heapAntesBytes,
+                                                LongAdder cpuNanosA,
+                                                LongAdder cpuNanosB,
+                                                LongAdder cpuNanosC) {
+        MemoryUsage heap    = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
+        MemoryUsage nonHeap = ManagementFactory.getMemoryMXBean().getNonHeapMemoryUsage();
+
+        System.out.println();
+        System.out.println("==========  METRICAS DE RENDIMIENTO Y SISTEMA  ==========");
+        System.out.printf("Threads activos al finalizar            : %d%n",   tmx.getThreadCount());
+        System.out.printf("Peak de threads durante la ejecucion    : %d%n",   tmx.getPeakThreadCount());
+        System.out.printf("Total threads creados (vida del prog)   : %d%n",   tmx.getTotalStartedThreadCount());
+        System.out.println("----------------------------------------------------------");
+        System.out.printf("Heap antes del pipeline                 : %.2f MB%n", heapAntesBytes / 1_048_576.0);
+        System.out.printf("Heap al finalizar (usado)               : %.2f MB%n", heap.getUsed()       / 1_048_576.0);
+        System.out.printf("Heap comprometido (committed)           : %.2f MB%n", heap.getCommitted()  / 1_048_576.0);
+        System.out.printf("Non-heap (metaspace + JIT cache)        : %.2f MB%n", nonHeap.getUsed()    / 1_048_576.0);
+        System.out.println("----------------------------------------------------------");
+        if (tmx.isThreadCpuTimeSupported()) {
+            System.out.printf("CPU time Pool A - Sentimiento (3 th)    : %.3f ms%n", cpuNanosA.sum() / 1_000_000.0);
+            System.out.printf("CPU time Pool B - Categorias (3 th)     : %.3f ms%n", cpuNanosB.sum() / 1_000_000.0);
+            System.out.printf("CPU time Pool C - Spam/Decision (3 th)  : %.3f ms%n", cpuNanosC.sum() / 1_000_000.0);
+        } else {
+            System.out.println("CPU time por pool: no soportado en esta JVM");
+        }
+        System.out.println("==========================================================");
     }
 }
