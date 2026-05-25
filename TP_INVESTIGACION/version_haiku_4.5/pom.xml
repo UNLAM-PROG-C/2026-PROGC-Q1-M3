@@ -24,6 +24,7 @@
     </dependencies>
 
     <build>
+        <finalName>tp-concurrente-1.0-SNAPSHOT</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -53,6 +54,7 @@
                             <goal>shade</goal>
                         </goals>
                         <configuration>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
                             <transformers>
                                 <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
                                     <mainClass>com.tp.Main</mainClass>
@@ -62,6 +64,35 @@
                         </configuration>
                     </execution>
                 </executions>
+            </plugin>
+
+            <!-- Metrica 1: Complejidad Ciclomatica (CC) — McCabe extendida (1976) -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.21.2</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>${project.basedir}/pmd-ruleset.xml</ruleset>
+                    </rulesets>
+                    <failOnViolation>false</failOnViolation>
+                    <printFailingErrors>true</printFailingErrors>
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <format>xml</format>
+                    <includeTests>false</includeTests>
+                </configuration>
+            </plugin>
+
+            <!-- Metrica 3: Correctitud concurrente — deteccion estatica de bugs de concurrencia -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.8.3.1</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <failOnError>false</failOnError>
+                </configuration>
             </plugin>
         </plugins>
     </build>

@@ -5,3 +5,4 @@
 
 **/*.md
 !prompt_tecnico.md
+!ANALISIS_METRICAS.md

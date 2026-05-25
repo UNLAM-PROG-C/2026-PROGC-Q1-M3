@@ -47,6 +47,35 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Metrica 1: Complejidad Ciclomatica (CC) y multithreading static analysis -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.21.2</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>${project.basedir}/pmd-ruleset.xml</ruleset>
+                    </rulesets>
+                    <failOnViolation>false</failOnViolation>
+                    <printFailingErrors>true</printFailingErrors>
+                    <outputDirectory>${project.build.directory}</outputDirectory>
+                    <format>xml</format>
+                    <includeTests>false</includeTests>
+                </configuration>
+            </plugin>
+
+            <!-- Metrica 5: Correctitud concurrente — deteccion estatica de bugs de concurrencia -->
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>4.8.3.1</version>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Low</threshold>
+                    <failOnError>false</failOnError>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

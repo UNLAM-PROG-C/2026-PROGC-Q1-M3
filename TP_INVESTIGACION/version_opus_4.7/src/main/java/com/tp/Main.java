@@ -20,6 +20,9 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.LongAdder;
+import java.lang.management.ManagementFactory;
+import java.lang.management.MemoryUsage;
+import java.lang.management.ThreadMXBean;
 import java.util.logging.Logger;
 
 public class Main {
@@ -31,15 +34,23 @@ public class Main {
 
     private static final Logger LOG = Logger.getLogger(Main.class.getName());
 
-    private static final int K_A = 3;
-    private static final int K_B = 3;
-    private static final int K_C = 3;
+    private static final int K_A = 10;
+    private static final int K_B = 10;
+    private static final int K_C = 10;
 
     // Capacidad limitada → induce backpressure. Si un pool downstream se atrasa,
     // los workers upstream se bloquean en put() y dejan de fabricar trabajo.
     private static final int CAPACIDAD_COLA = 50;
 
     public static void main(String[] args) throws Exception {
+        ThreadMXBean tmx = ManagementFactory.getThreadMXBean();
+        if (tmx.isThreadCpuTimeSupported()) tmx.setThreadCpuTimeEnabled(true);
+
+        // Acumuladores de CPU time por pool. Cada worker los escribe al terminar (ver namedCpu).
+        LongAdder cpuNanosA = new LongAdder();
+        LongAdder cpuNanosB = new LongAdder();
+        LongAdder cpuNanosC = new LongAdder();
+
         LOG.info("Iniciando pipeline con K_A=" + K_A + ", K_B=" + K_B + ", K_C=" + K_C);
 
         BlockingQueue<PipelineMessage> colaEntrada = new LinkedBlockingQueue<>(CAPACIDAD_COLA);
@@ -51,13 +62,17 @@ public class Main {
         LongAdder tiempoEtapaB = new LongAdder();
         LongAdder tiempoEtapaC = new LongAdder();
 
-        ExecutorService poolA = Executors.newFixedThreadPool(K_A, named("EtapaA"));
-        ExecutorService poolB = Executors.newFixedThreadPool(K_B, named("EtapaB"));
-        ExecutorService poolC = Executors.newFixedThreadPool(K_C, named("EtapaC"));
+        ExecutorService poolA = Executors.newFixedThreadPool(K_A, namedCpu("EtapaA", tmx, cpuNanosA));
+        ExecutorService poolB = Executors.newFixedThreadPool(K_B, namedCpu("EtapaB", tmx, cpuNanosB));
+        ExecutorService poolC = Executors.newFixedThreadPool(K_C, namedCpu("EtapaC", tmx, cpuNanosC));
 
         EtapaSentimiento etapaA = new EtapaSentimiento(colaEntrada, colaAB, K_A, K_B, tiempoEtapaA);
         EtapaCategorias  etapaB = new EtapaCategorias(colaAB, colaBC, K_B, K_C, tiempoEtapaB);
         EtapaSpam        etapaC = new EtapaSpam(colaBC, resultados, K_C, tiempoEtapaC);
+
+        long heapAntesBytes = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage().getUsed();
+        tmx.resetPeakThreadCount();
+        long threadsBaseline = tmx.getTotalStartedThreadCount();
 
         long t0 = System.nanoTime();
 
@@ -84,6 +99,7 @@ public class Main {
 
         volcarResultados(resultados);
         imprimirMetricas(resultados, elapsedNanos, tiempoEtapaA, tiempoEtapaB, tiempoEtapaC);
+        imprimirMetricasSistema(tmx, heapAntesBytes, threadsBaseline, cpuNanosA, cpuNanosB, cpuNanosC);
     }
 
     private static void volcarResultados(ConcurrentLinkedQueue<Resultado> resultados) throws Exception {
@@ -120,12 +136,64 @@ public class Main {
         System.out.println("======================================================");
     }
 
-    private static java.util.concurrent.ThreadFactory named(String prefijo) {
+    // Reemplaza a named(): además de dar nombre al thread, captura el CPU time
+    // de cada worker justo antes de que el thread muera (momento más confiable para leerlo).
+    private static java.util.concurrent.ThreadFactory namedCpu(String prefijo,
+                                                                ThreadMXBean tmx,
+                                                                LongAdder cpuAccum) {
         java.util.concurrent.atomic.AtomicInteger n = new java.util.concurrent.atomic.AtomicInteger(0);
         return r -> {
-            Thread t = new Thread(r, prefijo + "-W" + n.incrementAndGet());
+            Thread t = new Thread(() -> {
+                r.run();
+                if (tmx.isCurrentThreadCpuTimeSupported()) {
+                    long cpu = tmx.getCurrentThreadCpuTime();
+                    if (cpu > 0) cpuAccum.add(cpu);
+                }
+            }, prefijo + "-W" + n.incrementAndGet());
             t.setDaemon(false);
             return t;
         };
+    }
+
+    private static void imprimirMetricasSistema(ThreadMXBean tmx,
+                                                long heapAntesBytes,
+                                                long threadsBaseline,
+                                                LongAdder cpuNanosA,
+                                                LongAdder cpuNanosB,
+                                                LongAdder cpuNanosC) {
+        MemoryUsage heap    = ManagementFactory.getMemoryMXBean().getHeapMemoryUsage();
+        MemoryUsage nonHeap = ManagementFactory.getMemoryMXBean().getNonHeapMemoryUsage();
+
+        long threadsApp   = tmx.getTotalStartedThreadCount() - threadsBaseline;
+        long threadsJvm   = threadsBaseline; // threads de la JVM activos antes del pipeline
+        int  peakTotal    = tmx.getPeakThreadCount();
+
+        System.out.println();
+        System.out.println("==========  METRICAS DE RENDIMIENTO Y SISTEMA  ==========");
+        System.out.println("--- Threads ---");
+        System.out.printf("Threads internos JVM (base)             : %d%n",   threadsJvm);
+        System.out.printf("Threads creados por la aplicacion       : %d%n",   threadsApp);
+        System.out.printf("  Productor                             : 1%n");
+        System.out.printf("  Pool A - Sentimiento                  : %d%n",   K_A);
+        System.out.printf("  Pool B - Categorias                   : %d%n",   K_B);
+        System.out.printf("  Pool C - Spam/Decision                : %d%n",   K_C);
+        System.out.printf("Peak total (app + JVM) durante pipeline : %d%n",   peakTotal);
+        System.out.printf("Threads activos al finalizar (solo JVM) : %d%n",   tmx.getThreadCount());
+        System.out.println("--- Memoria ---");
+        System.out.printf("Heap antes del pipeline                 : %.2f MB%n", heapAntesBytes / 1_048_576.0);
+        System.out.printf("Heap al finalizar (usado)               : %.2f MB%n", heap.getUsed()       / 1_048_576.0);
+        System.out.printf("Heap comprometido (committed)           : %.2f MB%n", heap.getCommitted()  / 1_048_576.0);
+        System.out.printf("Non-heap (metaspace + JIT cache)        : %.2f MB%n", nonHeap.getUsed()    / 1_048_576.0);
+        System.out.println("--- CPU (solo threads de la aplicacion) ---");
+        if (tmx.isThreadCpuTimeSupported()) {
+            System.out.printf("CPU time Pool A - Sentimiento (%d th)    : %.3f ms%n", K_A, cpuNanosA.sum() / 1_000_000.0);
+            System.out.printf("CPU time Pool B - Categorias  (%d th)    : %.3f ms%n", K_B, cpuNanosB.sum() / 1_000_000.0);
+            System.out.printf("CPU time Pool C - Spam/Dec.   (%d th)    : %.3f ms%n", K_C, cpuNanosC.sum() / 1_000_000.0);
+            System.out.printf("CPU time total aplicacion               : %.3f ms%n",
+                    (cpuNanosA.sum() + cpuNanosB.sum() + cpuNanosC.sum()) / 1_000_000.0);
+        } else {
+            System.out.println("CPU time por pool: no soportado en esta JVM");
+        }
+        System.out.println("==========================================================");
     }
 }
