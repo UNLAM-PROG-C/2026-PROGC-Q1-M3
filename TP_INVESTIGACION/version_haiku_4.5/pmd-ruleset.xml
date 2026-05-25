@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<ruleset name="TP Metricas de Calidad - Haiku 4.5"
+         xmlns="http://pmd.sourceforge.net/ruleset/2.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0
+             https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
+
+    <description>
+        Ruleset para medicion de metricas de calidad del TP Concurrente (version Haiku 4.5).
+        methodReportLevel=1 asegura que TODOS los metodos aparezcan en el reporte,
+        no solo los que superan el umbral de riesgo. Esto es intencional para obtener
+        el cuadro completo de CC por metodo.
+    </description>
+
+    <!-- Metrica 1-A: Complejidad Ciclomatica de McCabe extendida (1976).
+         Cuenta puntos de decision: if, for, while, catch, &&, ||.
+         reportLevel=1 => todos los metodos aparecen en target/pmd.xml.
+         En produccion se usaria methodReportLevel=10 para filtrar solo los riesgosos. -->
+    <rule ref="category/java/design.xml/CyclomaticComplexity">
+        <properties>
+            <property name="classReportLevel"  value="1"/>
+            <property name="methodReportLevel" value="1"/>
+        </properties>
+    </rule>
+
+    <!-- Metrica 1-B: NPath Complexity.
+         Cuenta el numero de caminos de ejecucion acyclicos a traves del metodo
+         (mas conservadora que CC: penaliza condiciones anidadas exponencialmente).
+         reportLevel=1 => todos los metodos aparecen. -->
+    <rule ref="category/java/design.xml/NPathComplexity">
+        <properties>
+            <property name="reportLevel" value="1"/>
+        </properties>
+    </rule>
+
+    <!-- Metrica 1-C: Cognitive Complexity (Sonar/PMD 6.36+).
+         Mide el esfuerzo cognitivo real de comprension, no solo caminos de ejecucion.
+         Penaliza mas el anidamiento profundo que condiciones en el mismo nivel. -->
+    <rule ref="category/java/design.xml/CognitiveComplexity">
+        <properties>
+            <property name="reportLevel" value="1"/>
+        </properties>
+    </rule>
+
+    <!-- Metrica 1-D: Analisis estatico de patrones de concurrencia via PMD.
+         Detecta: DoubleCheckedLocking, NonThreadSafeSingleton,
+         UnsynchronizedStaticFormatter, UseNotifyAllInsteadOfNotify, etc. -->
+    <rule ref="category/java/multithreading.xml"/>
+
+</ruleset>
