@@ -1,0 +1,38 @@
+{
+  "violencia": [
+    "matar",
+    "golpear",
+    "atacar",
+    "disparar",
+    "asesinar",
+    "herir",
+    "pelear",
+    "combate",
+    "destruir",
+    "bomba"
+  ],
+  "odio": [
+    "estupido",
+    "idiota",
+    "asqueroso",
+    "inmundo",
+    "repugnante",
+    "despicable",
+    "basura",
+    "indigno",
+    "inferior",
+    "fracaso"
+  ],
+  "adulto": [
+    "sexo",
+    "porno",
+    "nsfw",
+    "desnudo",
+    "explícito",
+    "erótico",
+    "pornográfico",
+    "vulgar",
+    "obsceno",
+    "indecente"
+  ]
+}

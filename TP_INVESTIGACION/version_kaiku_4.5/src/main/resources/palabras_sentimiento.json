@@ -1,0 +1,43 @@
+{
+  "positivas": [
+    "bueno",
+    "excelente",
+    "genial",
+    "feliz",
+    "amor",
+    "perfecto",
+    "maravilloso",
+    "increíble",
+    "fantástico",
+    "brillante",
+    "hermoso",
+    "agradable",
+    "positivo",
+    "éxito",
+    "ganador",
+    "disfrutar",
+    "sonrisa",
+    "alegría",
+    "éxitoso"
+  ],
+  "negativas": [
+    "malo",
+    "terrible",
+    "horrible",
+    "triste",
+    "odio",
+    "fracaso",
+    "perdedor",
+    "desagradable",
+    "negativo",
+    "deprimido",
+    "enfadado",
+    "furioso",
+    "aburrido",
+    "peor",
+    "patético",
+    "decepcionante",
+    "desastroso",
+    "catastrófico"
+  ]
+}

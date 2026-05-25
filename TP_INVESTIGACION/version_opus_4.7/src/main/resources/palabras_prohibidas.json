@@ -1,0 +1,37 @@
+{
+  "violencia": [
+    "matar", "matarlo", "matarla",
+    "asesinar", "asesino", "asesina",
+    "golpear", "golpeo",
+    "atacar", "atacarlo",
+    "agredir", "agresión", "agresion",
+    "herir", "lastimar",
+    "masacre", "masacres",
+    "violar", "violencia",
+    "destruir", "destruirlo",
+    "paliza", "palizas",
+    "atentado", "atentados"
+  ],
+  "odio": [
+    "estúpido", "estupido", "estúpidos", "estupidos",
+    "idiota", "idiotas",
+    "asqueroso", "asquerosa", "asquerosos",
+    "imbécil", "imbecil", "imbéciles", "imbeciles",
+    "basura", "basuras",
+    "despreciable", "despreciables",
+    "repugnante", "repugnantes",
+    "inferior", "inferiores",
+    "subhumano"
+  ],
+  "adulto": [
+    "sexo",
+    "porno", "pornografía", "pornografia",
+    "nsfw",
+    "xxx",
+    "erótico", "erotico", "erótica", "erotica",
+    "eróticos", "eroticos",
+    "desnudo", "desnuda", "desnudos", "desnudas",
+    "prostituta", "prostitutas",
+    "sexual", "sexuales"
+  ]
+}
