@@ -1,52 +1,130 @@
 extends Node
 
-const PORT = 7777
-const MAX_PEERS = 2
+const DEFAULT_PORT := 7777
+const MAX_PLAYERS := 4
 
-signal player_connected(id)
-signal player_disconnected(id)
-signal connection_failed()
-signal server_disconnected()
+# --- Signals  ---
+signal player_list_changed
+signal connection_succeeded
+signal connection_failed
+signal server_disconnected
+signal player_joined(peer_id)
+signal player_left(peer_id)
 
-func host_game():
-	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_server(PORT, MAX_PEERS)
-	if error != OK:
-		print("Error creando servidor: ", error)
-		return
-	multiplayer.multiplayer_peer = peer
-	print("Servidor iniciado en puerto ", PORT)
+# --- Players Info ---
+# peer_id -> { "id": int, "name": String }
+var players: Dictionary = {}
 
-func join_game(address: String):
-	var peer = ENetMultiplayerPeer.new()
-	var error = peer.create_client(address, PORT)
-	if error != OK:
-		print("Error conectando: ", error)
-		return
-	multiplayer.multiplayer_peer = peer
-	print("Conectando a ", address)
+var _pending_name: String = ""
 
-func _ready():
+var _awaiting_confirmation: bool = false
+
+
+func _ready() -> void:
 	multiplayer.peer_connected.connect(_on_peer_connected)
 	multiplayer.peer_disconnected.connect(_on_peer_disconnected)
 	multiplayer.connected_to_server.connect(_on_connected_to_server)
 	multiplayer.connection_failed.connect(_on_connection_failed)
 	multiplayer.server_disconnected.connect(_on_server_disconnected)
 
-func _on_peer_connected(id: int):
-	print("Peer conectado: ", id)
-	player_connected.emit(id)
 
-func _on_peer_disconnected(id: int):
-	player_disconnected.emit(id)
+# ---------------------------------------------------------------------------
+# API
+# ---------------------------------------------------------------------------
 
-func _on_connected_to_server():
-	print("Conectado al servidor. Mi ID: ", multiplayer.get_unique_id())
+func create_server(player_name: String) -> Error:
+	var peer := ENetMultiplayerPeer.new()
+	var err := peer.create_server(DEFAULT_PORT, MAX_PLAYERS)
+	if err != OK:
+		push_error("No se pudo crear el servidor en el puerto %d (error %d)" % [DEFAULT_PORT, err])
+		return err
+	multiplayer.multiplayer_peer = peer
+	players = { 1: { "id": 1, "name": player_name } }
+	player_list_changed.emit()
+	return OK
 
-func _on_connection_failed():
+
+func join_server(ip: String, player_name: String) -> Error:
+	var peer := ENetMultiplayerPeer.new()
+	var err := peer.create_client(ip, DEFAULT_PORT)
+	if err != OK:
+		push_error("No se pudo crear el cliente hacia %s (error %d)" % [ip, err])
+		return err
+	_pending_name = player_name
+	_awaiting_confirmation = true
+	multiplayer.multiplayer_peer = peer
+	return OK
+
+
+func disconnect_from_game() -> void:
 	multiplayer.multiplayer_peer = null
+	_awaiting_confirmation = false
+	players.clear()
+	player_list_changed.emit()
+
+
+func is_host() -> bool:
+	return multiplayer.has_multiplayer_peer() and multiplayer.is_server()
+
+
+func get_my_id() -> int:
+	if multiplayer.has_multiplayer_peer():
+		return multiplayer.get_unique_id()
+	return 0
+
+
+func get_players() -> Dictionary:
+	return players.duplicate(true)
+
+@rpc("any_peer", "reliable")
+func _register_player(player_name: String) -> void:
+	if not multiplayer.is_server():
+		return
+	var sender := multiplayer.get_remote_sender_id()
+	players[sender] = { "id": sender, "name": player_name }
+	_sync_player_list.rpc(players)
+	player_joined.emit(sender)
+
+@rpc("authority", "call_local", "reliable")
+func _sync_player_list(list: Dictionary) -> void:
+	players = list.duplicate(true)
+	player_list_changed.emit()
+
+	if _awaiting_confirmation and players.has(get_my_id()):
+		_awaiting_confirmation = false
+		connection_succeeded.emit()
+
+
+# ---------------------------------------------------------------------------
+# Callbacks MultiplayerAPI
+# ---------------------------------------------------------------------------
+
+func _on_peer_connected(_id: int) -> void:
+	pass
+
+
+func _on_peer_disconnected(id: int) -> void:
+	if not multiplayer.is_server():
+		return
+	if players.has(id):
+		players.erase(id)
+		_sync_player_list.rpc(players)
+		player_left.emit(id)
+
+
+func _on_connected_to_server() -> void:
+	_register_player.rpc_id(1, _pending_name)
+
+
+func _on_connection_failed() -> void:
+	multiplayer.multiplayer_peer = null
+	_awaiting_confirmation = false
+	players.clear()
 	connection_failed.emit()
 
-func _on_server_disconnected():
+
+func _on_server_disconnected() -> void:
 	multiplayer.multiplayer_peer = null
+	_awaiting_confirmation = false
+	players.clear()
 	server_disconnected.emit()

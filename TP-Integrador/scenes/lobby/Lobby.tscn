@@ -2,30 +2,65 @@
 
 [ext_resource type="Script" uid="uid://d214d43ut6af0" path="res://scenes/lobby/lobby.gd" id="1_sj1j4"]
 
-[node name="Lobby" type="Control" unique_id=935880938]
+[node name="Lobby" type="Control"]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 script = ExtResource("1_sj1j4")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=580198035]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_right = 68.0
-offset_bottom = 128.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 420.0
+offset_bottom = 520.0
 
-[node name="IPInput" type="LineEdit" parent="VBoxContainer" unique_id=193414706]
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
+text = "Lobby"
+
+[node name="NameInput" type="LineEdit" parent="VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Tu nombre"
+max_length = 16
+
+[node name="HBox_Conexion" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="IPInput" type="LineEdit" parent="VBoxContainer/HBox_Conexion"]
+layout_mode = 2
+size_flags_horizontal = 3
 placeholder_text = "127.0.0.1"
 
-[node name="HostButton" type="Button" parent="VBoxContainer" unique_id=1242361643]
+[node name="HostButton" type="Button" parent="VBoxContainer/HBox_Conexion"]
 layout_mode = 2
-text = "Host"
+text = "Crear"
 
-[node name="JoinButton" type="Button" parent="VBoxContainer" unique_id=1084544478]
+[node name="JoinButton" type="Button" parent="VBoxContainer/HBox_Conexion"]
 layout_mode = 2
-text = "Join"
+text = "Unirse"
 
-[node name="StatusLabel" type="Label" parent="VBoxContainer" unique_id=405239042]
+[node name="PlayersTitle" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+text = "Jugadores:"
+
+[node name="PlayerList" type="ItemList" parent="VBoxContainer"]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 120)
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer"]
 layout_mode = 2
 
-[connection signal="pressed" from="VBoxContainer/HostButton" to="." method="_on_host_pressed"]
-[connection signal="pressed" from="VBoxContainer/JoinButton" to="." method="_on_join_pressed"]
+[node name="StartButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Iniciar"
+
+[node name="LeaveButton" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+text = "Salir"
+
+[connection signal="pressed" from="VBoxContainer/HBox_Conexion/HostButton" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBox_Conexion/JoinButton" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/LeaveButton" to="." method="_on_leave_pressed"]
