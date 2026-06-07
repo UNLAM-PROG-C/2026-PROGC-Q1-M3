@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://bnuwfhmyf6mmm"]
+
+[ext_resource type="Script" uid="uid://cikwko6k76c6m" path="res://scenes/ui/pause_menu.gd" id="1_6tw0m"]
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=924904016]
+script = ExtResource("1_6tw0m")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=1719726650]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.55)
+
+[node name="Panel" type="Panel" parent="." unique_id=1068779147]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -120.0
+offset_right = 160.0
+offset_bottom = 120.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1344849651]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 24.0
+offset_top = 24.0
+offset_right = -24.0
+offset_bottom = -24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BtnResume" type="Button" parent="Panel/VBox" unique_id=623092838]
+layout_mode = 2
+text = "Resumir"
+
+[node name="Spacer" type="Control" parent="Panel/VBox" unique_id=517697193]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BtnQuit" type="Button" parent="Panel/VBox" unique_id=1459398676]
+layout_mode = 2
+text = "Salir al escritorio"
+
+[connection signal="pressed" from="Panel/VBox/BtnResume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="Panel/VBox/BtnQuit" to="." method="_on_btn_quit_pressed"]

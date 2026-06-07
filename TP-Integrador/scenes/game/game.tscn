@@ -1,0 +1,45 @@
+[gd_scene format=3 uid="uid://b3d2g8gl54k7k"]
+
+[ext_resource type="Script" uid="uid://bip4nfoytppkx" path="res://scenes/game/game.gd" id="1_sul5r"]
+[ext_resource type="PackedScene" uid="uid://cu4pnet80h04m" path="res://scenes/npc/threaded_npc.tscn" id="2_tnpc"]
+[ext_resource type="Script" uid="uid://cqxxj8bf071n6" path="res://scenes/npc/npc_thread_pool.gd" id="3_pool"]
+[ext_resource type="PackedScene" uid="uid://bnuwfhmyf6mmm" path="res://scenes/ui/pause_menu.tscn" id="4_pause"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ifgtf"]
+size = Vector2(150, 150)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sul5r"]
+size = Vector3(150, 0, 150)
+
+[sub_resource type="Curve3D" id="Curve3D_npc_path"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 8.557237, 1, -59.40274, 0, 0, 0, 0, 0, 0, -47.75087, 1, -24.943138, 0, 0, 0, 0, 0, 0, 40.527, 1, -18.03231, 0, 0, 0, 0, 0, 0, 8.550598, 1, 3, 0, 0, 0, 0, 0, 0, -63.63496, 1, 6, 0, 0, 0, 0, 0, 0, 9.433011, 1, 50.78965),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
+}
+point_count = 6
+
+[node name="Game" type="Node3D" unique_id=2105391499]
+script = ExtResource("1_sul5r")
+
+[node name="Piso" type="StaticBody3D" parent="." unique_id=214331217]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Piso" unique_id=1666728670]
+mesh = SubResource("PlaneMesh_ifgtf")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Piso" unique_id=432364498]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37782288)
+shape = SubResource("BoxShape3D_sul5r")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1133832815]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5117655, 0)
+shadow_enabled = true
+
+[node name="NPCPath" type="Path3D" parent="." unique_id=1651239944]
+curve = SubResource("Curve3D_npc_path")
+
+[node name="NPCThreadPool" type="Node3D" parent="." unique_id=2069397212]
+script = ExtResource("3_pool")
+npc_scene = ExtResource("2_tnpc")
+path_node_path = NodePath("../NPCPath")
+
+[node name="PauseMenu" parent="." unique_id=1460788289 instance=ExtResource("4_pause")]

@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3 uid="uid://cu4pnet80h04m"]
+
+[ext_resource type="Script" uid="uid://dnpcf2o40vrsq" path="res://scenes/npc/threaded_npc.gd" id="1_tnpc"]
+
+[node name="ThreadedNPC" type="Node3D"]
+script = ExtResource("1_tnpc")
+
+[node name="CharacterSprite" type="Sprite3D" parent="."]
+billboard = 1
+alpha_cut = 1
+alpha_scissor_threshold = 0.5
+texture_filter = 0
+pixel_size = 0.003
+hframes = 2
