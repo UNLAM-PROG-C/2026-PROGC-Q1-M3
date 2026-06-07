@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://ctmx8gksbs5br"]
+
+[ext_resource type="Script" uid="uid://d214d43ut6af0" path="res://scenes/lobby/lobby.gd" id="1_sj1j4"]
+
+[node name="Lobby" type="Control" unique_id=935880938]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_sj1j4")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=580198035]
+layout_mode = 0
+offset_right = 68.0
+offset_bottom = 128.0
+
+[node name="IPInput" type="LineEdit" parent="VBoxContainer" unique_id=193414706]
+layout_mode = 2
+placeholder_text = "127.0.0.1"
+
+[node name="HostButton" type="Button" parent="VBoxContainer" unique_id=1242361643]
+layout_mode = 2
+text = "Host"
+
+[node name="JoinButton" type="Button" parent="VBoxContainer" unique_id=1084544478]
+layout_mode = 2
+text = "Join"
+
+[node name="StatusLabel" type="Label" parent="VBoxContainer" unique_id=405239042]
+layout_mode = 2
+
+[connection signal="pressed" from="VBoxContainer/HostButton" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="VBoxContainer/JoinButton" to="." method="_on_join_pressed"]
