@@ -11,17 +11,13 @@ config_version=5
 [application]
 
 config/name="V1"
-run/main_scene="uid://ctmx8gksbs5br"
+run/main_scene="res://scenes/ui/main_menu.tscn"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 GameNetwork="*uid://b7tfvjlyr8ted"
-
-[editor]
-
-run/main_run_args="--debug_solo"
 
 [input]
 
