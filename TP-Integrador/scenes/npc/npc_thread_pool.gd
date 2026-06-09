@@ -7,7 +7,7 @@ extends Node3D
 @export var movement_radius := 1.25
 @export var movement_speed := 1.5
 @export var npc_spacing := 1.8
-@export var hop_height := 0.18
+@export var hop_height := 0.0
 @export var hop_frequency := 7.5
 @export var random_offset_min := 0.10
 @export var random_offset_max := 0.50
@@ -119,6 +119,9 @@ func _rebuild_npcs(npc_count: int):
 		npc.name = "ThreadedNPC_%02d" % i
 		npc.position = origin
 		add_child(npc)
+		# Cada NPC recolorea al menos el pelo, por lo que nunca queda identico a un
+		# jugador que use el mismo modelo.
+		npc.setup(CharacterAppearance.random_npc_appearance(_rng))
 
 		_npcs.append(npc)
 		_origins.append(origin)

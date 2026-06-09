@@ -4,8 +4,23 @@ const SPEED = 7.0
 const GRAVITY = -9.8
 const MOUSE_SENSITIVITY = 0.005
 
+## Ajuste fino de orientacion del modelo respecto al frente del jugador.
+const MODEL_YAW_OFFSET := PI
+## Umbral de velocidad (u/s) para considerar que el jugador se esta moviendo.
+const WALK_SPEED_THRESHOLD := 0.3
+
+## Los modelos de Mixamo vienen a ~56u de alto; 0.03 los deja en ~1.7u.
+@export var model_scale := 0.03
+## Desplazamiento vertical del modelo para apoyar los pies en la base de la capsula.
+@export var model_y_offset := -1.0
+
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+
+var _model: Node3D
+var _anim_player: AnimationPlayer
+var _walk_model_index := 0
+var _last_anim_position := Vector3.ZERO
 
 func is_local_player() -> bool:
 	return "--debug_solo" in OS.get_cmdline_args() or is_multiplayer_authority()
@@ -15,12 +30,66 @@ func _ready():
 	# La autoridad de este nodo se asigna JUSTO DESPUÉS de add_child()
 	# Por eso diferimos la configuración local hasta que la autoridad ya sea la correcta.
 	call_deferred("_setup_local")
+	call_deferred("_setup_appearance")
 
 func _setup_local():
 	# Solo el jugador dueño de este nodo captura el mouse y usa su cámara.
 	if is_local_player():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		camera.current = true
+
+## Construye el modelo 3D del jugador (corre en TODOS los peers: cada uno renderiza
+## a todos los jugadores). El jugador local oculta su propio modelo (primera persona).
+func _setup_appearance():
+	var appearance := _resolve_appearance()
+	var model_index := int(appearance["model"])
+	_model = CharacterAppearance.build_model(model_index)
+	if _model == null:
+		return
+
+	add_child(_model)
+	_model.scale = Vector3.ONE * model_scale
+	_model.position.y = model_y_offset
+	_model.rotation.y = MODEL_YAW_OFFSET
+
+	CharacterAppearance.apply_part_colors(_model, appearance["part_colors"])
+
+	_anim_player = CharacterAppearance.find_animation_player(_model)
+	_walk_model_index = model_index
+	_last_anim_position = global_position
+
+	# Primera persona: el jugador local no ve su propio cuerpo (salvo espejo, futuro).
+	if is_local_player():
+		_model.visible = false
+
+func _resolve_appearance() -> Dictionary:
+	var peer_id := name.to_int()
+	var players: Dictionary = GameNetwork.get_players()
+	if players.has(peer_id) and players[peer_id].has("model"):
+		return {
+			"model": int(players[peer_id]["model"]),
+			"part_colors": players[peer_id].get("part_colors", {}),
+		}
+	# Fallback (ej. --debug_solo, sin lista de red): mismo look canónico de jugador.
+	return {
+		"model": CharacterAppearance.PLAYER_MODEL_INDEX,
+		"part_colors": CharacterAppearance.player_part_colors(),
+	}
+
+## La animacion de caminata se decide por el desplazamiento real, de modo que
+## funciona igual en el dueño y en los peers remotos (que reciben la posicion replicada).
+func _process(delta: float):
+	if _anim_player == null or delta <= 0.0:
+		return
+
+	var speed := (global_position - _last_anim_position).length() / delta
+	_last_anim_position = global_position
+
+	if speed > WALK_SPEED_THRESHOLD:
+		if not _anim_player.is_playing():
+			CharacterAppearance.play_walk(_anim_player, _walk_model_index)
+	elif _anim_player.is_playing():
+		_anim_player.pause()
 
 func _setup_synchronizer():
 	if "--debug_solo" in OS.get_cmdline_args():

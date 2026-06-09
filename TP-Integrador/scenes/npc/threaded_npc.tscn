@@ -4,11 +4,3 @@
 
 [node name="ThreadedNPC" type="Node3D"]
 script = ExtResource("1_tnpc")
-
-[node name="CharacterSprite" type="Sprite3D" parent="."]
-billboard = 1
-alpha_cut = 1
-alpha_scissor_threshold = 0.5
-texture_filter = 0
-pixel_size = 0.003
-hframes = 2

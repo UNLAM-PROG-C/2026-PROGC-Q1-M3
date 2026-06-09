@@ -12,7 +12,8 @@ signal player_joined(peer_id)
 signal player_left(peer_id)
 
 # --- Players Info ---
-# peer_id -> { "id": int, "name": String }
+# peer_id -> { "id": int, "name": String, "model": int, "part_colors": Dictionary }
+# model: indice de modelo en CharacterAppearance.MODEL_PATHS
 var players: Dictionary = {}
 
 var _pending_name: String = ""
@@ -39,7 +40,7 @@ func create_server(player_name: String) -> Error:
 		push_error("No se pudo crear el servidor en el puerto %d (error %d)" % [DEFAULT_PORT, err])
 		return err
 	multiplayer.multiplayer_peer = peer
-	players = { 1: { "id": 1, "name": player_name } }
+	players = { 1: _make_player_record(1, player_name) }
 	player_list_changed.emit()
 	return OK
 
@@ -76,12 +77,22 @@ func get_my_id() -> int:
 func get_players() -> Dictionary:
 	return players.duplicate(true)
 
+
+# Crea el registro de un jugador. TODOS los jugadores comparten la misma apariencia.
+func _make_player_record(id: int, player_name: String) -> Dictionary:
+	return {
+		"id": id,
+		"name": player_name,
+		"model": CharacterAppearance.PLAYER_MODEL_INDEX,
+		"part_colors": CharacterAppearance.player_part_colors(),
+	}
+
 @rpc("any_peer", "reliable")
 func _register_player(player_name: String) -> void:
 	if not multiplayer.is_server():
 		return
 	var sender := multiplayer.get_remote_sender_id()
-	players[sender] = { "id": sender, "name": player_name }
+	players[sender] = _make_player_record(sender, player_name)
 	_sync_player_list.rpc(players)
 	player_joined.emit(sender)
 
