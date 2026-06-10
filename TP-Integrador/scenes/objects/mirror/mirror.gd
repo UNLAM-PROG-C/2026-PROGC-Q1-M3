@@ -13,9 +13,13 @@ const MIRROR_LOCAL_CENTER := Vector3(0.0737, 94.5454, 1.6341)
 @export var max_update_distance := 30.0
 @export var flip_reflection_x := true
 @export var flip_reflection_y := true
+@export var collision_enabled := true
+@export_flags_3d_physics var collision_layer: int = 1
+@export_flags_3d_physics var collision_mask: int = 1
 
 @onready var _viewport: SubViewport = $ReflectionViewport
 @onready var _reflection_camera: Camera3D = $ReflectionViewport/ReflectionCamera
+@onready var _collision_body: StaticBody3D = $CollisionBody
 
 var _mirror_mesh: MeshInstance3D
 var _source_camera: Camera3D
@@ -36,10 +40,39 @@ func _ready() -> void:
 	_mirror_mesh.layers = MIRROR_SURFACE_LAYER
 	_mirror_mesh.visible = true
 	_apply_reflection_material()
+	_build_collision()
 
 
 func _use_main_world() -> void:
 	_viewport.world_3d = get_viewport().world_3d
+
+
+func _build_collision() -> void:
+	for child in _collision_body.get_children():
+		child.queue_free()
+
+	if not collision_enabled:
+		_collision_body.collision_layer = 0
+		_collision_body.collision_mask = 0
+		return
+
+	_collision_body.collision_layer = collision_layer
+	_collision_body.collision_mask = collision_mask
+	_add_mesh_collisions($Model)
+
+
+func _add_mesh_collisions(node: Node) -> void:
+	if node is MeshInstance3D and node.mesh != null:
+		var shape: Shape3D = node.mesh.create_trimesh_shape()
+		if shape != null:
+			var collision_shape := CollisionShape3D.new()
+			collision_shape.name = "%sCollision" % node.name
+			collision_shape.shape = shape
+			collision_shape.transform = _collision_body.global_transform.affine_inverse() * node.global_transform
+			_collision_body.add_child(collision_shape)
+
+	for child in node.get_children():
+		_add_mesh_collisions(child)
 
 
 func _process(_delta: float) -> void:

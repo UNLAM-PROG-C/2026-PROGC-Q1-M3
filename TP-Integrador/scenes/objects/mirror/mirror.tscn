@@ -8,6 +8,8 @@ script = ExtResource("1_mirror")
 
 [node name="Model" parent="." instance=ExtResource("2_model")]
 
+[node name="CollisionBody" type="StaticBody3D" parent="."]
+
 [node name="ReflectionViewport" type="SubViewport" parent="."]
 disable_3d = false
 render_target_update_mode = 3

@@ -23,6 +23,10 @@ GameNetwork="*uid://b7tfvjlyr8ted"
 
 run/main_run_args="--debug_solo"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/mirror_placer/plugin.cfg")
+
 [input]
 
 move_forward={

@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://cqxxj8bf071n6" path="res://scenes/npc/npc_thread_pool.gd" id="3_pool"]
 [ext_resource type="PackedScene" uid="uid://bnuwfhmyf6mmm" path="res://scenes/ui/pause_menu.tscn" id="4_pause"]
 [ext_resource type="PackedScene" path="res://scenes/objects/mirror/mirror.tscn" id="5_mirror"]
+[ext_resource type="Script" uid="uid://cg2etv51edgkd" path="res://scenes/objects/mirror/mirror.gd" id="6_5i0tg"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ifgtf"]
 size = Vector2(150, 150)
@@ -47,3 +48,19 @@ path_node_path = NodePath("../NPCPath")
 transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.10191178, -5)
 
 [node name="PauseMenu" parent="." unique_id=1460788289 instance=ExtResource("4_pause")]
+
+[node name="Mirror2" type="Node3D" parent="." unique_id=1072508981 instance=ExtResource("5_mirror")]
+transform = Transform3D(0.8336779, 0, 0.552251, 0, 1, 0, -0.552251, 0, 0.8336779, -1.8241186, 0, 4.7147427)
+script = ExtResource("6_5i0tg")
+
+[node name="Mirror3" type="Node3D" parent="." unique_id=190910600 instance=ExtResource("5_mirror")]
+transform = Transform3D(-0.5587154, 0, 0.8293595, 0, 1, 0, -0.8293595, 0, -0.5587154, 3.3000226, -2.3841858e-07, -0.544183)
+script = ExtResource("6_5i0tg")
+
+[node name="Mirror4" type="Node3D" parent="." unique_id=1385868498 instance=ExtResource("5_mirror")]
+transform = Transform3D(-0.5587021, 0, 0.8293684, 0, 1, 0, -0.8293684, 0, -0.5587021, -4.0385695, 0, -1.4872754)
+script = ExtResource("6_5i0tg")
+
+[node name="Mirror5" type="Node3D" parent="." unique_id=79209265 instance=ExtResource("5_mirror")]
+transform = Transform3D(-0.5587021, 0, 0.8293684, 0, 1, 0, -0.8293684, 0, -0.5587021, -13.222578, 0, -6.054168)
+script = ExtResource("6_5i0tg")

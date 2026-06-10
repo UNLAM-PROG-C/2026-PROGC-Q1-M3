@@ -27,6 +27,7 @@ func is_local_player() -> bool:
 	return "--debug_solo" in OS.get_cmdline_args() or is_multiplayer_authority()
 
 func _ready():
+	add_to_group("players")
 	_setup_synchronizer()
 	# La autoridad de este nodo se asigna JUSTO DESPUÉS de add_child()
 	# Por eso diferimos la configuración local hasta que la autoridad ya sea la correcta.
