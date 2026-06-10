@@ -17,6 +17,7 @@ const WALK_SPEED_THRESHOLD := 0.3
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
 
+var _hud  # HUD de primera persona; solo existe para el jugador local
 var _model: Node3D
 var _anim_player: AnimationPlayer
 var _walk_model_index := 0
@@ -37,6 +38,10 @@ func _setup_local():
 	if is_local_player():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		camera.current = true
+		# HUD de primera persona (un CanvasLayer dibuja en toda la pantalla,
+		# por eso se instancia solo para el jugador local)
+		_hud = preload("res://scenes/ui/hud.tscn").instantiate()
+		add_child(_hud)
 
 ## Construye el modelo 3D del jugador (corre en TODOS los peers: cada uno renderiza
 ## a todos los jugadores). El jugador local oculta su propio modelo (primera persona).
@@ -116,6 +121,10 @@ func _unhandled_input(event):
 		# Limitar la mirada arriba/abajo a 90 grados
 		head.rotation.x = clamp(head.rotation.x, -PI/2, PI/2)
 
+	# Disparo: animación de retroceso del arma
+	if event.is_action_pressed("fire") and _hud:
+		_hud.play_fire()
+
 func _physics_process(delta):
 	# Solo el dueño procesa input y mueve el cuerpo; en los demás peers la posición
 	# la escribe el MultiplayerSynchronizer.
@@ -137,3 +146,7 @@ func _physics_process(delta):
 	velocity.z = direction.z * SPEED
 
 	move_and_slide()
+
+	# Avisar al HUD la velocidad planar para el bob del arma
+	if _hud:
+		_hud.set_moving(Vector2(velocity.x, velocity.z).length())
