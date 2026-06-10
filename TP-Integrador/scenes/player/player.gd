@@ -4,6 +4,9 @@ const SPEED = 7.0
 const GRAVITY = -9.8
 const MOUSE_SENSITIVITY = 0.005
 const FIRST_PERSON_MODEL_LAYER := 1 << 2
+const SPRINT_SPEED_MULTIPLIER := 2.0
+const MAX_SPRINT_DURATION := 2.0
+const SPRINT_COOLDOWN_DURATION := 5.0
 
 ## Ajuste fino de orientacion del modelo respecto al frente del jugador.
 const MODEL_YAW_OFFSET := PI
@@ -22,6 +25,9 @@ var _model: Node3D
 var _anim_player: AnimationPlayer
 var _walk_model_index := 0
 var _last_anim_position := Vector3.ZERO
+var _sprint_time_left := MAX_SPRINT_DURATION
+var _sprint_cooldown_left := 0.0
+var _was_sprinting := false
 
 func is_local_player() -> bool:
 	return "--debug_solo" in OS.get_cmdline_args() or is_multiplayer_authority()
@@ -144,7 +150,37 @@ func _physics_process(delta):
 
 	# Mover en la dirección que mira el jugador
 	var direction = (transform.basis * input).normalized()
-	velocity.x = direction.x * SPEED
-	velocity.z = direction.z * SPEED
+	_update_sprint_cooldown(delta)
+
+	var current_speed := SPEED
+	var is_sprinting := direction != Vector3.ZERO and Input.is_action_pressed("sprint") and _can_sprint()
+	if is_sprinting:
+		current_speed *= SPRINT_SPEED_MULTIPLIER
+		_sprint_time_left = maxf(0.0, _sprint_time_left - delta)
+		if _sprint_time_left <= 0.0:
+			_start_sprint_cooldown()
+			is_sprinting = false
+	elif _was_sprinting:
+		_start_sprint_cooldown()
+
+	_was_sprinting = is_sprinting
+
+	velocity.x = direction.x * current_speed
+	velocity.z = direction.z * current_speed
 
 	move_and_slide()
+
+func _can_sprint() -> bool:
+	return _sprint_time_left > 0.0 and _sprint_cooldown_left <= 0.0
+
+func _update_sprint_cooldown(delta: float) -> void:
+	if _sprint_cooldown_left <= 0.0:
+		return
+
+	_sprint_cooldown_left = maxf(0.0, _sprint_cooldown_left - delta)
+	if _sprint_cooldown_left <= 0.0:
+		_sprint_time_left = MAX_SPRINT_DURATION
+
+func _start_sprint_cooldown() -> void:
+	_sprint_cooldown_left = SPRINT_COOLDOWN_DURATION
+	_sprint_time_left = 0.0

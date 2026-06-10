@@ -16,6 +16,7 @@ const MIRROR_LOCAL_CENTER := Vector3(0.0737, 94.5454, 1.6341)
 @export var collision_enabled := true
 @export_flags_3d_physics var collision_layer: int = 1
 @export_flags_3d_physics var collision_mask: int = 1
+@export var reflect_mirror_models := false
 
 @onready var _viewport: SubViewport = $ReflectionViewport
 @onready var _reflection_camera: Camera3D = $ReflectionViewport/ReflectionCamera
@@ -177,7 +178,8 @@ func _sync_reflection_camera(source_camera: Camera3D) -> void:
 	_reflection_camera.far = source_camera.far
 	_reflection_camera.cull_mask = source_camera.cull_mask | FIRST_PERSON_MODEL_LAYER
 	_reflection_camera.cull_mask &= ~MIRROR_SURFACE_LAYER
-	_reflection_camera.cull_mask &= ~MIRROR_MODEL_LAYER
+	if not reflect_mirror_models:
+		_reflection_camera.cull_mask &= ~MIRROR_MODEL_LAYER
 
 
 func _reflect_point(point: Vector3, plane_point: Vector3, plane_normal: Vector3) -> Vector3:
