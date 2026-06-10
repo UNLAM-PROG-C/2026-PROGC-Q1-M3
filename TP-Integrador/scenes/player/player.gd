@@ -3,6 +3,7 @@ extends CharacterBody3D
 const SPEED = 7.0
 const GRAVITY = -9.8
 const MOUSE_SENSITIVITY = 0.005
+const FIRST_PERSON_MODEL_LAYER := 1 << 2
 
 ## Ajuste fino de orientacion del modelo respecto al frente del jugador.
 const MODEL_YAW_OFFSET := PI
@@ -37,6 +38,7 @@ func _setup_local():
 	if is_local_player():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		camera.current = true
+		camera.cull_mask &= ~FIRST_PERSON_MODEL_LAYER
 
 ## Construye el modelo 3D del jugador (corre en TODOS los peers: cada uno renderiza
 ## a todos los jugadores). El jugador local oculta su propio modelo (primera persona).
@@ -60,7 +62,15 @@ func _setup_appearance():
 
 	# Primera persona: el jugador local no ve su propio cuerpo (salvo espejo, futuro).
 	if is_local_player():
-		_model.visible = false
+		_set_visual_layer_recursive(_model, FIRST_PERSON_MODEL_LAYER)
+
+
+func _set_visual_layer_recursive(node: Node, layer: int) -> void:
+	if node is VisualInstance3D:
+		node.layers = layer
+
+	for child in node.get_children():
+		_set_visual_layer_recursive(child, layer)
 
 func _resolve_appearance() -> Dictionary:
 	var peer_id := name.to_int()

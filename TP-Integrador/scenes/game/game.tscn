@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cu4pnet80h04m" path="res://scenes/npc/threaded_npc.tscn" id="2_tnpc"]
 [ext_resource type="Script" uid="uid://cqxxj8bf071n6" path="res://scenes/npc/npc_thread_pool.gd" id="3_pool"]
 [ext_resource type="PackedScene" uid="uid://bnuwfhmyf6mmm" path="res://scenes/ui/pause_menu.tscn" id="4_pause"]
+[ext_resource type="PackedScene" path="res://scenes/objects/mirror/mirror.tscn" id="5_mirror"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_ifgtf"]
 size = Vector2(150, 150)
@@ -41,5 +42,8 @@ curve = SubResource("Curve3D_npc_path")
 script = ExtResource("3_pool")
 npc_scene = ExtResource("2_tnpc")
 path_node_path = NodePath("../NPCPath")
+
+[node name="Mirror" parent="." unique_id=1665015747 instance=ExtResource("5_mirror")]
+transform = Transform3D(0.8, 0, 0, 0, 0.8, 0, 0, 0, 0.8, 0, 0.10191178, -5)
 
 [node name="PauseMenu" parent="." unique_id=1460788289 instance=ExtResource("4_pause")]

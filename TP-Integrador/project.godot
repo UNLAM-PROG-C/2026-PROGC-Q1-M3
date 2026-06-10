@@ -19,6 +19,10 @@ config/icon="res://icon.svg"
 
 GameNetwork="*uid://b7tfvjlyr8ted"
 
+[editor]
+
+run/main_run_args="--debug_solo"
+
 [input]
 
 move_forward={
