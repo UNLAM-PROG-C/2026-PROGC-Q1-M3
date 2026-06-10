@@ -2,6 +2,8 @@ extends CanvasLayer
 
 @export var weapon_texture: Texture2D
 
+@export var fire_sound: AudioStream # Sonido del disparo. hay que ponerlo en → /audio/sfx/shot.wav.
+
 @export_range(0.05, 1.5, 0.01) var weapon_screen_fraction := 0.33
 
 
@@ -13,10 +15,16 @@ extends CanvasLayer
 @export var recoil_rotation := 0.08              
 
 @onready var weapon: Sprite2D = $WeaponView/WeaponSprite
+@onready var _crosshair_h: ColorRect = $Crosshair/H
+@onready var _crosshair_v: ColorRect = $Crosshair/V
 
-const PLAYER_SPEED := 7.0 #==SPEED de player en plager.gd
+const PLAYER_SPEED := 7.0 #==SPEED de player en player.gd
+
+const CROSSHAIR_IDLE := Color(1, 1, 1, 0.85)
+const CROSSHAIR_TARGET := Color(0.2, 1.0, 0.35, 0.95)
 
 var _base_pos: Vector2
+var _shot_player: AudioStreamPlayer
 var _t := 0.0
 var _move_blend := 0.0   
 var _target_move := 0.0
@@ -27,6 +35,15 @@ func _ready() -> void:
 		weapon.texture = weapon_texture
 	_fit_weapon_to_screen()
 	_base_pos = weapon.position
+	_setup_fire_sound()
+
+
+func _setup_fire_sound() -> void:
+	if fire_sound == null and ResourceLoader.exists("res://audio/sfx/shot.wav"):
+		fire_sound = load("res://audio/sfx/shot.wav")
+	_shot_player = AudioStreamPlayer.new()
+	_shot_player.stream = fire_sound
+	add_child(_shot_player)
 
 func _fit_weapon_to_screen() -> void:
 	if weapon.texture == null:
@@ -44,6 +61,13 @@ func set_moving(speed: float) -> void:
 
 func play_fire() -> void:
 	_recoil = 1.0
+	if _shot_player and _shot_player.stream:
+		_shot_player.play()
+
+func set_target_acquired(on: bool) -> void:
+	var c := CROSSHAIR_TARGET if on else CROSSHAIR_IDLE
+	_crosshair_h.color = c
+	_crosshair_v.color = c
 
 func _process(delta: float) -> void:
 	_t += delta

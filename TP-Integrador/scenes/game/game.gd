@@ -3,23 +3,33 @@ extends Node3D
 @onready var npc_thread_pool = $NPCThreadPool
 @onready var pause_menu = $PauseMenu
 
+# Combate / fin de ronda (last-man-standing).
+var end_screen                  
+var _alive: Array[int] = []     
+var _game_over := false         
+var _local_done := false        
+
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	pause_menu.resume_requested.connect(_resume_game)
 	pause_menu.quit_requested.connect(_quit_to_desktop)
+	end_screen = preload("res://scenes/ui/end_screen.gd").new()
+	add_child(end_screen)
 
-	# Modo debug: corre en singleplayer
 	if "--debug_solo" in OS.get_cmdline_args():
 		spawn_player(1)
 		npc_thread_pool.set_player_count(1)
 		return
-	
+
 	if multiplayer.is_server():
 		spawn_player.rpc(1)
 		for id in multiplayer.get_peers():
 			spawn_player.rpc(id)
 		npc_thread_pool.set_player_count(_get_player_count())
+		_alive.append(1)
+		for id in multiplayer.get_peers():
+			_alive.append(id)
 
 @rpc("authority", "call_local", "reliable")
 func spawn_player(peer_id: int):
@@ -29,6 +39,39 @@ func spawn_player(peer_id: int):
 	add_child(player)
 	player.set_multiplayer_authority(peer_id)
 	npc_thread_pool.set_player_count(_get_player_count())
+
+
+@rpc("any_peer", "reliable")
+func report_capture(victim_id: int) -> void:
+	if not multiplayer.is_server() or _game_over:
+		return
+	if not _alive.has(victim_id):
+		return 
+	_alive.erase(victim_id)
+	var winner_id := -1
+	if _alive.size() == 1:
+		winner_id = _alive[0]
+		_game_over = true
+	apply_elimination.rpc(victim_id, winner_id)
+
+
+@rpc("authority", "call_local", "reliable")
+func apply_elimination(victim_id: int, winner_id: int) -> void:
+	var me := multiplayer.get_unique_id()
+
+	var victim = get_node_or_null(str(victim_id))
+	if victim:
+		victim.set_eliminated()
+	if me == victim_id:
+		end_screen.show_wasted()
+		_local_done = true
+
+	if winner_id != -1:
+		_game_over = true
+		if me == winner_id:
+			end_screen.show_win()
+			_local_done = true
+		get_tree().paused = true  # ronda terminada: congela todo
 
 
 func _get_player_count() -> int:
@@ -41,6 +84,8 @@ func _get_player_count() -> int:
 	return 1
 
 func _input(event):
+	if _local_done:
+		return  # ronda terminada para mí: no abrir la pausa sobre la pantalla de fin
 	if event.is_action_pressed("ui_cancel"):
 		_toggle_pause_menu()
 		get_viewport().set_input_as_handled()

@@ -4,6 +4,9 @@ const SPEED = 7.0
 const GRAVITY = -9.8
 const MOUSE_SENSITIVITY = 0.005
 
+const CAPTURE_RANGE := 8.0   ## Alcance (m).
+const FIRE_COOLDOWN := 1.0   ## segs de cooldown
+
 ## Ajuste fino de orientacion del modelo respecto al frente del jugador.
 const MODEL_YAW_OFFSET := PI
 ## Umbral de velocidad (u/s) para considerar que el jugador se esta moviendo.
@@ -15,18 +18,24 @@ const WALK_SPEED_THRESHOLD := 0.3
 @export var model_y_offset := -1.0
 
 @onready var head = $Head
-@onready var camera = $Head/Camera3D
+@onready var camera: Camera3D = $Head/Camera3D
 
 var _hud  # HUD de primera persona; solo existe para el jugador local
 var _model: Node3D
 var _anim_player: AnimationPlayer
 var _walk_model_index := 0
-var _last_anim_position := Vector3.ZERO
+var _is_walking := false  # replicado: el dueño lo setea según su velocity; todos animan según esto
+
+# Combate
+var _current_target = null            # otro player vivo bajo la mira (objetivo capturable)
+var _cooldown_left := 0.0
+var _eliminated := false              # capturado: congelado y no apuntable
 
 func is_local_player() -> bool:
 	return "--debug_solo" in OS.get_cmdline_args() or is_multiplayer_authority()
 
 func _ready():
+	add_to_group("players")  # para TODOS: así el raycast de apuntado puede identificarlos
 	_setup_synchronizer()
 	# La autoridad de este nodo se asigna JUSTO DESPUÉS de add_child()
 	# Por eso diferimos la configuración local hasta que la autoridad ya sea la correcta.
@@ -61,7 +70,6 @@ func _setup_appearance():
 
 	_anim_player = CharacterAppearance.find_animation_player(_model)
 	_walk_model_index = model_index
-	_last_anim_position = global_position
 
 	# Primera persona: el jugador local no ve su propio cuerpo (salvo espejo, futuro).
 	if is_local_player():
@@ -81,16 +89,13 @@ func _resolve_appearance() -> Dictionary:
 		"part_colors": CharacterAppearance.player_part_colors(),
 	}
 
-## La animacion de caminata se decide por el desplazamiento real, de modo que
-## funciona igual en el dueño y en los peers remotos (que reciben la posicion replicada).
-func _process(delta: float):
-	if _anim_player == null or delta <= 0.0:
+## La animacion de caminata se decide por _is_walking (lo setea el dueño según su
+## velocity y se replica), de modo que funciona igual en el dueño y en los peers remotos.
+func _process(_delta: float):
+	if _anim_player == null:
 		return
 
-	var speed := (global_position - _last_anim_position).length() / delta
-	_last_anim_position = global_position
-
-	if speed > WALK_SPEED_THRESHOLD:
+	if _is_walking:
 		if not _anim_player.is_playing():
 			CharacterAppearance.play_walk(_anim_player, _walk_model_index)
 	elif _anim_player.is_playing():
@@ -104,6 +109,8 @@ func _setup_synchronizer():
 	config.property_set_replication_mode(NodePath(".:position"), SceneReplicationConfig.REPLICATION_MODE_ALWAYS)
 	config.add_property(NodePath(".:rotation"))
 	config.property_set_replication_mode(NodePath(".:rotation"), SceneReplicationConfig.REPLICATION_MODE_ALWAYS)
+	config.add_property(NodePath(".:_is_walking"))
+	config.property_set_replication_mode(NodePath(".:_is_walking"), SceneReplicationConfig.REPLICATION_MODE_ON_CHANGE)
 	var sync := MultiplayerSynchronizer.new()
 	sync.name = "PlayerSync"
 	sync.replication_config = config
@@ -112,7 +119,7 @@ func _setup_synchronizer():
 	add_child(sync)
 
 func _unhandled_input(event):
-	if not is_local_player():
+	if not is_local_player() or _eliminated:
 		return
 	# Rotación de cámara con el mouse
 	if event is InputEventMouseMotion:
@@ -121,14 +128,18 @@ func _unhandled_input(event):
 		# Limitar la mirada arriba/abajo a 90 grados
 		head.rotation.x = clamp(head.rotation.x, -PI/2, PI/2)
 
-	# Disparo: animación de retroceso del arma
-	if event.is_action_pressed("fire") and _hud:
-		_hud.play_fire()
+	# Disparo: recoil + cooldown siempre; captura si hay objetivo válido.
+	if event.is_action_pressed("fire"):
+		_try_fire()
 
 func _physics_process(delta):
 	# Solo el dueño procesa input y mueve el cuerpo; en los demás peers la posición
 	# la escribe el MultiplayerSynchronizer.
 	if not is_local_player():
+		return
+
+	if _eliminated:
+		velocity = Vector3.ZERO
 		return
 
 	# Gravedad
@@ -147,6 +158,59 @@ func _physics_process(delta):
 
 	move_and_slide()
 
+	# Estado de caminar: lo replica el synchronizer → los demás peers animan igual.
+	_is_walking = Vector2(velocity.x, velocity.z).length() > WALK_SPEED_THRESHOLD
+
 	# Avisar al HUD la velocidad planar para el bob del arma
 	if _hud:
 		_hud.set_moving(Vector2(velocity.x, velocity.z).length())
+
+	# Cooldown del arma + apuntado (raycast desde la cámara), tras el movimiento.
+	if _cooldown_left > 0.0:
+		_cooldown_left -= delta
+	_update_target()
+
+
+func _update_target() -> void:
+	var from := camera.global_position
+	var to := from - camera.global_transform.basis.z * CAPTURE_RANGE
+	var query := PhysicsRayQueryParameters3D.create(from, to)
+	query.collision_mask = 1
+	query.exclude = [get_rid()]
+
+	var hit := get_world_3d().direct_space_state.intersect_ray(query)
+	var new_target = null
+	if not hit.is_empty() and hit.collider.is_in_group("players"):
+		new_target = hit.collider
+
+	if new_target == _current_target:
+		return
+
+	_current_target = new_target
+	if _hud:
+		_hud.set_target_acquired(_current_target != null)
+
+
+func _try_fire() -> void:
+	if _cooldown_left > 0.0:
+		return
+	_cooldown_left = FIRE_COOLDOWN
+	if _hud:
+		_hud.play_fire()  # recoil siempre
+	if is_instance_valid(_current_target):
+		var victim_id: int = _current_target.name.to_int()
+		var game = get_parent()
+		game.report_capture.rpc_id(1, victim_id)
+
+
+func set_eliminated() -> void:
+	if _eliminated:
+		return
+	_eliminated = true
+	velocity = Vector3.ZERO
+	_is_walking = false
+	remove_from_group("players")
+	collision_layer = 0
+	_current_target = null
+	if _hud:
+		_hud.set_target_acquired(false)
