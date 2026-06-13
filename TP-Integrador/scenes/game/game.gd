@@ -3,6 +3,8 @@ extends Node3D
 @onready var npc_thread_pool = $NPCThreadPool
 @onready var pause_menu = $PauseMenu
 
+const CAPTURE_MAX_DISTANCE := 5.0   ## 3m de alcance del cliente + 2m tolerancia latencia
+
 # Combate / fin de ronda (last-man-standing).
 var end_screen                  
 var _alive: Array[int] = []     
@@ -61,8 +63,23 @@ func spawn_player(peer_id: int):
 func report_capture(victim_id: int) -> void:
 	if not multiplayer.is_server() or _game_over:
 		return
-	if not _alive.has(victim_id):
-		return 
+
+	var attacker_id := multiplayer.get_remote_sender_id()
+	if attacker_id == 0:
+		attacker_id = 1
+	if attacker_id == victim_id:
+		return
+	if not _alive.has(attacker_id) or not _alive.has(victim_id):
+		return
+
+	# validacion de proximidad real por server → anticheat
+	var attacker = get_node_or_null(str(attacker_id))
+	var victim = get_node_or_null(str(victim_id))
+	if attacker == null or victim == null:
+		return
+	if attacker.global_position.distance_to(victim.global_position) > CAPTURE_MAX_DISTANCE:
+		return
+
 	_alive.erase(victim_id)
 	var winner_id := -1
 	if _alive.size() == 1:
@@ -79,7 +96,6 @@ func apply_elimination(victim_id: int, winner_id: int) -> void:
 	if victim:
 		victim.set_eliminated()
 
-	# Actualizar el contador local de vivos y avisar al HUD (corre en cada peer).
 	_alive_count = maxi(0, _alive_count - 1)
 	players_alive_changed.emit(_alive_count, _total_count)
 

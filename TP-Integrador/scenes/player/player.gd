@@ -9,7 +9,7 @@ const MAX_SPRINT_DURATION := 2.0
 const SPRINT_COOLDOWN_DURATION := 5.0
 const SPRINT_REGEN_RATE := 0.7   ## stamina-seg recuperados por segundo al no correr (tuneable)
 
-const CAPTURE_RANGE := 8.0   ## Alcance (m).
+const CAPTURE_RANGE := 3.0   ## Alcance (m). Antes 8.0.
 const FIRE_COOLDOWN := 1.0   ## segs de cooldown
 
 ## Ajuste fino de orientacion del modelo respecto al frente del jugador.
