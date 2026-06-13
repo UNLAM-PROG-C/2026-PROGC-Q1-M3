@@ -57,6 +57,7 @@ const PLAYER_PALETTE := { "pelo": 0, "ojos": 0, "ropa": 0 }
 
 const PLAYER_MODEL_INDEX := 0
 const WALK_ANIMATION_OVERRIDES := {}
+const IDLE_ANIMATION_OVERRIDES := {}
 
 ## Instancia el modelo .glb indicado, envuelto en un wrapper Node3D re-centrado.
 ## Devuelve el wrapper (o null si el indice es invalido).
@@ -160,6 +161,24 @@ static func play_walk(anim_player: AnimationPlayer, model_index: int) -> void:
 	anim_player.play(anim_name)
 
 
+## Reproduce idle si el modelo lo trae; si no, deja congelada la pose actual.
+static func play_idle(anim_player: AnimationPlayer, model_index: int) -> void:
+	if anim_player == null:
+		return
+
+	var anim_name := _idle_animation_name(anim_player, model_index)
+	if anim_name.is_empty():
+		anim_player.pause()
+		return
+
+	var anim := anim_player.get_animation(anim_name)
+	if anim != null:
+		anim.loop_mode = Animation.LOOP_LINEAR
+		_strip_root_motion(anim)
+
+	anim_player.play(anim_name)
+
+
 ## Colores de las partes del JUGADOR: Todos los jugadores lucen igual.
 static func player_part_colors() -> Dictionary:
 	return {
@@ -221,6 +240,18 @@ static func _walk_animation_name(anim_player: AnimationPlayer, model_index: int)
 
 	# Sin nombres descriptivos (vienen de Mixamo): usar el primer clip.
 	return names[0]
+
+
+static func _idle_animation_name(anim_player: AnimationPlayer, model_index: int) -> String:
+	if IDLE_ANIMATION_OVERRIDES.has(model_index):
+		return IDLE_ANIMATION_OVERRIDES[model_index]
+
+	var names := anim_player.get_animation_list()
+	for name in names:
+		if String(name).to_lower().find("idle") != -1:
+			return name
+
+	return ""
 
 
 ## Quita el "root motion" de la animacion porque sino el movimiento de "cadera" hace que se desplace el

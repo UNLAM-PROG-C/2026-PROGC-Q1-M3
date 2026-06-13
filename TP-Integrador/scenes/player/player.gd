@@ -3,6 +3,10 @@ extends CharacterBody3D
 const SPEED = 7.0
 const GRAVITY = -9.8
 const MOUSE_SENSITIVITY = 0.005
+const FIRST_PERSON_MODEL_LAYER := 1 << 2
+const SPRINT_SPEED_MULTIPLIER := 2.0
+const MAX_SPRINT_DURATION := 2.0
+const SPRINT_COOLDOWN_DURATION := 5.0
 
 const CAPTURE_RANGE := 8.0   ## Alcance (m).
 const FIRE_COOLDOWN := 1.0   ## segs de cooldown
@@ -30,6 +34,10 @@ var _is_walking := false  # replicado: el dueño lo setea según su velocity; to
 var _current_target = null            # otro player vivo bajo la mira (objetivo capturable)
 var _cooldown_left := 0.0
 var _eliminated := false              # capturado: congelado y no apuntable
+var _last_anim_position := Vector3.ZERO
+var _sprint_time_left := MAX_SPRINT_DURATION
+var _sprint_cooldown_left := 0.0
+var _was_sprinting := false
 
 func is_local_player() -> bool:
 	return "--debug_solo" in OS.get_cmdline_args() or is_multiplayer_authority()
@@ -51,6 +59,7 @@ func _setup_local():
 		# por eso se instancia solo para el jugador local)
 		_hud = preload("res://scenes/ui/hud.tscn").instantiate()
 		add_child(_hud)
+		camera.cull_mask &= ~FIRST_PERSON_MODEL_LAYER
 
 ## Construye el modelo 3D del jugador (corre en TODOS los peers: cada uno renderiza
 ## a todos los jugadores). El jugador local oculta su propio modelo (primera persona).
@@ -73,7 +82,15 @@ func _setup_appearance():
 
 	# Primera persona: el jugador local no ve su propio cuerpo (salvo espejo, futuro).
 	if is_local_player():
-		_model.visible = false
+		_set_visual_layer_recursive(_model, FIRST_PERSON_MODEL_LAYER)
+
+
+func _set_visual_layer_recursive(node: Node, layer: int) -> void:
+	if node is VisualInstance3D:
+		node.layers = layer
+
+	for child in node.get_children():
+		_set_visual_layer_recursive(child, layer)
 
 func _resolve_appearance() -> Dictionary:
 	var peer_id := name.to_int()
@@ -153,8 +170,23 @@ func _physics_process(delta):
 
 	# Mover en la dirección que mira el jugador
 	var direction = (transform.basis * input).normalized()
-	velocity.x = direction.x * SPEED
-	velocity.z = direction.z * SPEED
+	_update_sprint_cooldown(delta)
+
+	var current_speed := SPEED
+	var is_sprinting := direction != Vector3.ZERO and Input.is_action_pressed("sprint") and _can_sprint()
+	if is_sprinting:
+		current_speed *= SPRINT_SPEED_MULTIPLIER
+		_sprint_time_left = maxf(0.0, _sprint_time_left - delta)
+		if _sprint_time_left <= 0.0:
+			_start_sprint_cooldown()
+			is_sprinting = false
+	elif _was_sprinting:
+		_start_sprint_cooldown()
+
+	_was_sprinting = is_sprinting
+
+	velocity.x = direction.x * current_speed
+	velocity.z = direction.z * current_speed
 
 	move_and_slide()
 
@@ -214,3 +246,17 @@ func set_eliminated() -> void:
 	_current_target = null
 	if _hud:
 		_hud.set_target_acquired(false)
+func _can_sprint() -> bool:
+	return _sprint_time_left > 0.0 and _sprint_cooldown_left <= 0.0
+
+func _update_sprint_cooldown(delta: float) -> void:
+	if _sprint_cooldown_left <= 0.0:
+		return
+
+	_sprint_cooldown_left = maxf(0.0, _sprint_cooldown_left - delta)
+	if _sprint_cooldown_left <= 0.0:
+		_sprint_time_left = MAX_SPRINT_DURATION
+
+func _start_sprint_cooldown() -> void:
+	_sprint_cooldown_left = SPRINT_COOLDOWN_DURATION
+	_sprint_time_left = 0.0
