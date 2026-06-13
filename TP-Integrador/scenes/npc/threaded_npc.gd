@@ -1,122 +1,58 @@
 extends Node3D
 
-const FRONT_FRAME := 0
-const BACK_FRAME := 1
-const COMPOSITE_SIZE := Vector2i(469, 563)
-const SPRITE_ROOT := "res://scenes/npc/sprites"
-const REQUIRED_PARTS := [
-	{
-		"folder": "piernas",
-		"prefix": "pierna_",
-		"y": 304,
-	},
-	{
-		"folder": "zapatos",
-		"prefix": "zapato_",
-		"y": 514,
-	},
-	{
-		"folder": "torsos",
-		"prefix": "torso_",
-		"y": 148,
-	},
-	{
-		"folder": "cabezas",
-		"prefix": "cabeza_",
-		"y": 8,
-	},
-]
+
+
+## Offset de orientacion para alinear al npc con la dirección con la que camina (así no hace moonwalking)
+const ORIENT_OFFSET := 0.0
+
+## Escala del modelo para encajarlo con el mundo (similar a la capsula del jugador).
+@export var model_scale := 0.03
+## Desplazamiento vertical del modelo para apoyar los pies en el piso
+@export var model_y_offset := -1.0
 
 var facing_rotation_y := 0.0
-var _rng := RandomNumberGenerator.new()
 
-@onready var character_sprite: Sprite3D = $CharacterSprite
-
-
-func _ready():
-	_rng.randomize()
-	_build_random_character()
+var _model: Node3D
+var _anim_player: AnimationPlayer
+var _model_index := 0
+var _is_idle := false
 
 
-func _process(_delta):
-	_update_sprite_frame()
+## Llamado por el pool justo despues de instanciar y agregar al arbol.
+func setup(appearance: Dictionary) -> void:
+	var model_index := int(appearance.get("model", 0))
+	var part_colors: Dictionary = appearance.get("part_colors", {})
+	_model_index = model_index
+
+	_model = CharacterAppearance.build_model(model_index)
+	if _model == null:
+		return
+
+	add_child(_model)
+	_model.scale = Vector3.ONE * model_scale
+	_model.position.y = model_y_offset
+
+	CharacterAppearance.apply_part_colors(_model, part_colors)
+
+	_anim_player = CharacterAppearance.find_animation_player(_model)
+	CharacterAppearance.play_walk(_anim_player, model_index)
 
 
-func apply_simulation_state(next_position: Vector3, next_rotation_y: float):
+func apply_simulation_state(next_position: Vector3, next_rotation_y: float, is_idle: bool = false) -> void:
 	position = next_position
 	facing_rotation_y = next_rotation_y
-	_update_sprite_frame()
+	if _model != null:
+		_model.rotation.y = next_rotation_y + ORIENT_OFFSET
+
+	_update_animation(is_idle)
 
 
-func _update_sprite_frame():
-	var camera := get_viewport().get_camera_3d()
-	if camera == null:
+func _update_animation(should_idle: bool) -> void:
+	if _anim_player == null or _is_idle == should_idle:
 		return
 
-	var to_camera: Vector3 = camera.global_position - global_position
-	to_camera.y = 0.0
-	if to_camera.length_squared() <= 0.0001:
-		return
-
-	var forward := Vector3(sin(facing_rotation_y), 0.0, cos(facing_rotation_y))
-
-	if forward.normalized().dot(to_camera.normalized()) >= 0.0:
-		_set_frame(FRONT_FRAME)
+	_is_idle = should_idle
+	if should_idle:
+		CharacterAppearance.play_idle(_anim_player, _model_index)
 	else:
-		_set_frame(BACK_FRAME)
-
-
-func _build_random_character():
-	var image := Image.create(COMPOSITE_SIZE.x, COMPOSITE_SIZE.y, false, Image.FORMAT_RGBA8)
-	image.fill(Color.TRANSPARENT)
-
-	for part in REQUIRED_PARTS:
-		_draw_random_part(image, part)
-
-	character_sprite.texture = ImageTexture.create_from_image(image)
-
-
-func _draw_random_part(target: Image, part: Dictionary):
-	var file_path := _pick_random_file(part["folder"], part["prefix"])
-	if file_path.is_empty():
-		return
-
-	var part_image := Image.load_from_file(file_path)
-	if part_image == null:
-		return
-
-	var offset := Vector2i(
-		int(round(float(COMPOSITE_SIZE.x - part_image.get_width()) * 0.5)),
-		int(part["y"])
-	)
-	target.blend_rect(part_image, Rect2i(Vector2i.ZERO, part_image.get_size()), offset)
-
-
-func _pick_random_file(folder: String, prefix: String) -> String:
-	var files := _get_part_files(folder, prefix)
-	if files.is_empty():
-		return ""
-
-	return files[_rng.randi_range(0, files.size() - 1)]
-
-
-func _get_part_files(folder: String, prefix: String) -> Array[String]:
-	var files: Array[String] = []
-	var dir := DirAccess.open("%s/%s" % [SPRITE_ROOT, folder])
-	if dir == null:
-		return files
-
-	dir.list_dir_begin()
-	var file_name := dir.get_next()
-	while not file_name.is_empty():
-		if not dir.current_is_dir() and file_name.begins_with(prefix) and file_name.ends_with(".png"):
-			files.append("%s/%s/%s" % [SPRITE_ROOT, folder, file_name])
-		file_name = dir.get_next()
-
-	dir.list_dir_end()
-	files.sort()
-	return files
-
-
-func _set_frame(frame: int):
-	character_sprite.frame = frame
+		CharacterAppearance.play_walk(_anim_player, _model_index)

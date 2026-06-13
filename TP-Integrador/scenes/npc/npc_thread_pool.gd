@@ -7,10 +7,19 @@ extends Node3D
 @export var movement_radius := 1.25
 @export var movement_speed := 1.5
 @export var npc_spacing := 1.8
-@export var hop_height := 0.18
+@export var hop_height := 0.0
 @export var hop_frequency := 7.5
 @export var random_offset_min := 0.10
 @export var random_offset_max := 0.50
+@export var player_detection_radius := 4.0
+@export var look_at_player_duration_min := 1.0
+@export var look_at_player_duration_max := 3.0
+@export_range(0.0, 1.0, 0.05) var look_at_player_chance := 0.30
+@export_range(0.0, 1.0, 0.05) var sprint_chance := 0.10
+@export var sprint_duration_min := 1.0
+@export var sprint_duration_max := 3.0
+@export var sprint_speed_multiplier := 2.0
+@export var sprint_check_interval := 3.0
 
 var _workers: Array[Thread] = []
 var _job_semaphore := Semaphore.new()
@@ -23,6 +32,14 @@ var _npcs: Array[Node3D] = []
 var _origins: Array[Vector3] = []
 var _path_distance_offsets: Array[float] = []
 var _lateral_offsets: Array[float] = []
+var _pause_until_times: Array[float] = []
+var _pause_elapsed_offsets: Array[float] = []
+var _player_was_near: Array[bool] = []
+var _look_rotation_y: Array[float] = []
+var _reacts_to_players: Array[bool] = []
+var _sprint_until_times: Array[float] = []
+var _sprint_movement_offsets: Array[float] = []
+var _next_sprint_check_times: Array[float] = []
 var _path_points: Array[Vector3] = []
 var _path_length: float = 0.0
 var _running := false
@@ -44,6 +61,8 @@ func _ready():
 func _process(delta):
 	_elapsed_time += delta
 	_apply_finished_states()
+	_update_npc_player_reactions(delta)
+	_update_npc_sprints(delta)
 	_queue_frame_jobs()
 
 
@@ -108,10 +127,26 @@ func _rebuild_npcs(npc_count: int):
 	_states.clear()
 	_path_distance_offsets.clear()
 	_lateral_offsets.clear()
+	_pause_until_times.clear()
+	_pause_elapsed_offsets.clear()
+	_player_was_near.clear()
+	_look_rotation_y.clear()
+	_reacts_to_players.clear()
+	_sprint_until_times.clear()
+	_sprint_movement_offsets.clear()
+	_next_sprint_check_times.clear()
 
 	for i in range(npc_count):
 		_path_distance_offsets.append(_random_path_distance())
 		_lateral_offsets.append(_random_signed_offset())
+		_pause_until_times.append(0.0)
+		_pause_elapsed_offsets.append(0.0)
+		_player_was_near.append(false)
+		_look_rotation_y.append(0.0)
+		_reacts_to_players.append(_rng.randf() <= look_at_player_chance)
+		_sprint_until_times.append(0.0)
+		_sprint_movement_offsets.append(0.0)
+		_next_sprint_check_times.append(_elapsed_time + _rng.randf_range(0.0, sprint_check_interval))
 
 		var npc := npc_scene.instantiate() as Node3D
 		var origin := _calculate_origin(i)
@@ -119,12 +154,16 @@ func _rebuild_npcs(npc_count: int):
 		npc.name = "ThreadedNPC_%02d" % i
 		npc.position = origin
 		add_child(npc)
+		# Cada NPC recolorea al menos el pelo, por lo que nunca queda identico a un
+		# jugador que use el mismo modelo.
+		npc.setup(CharacterAppearance.random_npc_appearance(_rng))
 
 		_npcs.append(npc)
 		_origins.append(origin)
 		_states.append({
 			"position": origin,
 			"rotation_y": 0.0,
+			"is_idle": false,
 		})
 
 
@@ -151,10 +190,11 @@ func _queue_frame_jobs():
 	var jobs: Array[Dictionary] = []
 
 	for i in range(_npcs.size()):
+		var is_paused := _is_npc_paused(i)
 		jobs.append({
 			"index": i,
 			"origin": _origins[i],
-			"time": _elapsed_time,
+			"time": _elapsed_time - _get_pause_elapsed_offset(i),
 			"phase": float(i) * 0.37,
 			"movement_radius": movement_radius,
 			"movement_speed": movement_speed,
@@ -164,6 +204,11 @@ func _queue_frame_jobs():
 			"path_length": _path_length,
 			"path_offset": _calculate_path_distance(i),
 			"lateral_offset": _calculate_lateral_offset(i),
+			"is_paused": is_paused,
+			"paused_position": _states[i]["position"],
+			"look_rotation_y": _get_look_rotation_y(i),
+			"is_sprinting": _is_npc_sprinting(i),
+			"sprint_movement_offset": _get_sprint_movement_offset(i),
 		})
 
 	_job_mutex.lock()
@@ -192,7 +237,7 @@ func _apply_finished_states():
 	_state_mutex.unlock()
 
 	for i in range(int(min(_npcs.size(), states.size()))):
-		_npcs[i].apply_simulation_state(states[i]["position"], states[i]["rotation_y"])
+		_npcs[i].apply_simulation_state(states[i]["position"], states[i]["rotation_y"], bool(states[i].get("is_idle", false)))
 
 
 func _wait_for_pending_jobs():
@@ -242,6 +287,123 @@ func _calculate_path_distance(index: int) -> float:
 
 func _calculate_lateral_offset(index: int) -> float:
 	return _get_offset(_lateral_offsets, index)
+
+
+func _get_pause_elapsed_offset(index: int) -> float:
+	return _get_offset(_pause_elapsed_offsets, index)
+
+
+func _get_look_rotation_y(index: int) -> float:
+	return _get_offset(_look_rotation_y, index)
+
+
+func _is_npc_paused(index: int) -> bool:
+	return index >= 0 and index < _pause_until_times.size() and _elapsed_time < _pause_until_times[index]
+
+
+func _reacts_to_player(index: int) -> bool:
+	return index >= 0 and index < _reacts_to_players.size() and _reacts_to_players[index]
+
+
+func _random_look_at_player_duration() -> float:
+	var min_duration := look_at_player_duration_min
+	var max_duration := look_at_player_duration_max
+	if min_duration > max_duration:
+		min_duration = look_at_player_duration_max
+		max_duration = look_at_player_duration_min
+	return _rng.randf_range(min_duration, max_duration)
+
+
+func _get_sprint_movement_offset(index: int) -> float:
+	return _get_offset(_sprint_movement_offsets, index)
+
+
+func _is_npc_sprinting(index: int) -> bool:
+	return index >= 0 and index < _sprint_until_times.size() and _elapsed_time < _sprint_until_times[index]
+
+
+func _random_sprint_duration() -> float:
+	var min_duration := sprint_duration_min
+	var max_duration := sprint_duration_max
+	if min_duration > max_duration:
+		min_duration = sprint_duration_max
+		max_duration = sprint_duration_min
+	return _rng.randf_range(min_duration, max_duration)
+
+
+func _update_npc_sprints(delta: float) -> void:
+	if _npcs.is_empty():
+		return
+
+	var check_interval := sprint_check_interval
+	if check_interval < 0.1:
+		check_interval = 0.1
+
+	var speed_multiplier := sprint_speed_multiplier
+	if speed_multiplier < 1.0:
+		speed_multiplier = 1.0
+
+	for i in range(_npcs.size()):
+		if _is_npc_paused(i):
+			continue
+
+		if _is_npc_sprinting(i):
+			_sprint_movement_offsets[i] += movement_speed * (speed_multiplier - 1.0) * delta
+			continue
+
+		if i >= _next_sprint_check_times.size() or _elapsed_time < _next_sprint_check_times[i]:
+			continue
+
+		_next_sprint_check_times[i] = _elapsed_time + check_interval
+		if _rng.randf() <= sprint_chance:
+			_sprint_until_times[i] = _elapsed_time + _random_sprint_duration()
+			_next_sprint_check_times[i] = _sprint_until_times[i] + check_interval
+
+
+func _update_npc_player_reactions(delta: float) -> void:
+	if _npcs.is_empty():
+		return
+
+	var players := get_tree().get_nodes_in_group("players")
+	if players.is_empty():
+		for i in range(_player_was_near.size()):
+			_player_was_near[i] = false
+		return
+
+	var detection_radius_sq := player_detection_radius * player_detection_radius
+	_state_mutex.lock()
+	var states: Array = _states.duplicate(true)
+	_state_mutex.unlock()
+
+	for i in range(_npcs.size()):
+		if _is_npc_paused(i):
+			_pause_elapsed_offsets[i] += delta
+
+		var npc_position: Vector3 = states[i]["position"]
+		var nearest_player_position := Vector3.ZERO
+		var nearest_distance_sq := INF
+
+		for player in players:
+			if not is_instance_valid(player) or not (player is Node3D):
+				continue
+
+			var player_position: Vector3 = (player as Node3D).global_position
+			var distance_sq := npc_position.distance_squared_to(player_position)
+			if distance_sq < nearest_distance_sq:
+				nearest_distance_sq = distance_sq
+				nearest_player_position = player_position
+
+		var player_is_near := nearest_distance_sq <= detection_radius_sq
+		if player_is_near:
+			var look_direction := nearest_player_position - npc_position
+			look_direction.y = 0.0
+			if look_direction.length_squared() > 0.001:
+				_look_rotation_y[i] = atan2(look_direction.x, look_direction.z)
+
+			if _reacts_to_player(i) and not _player_was_near[i] and not _is_npc_paused(i):
+				_pause_until_times[i] = _elapsed_time + _random_look_at_player_duration()
+
+		_player_was_near[i] = player_is_near
 
 
 func _random_signed_offset() -> float:
@@ -302,19 +464,27 @@ func _worker_loop():
 
 ## movimiento tipo saltito del NPC + si no hay path se mueve en circulo 
 func _simulate_npc(job: Dictionary) -> Dictionary:
+	if bool(job["is_paused"]):
+		return {
+			"position": job["paused_position"],
+			"rotation_y": float(job["look_rotation_y"]),
+			"is_idle": true,
+		}
+
 	var time: float = float(job["time"])
 	var phase: float = float(job["phase"])
 	var origin: Vector3 = job["origin"]
 	var radius: float = float(job["movement_radius"])
 	var speed: float = float(job["movement_speed"])
+	var sprint_movement_offset: float = float(job["sprint_movement_offset"])
 	var hop: float = abs(sin(time * float(job["hop_frequency"]) + phase)) * float(job["hop_height"])
-	var angle: float = time * speed + phase
+	var angle: float = time * speed + phase + sprint_movement_offset
 	var next_position: Vector3
 	var rotation_y: float
 
 	if float(job["path_length"]) > 0.0:
 		var points: Array = job["path_points"]
-		var distance: float = time * speed * 2.0 + float(job["path_offset"])
+		var distance: float = time * speed * 2.0 + sprint_movement_offset * 2.0 + float(job["path_offset"])
 		var path_sample: Dictionary = _sample_path(points, float(job["path_length"]), distance)
 		next_position = path_sample["position"] + path_sample["right"] * float(job["lateral_offset"])
 		rotation_y = path_sample["rotation_y"]
@@ -331,6 +501,7 @@ func _simulate_npc(job: Dictionary) -> Dictionary:
 	return {
 		"position": next_position,
 		"rotation_y": rotation_y,
+		"is_idle": false,
 	}
 
 

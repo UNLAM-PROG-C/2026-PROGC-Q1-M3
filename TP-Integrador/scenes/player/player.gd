@@ -3,24 +3,110 @@ extends CharacterBody3D
 const SPEED = 7.0
 const GRAVITY = -9.8
 const MOUSE_SENSITIVITY = 0.005
+const FIRST_PERSON_MODEL_LAYER := 1 << 2
+const SPRINT_SPEED_MULTIPLIER := 2.0
+const MAX_SPRINT_DURATION := 2.0
+const SPRINT_COOLDOWN_DURATION := 5.0
+
+## Ajuste fino de orientacion del modelo respecto al frente del jugador.
+const MODEL_YAW_OFFSET := PI
+## Umbral de velocidad (u/s) para considerar que el jugador se esta moviendo.
+const WALK_SPEED_THRESHOLD := 0.3
+
+## Los modelos de Mixamo vienen a ~56u de alto; 0.03 los deja en ~1.7u.
+@export var model_scale := 0.03
+## Desplazamiento vertical del modelo para apoyar los pies en la base de la capsula.
+@export var model_y_offset := -1.0
 
 @onready var head = $Head
 @onready var camera = $Head/Camera3D
+
+var _model: Node3D
+var _anim_player: AnimationPlayer
+var _walk_model_index := 0
+var _last_anim_position := Vector3.ZERO
+var _sprint_time_left := MAX_SPRINT_DURATION
+var _sprint_cooldown_left := 0.0
+var _was_sprinting := false
 
 func is_local_player() -> bool:
 	return "--debug_solo" in OS.get_cmdline_args() or is_multiplayer_authority()
 
 func _ready():
+	add_to_group("players")
 	_setup_synchronizer()
 	# La autoridad de este nodo se asigna JUSTO DESPUÉS de add_child()
 	# Por eso diferimos la configuración local hasta que la autoridad ya sea la correcta.
 	call_deferred("_setup_local")
+	call_deferred("_setup_appearance")
 
 func _setup_local():
 	# Solo el jugador dueño de este nodo captura el mouse y usa su cámara.
 	if is_local_player():
 		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 		camera.current = true
+		camera.cull_mask &= ~FIRST_PERSON_MODEL_LAYER
+
+## Construye el modelo 3D del jugador (corre en TODOS los peers: cada uno renderiza
+## a todos los jugadores). El jugador local oculta su propio modelo (primera persona).
+func _setup_appearance():
+	var appearance := _resolve_appearance()
+	var model_index := int(appearance["model"])
+	_model = CharacterAppearance.build_model(model_index)
+	if _model == null:
+		return
+
+	add_child(_model)
+	_model.scale = Vector3.ONE * model_scale
+	_model.position.y = model_y_offset
+	_model.rotation.y = MODEL_YAW_OFFSET
+
+	CharacterAppearance.apply_part_colors(_model, appearance["part_colors"])
+
+	_anim_player = CharacterAppearance.find_animation_player(_model)
+	_walk_model_index = model_index
+	_last_anim_position = global_position
+
+	# Primera persona: el jugador local no ve su propio cuerpo (salvo espejo, futuro).
+	if is_local_player():
+		_set_visual_layer_recursive(_model, FIRST_PERSON_MODEL_LAYER)
+
+
+func _set_visual_layer_recursive(node: Node, layer: int) -> void:
+	if node is VisualInstance3D:
+		node.layers = layer
+
+	for child in node.get_children():
+		_set_visual_layer_recursive(child, layer)
+
+func _resolve_appearance() -> Dictionary:
+	var peer_id := name.to_int()
+	var players: Dictionary = GameNetwork.get_players()
+	if players.has(peer_id) and players[peer_id].has("model"):
+		return {
+			"model": int(players[peer_id]["model"]),
+			"part_colors": players[peer_id].get("part_colors", {}),
+		}
+	# Fallback (ej. --debug_solo, sin lista de red): mismo look canónico de jugador.
+	return {
+		"model": CharacterAppearance.PLAYER_MODEL_INDEX,
+		"part_colors": CharacterAppearance.player_part_colors(),
+	}
+
+## La animacion de caminata se decide por el desplazamiento real, de modo que
+## funciona igual en el dueño y en los peers remotos (que reciben la posicion replicada).
+func _process(delta: float):
+	if _anim_player == null or delta <= 0.0:
+		return
+
+	var speed := (global_position - _last_anim_position).length() / delta
+	_last_anim_position = global_position
+
+	if speed > WALK_SPEED_THRESHOLD:
+		if not _anim_player.is_playing():
+			CharacterAppearance.play_walk(_anim_player, _walk_model_index)
+	elif _anim_player.is_playing():
+		_anim_player.pause()
 
 func _setup_synchronizer():
 	if "--debug_solo" in OS.get_cmdline_args():
@@ -64,7 +150,37 @@ func _physics_process(delta):
 
 	# Mover en la dirección que mira el jugador
 	var direction = (transform.basis * input).normalized()
-	velocity.x = direction.x * SPEED
-	velocity.z = direction.z * SPEED
+	_update_sprint_cooldown(delta)
+
+	var current_speed := SPEED
+	var is_sprinting := direction != Vector3.ZERO and Input.is_action_pressed("sprint") and _can_sprint()
+	if is_sprinting:
+		current_speed *= SPRINT_SPEED_MULTIPLIER
+		_sprint_time_left = maxf(0.0, _sprint_time_left - delta)
+		if _sprint_time_left <= 0.0:
+			_start_sprint_cooldown()
+			is_sprinting = false
+	elif _was_sprinting:
+		_start_sprint_cooldown()
+
+	_was_sprinting = is_sprinting
+
+	velocity.x = direction.x * current_speed
+	velocity.z = direction.z * current_speed
 
 	move_and_slide()
+
+func _can_sprint() -> bool:
+	return _sprint_time_left > 0.0 and _sprint_cooldown_left <= 0.0
+
+func _update_sprint_cooldown(delta: float) -> void:
+	if _sprint_cooldown_left <= 0.0:
+		return
+
+	_sprint_cooldown_left = maxf(0.0, _sprint_cooldown_left - delta)
+	if _sprint_cooldown_left <= 0.0:
+		_sprint_time_left = MAX_SPRINT_DURATION
+
+func _start_sprint_cooldown() -> void:
+	_sprint_cooldown_left = SPRINT_COOLDOWN_DURATION
+	_sprint_time_left = 0.0
