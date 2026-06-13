@@ -7,6 +7,7 @@ const FIRST_PERSON_MODEL_LAYER := 1 << 2
 const SPRINT_SPEED_MULTIPLIER := 2.0
 const MAX_SPRINT_DURATION := 2.0
 const SPRINT_COOLDOWN_DURATION := 5.0
+const SPRINT_REGEN_RATE := 0.7   ## stamina-seg recuperados por segundo al no correr (tuneable)
 
 const CAPTURE_RANGE := 8.0   ## Alcance (m).
 const FIRE_COOLDOWN := 1.0   ## segs de cooldown
@@ -37,7 +38,6 @@ var _eliminated := false              # capturado: congelado y no apuntable
 var _last_anim_position := Vector3.ZERO
 var _sprint_time_left := MAX_SPRINT_DURATION
 var _sprint_cooldown_left := 0.0
-var _was_sprinting := false
 
 func is_local_player() -> bool:
 	return "--debug_solo" in OS.get_cmdline_args() or is_multiplayer_authority()
@@ -191,12 +191,10 @@ func _physics_process(delta):
 		current_speed *= SPRINT_SPEED_MULTIPLIER
 		_sprint_time_left = maxf(0.0, _sprint_time_left - delta)
 		if _sprint_time_left <= 0.0:
-			_start_sprint_cooldown()
-			is_sprinting = false
-	elif _was_sprinting:
-		_start_sprint_cooldown()
-
-	_was_sprinting = is_sprinting
+			_start_sprint_cooldown()   # se agotó del todo → 5s de penalización
+	elif _sprint_cooldown_left <= 0.0:
+		# No corriendo y sin penalización: la stamina se regenera.
+		_sprint_time_left = minf(MAX_SPRINT_DURATION, _sprint_time_left + delta * SPRINT_REGEN_RATE)
 
 	velocity.x = direction.x * current_speed
 	velocity.z = direction.z * current_speed
