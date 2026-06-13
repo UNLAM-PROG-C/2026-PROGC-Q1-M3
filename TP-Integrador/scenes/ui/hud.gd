@@ -17,11 +17,22 @@ extends CanvasLayer
 @onready var weapon: Sprite2D = $WeaponView/WeaponSprite
 @onready var _crosshair_h: ColorRect = $Crosshair/H
 @onready var _crosshair_v: ColorRect = $Crosshair/V
+@onready var _stamina_bar: TextureProgressBar = $StaminaBar
+@onready var _name_label: Label = $NameLabel
+@onready var _players_label: Label = $PlayersPanel/PlayersLabel
 
 const PLAYER_SPEED := 7.0 #==SPEED de player en player.gd
 
 const CROSSHAIR_IDLE := Color(1, 1, 1, 0.85)
 const CROSSHAIR_TARGET := Color(0.2, 1.0, 0.35, 0.95)
+
+const STAMINA_FULL := Color(1, 1, 1, 1)
+const STAMINA_COOLDOWN := Color(0.7, 0.7, 0.7, 1)  # apagada mientras recarga
+
+# Rango (frac del ancho) que ocupa el relleno amarillo interno dentro del marco,
+# medido sobre stamina.png vs stamina vacia.png. Reajustar si cambia el arte.
+const STAMINA_FILL_LEFT := 0.208
+const STAMINA_FILL_RIGHT := 0.918
 
 var _base_pos: Vector2
 var _shot_player: AudioStreamPlayer
@@ -68,6 +79,19 @@ func set_target_acquired(on: bool) -> void:
 	var c := CROSSHAIR_TARGET if on else CROSSHAIR_IDLE
 	_crosshair_h.color = c
 	_crosshair_v.color = c
+
+## fraction 0..1; on_cooldown atenúa toda la barra mientras se recarga.
+## Remapea al rango real del relleno para que vacío visual ⟺ stamina 0.
+func set_stamina(fraction: float, on_cooldown: bool) -> void:
+	var f := clampf(fraction, 0.0, 1.0)
+	_stamina_bar.value = lerpf(STAMINA_FILL_LEFT, STAMINA_FILL_RIGHT, f)
+	_stamina_bar.self_modulate = STAMINA_COOLDOWN if on_cooldown else STAMINA_FULL
+
+func set_players_alive(alive: int, total: int) -> void:
+	_players_label.text = "%d / %d" % [alive, total]
+
+func set_player_name(player_name: String) -> void:
+	_name_label.text = player_name
 
 func _process(delta: float) -> void:
 	_t += delta

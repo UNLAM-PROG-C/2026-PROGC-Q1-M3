@@ -10,8 +10,24 @@ var _game_over := false
 var _local_done := false        
 
 
+# Conteo de vivos para el HUD (mirror local en TODOS los peers; el array _alive del
+# servidor sigue siendo la autoridad del juego).
+signal players_alive_changed(alive: int, total: int)
+var _alive_count := 0
+var _total_count := 0
+
+func get_alive_count() -> int:
+	return _alive_count
+
+func get_total_count() -> int:
+	return _total_count
+
+
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	# Para todos los peers (incluido debug_solo): _get_player_count() devuelve el total correcto.
+	_total_count = _get_player_count()
+	_alive_count = _total_count
 	pause_menu.resume_requested.connect(_resume_game)
 	pause_menu.quit_requested.connect(_quit_to_desktop)
 	end_screen = preload("res://scenes/ui/end_screen.gd").new()
@@ -62,6 +78,11 @@ func apply_elimination(victim_id: int, winner_id: int) -> void:
 	var victim = get_node_or_null(str(victim_id))
 	if victim:
 		victim.set_eliminated()
+
+	# Actualizar el contador local de vivos y avisar al HUD (corre en cada peer).
+	_alive_count = maxi(0, _alive_count - 1)
+	players_alive_changed.emit(_alive_count, _total_count)
+
 	if me == victim_id:
 		end_screen.show_wasted()
 		_local_done = true

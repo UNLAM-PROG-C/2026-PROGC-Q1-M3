@@ -60,6 +60,11 @@ func _setup_local():
 		_hud = preload("res://scenes/ui/hud.tscn").instantiate()
 		add_child(_hud)
 		camera.cull_mask &= ~FIRST_PERSON_MODEL_LAYER
+		# Nombre propio + contador de vivos (valor inicial + updates por señal del game).
+		_hud.set_player_name(_resolve_my_name())
+		var game = get_parent()
+		_hud.set_players_alive(game.get_alive_count(), game.get_total_count())
+		game.players_alive_changed.connect(_hud.set_players_alive)
 
 ## Construye el modelo 3D del jugador (corre en TODOS los peers: cada uno renderiza
 ## a todos los jugadores). El jugador local oculta su propio modelo (primera persona).
@@ -105,6 +110,14 @@ func _resolve_appearance() -> Dictionary:
 		"model": CharacterAppearance.PLAYER_MODEL_INDEX,
 		"part_colors": CharacterAppearance.player_part_colors(),
 	}
+
+## Nombre del jugador local, leído de la lista de red (fallback para --debug_solo).
+func _resolve_my_name() -> String:
+	var players: Dictionary = GameNetwork.get_players()
+	var my_id := name.to_int()
+	if players.has(my_id) and players[my_id].has("name"):
+		return players[my_id]["name"]
+	return "Player"
 
 ## La animacion de caminata se decide por _is_walking (lo setea el dueño según su
 ## velocity y se replica), de modo que funciona igual en el dueño y en los peers remotos.
@@ -193,9 +206,14 @@ func _physics_process(delta):
 	# Estado de caminar: lo replica el synchronizer → los demás peers animan igual.
 	_is_walking = Vector2(velocity.x, velocity.z).length() > WALK_SPEED_THRESHOLD
 
-	# Avisar al HUD la velocidad planar para el bob del arma
+	# Avisar al HUD la velocidad planar para el bob del arma + estado de stamina
 	if _hud:
 		_hud.set_moving(Vector2(velocity.x, velocity.z).length())
+		var on_cd := _sprint_cooldown_left > 0.0
+		var stamina_frac := _sprint_time_left / MAX_SPRINT_DURATION
+		if on_cd:
+			stamina_frac = 1.0 - (_sprint_cooldown_left / SPRINT_COOLDOWN_DURATION)  # recarga visible
+		_hud.set_stamina(stamina_frac, on_cd)
 
 	# Cooldown del arma + apuntado (raycast desde la cámara), tras el movimiento.
 	if _cooldown_left > 0.0:
@@ -232,7 +250,10 @@ func _try_fire() -> void:
 	if is_instance_valid(_current_target):
 		var victim_id: int = _current_target.name.to_int()
 		var game = get_parent()
-		game.report_capture.rpc_id(1, victim_id)
+		if multiplayer.is_server():
+			game.report_capture(victim_id)            # ya soy el server: lo resuelvo directo
+		else:
+			game.report_capture.rpc_id(1, victim_id)  # soy cliente: le aviso al server
 
 
 func set_eliminated() -> void:
