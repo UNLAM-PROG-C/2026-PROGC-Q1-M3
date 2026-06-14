@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://ds3wuet4wyisy"]
+[gd_scene format=3 uid="uid://coee7wevy8ww1"]
 
-[ext_resource type="Texture2D" path="res://textures/Tiles038_1K-PNG/Tiles038_1K-PNG_Displacement.png" id="1_0mcn5"]
+[ext_resource type="Texture2D" uid="uid://cgecn5pkrx051" path="res://textures/Floor/Tiles038_1K-PNG/Tiles038_1K-PNG_Displacement.png" id="1_0mcn5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_8b4oq"]
 size = Vector3(70, 0.3, 70)
@@ -21,7 +21,6 @@ mesh = SubResource("BoxMesh_8b4oq")
 surface_material_override/0 = SubResource("StandardMaterial3D_4iya8")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1895438725]
-visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=1764539450]
 shape = SubResource("BoxShape3D_838xg")

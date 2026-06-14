@@ -27,6 +27,10 @@ run/main_run_args="--debug_solo"
 
 enabled=PackedStringArray("res://addons/mirror_placer/plugin.cfg")
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 move_forward={
