@@ -12,6 +12,9 @@ const SPRINT_REGEN_RATE := 0.7   ## stamina-seg recuperados por segundo al no co
 const CAPTURE_RANGE := 3.0   ## Alcance (m). Antes 8.0.
 const FIRE_COOLDOWN := 1.0   ## segs de cooldown
 
+const EXPLOSION_COLOR := Color(1.0, 0.55, 0.1) ## particulas naranjas
+const FALL_ANGLE := PI / 2 ## cae al piso
+
 ## Ajuste fino de orientacion del modelo respecto al frente del jugador.
 const MODEL_YAW_OFFSET := PI
 ## Umbral de velocidad (u/s) para considerar que el jugador se esta moviendo.
@@ -265,6 +268,45 @@ func set_eliminated() -> void:
 	_current_target = null
 	if _hud:
 		_hud.set_target_acquired(false)
+	_play_capture_fx()
+
+
+## efecto de captura → explosion
+func _play_capture_fx() -> void:
+	var burst := CPUParticles3D.new()
+	burst.process_mode = Node.PROCESS_MODE_ALWAYS 
+	burst.one_shot = true
+	burst.explosiveness = 1.0
+	burst.amount = 32
+	burst.lifetime = 0.7
+	burst.emission_shape = CPUParticles3D.EMISSION_SHAPE_SPHERE
+	burst.emission_sphere_radius = 0.4
+	burst.direction = Vector3.UP
+	burst.spread = 180.0
+	burst.initial_velocity_min = 3.0
+	burst.initial_velocity_max = 6.0
+	burst.gravity = Vector3(0.0, -9.8, 0.0)
+	burst.scale_amount_min = 0.6
+	burst.scale_amount_max = 1.2
+
+	var pmesh := SphereMesh.new()
+	pmesh.radius = 0.05
+	pmesh.height = 0.1
+	var pmat := StandardMaterial3D.new()
+	pmat.shading_mode = BaseMaterial3D.SHADING_MODE_UNSHADED
+	pmat.albedo_color = EXPLOSION_COLOR
+	pmesh.material = pmat
+	burst.mesh = pmesh
+
+	add_child(burst)
+	burst.emitting = true
+	burst.finished.connect(burst.queue_free)
+
+	if _model:
+		var tw := burst.create_tween()
+		tw.tween_property(_model, "rotation:x", FALL_ANGLE, 0.4).set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
+
+
 func _can_sprint() -> bool:
 	return _sprint_time_left > 0.0 and _sprint_cooldown_left <= 0.0
 
