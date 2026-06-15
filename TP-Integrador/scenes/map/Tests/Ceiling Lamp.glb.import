@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bhjmwu47jv8ki"
-path="res://.godot/imported/Fluorescent Light.glb-c774fe3eb9e6eacff3c834e0bab247db.scn"
+uid="uid://c3577e8kus70t"
+path="res://.godot/imported/Ceiling Lamp.glb-7e2f487e84b37f0523b1ec341b740e7f.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Lamps/Fluorescent Light.glb"
-dest_files=["res://.godot/imported/Fluorescent Light.glb-c774fe3eb9e6eacff3c834e0bab247db.scn"]
+source_file="res://scenes/map/Tests/Ceiling Lamp.glb"
+dest_files=["res://.godot/imported/Ceiling Lamp.glb-7e2f487e84b37f0523b1ec341b740e7f.scn"]
 
 [params]
 

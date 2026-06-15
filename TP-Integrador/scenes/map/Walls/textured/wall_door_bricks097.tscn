@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dljsg52k5ly1v"]
+
+[ext_resource type="Texture2D" uid="uid://0mcl0lc57jb8" path="res://textures/Walls/Bricks097_1K-PNG/Bricks097_1K-PNG_Roughness.png" id="1_xc502"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wg0x2"]
+albedo_color = Color(0.5647059, 0.41568628, 0.35686275, 1)
+albedo_texture = ExtResource("1_xc502")
+uv1_scale = Vector3(0.4, 0.4, 0.4)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu3pd"]
+albedo_color = Color(0.5647059, 0.41568628, 0.35686275, 1)
+albedo_texture = ExtResource("1_xc502")
+uv1_scale = Vector3(3, 3, 3)
+
+[node name="Wall_5m" type="Node3D" unique_id=200950674]
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=36235920]
+material_override = SubResource("StandardMaterial3D_wg0x2")
+use_collision = true
+
+[node name="wall" type="CSGBox3D" parent="CSGCombiner3D" unique_id=409694694]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5, 0)
+material_override = SubResource("StandardMaterial3D_pu3pd")
+size = Vector3(5, 5, 0.3)
+
+[node name="door_hole" type="CSGBox3D" parent="CSGCombiner3D" unique_id=1195163891]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -0.10405421)
+operation = 2
+size = Vector3(2.5, 5, 1)

@@ -18,14 +18,10 @@
 [ext_resource type="PackedScene" uid="uid://dp5k7w0lcs3ci" path="res://scenes/map/Tests/wall_5m_textureTest_concrete.tscn" id="13_w38la"]
 [ext_resource type="PackedScene" uid="uid://by6apt54ptfgl" path="res://scenes/map/Tests/wall_5m_textureTest_paintedPlaster.tscn" id="14_uvug4"]
 [ext_resource type="PackedScene" uid="uid://dm6tbix6lqjfj" path="res://scenes/map/Tests/wall_5m_textureTest_pavingStones.tscn" id="15_6lgki"]
-[ext_resource type="PackedScene" uid="uid://cyajcas3pglmu" path="res://scenes/map/Props/Lamps/ceiling_lamp-10mb.glb" id="19_xm5eu"]
-[ext_resource type="PackedScene" uid="uid://dr0a6tjbprao8" path="res://scenes/map/Props/Lamps/ceiling_lamp.glb" id="20_tqpgh"]
-[ext_resource type="PackedScene" uid="uid://fhl6u6td06of" path="res://scenes/map/Props/Lamps/low_poly_psx_wall_lamp_with_canopy.glb" id="21_tqpgh"]
-[ext_resource type="PackedScene" uid="uid://mo532ligy7a" path="res://scenes/map/Props/Lamps/sci-fi_style_ceiling_light.glb" id="22_bftfm"]
-[ext_resource type="PackedScene" uid="uid://c53bvbicsy6rb" path="res://scenes/map/Props/Lamps/Industrial Pendant Lamp.glb" id="23_7tyvf"]
-[ext_resource type="PackedScene" uid="uid://c3577e8kus70t" path="res://scenes/map/Props/Lamps/Ceiling Lamp.glb" id="24_e58jp"]
-[ext_resource type="PackedScene" uid="uid://ofb8tbcqa1fr" path="res://scenes/map/Props/Lamps/Ceiling Light.glb" id="25_vgutx"]
-[ext_resource type="PackedScene" uid="uid://bhjmwu47jv8ki" path="res://scenes/map/Props/Lamps/Fluorescent Light.glb" id="26_7ifk2"]
+[ext_resource type="PackedScene" uid="uid://bxoibg2361vnx" path="res://scenes/map/Props/lamp_wall.tscn" id="15_bftfm"]
+[ext_resource type="PackedScene" uid="uid://cyajcas3pglmu" path="res://scenes/map/Tests/ceiling_lamp-10mb.glb" id="19_xm5eu"]
+[ext_resource type="PackedScene" uid="uid://fhl6u6td06of" path="res://scenes/map/Tests/low_poly_psx_wall_lamp_with_canopy.glb" id="21_tqpgh"]
+[ext_resource type="PackedScene" uid="uid://c3577e8kus70t" path="res://scenes/map/Tests/Ceiling Lamp.glb" id="24_e58jp"]
 
 [sub_resource type="Curve3D" id="Curve3D_r8b7v"]
 _data = {
@@ -33,9 +29,6 @@ _data = {
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e58jp"]
-emission_enabled = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7tyvf"]
 albedo_color = Color(0.9944158, 0.99779063, 0.9832092, 1)
@@ -49,6 +42,7 @@ script = ExtResource("1_wbdnb")
 [node name="Floors" type="Node" parent="." unique_id=1387132680]
 
 [node name="Floor_70x70" parent="Floors" unique_id=200950674 instance=ExtResource("1_xduqa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0036826134, 0, 0.006670952)
 
 [node name="Walls" type="Node" parent="." unique_id=59657804]
 
@@ -106,24 +100,30 @@ transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -14,
 [node name="Room_04" type="Node" parent="Walls" unique_id=1480313300]
 
 [node name="Wall_5m_bricks" parent="Walls" unique_id=49818424 instance=ExtResource("8_aop60")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.7182827, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.0884585, 0, 0)
 
 [node name="Wall_5m_bricks2" parent="Walls" unique_id=398519945 instance=ExtResource("9_aaep2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.484729, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.220964, 0, 0)
 
 [node name="Wall_5m_bricks3" parent="Walls" unique_id=663093345 instance=ExtResource("10_hxfym")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0073, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.776699, 0, 0)
 
 [node name="Wall_5m_bricks4" parent="Walls" unique_id=1962121540 instance=ExtResource("11_oui1k")]
 
 [node name="Wall_5m_bricks5" parent="Walls" unique_id=343794140 instance=ExtResource("13_w38la")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.830239, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.587154, 0, 0)
 
 [node name="Wall_5m_bricks6" parent="Walls" unique_id=514773710 instance=ExtResource("14_uvug4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.7558246, 0, 0)
 
 [node name="Wall_5m_pavingStones" parent="Walls" unique_id=1115348028 instance=ExtResource("15_6lgki")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.175701, 0, 0)
+
+[node name="lamp_wall" parent="Walls" unique_id=1326199374 instance=ExtResource("15_bftfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.6333985, 0, -1.2713242)
+
+[node name="lamp_wall2" parent="Walls" unique_id=959414351 instance=ExtResource("15_bftfm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.780742, 0, -0.88982487)
 
 [node name="Ceilings" type="Node" parent="." unique_id=2128489324]
 
@@ -146,7 +146,7 @@ path_node_path = NodePath("../NPCPath")
 [node name="Lamps" type="Node" parent="." unique_id=799273400]
 
 [node name="techito" parent="Lamps" unique_id=1967623876 instance=ExtResource("12_n8gbj")]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 9.540401, 5.046001, -3.822656)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 5.346732, 5.046001, -3.822656)
 
 [node name="techito2" parent="Lamps" unique_id=783950953 instance=ExtResource("12_n8gbj")]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.3245163, 5.046001, -3.822656)
@@ -155,34 +155,33 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0.32
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, -4.56723, 5.046001, -3.822656)
 
 [node name="Sketchfab_Scene" parent="Lamps" unique_id=1511391496 instance=ExtResource("19_xm5eu")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.542833, 4.8545256, -3.0938723)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.786568, 4.8545256, -3.0938723)
 
-[node name="Sketchfab_Scene2" parent="Lamps" unique_id=321940296 instance=ExtResource("20_tqpgh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.612755, 4.8955398, -2.379911)
+[node name="Symmetry_1__0" parent="Lamps/Sketchfab_Scene/Sketchfab_model/b0ada5875fd342f09c431cbe4002bffd_fbx/RootNode/Symmetry_1" parent_id_path=PackedInt32Array(1511391496, 732123211) index="0" unique_id=714008809]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1158.0607, 0, 0)
+
+[node name="Symmetry__0" parent="Lamps/Sketchfab_Scene/Sketchfab_model/b0ada5875fd342f09c431cbe4002bffd_fbx/RootNode/Symmetry" parent_id_path=PackedInt32Array(1511391496, 373201427) index="0" unique_id=509821049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1158.0607, 0, 0)
+
+[node name="Cube__0" parent="Lamps/Sketchfab_Scene/Sketchfab_model/b0ada5875fd342f09c431cbe4002bffd_fbx/RootNode/Cube" parent_id_path=PackedInt32Array(1511391496, 1751035696) index="0" unique_id=1339926247]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1158.0607, 0, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lamps/Sketchfab_Scene" unique_id=1189291359]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -11.580606, -0.036460876, 0)
+light_energy = 10.0
+shadow_enabled = true
+spot_range = 8.0
+spot_attenuation = 1.5
+spot_angle = 85.0
 
 [node name="Sketchfab_Scene3" parent="Lamps" unique_id=1504779437 instance=ExtResource("21_tqpgh")]
-transform = Transform3D(-1.3113417e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.3113417e-08, 9.11204, 3.6268487, -0.6921724)
+transform = Transform3D(-1.3113417e-08, 0, 0.3, 0, 0.3, 0, -0.3, 0, -1.3113417e-08, 4.8156934, 3.6268487, -0.6921724)
 
-[node name="Sketchfab_Scene4" parent="Lamps" unique_id=317333340 instance=ExtResource("22_bftfm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.839764, 4.8055773, -2.3988817)
+[node name="Cylinder" parent="Lamps/Sketchfab_Scene3/Sketchfab_model/e44b47c883c64006bf6bac88fff9008e_fbx/RootNode" parent_id_path=PackedInt32Array(1504779437, 1954252463) index="0" unique_id=1191333288]
+transform = Transform3D(32.97865, 0, 0, 0, -5.3729036e-06, 32.97865, 0, -32.97865, -5.3729036e-06, 0, 42.686157, 0)
 
-[node name="CeilingLight_Light_0" parent="Lamps/Sketchfab_Scene4/Sketchfab_model/CeilingLight01_high_fbx/RootNode/CeilingLight" parent_id_path=PackedInt32Array(317333340, 1897662393) index="1" unique_id=1411380861]
-surface_material_override/0 = SubResource("StandardMaterial3D_e58jp")
-
-[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="Lamps/Sketchfab_Scene4/Sketchfab_model/CeilingLight01_high_fbx/RootNode/CeilingLight" parent_id_path=PackedInt32Array(317333340, 1897662393) index="4" unique_id=1340960554]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.046678543, 0.051877737, 0.0069909096)
-radius = 0.02
-height = 1.15
-material = SubResource("StandardMaterial3D_7tyvf")
-
-[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="Lamps/Sketchfab_Scene4/Sketchfab_model/CeilingLight01_high_fbx/RootNode/CeilingLight" parent_id_path=PackedInt32Array(317333340, 1897662393) index="5" unique_id=1048439274]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.039981842, 0.051877737, 0.0069909096)
-radius = 0.02
-height = 1.15
-material = SubResource("StandardMaterial3D_7tyvf")
-
-[node name="SpotLight3D" type="SpotLight3D" parent="Lamps/Sketchfab_Scene4" unique_id=115306875]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.025316715, -0.025404453)
+[node name="SpotLight3D" type="SpotLight3D" parent="Lamps/Sketchfab_Scene3" unique_id=57071225]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.025316715, 0)
 light_energy = 6.0
 shadow_enabled = true
 spot_range = 8.0
@@ -190,13 +189,10 @@ spot_attenuation = 1.5
 spot_angle = 60.0
 spot_angle_attenuation = 2.0
 
-[node name="Industrial Pendant Lamp" parent="Lamps" unique_id=684694993 instance=ExtResource("23_7tyvf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9099479, 4.5808287, -3.7152858)
-
 [node name="Root Scene" parent="Lamps" unique_id=2040803135 instance=ExtResource("24_e58jp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.67112386, 4.7918606, -1.646648)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Lamps/Root Scene/RootNode" parent_id_path=PackedInt32Array(2040803135, 1300142953) index="1" unique_id=1899893495]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Lamps/Root Scene/RootNode" parent_id_path=PackedInt32Array(2040803135, 438090935) index="1" unique_id=1899893495]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.047915936, 0)
 radius = 0.202
 height = 0.043
@@ -211,11 +207,6 @@ spot_attenuation = 1.5
 spot_angle = 60.0
 spot_angle_attenuation = 2.0
 
-[node name="Ceiling Light" parent="Lamps" unique_id=1292673305 instance=ExtResource("25_vgutx")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.0450401, 4.7306685, -2.2374485)
-
-[node name="Root Scene2" parent="Lamps" unique_id=1125797397 instance=ExtResource("26_7ifk2")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.37978804, 4.800986, -2.6368697)
-
-[editable path="Lamps/Sketchfab_Scene4"]
+[editable path="Lamps/Sketchfab_Scene"]
+[editable path="Lamps/Sketchfab_Scene3"]
 [editable path="Lamps/Root Scene"]

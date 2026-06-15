@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqrtwgl5bjcof"
-path.s3tc="res://.godot/imported/ceiling_lamp-10mb_1.png-08d46ca73fa72e4c24e8f6bf26ba5f2c.s3tc.ctex"
+uid="uid://c4suc6kqbmama"
+path.s3tc="res://.godot/imported/ceiling_lamp_3.png-e42fbb46ef0a70980bbeb84e62bfccd4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "817cf79e14daa7c99f152abf02cbcc03"
+"md5": "1a18cb6facfd719bbf3dabfb15f23296"
 }
 
 [deps]
 
-source_file="res://scenes/map/Props/Lamps/ceiling_lamp-10mb_1.png"
-dest_files=["res://.godot/imported/ceiling_lamp-10mb_1.png-08d46ca73fa72e4c24e8f6bf26ba5f2c.s3tc.ctex"]
+source_file="res://scenes/map/Tests/ceiling_lamp_3.png"
+dest_files=["res://.godot/imported/ceiling_lamp_3.png-e42fbb46ef0a70980bbeb84e62bfccd4.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://scenes/map/Props/Lamps/ceiling_lamp_3.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

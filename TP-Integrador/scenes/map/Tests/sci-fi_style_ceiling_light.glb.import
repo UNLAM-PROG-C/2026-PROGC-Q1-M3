@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c53bvbicsy6rb"
-path="res://.godot/imported/Industrial Pendant Lamp.glb-09bbeaadab7077d4d04aa19aec6c5c0b.scn"
+uid="uid://mo532ligy7a"
+path="res://.godot/imported/sci-fi_style_ceiling_light.glb-3c509f309afd88084c96e95401b23182.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Lamps/Industrial Pendant Lamp.glb"
-dest_files=["res://.godot/imported/Industrial Pendant Lamp.glb-09bbeaadab7077d4d04aa19aec6c5c0b.scn"]
+source_file="res://scenes/map/Tests/sci-fi_style_ceiling_light.glb"
+dest_files=["res://.godot/imported/sci-fi_style_ceiling_light.glb-3c509f309afd88084c96e95401b23182.scn"]
 
 [params]
 

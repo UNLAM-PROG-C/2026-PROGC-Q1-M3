@@ -1,0 +1,77 @@
+[gd_scene format=3 uid="uid://dwqhamikk4bn2"]
+
+[ext_resource type="PackedScene" uid="uid://coee7wevy8ww1" path="res://scenes/map/Floors/floor_70x70.tscn" id="1_u7qwg"]
+[ext_resource type="PackedScene" uid="uid://b4qae4vtyh30k" path="res://scenes/map/Walls/wall_20m.tscn" id="2_hbqmq"]
+[ext_resource type="PackedScene" uid="uid://66guktv8ye5" path="res://scenes/map/Walls/wall_V.tscn" id="3_mulsg"]
+[ext_resource type="PackedScene" uid="uid://bxfmv4wwh377f" path="res://scenes/map/Walls/wall_5m.tscn" id="4_vstyb"]
+[ext_resource type="PackedScene" uid="uid://y1cqt5i7r07c" path="res://scenes/map/Walls/wall_10m.tscn" id="5_8jeh8"]
+[ext_resource type="PackedScene" uid="uid://byu52b6henkmj" path="res://scenes/map/Walls/wall_S.tscn" id="6_f5xlv"]
+
+[node name="Map" type="Node3D" unique_id=1840955683]
+
+[node name="Floors" type="Node" parent="." unique_id=1387132680]
+
+[node name="Floor_70x70" parent="Floors" unique_id=200950674 instance=ExtResource("1_u7qwg")]
+
+[node name="Walls" type="Node" parent="." unique_id=59657804]
+
+[node name="Room_01" type="Node" parent="Walls" unique_id=2093624385]
+
+[node name="Wall_20m" parent="Walls/Room_01" unique_id=2117419300 instance=ExtResource("2_hbqmq")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 30)
+
+[node name="Wall_20m2" parent="Walls/Room_01" unique_id=1306669930 instance=ExtResource("2_hbqmq")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -30, 0, 20)
+
+[node name="WallV" parent="Walls/Room_01" unique_id=1614335802 instance=ExtResource("3_mulsg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -30, 0, 30)
+
+[node name="WallV2" parent="Walls/Room_01" unique_id=24434415 instance=ExtResource("3_mulsg")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -10, 0, 30)
+
+[node name="Wall_5m" parent="Walls/Room_01" unique_id=897817260 instance=ExtResource("4_vstyb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -10, 0, 27.5)
+
+[node name="Wall_10m" parent="Walls/Room_01" unique_id=1098981952 instance=ExtResource("5_8jeh8")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -8, 0, 20)
+
+[node name="Wall_5m2" parent="Walls/Room_01" unique_id=214460550 instance=ExtResource("4_vstyb")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 0, 11)
+
+[node name="WallS2" parent="Walls/Room_01" unique_id=1525944239 instance=ExtResource("6_f5xlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 25)
+
+[node name="WallV3" parent="Walls/Room_01" unique_id=1050893705 instance=ExtResource("3_mulsg")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -8, 0, 14)
+
+[node name="Wall_5m3" parent="Walls/Room_01" unique_id=29581137 instance=ExtResource("4_vstyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 14)
+
+[node name="WallV4" parent="Walls/Room_01" unique_id=689386588 instance=ExtResource("3_mulsg")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -14, 0, 14)
+
+[node name="WallV5" parent="Walls/Room_01" unique_id=422485445 instance=ExtResource("3_mulsg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28, 0, 8)
+
+[node name="WallS" parent="Walls/Room_01" unique_id=483462687 instance=ExtResource("6_f5xlv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29, 0, 10)
+
+[node name="Wall_5m4" parent="Walls/Room_01" unique_id=789212859 instance=ExtResource("4_vstyb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24, 0, 8)
+
+[node name="WallV6" parent="Walls/Room_01" unique_id=2057523706 instance=ExtResource("3_mulsg")]
+transform = Transform3D(1.1924881e-08, 0, -1, 0, 1, 0, 1, 0, 1.1924881e-08, -14, 0, 8)
+
+[node name="Room_02" type="Node" parent="Walls" unique_id=557998881]
+
+[node name="Room_03" type="Node" parent="Walls" unique_id=856178170]
+
+[node name="Room_04" type="Node" parent="Walls" unique_id=1480313300]
+
+[node name="Ceilings" type="Node" parent="." unique_id=2128489324]
+
+[node name="Props" type="Node" parent="." unique_id=82470216]
+
+[node name="SpawnPoints" type="Node" parent="." unique_id=1400324816]
+
+[node name="Navigation" type="Node" parent="." unique_id=146209639]

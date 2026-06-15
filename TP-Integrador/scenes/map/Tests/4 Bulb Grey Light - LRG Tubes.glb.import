@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://fhl6u6td06of"
-path="res://.godot/imported/low_poly_psx_wall_lamp_with_canopy.glb-b66914939c8e656dae111cd58a163718.scn"
+uid="uid://bs1ivu2rype2q"
+path="res://.godot/imported/4 Bulb Grey Light - LRG Tubes.glb-f85cb069a5b4146a4dc3ef7166478f68.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Lamps/low_poly_psx_wall_lamp_with_canopy.glb"
-dest_files=["res://.godot/imported/low_poly_psx_wall_lamp_with_canopy.glb-b66914939c8e656dae111cd58a163718.scn"]
+source_file="res://scenes/map/Tests/4 Bulb Grey Light - LRG Tubes.glb"
+dest_files=["res://.godot/imported/4 Bulb Grey Light - LRG Tubes.glb-f85cb069a5b4146a4dc3ef7166478f68.scn"]
 
 [params]
 

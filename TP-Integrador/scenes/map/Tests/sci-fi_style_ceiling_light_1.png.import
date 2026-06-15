@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d2hgve3b4u3kp"
-path.s3tc="res://.godot/imported/low_poly_psx_wall_lamp_with_canopy_1.png-55b8316b7b7d4c085a3f323c0253d483.s3tc.ctex"
+uid="uid://dbvbpkk6votjs"
+path.s3tc="res://.godot/imported/sci-fi_style_ceiling_light_1.png-9f23ff1dc49131aac11c81d1ca8171ce.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "c3ac85cc54de7ce8d5f476fabb0e8eb3"
+"md5": "ee6b7d57f1c7aa04c68d0ccfdcf455c1"
 }
 
 [deps]
 
-source_file="res://scenes/map/Props/Lamps/low_poly_psx_wall_lamp_with_canopy_1.png"
-dest_files=["res://.godot/imported/low_poly_psx_wall_lamp_with_canopy_1.png-55b8316b7b7d4c085a3f323c0253d483.s3tc.ctex"]
+source_file="res://scenes/map/Tests/sci-fi_style_ceiling_light_1.png"
+dest_files=["res://.godot/imported/sci-fi_style_ceiling_light_1.png-9f23ff1dc49131aac11c81d1ca8171ce.s3tc.ctex"]
 
 [params]
 
@@ -25,12 +25,12 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=0
-roughness/src_normal=""
+roughness/mode=1
+roughness/src_normal="res://scenes/map/Props/Lamps/sci-fi_style_ceiling_light_1.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

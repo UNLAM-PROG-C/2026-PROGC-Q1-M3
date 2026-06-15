@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bs1ivu2rype2q"
-path="res://.godot/imported/4 Bulb Grey Light - LRG Tubes.glb-c3ad70a38e0206ac0b62bf19342da421.scn"
+uid="uid://cyajcas3pglmu"
+path="res://.godot/imported/ceiling_lamp-10mb.glb-d474a9784c7840acdbefde78936a9ccf.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Lamps/4 Bulb Grey Light - LRG Tubes.glb"
-dest_files=["res://.godot/imported/4 Bulb Grey Light - LRG Tubes.glb-c3ad70a38e0206ac0b62bf19342da421.scn"]
+source_file="res://scenes/map/Tests/ceiling_lamp-10mb.glb"
+dest_files=["res://.godot/imported/ceiling_lamp-10mb.glb-d474a9784c7840acdbefde78936a9ccf.scn"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cxqri1ekeasaa"
-path.s3tc="res://.godot/imported/ceiling_lamp_0.png-36e974a2c383f0dd25f995c08a77a9e6.s3tc.ctex"
+uid="uid://d2hgve3b4u3kp"
+path.s3tc="res://.godot/imported/low_poly_psx_wall_lamp_with_canopy_1.png-d594a79035d5e7275e6e87c5d79aa8a4.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "8107b5d7523d87fabd15417c3175b4e9"
+"md5": "c3ac85cc54de7ce8d5f476fabb0e8eb3"
 }
 
 [deps]
 
-source_file="res://scenes/map/Props/Lamps/ceiling_lamp_0.png"
-dest_files=["res://.godot/imported/ceiling_lamp_0.png-36e974a2c383f0dd25f995c08a77a9e6.s3tc.ctex"]
+source_file="res://scenes/map/Tests/low_poly_psx_wall_lamp_with_canopy_1.png"
+dest_files=["res://.godot/imported/low_poly_psx_wall_lamp_with_canopy_1.png-d594a79035d5e7275e6e87c5d79aa8a4.s3tc.ctex"]
 
 [params]
 

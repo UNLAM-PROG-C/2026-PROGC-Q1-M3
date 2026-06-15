@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqcoqdw04e7hr"
-path.s3tc="res://.godot/imported/sci-fi_style_ceiling_light_0.jpg-c4166891f0b16624541ed8be504311ad.s3tc.ctex"
+uid="uid://cffc2fdjux4ft"
+path.s3tc="res://.godot/imported/ceiling_lamp_2.png-cbae4171302e8be626f5b5611d275424.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "cd9c72b5350ef3b58f87fc6a43398c52"
+"md5": "70f722b06d7a39ca1e355fa706da390f"
 }
 
 [deps]
 
-source_file="res://scenes/map/Props/Lamps/sci-fi_style_ceiling_light_0.jpg"
-dest_files=["res://.godot/imported/sci-fi_style_ceiling_light_0.jpg-c4166891f0b16624541ed8be504311ad.s3tc.ctex"]
+source_file="res://scenes/map/Tests/ceiling_lamp_2.png"
+dest_files=["res://.godot/imported/ceiling_lamp_2.png-cbae4171302e8be626f5b5611d275424.s3tc.ctex"]
 
 [params]
 

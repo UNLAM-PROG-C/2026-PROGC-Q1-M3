@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dr0a6tjbprao8"
-path="res://.godot/imported/ceiling_lamp.glb-28b9b90a1848a3e63bf2f12ccb70f14b.scn"
+uid="uid://fhl6u6td06of"
+path="res://.godot/imported/low_poly_psx_wall_lamp_with_canopy.glb-e35e7c96e1b3697bcdf1781e36adc484.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Lamps/ceiling_lamp.glb"
-dest_files=["res://.godot/imported/ceiling_lamp.glb-28b9b90a1848a3e63bf2f12ccb70f14b.scn"]
+source_file="res://scenes/map/Tests/low_poly_psx_wall_lamp_with_canopy.glb"
+dest_files=["res://.godot/imported/low_poly_psx_wall_lamp_with_canopy.glb-e35e7c96e1b3697bcdf1781e36adc484.scn"]
 
 [params]
 
