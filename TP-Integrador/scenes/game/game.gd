@@ -274,7 +274,10 @@ func _do_return_to_lobby() -> void:
 
 @rpc("authority", "call_local", "reliable")
 func return_to_lobby() -> void:
-	get_tree().change_scene_to_file("res://scenes/lobby/host_lobby.tscn")
+	if multiplayer.is_server():
+		get_tree().change_scene_to_file("res://scenes/lobby/host_lobby.tscn")
+	else:
+		get_tree().change_scene_to_file("res://scenes/lobby/join_lobby.tscn")
 
 
 func _get_player_count() -> int:
