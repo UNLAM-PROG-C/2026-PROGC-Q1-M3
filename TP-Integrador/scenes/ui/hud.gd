@@ -24,7 +24,8 @@ extends CanvasLayer
 const PLAYER_SPEED := 7.0 #==SPEED de player en player.gd
 
 const CROSSHAIR_IDLE := Color(1, 1, 1, 0.85)
-const CROSSHAIR_TARGET := Color(0.2, 1.0, 0.35, 0.95)
+## Rojo: apuntando a un objetivo (jugador o NPC) en rango — mismo color para ambos.
+const CROSSHAIR_TARGET := Color(0.95, 0.15, 0.15, 0.95)
 
 const STAMINA_FULL := Color(1, 1, 1, 1)
 const STAMINA_COOLDOWN := Color(0.7, 0.7, 0.7, 1)  # apagada mientras recarga

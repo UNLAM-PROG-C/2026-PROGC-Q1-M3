@@ -15,6 +15,9 @@ const FIRE_COOLDOWN := 1.0   ## segs de cooldown
 const EXPLOSION_COLOR := Color(1.0, 0.55, 0.1) ## particulas naranjas
 const FALL_ANGLE := PI / 2 ## cae al piso
 
+## Altura (m) de la cámara cenital sobre el cadáver al morir (estilo GTA).
+const DEATH_CAM_HEIGHT := 3.0
+
 ## Ajuste fino de orientacion del modelo respecto al frente del jugador.
 const MODEL_YAW_OFFSET := PI
 ## Umbral de velocidad (u/s) para considerar que el jugador se esta moviendo.
@@ -36,8 +39,10 @@ var _is_walking := false  # replicado: el dueño lo setea según su velocity; to
 
 # Combate
 var _current_target = null            # otro player vivo bajo la mira (objetivo capturable)
+var _current_npc_target = null        # NPC bajo la mira (apuntado, genera alarma al disparar)
 var _cooldown_left := 0.0
 var _eliminated := false              # capturado: congelado y no apuntable
+var _death_cam: Camera3D               # cámara cenital creada al morir
 var _last_anim_position := Vector3.ZERO
 var _sprint_time_left := MAX_SPRINT_DURATION
 var _sprint_cooldown_left := 0.0
@@ -222,24 +227,41 @@ func _physics_process(delta):
 	_update_target()
 
 
+## Parsea el resultado del raycast: retorna [player_node_or_null, npc_node_or_null].
+func _parse_hit(hit: Dictionary) -> Array:
+	if hit.is_empty():
+		return [null, null]
+	if hit.collider.is_in_group("players"):
+		return [hit.collider, null]
+	if hit.collider.is_in_group("npcs"):
+		return [null, hit.collider.get_parent()]
+	return [null, null]
+
+
 func _update_target() -> void:
 	var from := camera.global_position
 	var to := from - camera.global_transform.basis.z * CAPTURE_RANGE
 	var query := PhysicsRayQueryParameters3D.create(from, to)
-	query.collision_mask = 1
+	query.collision_mask = 1 | 2  # capa 1: jugadores, capa 2: áreas de NPCs
+	query.collide_with_areas = true
 	query.exclude = [get_rid()]
-
 	var hit := get_world_3d().direct_space_state.intersect_ray(query)
-	var new_target = null
-	if not hit.is_empty() and hit.collider.is_in_group("players"):
-		new_target = hit.collider
-
-	if new_target == _current_target:
+	var result := _parse_hit(hit)
+	var new_player = result[0]
+	var new_npc = result[1]
+	if new_player == _current_target and new_npc == _current_npc_target:
 		return
+	_current_target = new_player
+	_current_npc_target = new_npc
+	_update_crosshair()
 
-	_current_target = new_target
-	if _hud:
-		_hud.set_target_acquired(_current_target != null)
+
+## Actualiza el color del crosshair: rojo si hay cualquier objetivo (jugador o NPC), blanco si no.
+func _update_crosshair() -> void:
+	if _hud == null:
+		return
+	var has_target := _current_target != null or _current_npc_target != null
+	_hud.set_target_acquired(has_target)
 
 
 func _try_fire() -> void:
@@ -249,12 +271,27 @@ func _try_fire() -> void:
 	if _hud:
 		_hud.play_fire()  # recoil siempre
 	if is_instance_valid(_current_target):
-		var victim_id: int = _current_target.name.to_int()
-		var game = get_parent()
-		if multiplayer.is_server():
-			game.report_capture(victim_id)            # ya soy el server: lo resuelvo directo
-		else:
-			game.report_capture.rpc_id(1, victim_id)  # soy cliente: le aviso al server
+		_fire_at_player()
+	elif is_instance_valid(_current_npc_target) and not _current_npc_target.is_dead():
+		_fire_at_npc()
+
+
+func _fire_at_player() -> void:
+	var victim_id: int = _current_target.name.to_int()
+	var game = get_parent()
+	if multiplayer.is_server():
+		game.report_capture(victim_id)
+	else:
+		game.report_capture.rpc_id(1, victim_id)
+
+
+func _fire_at_npc() -> void:
+	var game = get_parent()
+	var npc_idx: int = _current_npc_target.npc_index
+	if multiplayer.is_server():
+		game.report_npc_kill(npc_idx)
+	else:
+		game.report_npc_kill.rpc_id(1, npc_idx)
 
 
 func set_eliminated() -> void:
@@ -266,9 +303,44 @@ func set_eliminated() -> void:
 	remove_from_group("players")
 	collision_layer = 0
 	_current_target = null
+	_current_npc_target = null
 	if _hud:
 		_hud.set_target_acquired(false)
 	_play_capture_fx()
+	activate_death_cam()
+
+
+## Crea una Camera3D cenital que mira hacia abajo al cadáver.
+## Devuelve el modelo a la capa visible (para el jugador local) y oculta el HUD.
+func activate_death_cam() -> Camera3D:
+	_death_cam = Camera3D.new()
+	_death_cam.name = "DeathCam"
+	add_child(_death_cam)
+	_death_cam.position = Vector3(0.0, DEATH_CAM_HEIGHT, 0.0)
+	_death_cam.rotation.x = -PI / 2.0
+	# Jugador local: hacer visible su propio modelo y ocultar el HUD/arma.
+	if is_local_player():
+		if _model:
+			_set_visual_layer_recursive(_model, 1)
+		if _hud:
+			_hud.hide()
+		_death_cam.current = true
+	return _death_cam
+
+
+## Retorna la death cam si existe (para que los espectadores puedan usarla).
+func get_death_cam() -> Camera3D:
+	return _death_cam
+
+
+## Retorna la cámara de primera persona de este jugador (usada por el modo espectador).
+func get_camera() -> Camera3D:
+	return camera
+
+
+## Retorna el nombre display del jugador (leído de GameNetwork o fallback).
+func get_display_name() -> String:
+	return _resolve_my_name()
 
 
 ## efecto de captura → explosion

@@ -21,7 +21,12 @@ func _ready() -> void:
 	_style_panel()
 	_style_buttons()
 	GameNetwork.player_list_changed.connect(_on_player_list_changed)
-	_set_state(State.SETUP)
+	# Si regresamos desde game.tscn con la conexión ENet activa, saltar el SETUP.
+	if GameNetwork.is_host() and not GameNetwork.players.is_empty():
+		_set_state(State.WAITING)
+		_refresh_player_list()
+	else:
+		_set_state(State.SETUP)
 
 
 func _style_panel() -> void:
