@@ -1,20 +1,23 @@
-[gd_scene format=3 uid="uid://cj8w3trnlkb3c"]
+[gd_scene format=3 uid="uid://cwb1tfv2nne75"]
 
-[ext_resource type="Texture2D" uid="uid://0mcl0lc57jb8" path="res://textures/Walls/Bricks097_1K-PNG/Bricks097_1K-PNG_Roughness.png" id="1_5hqqd"]
+[ext_resource type="Texture2D" uid="uid://0mcl0lc57jb8" path="res://textures/Walls/Bricks097_1K-PNG/Bricks097_1K-PNG_Roughness.png" id="1_f4uu0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wg0x2"]
 albedo_color = Color(0.5647059, 0.41568628, 0.35686275, 1)
-albedo_texture = ExtResource("1_5hqqd")
+albedo_texture = ExtResource("1_f4uu0")
 uv1_scale = Vector3(0.4, 0.4, 0.4)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu3pd"]
 albedo_color = Color(0.5647059, 0.41568628, 0.35686275, 1)
-albedo_texture = ExtResource("1_5hqqd")
 uv1_scale = Vector3(3, 3, 3)
 
-[node name="Wall_5m" type="Node3D" unique_id=200950674]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3amp"]
+albedo_color = Color(0.4745098, 0.5529412, 0.7058824, 0.85490197)
+roughness = 0.1
+
+[node name="Wall_Window_Medium" type="Node3D" unique_id=200950674]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=36235920]
 material_override = SubResource("StandardMaterial3D_wg0x2")
@@ -29,3 +32,9 @@ size = Vector3(5, 5, 0.3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 operation = 2
 size = Vector3(3, 2, 1)
+
+[node name="window_glass" type="CSGBox3D" parent="." unique_id=1007573308]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.018365026, 2.0242243, 0)
+material_override = SubResource("StandardMaterial3D_n3amp")
+transparency = 0.5
+size = Vector3(3.3, 2.2, 0.04)
