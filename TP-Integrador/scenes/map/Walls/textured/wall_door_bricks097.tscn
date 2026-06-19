@@ -15,7 +15,7 @@ uv1_scale = Vector3(3, 3, 3)
 uv1_triplanar = true
 uv1_world_triplanar = true
 
-[node name="Wall_5m" type="Node3D" unique_id=200950674]
+[node name="Wall_door" type="Node3D" unique_id=200950674]
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="." unique_id=36235920]
 material_override = SubResource("StandardMaterial3D_wg0x2")

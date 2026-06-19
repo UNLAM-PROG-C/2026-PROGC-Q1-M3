@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://6oqg6n2e8dqn"]
+
+[ext_resource type="PackedScene" uid="uid://cyajcas3pglmu" path="res://scenes/map/Tests/ceiling_lamp-10mb.glb" id="1_hxfod"]
+
+[node name="lamp_ceiling_tubes" type="Node3D" unique_id=1296863772]
+
+[node name="Sketchfab_Scene" parent="." unique_id=391440854 instance=ExtResource("1_hxfod")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3405533, 0)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Sketchfab_Scene" unique_id=703967364]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.0015802383, 0)
+spot_range = 8.0
+spot_attenuation = 0.8
+spot_angle = 85.0
+spot_angle_attenuation = 0.5
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Sketchfab_Scene" unique_id=554365753]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.1, 0)
+light_energy = 0.6
+omni_attenuation = 0.8
+
+[editable path="Sketchfab_Scene"]

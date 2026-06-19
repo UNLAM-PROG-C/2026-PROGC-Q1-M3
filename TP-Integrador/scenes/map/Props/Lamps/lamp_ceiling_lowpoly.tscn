@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://b3u4mcy5bolek"]
+
+[ext_resource type="PackedScene" uid="uid://c3577e8kus70t" path="res://scenes/map/Tests/Ceiling Lamp.glb" id="1_tcso3"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8a32w"]
+albedo_color = Color(0.9944158, 0.99779063, 0.9832092, 1)
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 4.0
+
+[node name="lamp_ceiling_lowpoly" type="Node3D" unique_id=1986794572]
+
+[node name="Root Scene" parent="." unique_id=182188154 instance=ExtResource("1_tcso3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Root Scene/RootNode" parent_id_path=PackedInt32Array(182188154, 438090935) index="1" unique_id=145874355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.047915936, 0)
+radius = 0.202
+height = 0.043
+material = SubResource("StandardMaterial3D_8a32w")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Root Scene" unique_id=1981071132]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.025316715, 0)
+light_energy = 6.0
+shadow_enabled = true
+spot_range = 8.0
+spot_attenuation = 1.5
+spot_angle = 60.0
+spot_angle_attenuation = 2.0
+
+[editable path="Root Scene"]

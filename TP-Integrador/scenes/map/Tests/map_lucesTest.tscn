@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://coee7wevy8ww1" path="res://scenes/map/Floors/floor_70x70.tscn" id="1_weuoj"]
 [ext_resource type="PackedScene" uid="uid://gtbti0kh3wy8" path="res://scenes/map/Walls/textured/wall_5m_bricks097.tscn" id="2_keduv"]
 [ext_resource type="PackedScene" uid="uid://c5lpq1cnsra7b" path="res://scenes/map/Ceilings/ceiling_5x5_tiles133.tscn" id="3_hg6qd"]
-[ext_resource type="PackedScene" uid="uid://b3u4mcy5bolek" path="res://scenes/map/Props/lamp_ceiling_lowpoly.tscn" id="4_q3q0m"]
-[ext_resource type="PackedScene" uid="uid://c1f4tad5blxmm" path="res://scenes/map/Props/lamp_ceiling_tubes.tscn" id="5_hp7rw"]
-[ext_resource type="PackedScene" uid="uid://bxoibg2361vnx" path="res://scenes/map/Props/lamp_wall.tscn" id="6_hp7rw"]
+[ext_resource type="PackedScene" uid="uid://b3u4mcy5bolek" path="res://scenes/map/Props/Lamps/lamp_ceiling_lowpoly.tscn" id="4_q3q0m"]
+[ext_resource type="PackedScene" uid="uid://c1f4tad5blxmm" path="res://scenes/map/Props/Lamps/lamp_ceiling_tubes.tscn" id="5_hp7rw"]
+[ext_resource type="PackedScene" uid="uid://bxoibg2361vnx" path="res://scenes/map/Props/Lamps/lamp_wall.tscn" id="6_hp7rw"]
 
 [node name="Map" type="Node3D" unique_id=1840955683]
 
@@ -43,21 +43,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.563095, 0, 0)
 
 [node name="lamp_ceiling_lowpoly" parent="." unique_id=1986794572 instance=ExtResource("4_q3q0m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.942)
+visible = false
 
 [node name="lamp_ceiling_tubes" parent="." unique_id=1296863772 instance=ExtResource("5_hp7rw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, -2.279)
 
-[node name="Sketchfab_Scene" parent="lamp_ceiling_tubes" index="0" unique_id=391440854]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.3405533, 0)
-
-[node name="SpotLight3D" parent="lamp_ceiling_tubes/Sketchfab_Scene" index="1" unique_id=38443566]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.0015802383, 0)
-light_energy = 1.0
-shadow_enabled = false
-spot_attenuation = 0.8
-spot_angle_attenuation = 0.5
-
-[node name="OmniLight3D" type="OmniLight3D" parent="lamp_ceiling_tubes/Sketchfab_Scene" index="2" unique_id=801878817]
+[node name="OmniLight3D2" type="OmniLight3D" parent="lamp_ceiling_tubes/Sketchfab_Scene" parent_id_path=PackedInt32Array(1296863772, 391440854) index="2" unique_id=801878817]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.1, 0)
 light_energy = 0.6
 omni_attenuation = 0.8
