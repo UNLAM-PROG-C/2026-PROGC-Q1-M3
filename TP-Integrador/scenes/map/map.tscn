@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://cvf3xvpkw4gwp"]
+
+[ext_resource type="PackedScene" uid="uid://coee7wevy8ww1" path="res://scenes/map/Floors/floor_70x70.tscn" id="1_04w0f"]
+[ext_resource type="PackedScene" uid="uid://cxusj5ymwxjkg" path="res://scenes/map/Rooms/room_blue.tscn" id="2_fcby6"]
+[ext_resource type="PackedScene" uid="uid://ceunyoqbjvqc8" path="res://scenes/map/Rooms/room_green.tscn" id="3_jcaow"]
+[ext_resource type="PackedScene" uid="uid://dbja5wekiskdr" path="res://scenes/map/Rooms/room_red.tscn" id="4_04w0f"]
+[ext_resource type="PackedScene" uid="uid://dd46v7aw4cqn8" path="res://scenes/map/Rooms/room_violet.tscn" id="5_sqgf4"]
+[ext_resource type="PackedScene" uid="uid://l0q7t28wgao7" path="res://scenes/map/Ceilings/ceiling_70x70_tiles133.tscn" id="6_jcaow"]
+
+[node name="Map" type="Node3D" unique_id=105349108]
+
+[node name="Floor_70x70" parent="." unique_id=200950674 instance=ExtResource("1_04w0f")]
+
+[node name="Room_Blue" parent="." unique_id=1204253539 instance=ExtResource("2_fcby6")]
+
+[node name="Room_Green" parent="." unique_id=899778730 instance=ExtResource("3_jcaow")]
+
+[node name="Room_Red" parent="." unique_id=120650622 instance=ExtResource("4_04w0f")]
+
+[node name="Room_Violet" parent="." unique_id=1986395522 instance=ExtResource("5_sqgf4")]
+
+[node name="Ceiling_70x70" parent="." unique_id=1104371455 instance=ExtResource("6_jcaow")]

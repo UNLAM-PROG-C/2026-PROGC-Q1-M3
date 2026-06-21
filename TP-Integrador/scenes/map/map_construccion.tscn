@@ -26,6 +26,7 @@
 [node name="Walls" type="Node" parent="." unique_id=59657804]
 
 [node name="Room_test" type="Node3D" parent="Walls" unique_id=1248072329]
+visible = false
 
 [node name="Wall_20m" parent="Walls/Room_test" unique_id=2117419300 instance=ExtResource("2_6kk7y")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 30)
