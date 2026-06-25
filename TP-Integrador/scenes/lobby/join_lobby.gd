@@ -22,7 +22,12 @@ func _ready() -> void:
 	GameNetwork.connection_failed.connect(_on_connection_failed)
 	GameNetwork.player_list_changed.connect(_on_player_list_changed)
 	GameNetwork.server_disconnected.connect(_on_server_disconnected)
-	_set_state(State.SETUP)
+	# Si regresamos desde game.tscn con la conexión ENet activa, saltar al estado CONNECTED.
+	if multiplayer.has_multiplayer_peer() and not GameNetwork.players.is_empty():
+		_set_state(State.CONNECTED)
+		_refresh_player_list()
+	else:
+		_set_state(State.SETUP)
 
 
 func _style_panel() -> void:

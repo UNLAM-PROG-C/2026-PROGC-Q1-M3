@@ -157,6 +157,7 @@ func _rebuild_npcs(npc_count: int):
 		# Cada NPC recolorea al menos el pelo, por lo que nunca queda identico a un
 		# jugador que use el mismo modelo.
 		npc.setup(CharacterAppearance.random_npc_appearance(_rng))
+		npc.npc_index = i  # usado por player.gd para reportar muertes al servidor
 
 		_npcs.append(npc)
 		_origins.append(origin)
@@ -183,6 +184,25 @@ func _calculate_origin(index: int) -> Vector3:
 	return Vector3(-6.0 + x, 1.0, -6.0 + z) + player_offset
 
 
+## Retorna la posicion global del NPC en el indice dado, o Vector3.ZERO si no existe / ya murio.
+func get_npc_position(index: int) -> Vector3:
+	if index < 0 or index >= _npcs.size():
+		return Vector3.ZERO
+	var npc := _npcs[index]
+	if not is_instance_valid(npc) or npc.is_dead():
+		return Vector3.ZERO
+	return npc.global_position
+
+
+## Mata el NPC en el indice dado (llamado desde game.gd vía RPC apply_npc_kill).
+func kill_npc(index: int) -> void:
+	if index < 0 or index >= _npcs.size():
+		return
+	var npc := _npcs[index]
+	if is_instance_valid(npc) and not npc.is_dead():
+		npc.kill_npc()
+
+
 func _queue_frame_jobs():
 	if _has_pending_jobs() or _npcs.is_empty():
 		return
@@ -190,6 +210,10 @@ func _queue_frame_jobs():
 	var jobs: Array[Dictionary] = []
 
 	for i in range(_npcs.size()):
+		# No encolar jobs para NPCs muertos: su apply_simulation_state retorna early,
+		# pero es más eficiente no calcularlos en los workers.
+		if is_instance_valid(_npcs[i]) and _npcs[i].is_dead():
+			continue
 		var is_paused := _is_npc_paused(i)
 		jobs.append({
 			"index": i,
