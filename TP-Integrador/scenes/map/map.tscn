@@ -10,6 +10,8 @@
 [ext_resource type="Script" uid="uid://cqxxj8bf071n6" path="res://scenes/npc/npc_thread_pool.gd" id="8_vvrx0"]
 [ext_resource type="PackedScene" uid="uid://cu4pnet80h04m" path="res://scenes/npc/threaded_npc.tscn" id="9_f17u5"]
 [ext_resource type="Script" uid="uid://bip4nfoytppkx" path="res://scenes/game/game.gd" id="10_game"]
+[ext_resource type="PackedScene" uid="uid://b6514v030pgg4" path="res://scenes/objects/mirror/mirror.tscn" id="11_x2kg6"]
+[ext_resource type="Script" uid="uid://cg2etv51edgkd" path="res://scenes/objects/mirror/mirror.gd" id="12_cumk7"]
 
 [sub_resource type="Curve3D" id="Curve3D_b56te"]
 _data = {
@@ -80,3 +82,7 @@ script = ExtResource("8_vvrx0")
 npc_scene = ExtResource("9_f17u5")
 path_node_path = NodePath("../NPCPath")
 paths_root_path = NodePath("..")
+
+[node name="Mirror" type="Node3D" parent="." unique_id=1533094784 instance=ExtResource("11_x2kg6")]
+transform = Transform3D(-0.99951035, 0, 0.03128901, 0, 1, 0, -0.03128901, 0, -0.99951035, 11.444567, 2.3841858e-07, 13.173163)
+script = ExtResource("12_cumk7")

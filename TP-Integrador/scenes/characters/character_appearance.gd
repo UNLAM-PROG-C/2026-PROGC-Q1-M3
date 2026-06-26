@@ -180,6 +180,15 @@ static func play_idle(anim_player: AnimationPlayer, model_index: int) -> void:
 
 
 ## Colores de las partes del JUGADOR: Todos los jugadores lucen igual.
+static func default_player_appearance() -> Dictionary:
+	return _make_appearance(
+		PLAYER_MODEL_INDEX,
+		int(PLAYER_PALETTE["pelo"]),
+		int(PLAYER_PALETTE["ojos"]),
+		int(PLAYER_PALETTE["ropa"])
+	)
+
+
 static func player_part_colors() -> Dictionary:
 	return {
 		"pelo": HAIR_COLORS[int(PLAYER_PALETTE["pelo"])],
@@ -188,29 +197,59 @@ static func player_part_colors() -> Dictionary:
 	}
 
 
-## Genera una apariencia de NPC: modelo aleatorio + pelo/ojos/ropa elegidos de laspaletas. 
-static func random_npc_appearance(rng: RandomNumberGenerator) -> Dictionary:
-	var hi := rng.randi_range(0, HAIR_COLORS.size() - 1)
-	var ei := rng.randi_range(0, EYE_COLORS.size() - 1)
-	var ci := rng.randi_range(0, CLOTHES_COLORS.size() - 1)
+## Genera la skin compartida de los jugadores para una partida.
+static func random_player_appearance(rng: RandomNumberGenerator) -> Dictionary:
+	return _random_appearance(rng)
 
-	# Evitar exactamente la terna del jugador.
-	if hi == int(PLAYER_PALETTE["pelo"]) and ei == int(PLAYER_PALETTE["ojos"]) and ci == int(PLAYER_PALETTE["ropa"]):
-		ci = (ci + 1) % CLOTHES_COLORS.size()
 
-	return {
-		"model": rng.randi_range(0, MODEL_COUNT - 1),
-		"part_colors": {
-			"pelo": HAIR_COLORS[hi],
-			"ojos": EYE_COLORS[ei],
-			"ropa": CLOTHES_COLORS[ci],
-		},
-	}
+## Genera una apariencia de NPC evitando la skin compartida por los jugadores.
+static func random_npc_appearance(rng: RandomNumberGenerator, forbidden_appearance: Dictionary = {}) -> Dictionary:
+	var appearance := _random_appearance(rng)
+	while _same_appearance(appearance, forbidden_appearance):
+		appearance = _random_appearance(rng)
+	return appearance
 
 
 # ---------------------------------------------------------------------------
 # Internos
 # ---------------------------------------------------------------------------
+
+static func _random_appearance(rng: RandomNumberGenerator) -> Dictionary:
+	return _make_appearance(
+		rng.randi_range(0, MODEL_COUNT - 1),
+		rng.randi_range(0, HAIR_COLORS.size() - 1),
+		rng.randi_range(0, EYE_COLORS.size() - 1),
+		rng.randi_range(0, CLOTHES_COLORS.size() - 1)
+	)
+
+
+static func _make_appearance(model_index: int, hair_index: int, eye_index: int, clothes_index: int) -> Dictionary:
+	return {
+		"model": model_index,
+		"part_colors": {
+			"pelo": HAIR_COLORS[hair_index],
+			"ojos": EYE_COLORS[eye_index],
+			"ropa": CLOTHES_COLORS[clothes_index],
+		},
+	}
+
+
+static func _same_appearance(left: Dictionary, right: Dictionary) -> bool:
+	if left.is_empty() or right.is_empty():
+		return false
+	if int(left.get("model", -1)) != int(right.get("model", -2)):
+		return false
+	return _same_part_colors(left.get("part_colors", {}), right.get("part_colors", {}))
+
+
+static func _same_part_colors(left: Dictionary, right: Dictionary) -> bool:
+	for key in ["pelo", "ojos", "ropa"]:
+		if not left.has(key) or not right.has(key):
+			return false
+		if left[key] != right[key]:
+			return false
+	return true
+
 
 static func _collect_mesh_instances(node: Node) -> Array:
 	var result: Array = []

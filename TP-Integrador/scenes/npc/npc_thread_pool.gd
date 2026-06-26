@@ -145,6 +145,7 @@ func _rebuild_npcs(npc_count: int):
 	var path_used_counts: Array[int] = []
 	for i in range(_path_caches.size()):
 		path_used_counts.append(0)
+	var forbidden_player_appearance := GameNetwork.get_shared_player_appearance()
 
 	for i in range(npc_count):
 		_path_distance_offsets.append(_balanced_path_distance(i, path_used_counts))
@@ -164,9 +165,7 @@ func _rebuild_npcs(npc_count: int):
 		npc.name = "ThreadedNPC_%02d" % i
 		npc.position = origin
 		add_child(npc)
-		# Cada NPC recolorea al menos el pelo, por lo que nunca queda identico a un
-		# jugador que use el mismo modelo.
-		npc.setup(CharacterAppearance.random_npc_appearance(_rng))
+		npc.setup(CharacterAppearance.random_npc_appearance(_rng, forbidden_player_appearance))
 		npc.npc_index = i  # usado por player.gd para reportar muertes al servidor
 
 		_npcs.append(npc)

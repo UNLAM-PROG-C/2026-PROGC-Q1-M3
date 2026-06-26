@@ -17,6 +17,7 @@ signal player_left(peer_id)
 var players: Dictionary = {}
 
 var _pending_name: String = ""
+var _shared_player_appearance: Dictionary = {}
 
 var _awaiting_confirmation: bool = false
 
@@ -40,6 +41,7 @@ func create_server(player_name: String) -> Error:
 		push_error("No se pudo crear el servidor en el puerto %d (error %d)" % [DEFAULT_PORT, err])
 		return err
 	multiplayer.multiplayer_peer = peer
+	_shared_player_appearance = _make_shared_player_appearance()
 	players = { 1: _make_player_record(1, player_name) }
 	player_list_changed.emit()
 	return OK
@@ -60,6 +62,7 @@ func join_server(ip: String, player_name: String) -> Error:
 func disconnect_from_game() -> void:
 	multiplayer.multiplayer_peer = null
 	_awaiting_confirmation = false
+	_shared_player_appearance.clear()
 	players.clear()
 	player_list_changed.emit()
 
@@ -78,13 +81,26 @@ func get_players() -> Dictionary:
 	return players.duplicate(true)
 
 
+func get_shared_player_appearance() -> Dictionary:
+	if _shared_player_appearance.is_empty():
+		return CharacterAppearance.default_player_appearance()
+	return _shared_player_appearance.duplicate(true)
+
+
+func _make_shared_player_appearance() -> Dictionary:
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	return CharacterAppearance.random_player_appearance(rng)
+
+
 # Crea el registro de un jugador. TODOS los jugadores comparten la misma apariencia.
 func _make_player_record(id: int, player_name: String) -> Dictionary:
+	var appearance := get_shared_player_appearance()
 	return {
 		"id": id,
 		"name": player_name,
-		"model": CharacterAppearance.PLAYER_MODEL_INDEX,
-		"part_colors": CharacterAppearance.player_part_colors(),
+		"model": int(appearance["model"]),
+		"part_colors": appearance["part_colors"],
 	}
 
 @rpc("any_peer", "reliable")
@@ -99,6 +115,7 @@ func _register_player(player_name: String) -> void:
 @rpc("authority", "call_local", "reliable")
 func _sync_player_list(list: Dictionary) -> void:
 	players = list.duplicate(true)
+	_update_shared_player_appearance_from_list()
 	player_list_changed.emit()
 
 	if _awaiting_confirmation and players.has(get_my_id()):
@@ -130,6 +147,7 @@ func _on_connected_to_server() -> void:
 func _on_connection_failed() -> void:
 	multiplayer.multiplayer_peer = null
 	_awaiting_confirmation = false
+	_shared_player_appearance.clear()
 	players.clear()
 	connection_failed.emit()
 
@@ -137,5 +155,18 @@ func _on_connection_failed() -> void:
 func _on_server_disconnected() -> void:
 	multiplayer.multiplayer_peer = null
 	_awaiting_confirmation = false
+	_shared_player_appearance.clear()
 	players.clear()
 	server_disconnected.emit()
+
+
+func _update_shared_player_appearance_from_list() -> void:
+	for id in players:
+		var record: Dictionary = players[id]
+		if record.has("model") and record.has("part_colors"):
+			_shared_player_appearance = {
+				"model": int(record["model"]),
+				"part_colors": record["part_colors"],
+			}
+			return
+	_shared_player_appearance.clear()
