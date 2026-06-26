@@ -84,5 +84,9 @@ path_node_path = NodePath("../NPCPath")
 paths_root_path = NodePath("..")
 
 [node name="Mirror" type="Node3D" parent="." unique_id=1533094784 instance=ExtResource("11_x2kg6")]
-transform = Transform3D(-0.99951035, 0, 0.03128901, 0, 1, 0, -0.03128901, 0, -0.99951035, 11.444567, 2.3841858e-07, 13.173163)
+transform = Transform3D(-0.99951035, 0, 0.03128901, 0, 1, 0, -0.03128901, 0, -0.99951035, 11.444567, 2.3841858e-07, 12.652145)
+script = ExtResource("12_cumk7")
+
+[node name="Mirror2" type="Node3D" parent="." unique_id=1625194292 instance=ExtResource("11_x2kg6")]
+transform = Transform3D(0.6200212, 0, -0.78458506, 0, 1, 0, 0.78458506, 0, 0.6200212, -4.5467844, 0, -4.2648263)
 script = ExtResource("12_cumk7")

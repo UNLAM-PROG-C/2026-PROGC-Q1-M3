@@ -10,9 +10,13 @@ script = ExtResource("1_mirror")
 
 [node name="CollisionBody" type="StaticBody3D" parent="."]
 
+[node name="ActivationArea" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ActivationArea"]
+
 [node name="ReflectionViewport" type="SubViewport" parent="."]
 disable_3d = false
-render_target_update_mode = 3
+render_target_update_mode = 0
 
 [node name="ReflectionCamera" type="Camera3D" parent="ReflectionViewport"]
 current = true
