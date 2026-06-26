@@ -11,6 +11,8 @@ const SPRINT_REGEN_RATE := 0.7   ## stamina-seg recuperados por segundo al no co
 
 const CAPTURE_RANGE := 3.0   ## Alcance (m). Antes 8.0.
 const FIRE_COOLDOWN := 1.0   ## segs de cooldown
+const WALK_STEP_INTERVAL := 0.42   ## segs entre pasos al caminar
+const SPRINT_STEP_INTERVAL := 0.28   ## segs entre pasos al correr
 
 const EXPLOSION_COLOR := Color(1.0, 0.55, 0.1) ## particulas naranjas
 const FALL_ANGLE := PI / 2 ## cae al piso
@@ -27,6 +29,9 @@ const WALK_SPEED_THRESHOLD := 0.3
 @export var model_scale := 0.03
 ## Desplazamiento vertical del modelo para apoyar los pies en la base de la capsula.
 @export var model_y_offset := -1.0
+@export var step_sound_1: AudioStream
+@export var step_sound_2: AudioStream
+@export var step_volume_db := -16.0
 
 @onready var head = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -46,6 +51,10 @@ var _death_cam: Camera3D               # cámara cenital creada al morir
 var _last_anim_position := Vector3.ZERO
 var _sprint_time_left := MAX_SPRINT_DURATION
 var _sprint_cooldown_left := 0.0
+var _step_player_1: AudioStreamPlayer
+var _step_player_2: AudioStreamPlayer
+var _step_timer := 0.0
+var _next_step_sound := 0
 
 func is_local_player() -> bool:
 	return "--debug_solo" in OS.get_cmdline_args() or is_multiplayer_authority()
@@ -73,6 +82,22 @@ func _setup_local():
 		var game = get_parent()
 		_hud.set_players_alive(game.get_alive_count(), game.get_total_count())
 		game.players_alive_changed.connect(_hud.set_players_alive)
+		_setup_step_sound()
+
+
+func _setup_step_sound() -> void:
+	if step_sound_1 == null and ResourceLoader.exists("res://audio/sfx/step-slow1.mp3"):
+		step_sound_1 = load("res://audio/sfx/step-slow1.mp3")
+	if step_sound_2 == null and ResourceLoader.exists("res://audio/sfx/step-slow2.mp3"):
+		step_sound_2 = load("res://audio/sfx/step-slow2.mp3")
+	_step_player_1 = AudioStreamPlayer.new()
+	_step_player_1.stream = step_sound_1
+	_step_player_1.volume_db = step_volume_db
+	add_child(_step_player_1)
+	_step_player_2 = AudioStreamPlayer.new()
+	_step_player_2.stream = step_sound_2
+	_step_player_2.volume_db = step_volume_db
+	add_child(_step_player_2)
 
 ## Construye el modelo 3D del jugador (corre en TODOS los peers: cada uno renderiza
 ## a todos los jugadores). El jugador local oculta su propio modelo (primera persona).
@@ -210,11 +235,13 @@ func _physics_process(delta):
 	move_and_slide()
 
 	# Estado de caminar: lo replica el synchronizer → los demás peers animan igual.
-	_is_walking = Vector2(velocity.x, velocity.z).length() > WALK_SPEED_THRESHOLD
+	var planar_speed := Vector2(velocity.x, velocity.z).length()
+	_is_walking = planar_speed > WALK_SPEED_THRESHOLD
+	_update_step_sound(delta, is_sprinting)
 
 	# Avisar al HUD la velocidad planar para el bob del arma + estado de stamina
 	if _hud:
-		_hud.set_moving(Vector2(velocity.x, velocity.z).length())
+		_hud.set_moving(planar_speed)
 		var on_cd := _sprint_cooldown_left > 0.0
 		var stamina_frac := _sprint_time_left / MAX_SPRINT_DURATION
 		if on_cd:
@@ -262,6 +289,25 @@ func _update_crosshair() -> void:
 		return
 	var has_target := _current_target != null or _current_npc_target != null
 	_hud.set_target_acquired(has_target)
+
+
+func _update_step_sound(delta: float, is_sprinting: bool) -> void:
+	if not _is_walking or not is_on_floor():
+		_step_timer = 0.0
+		return
+	if _step_player_1 == null or _step_player_2 == null:
+		return
+	if _step_player_1.stream == null or _step_player_2.stream == null:
+		return
+
+	_step_timer -= delta
+	if _step_timer <= 0.0:
+		if _next_step_sound == 0:
+			_step_player_1.play()
+		else:
+			_step_player_2.play()
+		_next_step_sound = 1 - _next_step_sound
+		_step_timer = SPRINT_STEP_INTERVAL if is_sprinting else WALK_STEP_INTERVAL
 
 
 func _try_fire() -> void:

@@ -2,7 +2,7 @@ extends CanvasLayer
 
 @export var weapon_texture: Texture2D
 
-@export var fire_sound: AudioStream # Sonido del disparo. hay que ponerlo en → /audio/sfx/shot.wav.
+@export var fire_sound: AudioStream # Sonido del disparo: res://audio/sfx/shot.mp3.
 
 @export_range(0.05, 1.5, 0.01) var weapon_screen_fraction := 0.33
 
@@ -51,8 +51,8 @@ func _ready() -> void:
 
 
 func _setup_fire_sound() -> void:
-	if fire_sound == null and ResourceLoader.exists("res://audio/sfx/shot.wav"):
-		fire_sound = load("res://audio/sfx/shot.wav")
+	if fire_sound == null and ResourceLoader.exists("res://audio/sfx/shot.mp3"):
+		fire_sound = load("res://audio/sfx/shot.mp3")
 	_shot_player = AudioStreamPlayer.new()
 	_shot_player.stream = fire_sound
 	add_child(_shot_player)

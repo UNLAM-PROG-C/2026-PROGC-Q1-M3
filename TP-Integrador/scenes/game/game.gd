@@ -2,6 +2,7 @@ extends Node3D
 
 @onready var npc_thread_pool = $NPCThreadPool
 @onready var pause_menu = $PauseMenu
+@onready var ambient_people: AudioStreamPlayer = $AmbientPeople
 
 const CAPTURE_MAX_DISTANCE := 5.0   ## 3m de alcance del cliente + 2m tolerancia latencia
 ## Segundos antes de regresar al lobby cuando termina la ronda.
@@ -37,6 +38,8 @@ func get_total_count() -> int:
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
+	LobbyMusic.stop()
+	_setup_ambient_people()
 	_total_count = _get_player_count()
 	_alive_count = _total_count
 	pause_menu.resume_requested.connect(_resume_game)
@@ -57,6 +60,13 @@ func _ready():
 		_alive.append(1)
 		for id in multiplayer.get_peers():
 			_alive.append(id)
+
+
+func _setup_ambient_people() -> void:
+	if ambient_people.stream is AudioStreamMP3:
+		ambient_people.stream.loop = true
+	if ambient_people.stream and not ambient_people.playing:
+		ambient_people.play()
 
 @rpc("authority", "call_local", "reliable")
 func spawn_player(peer_id: int):

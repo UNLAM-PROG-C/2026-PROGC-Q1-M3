@@ -16,6 +16,7 @@ var _state: State = State.SETUP
 
 
 func _ready() -> void:
+	LobbyMusic.play()
 	_style_panel()
 	_style_buttons()
 	GameNetwork.connection_succeeded.connect(_on_connection_succeeded)

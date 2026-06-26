@@ -12,10 +12,16 @@ const ORIENT_OFFSET := 0.0
 const BLOOD_COLOR := Color(0.55, 0.0, 0.0)
 ## Ángulo de caída del modelo (PI/2 = tumbado en el piso)
 const FALL_ANGLE := PI / 2.0
+const STEP_DISTANCE := 1.25
 
 var facing_rotation_y := 0.0
 ## Índice dentro del NPCThreadPool; asignado por el pool en _rebuild_npcs.
 var npc_index := -1
+
+@export var step_sound_1: AudioStream
+@export var step_sound_2: AudioStream
+@export var step_volume_db := -22.0
+@export var step_max_distance := 12.0
 
 var _model: Node3D
 var _anim_player: AnimationPlayer
@@ -23,10 +29,18 @@ var _model_index := 0
 var _is_idle := false
 var _dead := false
 var _area: Area3D
+var _step_player_1: AudioStreamPlayer3D
+var _step_player_2: AudioStreamPlayer3D
+var _next_step_sound := 0
+var _last_step_position := Vector3.ZERO
+var _distance_until_next_step := STEP_DISTANCE
 
 
 func _ready() -> void:
 	_setup_collision()
+	_setup_step_sound()
+	_last_step_position = global_position
+	_distance_until_next_step = randf_range(0.0, STEP_DISTANCE)
 
 
 ## Llamado por el pool justo despues de instanciar y agregar al arbol.
@@ -74,6 +88,7 @@ func kill_npc() -> void:
 	if _dead:
 		return
 	_dead = true
+	_stop_step_sound()
 	_disable_area()
 	if _anim_player and _anim_player.is_playing():
 		_anim_player.pause()
@@ -133,10 +148,61 @@ func _make_blood_mesh() -> SphereMesh:
 	return pmesh
 
 
+func _setup_step_sound() -> void:
+	if step_sound_1 == null and ResourceLoader.exists("res://audio/sfx/step-slow1.mp3"):
+		step_sound_1 = load("res://audio/sfx/step-slow1.mp3")
+	if step_sound_2 == null and ResourceLoader.exists("res://audio/sfx/step-slow2.mp3"):
+		step_sound_2 = load("res://audio/sfx/step-slow2.mp3")
+	_step_player_1 = _make_step_player(step_sound_1)
+	_step_player_2 = _make_step_player(step_sound_2)
+
+
+func _make_step_player(stream: AudioStream) -> AudioStreamPlayer3D:
+	var player := AudioStreamPlayer3D.new()
+	player.stream = stream
+	player.volume_db = step_volume_db
+	player.max_distance = step_max_distance
+	player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_LOGARITHMIC
+	add_child(player)
+	return player
+
+
+func _stop_step_sound() -> void:
+	if _step_player_1:
+		_step_player_1.stop()
+	if _step_player_2:
+		_step_player_2.stop()
+
+
+func _update_step_sound(next_position: Vector3, is_idle: bool) -> void:
+	if is_idle or _dead:
+		_last_step_position = next_position
+		return
+	if _step_player_1 == null or _step_player_2 == null:
+		return
+	if _step_player_1.stream == null or _step_player_2.stream == null:
+		return
+
+	var from := Vector2(_last_step_position.x, _last_step_position.z)
+	var to := Vector2(next_position.x, next_position.z)
+	_distance_until_next_step -= from.distance_to(to)
+	_last_step_position = next_position
+	if _distance_until_next_step > 0.0:
+		return
+
+	if _next_step_sound == 0:
+		_step_player_1.play()
+	else:
+		_step_player_2.play()
+	_next_step_sound = 1 - _next_step_sound
+	_distance_until_next_step = STEP_DISTANCE
+
+
 ## Si el NPC está muerto, ignora las actualizaciones de posición del thread pool.
 func apply_simulation_state(next_position: Vector3, next_rotation_y: float, is_idle: bool = false) -> void:
 	if _dead:
 		return
+	_update_step_sound(next_position, is_idle)
 	global_position = next_position
 	facing_rotation_y = next_rotation_y
 	if _model != null:
