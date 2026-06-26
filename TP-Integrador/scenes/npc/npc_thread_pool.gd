@@ -2,10 +2,12 @@ extends Node3D
 
 @export var npc_scene: PackedScene
 @export var path_node_path: NodePath
+@export var paths_root_path: NodePath
+@export var path_name_prefix := "NPCPath"
 @export var npcs_per_player := 30
 @export var worker_count := 4
 @export var movement_radius := 1.25
-@export var movement_speed := 1.5
+@export var movement_speed := 3.0
 @export var npc_spacing := 1.8
 @export var hop_height := 0.0
 @export var hop_frequency := 7.5
@@ -40,8 +42,9 @@ var _reacts_to_players: Array[bool] = []
 var _sprint_until_times: Array[float] = []
 var _sprint_movement_offsets: Array[float] = []
 var _next_sprint_check_times: Array[float] = []
-var _path_points: Array[Vector3] = []
-var _path_length: float = 0.0
+var _path_caches: Array[Dictionary] = []
+var _path_assignments: Array[int] = []
+var _path_assignment_counts: Array[int] = []
 var _running := false
 var _queued_jobs := 0
 var _finished_jobs := 0
@@ -135,9 +138,16 @@ func _rebuild_npcs(npc_count: int):
 	_sprint_until_times.clear()
 	_sprint_movement_offsets.clear()
 	_next_sprint_check_times.clear()
+	_path_assignments.clear()
+	_path_assignment_counts.clear()
+
+	_build_balanced_path_assignments(npc_count)
+	var path_used_counts: Array[int] = []
+	for i in range(_path_caches.size()):
+		path_used_counts.append(0)
 
 	for i in range(npc_count):
-		_path_distance_offsets.append(_random_path_distance())
+		_path_distance_offsets.append(_balanced_path_distance(i, path_used_counts))
 		_lateral_offsets.append(_random_signed_offset())
 		_pause_until_times.append(0.0)
 		_pause_elapsed_offsets.append(0.0)
@@ -169,9 +179,15 @@ func _rebuild_npcs(npc_count: int):
 
 
 func _calculate_origin(index: int) -> Vector3:
-	if not _path_points.is_empty():
+	var path_cache := _get_path_cache(index)
+	if not path_cache.is_empty():
 		var distance: float = _calculate_path_distance(index)
-		var sample: Dictionary = _sample_path(_path_points, _path_length, distance)
+		var sample: Dictionary = _sample_path(
+			path_cache["points"],
+			float(path_cache["length"]),
+			distance,
+			bool(path_cache.get("is_closed", false))
+		)
 		return sample["position"] + sample["right"] * _calculate_lateral_offset(index)
 
 	var columns: int = int(max(1, int(ceil(sqrt(float(npcs_per_player))))))
@@ -224,8 +240,7 @@ func _queue_frame_jobs():
 			"movement_speed": movement_speed,
 			"hop_height": hop_height,
 			"hop_frequency": hop_frequency,
-			"path_points": _path_points,
-			"path_length": _path_length,
+			"path_cache": _get_path_cache(i),
 			"path_offset": _calculate_path_distance(i),
 			"lateral_offset": _calculate_lateral_offset(i),
 			"is_paused": is_paused,
@@ -271,28 +286,98 @@ func _wait_for_pending_jobs():
 
 # precalculo y guardado en cache de los puntos del path con su longitud total
 func _refresh_path_cache():
-	_path_points.clear()
-	_path_length = 0.0
+	_path_caches.clear()
 
-	if String(path_node_path).is_empty():
+	var paths: Array[Path3D] = _find_npc_paths()
+	for path in paths:
+		if path.curve == null:
+			continue
+		var baked_points: PackedVector3Array = path.curve.get_baked_points()
+		var points: Array[Vector3] = []
+		for point in baked_points:
+			points.append(path.to_global(point))
+		var is_closed := bool(path.curve.get("closed"))
+		var length := _calculate_path_length(points, is_closed)
+		if length <= 0.0:
+			continue
+		_path_caches.append({
+			"points": points,
+			"length": length,
+			"is_closed": is_closed,
+		})
+
+
+func _find_npc_paths() -> Array[Path3D]:
+	var paths: Array[Path3D] = []
+
+	if not String(path_node_path).is_empty():
+		var explicit_path: Path3D = get_node_or_null(path_node_path) as Path3D
+		if explicit_path != null:
+			paths.append(explicit_path)
+
+	var root: Node = null
+	if not String(paths_root_path).is_empty():
+		root = get_node_or_null(paths_root_path)
+	if root == null:
+		root = get_parent()
+	if root == null:
+		return paths
+
+	_collect_npc_paths(root, paths)
+	return paths
+
+
+func _collect_npc_paths(node: Node, paths: Array[Path3D]) -> void:
+	if node is Path3D and _is_npc_path(node):
+		var path := node as Path3D
+		if not paths.has(path):
+			paths.append(path)
+
+	for child in node.get_children():
+		_collect_npc_paths(child, paths)
+
+
+func _is_npc_path(node: Node) -> bool:
+	if path_name_prefix.is_empty():
+		return true
+	return String(node.name).begins_with(path_name_prefix)
+
+
+func _build_balanced_path_assignments(npc_count: int) -> void:
+	if _path_caches.is_empty():
 		return
 
-	var path: Path3D = get_node_or_null(path_node_path) as Path3D
-	if path == null or path.curve == null:
-		return
+	var path_count := _path_caches.size()
+	var assignments: Array[int] = []
+	for i in range(path_count):
+		_path_assignment_counts.append(0)
 
-	var baked_points: PackedVector3Array = path.curve.get_baked_points()
-	for point in baked_points:
-		_path_points.append(path.to_global(point))
+	for i in range(npc_count):
+		assignments.append(i % path_count)
 
-	_path_length = _calculate_path_length(_path_points)
+	for i in range(assignments.size() - 1, 0, -1):
+		var swap_index := _rng.randi_range(0, i)
+		var value := assignments[i]
+		assignments[i] = assignments[swap_index]
+		assignments[swap_index] = value
+
+	for assignment in assignments:
+		var path_index := int(assignment)
+		_path_assignments.append(path_index)
+		_path_assignment_counts[path_index] += 1
 
 
-func _calculate_path_length(points: Array[Vector3]) -> float:
+func _calculate_path_length(points: Array[Vector3], is_closed: bool = false) -> float:
+	if points.size() < 2:
+		return 0.0
+
 	var length: float = 0.0
+	var segment_count := points.size()
+	if not is_closed:
+		segment_count -= 1
 
-	for i in range(points.size() - 1):
-		length += points[i].distance_to(points[i + 1])
+	for i in range(segment_count):
+		length += points[i].distance_to(points[(i + 1) % points.size()])
 
 	return length
 
@@ -301,7 +386,15 @@ func _calculate_path_length(points: Array[Vector3]) -> float:
 # ej: distance = 5, la func devuelve el punto en donde estaria si avanzo 5 sobre
 #     el path
 func _sample_path_position(distance: float) -> Vector3:
-	var sample: Dictionary = _sample_path(_path_points, _path_length, distance)
+	var path_cache := _get_path_cache(0)
+	if path_cache.is_empty():
+		return Vector3.ZERO
+	var sample: Dictionary = _sample_path(
+		path_cache["points"],
+		float(path_cache["length"]),
+		distance,
+		bool(path_cache.get("is_closed", false))
+	)
 	return sample["position"]
 
 
@@ -440,11 +533,43 @@ func _random_signed_offset() -> float:
 	return magnitude * sign
 
 
-func _random_path_distance() -> float:
-	if _path_length <= 0.0:
+func _balanced_path_distance(index: int, path_used_counts: Array[int]) -> float:
+	var path_cache := _get_path_cache(index)
+	if path_cache.is_empty():
 		return 0.0
 
-	return _rng.randf_range(0.0, _path_length)
+	var path_index := _get_assigned_path_index(index)
+	var path_length := float(path_cache["length"])
+	var path_total := 1
+	if path_index >= 0 and path_index < _path_assignment_counts.size():
+		path_total = int(max(1, _path_assignment_counts[path_index]))
+
+	var path_slot := 0
+	if path_index >= 0 and path_index < path_used_counts.size():
+		path_slot = path_used_counts[path_index]
+		path_used_counts[path_index] += 1
+
+	var slot_size := path_length / float(path_total)
+	var jitter := _rng.randf_range(-0.35, 0.35) * slot_size
+	return fposmod((float(path_slot) + 0.5) * slot_size + jitter, path_length)
+
+
+func _get_path_cache(index: int) -> Dictionary:
+	if _path_caches.is_empty():
+		return {}
+
+	var path_index := _get_assigned_path_index(index)
+	return _path_caches[path_index]
+
+
+func _get_assigned_path_index(index: int) -> int:
+	if _path_caches.is_empty():
+		return 0
+
+	var path_index := 0
+	if index >= 0 and index < _path_assignments.size():
+		path_index = _path_assignments[index]
+	return posmod(path_index, _path_caches.size())
 
 
 func _get_offset(offsets: Array[float], index: int) -> float:
@@ -506,10 +631,17 @@ func _simulate_npc(job: Dictionary) -> Dictionary:
 	var next_position: Vector3
 	var rotation_y: float
 
-	if float(job["path_length"]) > 0.0:
-		var points: Array = job["path_points"]
-		var distance: float = time * speed * 2.0 + sprint_movement_offset * 2.0 + float(job["path_offset"])
-		var path_sample: Dictionary = _sample_path(points, float(job["path_length"]), distance)
+	var path_cache: Dictionary = job["path_cache"]
+	if not path_cache.is_empty():
+		var points: Array = path_cache["points"]
+		var path_length := float(path_cache["length"])
+		var distance: float = time * speed + sprint_movement_offset + float(job["path_offset"])
+		var path_sample: Dictionary = _sample_path(
+			points,
+			path_length,
+			distance,
+			bool(path_cache.get("is_closed", false))
+		)
 		next_position = path_sample["position"] + path_sample["right"] * float(job["lateral_offset"])
 		rotation_y = path_sample["rotation_y"]
 	else:
@@ -531,7 +663,7 @@ func _simulate_npc(job: Dictionary) -> Dictionary:
 
 ## func para que un NPC se mueva sobre una lista de puntos como si fuera una 
 ## ruta
-func _sample_path(points: Array, path_length: float, distance: float) -> Dictionary:
+func _sample_path(points: Array, path_length: float, distance: float, is_closed: bool = false) -> Dictionary:
 	if points.size() == 0:
 		return {
 			"position": Vector3.ZERO,
@@ -546,19 +678,24 @@ func _sample_path(points: Array, path_length: float, distance: float) -> Diction
 			"rotation_y": 0.0,
 		}
 
-	var cycle_length: float = path_length * 2.0
-	var cycle_distance: float = fposmod(distance, cycle_length)
-	var is_returning: bool = cycle_distance > path_length
-	var wrapped_distance: float = path_length
-	if is_returning:
-		wrapped_distance = cycle_length - cycle_distance
-	else:
-		wrapped_distance = cycle_distance
+	var wrapped_distance: float = fposmod(distance, path_length)
+	var is_returning := false
+	var segment_count := points.size()
+	if not is_closed:
+		var cycle_length: float = path_length * 2.0
+		var cycle_distance: float = fposmod(distance, cycle_length)
+		is_returning = cycle_distance > path_length
+		if is_returning:
+			wrapped_distance = cycle_length - cycle_distance
+		else:
+			wrapped_distance = cycle_distance
+		segment_count -= 1
+
 	var traveled: float = 0.0
 
-	for i in range(points.size() - 1):
+	for i in range(segment_count):
 		var from: Vector3 = points[i]
-		var to: Vector3 = points[i + 1]
+		var to: Vector3 = points[(i + 1) % points.size()]
 		var segment_length: float = from.distance_to(to)
 		if segment_length <= 0.001:
 			continue
@@ -578,7 +715,12 @@ func _sample_path(points: Array, path_length: float, distance: float) -> Diction
 
 		traveled += segment_length
 
-	var last_segment_direction: Vector3 = (points[points.size() - 1] - points[points.size() - 2]).normalized()
+	var last_from_index := points.size() - 2
+	var last_to_index := points.size() - 1
+	if is_closed:
+		last_from_index = points.size() - 1
+		last_to_index = 0
+	var last_segment_direction: Vector3 = (points[last_to_index] - points[last_from_index]).normalized()
 	var last_facing_direction: Vector3 = last_segment_direction
 	if is_returning:
 		last_facing_direction = -last_facing_direction

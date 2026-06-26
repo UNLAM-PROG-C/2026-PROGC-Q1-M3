@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-const SPEED = 7.0
+const SPEED = 3.0
 const GRAVITY = -9.8
 const MOUSE_SENSITIVITY = 0.005
 const FIRST_PERSON_MODEL_LAYER := 1 << 2
@@ -346,7 +346,7 @@ func get_display_name() -> String:
 ## efecto de captura → explosion
 func _play_capture_fx() -> void:
 	var burst := CPUParticles3D.new()
-	burst.process_mode = Node.PROCESS_MODE_ALWAYS 
+	burst.process_mode = Node.PROCESS_MODE_ALWAYS
 	burst.one_shot = true
 	burst.explosiveness = 1.0
 	burst.amount = 32

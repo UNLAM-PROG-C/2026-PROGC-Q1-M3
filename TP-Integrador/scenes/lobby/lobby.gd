@@ -16,7 +16,7 @@ var _state: LobbyState = LobbyState.DISCONNECTED
 
 func _ready() -> void:
 	if "--debug_solo" in OS.get_cmdline_args():
-		get_tree().change_scene_to_file.call_deferred("res://scenes/game/game.tscn")
+		get_tree().change_scene_to_file.call_deferred("res://scenes/map/map.tscn")
 		return
 	GameNetwork.player_list_changed.connect(_on_player_list_changed)
 	GameNetwork.connection_succeeded.connect(_on_connection_succeeded)
@@ -156,4 +156,4 @@ func _on_server_disconnected() -> void:
 
 @rpc("authority", "call_local", "reliable")
 func load_game() -> void:
-	get_tree().change_scene_to_file("res://scenes/game/game.tscn")
+	get_tree().change_scene_to_file("res://scenes/map/map.tscn")

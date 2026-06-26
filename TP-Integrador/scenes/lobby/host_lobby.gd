@@ -149,4 +149,4 @@ func _on_player_list_changed() -> void:
 
 @rpc("authority", "call_local", "reliable")
 func load_game() -> void:
-	get_tree().change_scene_to_file("res://scenes/game/game.tscn")
+	get_tree().change_scene_to_file("res://scenes/map/map.tscn")

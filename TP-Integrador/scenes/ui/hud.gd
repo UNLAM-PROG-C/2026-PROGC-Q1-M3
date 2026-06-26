@@ -21,7 +21,7 @@ extends CanvasLayer
 @onready var _name_label: Label = $NameLabel
 @onready var _players_label: Label = $PlayersPanel/PlayersLabel
 
-const PLAYER_SPEED := 7.0 #==SPEED de player en player.gd
+const PLAYER_SPEED := 3.0 #==SPEED de player en player.gd
 
 const CROSSHAIR_IDLE := Color(1, 1, 1, 0.85)
 ## Rojo: apuntando a un objetivo (jugador o NPC) en rango — mismo color para ambos.
