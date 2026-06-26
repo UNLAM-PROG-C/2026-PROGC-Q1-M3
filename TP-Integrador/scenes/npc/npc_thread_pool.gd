@@ -163,8 +163,8 @@ func _rebuild_npcs(npc_count: int):
 		var origin := _calculate_origin(i)
 
 		npc.name = "ThreadedNPC_%02d" % i
-		npc.position = origin
 		add_child(npc)
+		npc.global_position = origin
 		npc.setup(CharacterAppearance.random_npc_appearance(_rng, forbidden_player_appearance))
 		npc.npc_index = i  # usado por player.gd para reportar muertes al servidor
 

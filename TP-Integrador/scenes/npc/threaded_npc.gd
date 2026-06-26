@@ -137,7 +137,7 @@ func _make_blood_mesh() -> SphereMesh:
 func apply_simulation_state(next_position: Vector3, next_rotation_y: float, is_idle: bool = false) -> void:
 	if _dead:
 		return
-	position = next_position
+	global_position = next_position
 	facing_rotation_y = next_rotation_y
 	if _model != null:
 		_model.rotation.y = next_rotation_y + ORIENT_OFFSET

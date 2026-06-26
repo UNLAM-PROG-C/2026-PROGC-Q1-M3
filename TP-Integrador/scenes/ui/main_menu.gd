@@ -3,7 +3,7 @@ extends Control
 
 func _ready() -> void:
 	if "--debug_solo" in OS.get_cmdline_args():
-		get_tree().change_scene_to_file.call_deferred("res://scenes/map/map.tscn")
+		get_tree().change_scene_to_file.call_deferred("res://scenes/game/game.tscn")
 		return
 	_apply_button_style($ButtonsBox/CreateButton)
 	_apply_button_style($ButtonsBox/JoinButton)

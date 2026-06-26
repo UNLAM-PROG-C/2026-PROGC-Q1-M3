@@ -1,92 +1,23 @@
 [gd_scene format=3 uid="uid://cvf3xvpkw4gwp"]
 
 [ext_resource type="PackedScene" uid="uid://coee7wevy8ww1" path="res://scenes/map/Floors/floor_70x70.tscn" id="1_04w0f"]
-[ext_resource type="PackedScene" uid="uid://bnuwfhmyf6mmm" path="res://scenes/ui/pause_menu.tscn" id="1_sqgf4"]
 [ext_resource type="PackedScene" uid="uid://cxusj5ymwxjkg" path="res://scenes/map/Rooms/room_blue.tscn" id="2_fcby6"]
 [ext_resource type="PackedScene" uid="uid://ceunyoqbjvqc8" path="res://scenes/map/Rooms/room_green.tscn" id="3_jcaow"]
 [ext_resource type="PackedScene" uid="uid://dbja5wekiskdr" path="res://scenes/map/Rooms/room_red.tscn" id="4_04w0f"]
 [ext_resource type="PackedScene" uid="uid://dd46v7aw4cqn8" path="res://scenes/map/Rooms/room_violet.tscn" id="5_sqgf4"]
 [ext_resource type="PackedScene" uid="uid://l0q7t28wgao7" path="res://scenes/map/Ceilings/ceiling_70x70_tiles133.tscn" id="6_jcaow"]
-[ext_resource type="Script" uid="uid://cqxxj8bf071n6" path="res://scenes/npc/npc_thread_pool.gd" id="8_vvrx0"]
-[ext_resource type="PackedScene" uid="uid://cu4pnet80h04m" path="res://scenes/npc/threaded_npc.tscn" id="9_f17u5"]
-[ext_resource type="Script" uid="uid://bip4nfoytppkx" path="res://scenes/game/game.gd" id="10_game"]
-[ext_resource type="PackedScene" uid="uid://b6514v030pgg4" path="res://scenes/objects/mirror/mirror.tscn" id="11_x2kg6"]
-[ext_resource type="Script" uid="uid://cg2etv51edgkd" path="res://scenes/objects/mirror/mirror.gd" id="12_cumk7"]
-
-[sub_resource type="Curve3D" id="Curve3D_b56te"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 8.557237, 1, -22.77348, 0, 0, 0, 0, 0, 0, 2.8760147, 1, -9.84051, 0, 0, 0, 0, 0, 0, 8.787727, 1, -1.2982864, 0, 0, 0, 0, 0, 0, 20.03688, 1, 3, 0, 0, 0, 0, 0, 0, -2.907528, 1, 6, 0, 0, 0, 0, 0, 0, 5.3658485, 1, 22.94569),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
-}
-point_count = 6
-
-[sub_resource type="Curve3D" id="Curve3D_npc_path_red"]
-closed = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -16.906805, 1, 10.104532, 0, 0, 0, 0, 0, 0, -16.91035, 1, 14.889469, 0, 0, 0, 0, 0, 0, -10.235299, 1, 17, 0, 0, 0, 0, 0, 0, -1.0788708, 1, 22.881691, 0, 0, 0, 0, 0, 0, -14, 1, 26.170525, 0, 0, 0, 0, 0, 0, -25.73798, 1, 24.49789, 0, 0, 0, 0, 0, 0, -25.492043, 1, 18.226479, 0, 0, 0, 0, 0, 0, -19.029171, 1, 5.015388, 0, 0, 0, 0, 0, 0, -17.690788, 1, -0.4217962, 0, 0, 0, 0, 0, 0, -15.014019, 1, -1.9274772, 0, 0, 0, 0, 0, 0, -7.5692596, 1, -5.02249, 0, 0, 0, 0, 0, 0, -3.8892288, 1, -9.498737, 0, 0, 0, 0, 0, 0, 3.6973648, 1, -11.97599, 0, 0, 0, 0, 0, 0, 7.568077, 1, -9.343906, 0, 0, 0, 0, 0, 0, 14.225693, 1, -5.6280255, 0, 0, 0, 0, 0, 0, 16.857788, 1, -0.054200534, 0, 0, 0, 0, 0, 0, 16.702957, 1, 7.996878, 0, 0, 0, 0, 0, 0, 16.238464, 1, 12.022418, 0, 0, 0, 0, 0, 0, 12.212929, 1, 11.712762, 0, 0, 0, 0, 0, 0, 8.032555, 1, 12.486904, 0, 0, 0, 0, 0, 0, 4.007019, 1, 12.641731, 0, 0, 0, 0, 0, 0, -1.7216263, 1, 11.093449, 0, 0, 0, 0, 0, 0, -4.818199, 1, 11.557935, 0, 0, 0, 0, 0, 0, -10.082359, 1, 9.390334, 0, 0, 0, 0, 0, 0, -12.714455, 1, 4.590653, 0, 0, 0, 0, 0, 0, -16.585167, 1, 2.4230552, 0, 0, 0, 0, 0, 0, -22.568817, 1, 10.474134),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 27
-
-[sub_resource type="Curve3D" id="Curve3D_npc_path_green"]
-closed = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -16.517143, 1, -14.574232, 0, 0, 0, 0, 0, 0, -11, 1, -22.588058, 0, 0, 0, 0, 0, 0, 7.930847, 1, -22.54713, 0, 0, 0, 0, 0, 0, 15.537788, 1, -25.123081, 0, 0, 0, 0, 0, 0, 20.860779, 1, -25.9956, 0, 0, 0, 0, 0, 0, 28.628141, 1, -22.670567, 0, 0, 0, 0, 0, 0, 27.77738, 1, -9.003763, 0, 0, 0, 0, 0, 0, 10.356613, 1, -6.8444448, 0, 0, 0, 0, 0, 0, -12.967197, 1, -9.193845),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 9
-
-[sub_resource type="Curve3D" id="Curve3D_npc_path_blue"]
-closed = true
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.203102, 1, 8.788868, 0, 0, 0, 0, 0, 0, 22, 1, 1.5496273, 0, 0, 0, 0, 0, 0, 22.672997, 1, 16, 0, 0, 0, 0, 0, 0, 26.581753, 1, 22.47495, 0, 0, 0, 0, 0, 0, 20.993385, 1, 27.575994, 0, 0, 0, 0, 0, 0, 13.978674, 1, 27.803436, 0, 0, 0, 0, 0, 0, 13.165203, 1, 19.171597, 0, 0, 0, 0, 0, 0, 4.9683714, 1, 18.7185),
-"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
-}
-point_count = 8
 
 [node name="Map" type="Node3D" unique_id=105349108]
-script = ExtResource("10_game")
 
-[node name="PauseMenu" parent="." unique_id=924904016 instance=ExtResource("1_sqgf4")]
+[node name="Floor_70x70" parent="." unique_id=200950674 instance=ExtResource("1_04w0f")]
 
-[node name="Building" type="Node3D" parent="." unique_id=2074445190]
+[node name="Room_Blue" parent="." unique_id=1204253539 instance=ExtResource("2_fcby6")]
 
-[node name="Floor_70x70" parent="Building" unique_id=200950674 instance=ExtResource("1_04w0f")]
+[node name="Room_Green" parent="." unique_id=899778730 instance=ExtResource("3_jcaow")]
 
-[node name="Room_Blue" parent="Building" unique_id=1204253539 instance=ExtResource("2_fcby6")]
+[node name="Room_Red" parent="." unique_id=120650622 instance=ExtResource("4_04w0f")]
 
-[node name="Room_Green" parent="Building" unique_id=899778730 instance=ExtResource("3_jcaow")]
+[node name="Room_Violet" parent="." unique_id=1986395522 instance=ExtResource("5_sqgf4")]
 
-[node name="Room_Red" parent="Building" unique_id=120650622 instance=ExtResource("4_04w0f")]
-
-[node name="Room_Violet" parent="Building" unique_id=1986395522 instance=ExtResource("5_sqgf4")]
-
-[node name="Ceiling_70x70" parent="Building" unique_id=1104371455 instance=ExtResource("6_jcaow")]
+[node name="Ceiling_70x70" parent="." unique_id=679083629 instance=ExtResource("6_jcaow")]
 visible = false
-
-[node name="NPCPath" type="Path3D" parent="." unique_id=1933018531]
-visible = false
-curve = SubResource("Curve3D_b56te")
-
-[node name="NPCPath_RedRoom" type="Path3D" parent="." unique_id=2053967433]
-curve = SubResource("Curve3D_npc_path_red")
-
-[node name="NPCPath_GreenRoom" type="Path3D" parent="." unique_id=1483055920]
-curve = SubResource("Curve3D_npc_path_green")
-
-[node name="NPCPath_BlueRoom" type="Path3D" parent="." unique_id=118096813]
-curve = SubResource("Curve3D_npc_path_blue")
-
-[node name="NPCThreadPool" type="Node3D" parent="." unique_id=967199641]
-script = ExtResource("8_vvrx0")
-npc_scene = ExtResource("9_f17u5")
-path_node_path = NodePath("../NPCPath")
-paths_root_path = NodePath("..")
-
-[node name="Mirror" type="Node3D" parent="." unique_id=1533094784 instance=ExtResource("11_x2kg6")]
-transform = Transform3D(-0.99951035, 0, 0.03128901, 0, 1, 0, -0.03128901, 0, -0.99951035, 11.444567, 2.3841858e-07, 12.652145)
-script = ExtResource("12_cumk7")
-
-[node name="Mirror2" type="Node3D" parent="." unique_id=1625194292 instance=ExtResource("11_x2kg6")]
-transform = Transform3D(0.6200212, 0, -0.78458506, 0, 1, 0, 0.78458506, 0, 0.6200212, -4.5467844, 0, -4.2648263)
-script = ExtResource("12_cumk7")
