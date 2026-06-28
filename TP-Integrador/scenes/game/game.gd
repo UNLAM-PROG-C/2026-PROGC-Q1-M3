@@ -48,14 +48,19 @@ func _ready():
 	add_child(end_screen)
 
 	if "--debug_solo" in OS.get_cmdline_args():
-		spawn_player(1)
+		spawn_player(1, _pick_spawn_pos([]))
 		npc_thread_pool.set_player_count(1)
 		return
 
 	if multiplayer.is_server():
-		spawn_player.rpc(1)
+		var used: Array[Vector3] = []
+		var pos_server := _pick_spawn_pos(used)
+		used.append(pos_server)
+		spawn_player.rpc(1, pos_server)
 		for id in multiplayer.get_peers():
-			spawn_player.rpc(id)
+			var pos := _pick_spawn_pos(used)
+			used.append(pos)
+			spawn_player.rpc(id, pos)
 		npc_thread_pool.set_player_count(_get_player_count())
 		_alive.append(1)
 		for id in multiplayer.get_peers():
@@ -68,11 +73,26 @@ func _setup_ambient_people() -> void:
 	if ambient_people.stream and not ambient_people.playing:
 		ambient_people.play()
 
+## Devuelve una posición de spawn al azar que no esté en `used`.
+## Usa los Marker3D del grupo "SpawnPoints"; si no hay ninguno, cae al origen.
+func _pick_spawn_pos(used: Array[Vector3]) -> Vector3:
+	var points := get_tree().get_nodes_in_group("SpawnPoints")
+	if points.is_empty():
+		return Vector3(0, 1, 0)
+	points.shuffle()
+	for p in points:
+		var pos: Vector3 = p.global_position
+		if not used.has(pos):
+			return pos
+	# Todos usados (más jugadores que spawn points): reutilizar al azar.
+	return points[randi() % points.size()].global_position
+
+
 @rpc("authority", "call_local", "reliable")
-func spawn_player(peer_id: int):
+func spawn_player(peer_id: int, spawn_pos: Vector3):
 	var player = preload("res://scenes/player/player.tscn").instantiate()
 	player.name = str(peer_id)
-	player.position = Vector3(0, 1, 0)
+	player.position = spawn_pos
 	add_child(player)
 	player.set_multiplayer_authority(peer_id)
 	npc_thread_pool.set_player_count(_get_player_count())

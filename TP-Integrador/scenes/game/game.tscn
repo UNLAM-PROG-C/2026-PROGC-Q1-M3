@@ -102,3 +102,30 @@ transform = Transform3D(-0.005249359, 0, 0.1999311, 0, 0.2, 0, -0.1999311, 0, -0
 
 [node name="table" parent="Objects" unique_id=398744470 instance=ExtResource("8_vaxfo")]
 transform = Transform3D(-0.0041189515, 0, 0.99999154, 0, 1, 0, -0.99999154, 0, -0.0041189515, -22.458654, 0.93161386, -13.456919)
+
+[node name="SpawnsPoints" type="Node3D" parent="." unique_id=797346652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012722015, 0, 0.0010223389)
+
+[node name="SP1" type="Marker3D" parent="SpawnsPoints" unique_id=154762175 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.552217, 0, 24.309746)
+
+[node name="SP2" type="Marker3D" parent="SpawnsPoints" unique_id=622378993 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.557346, 0, -22.585732)
+
+[node name="SP3" type="Marker3D" parent="SpawnsPoints" unique_id=1576926493 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.440865, 0, -14.661396)
+
+[node name="SP4" type="Marker3D" parent="SpawnsPoints" unique_id=377872854 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.498106, 0, 22.22776)
+
+[node name="SP5" type="Marker3D" parent="SpawnsPoints" unique_id=1990138595 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.76803, 0, 0)
+
+[node name="SP6" type="Marker3D" parent="SpawnsPoints" unique_id=1070303245 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7519, 0, -0.8097358)
+
+[node name="SP7" type="Marker3D" parent="SpawnsPoints" unique_id=50871706 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.898098, 0, -12.033264)
+
+[node name="SP8" type="Marker3D" parent="SpawnsPoints" unique_id=1030097126 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.118271, 0, 18.897305)
