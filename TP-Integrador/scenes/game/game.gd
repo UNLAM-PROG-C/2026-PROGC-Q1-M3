@@ -25,7 +25,6 @@ var _total_count := 0
 var _in_spectator_mode := false
 var _spectator_index := 0
 var _active_spectator_cam: Camera3D = null
-## true mientras el espectador ve la animación de muerte del jugador observado.
 var _watching_spectated_die := false
 
 
@@ -73,8 +72,6 @@ func _setup_ambient_people() -> void:
 	if ambient_people.stream and not ambient_people.playing:
 		ambient_people.play()
 
-## Devuelve una posición de spawn al azar que no esté en `used`.
-## Usa los Marker3D del grupo "SpawnPoints"; si no hay ninguno, cae al origen.
 func _pick_spawn_pos(used: Array[Vector3]) -> Vector3:
 	var points := get_tree().get_nodes_in_group("SpawnPoints")
 	if points.is_empty():
@@ -111,7 +108,6 @@ func report_capture(victim_id: int) -> void:
 	if not _alive.has(attacker_id) or not _alive.has(victim_id):
 		return
 
-	# validacion de proximidad real por server → anticheat
 	var attacker = get_node_or_null(str(attacker_id))
 	var victim = get_node_or_null(str(victim_id))
 	if attacker == null or victim == null:
@@ -129,9 +125,6 @@ func report_capture(victim_id: int) -> void:
 		start_return_countdown.rpc()
 
 
-## Valida y aplica la muerte de un NPC disparado por un jugador.
-## El servidor verifica que el atacante esté vivo. No valida distancia porque las
-## simulaciones de NPC no están sincronizadas entre peers (cada uno tiene posiciones propias).
 @rpc("any_peer", "reliable")
 func report_npc_kill(npc_index: int) -> void:
 	if _game_over or not multiplayer.is_server():
@@ -147,15 +140,12 @@ func report_npc_kill(npc_index: int) -> void:
 	apply_npc_kill.rpc(npc_index, alarm_pos)
 
 
-## Aplica la muerte del NPC en todos los peers y genera la alarma posicional.
 @rpc("authority", "call_local", "reliable")
 func apply_npc_kill(npc_index: int, kill_pos: Vector3) -> void:
 	npc_thread_pool.kill_npc(npc_index)
 	_spawn_alarm_at(kill_pos)
 
 
-## Crea un AudioStreamPlayer3D posicional en kill_pos con atenuación logarítmica.
-## Coloca tu archivo de alarma en res://audio/sfx/alarm.ogg para que se escuche.
 func _spawn_alarm_at(pos: Vector3) -> void:
 	var player3d := AudioStreamPlayer3D.new()
 	player3d.position = pos
@@ -184,7 +174,6 @@ func apply_elimination(victim_id: int, winner_id: int) -> void:
 		end_screen.show_winner_name(_resolve_player_name(winner_id))
 
 
-## Maneja el estado visual y de input del peer local según si murió, ganó o está especteando.
 func _handle_local_elimination(me: int, victim_id: int, winner_id: int) -> void:
 	if me == victim_id:
 		# Muerte propia: la death cam ya se activó en set_eliminated().
@@ -200,7 +189,6 @@ func _handle_local_elimination(me: int, victim_id: int, winner_id: int) -> void:
 		_local_done = true
 
 
-## Resuelve el nombre de un jugador por su peer_id.
 func _resolve_player_name(peer_id: int) -> String:
 	var node = get_node_or_null(str(peer_id))
 	if node and node.has_method("get_display_name"):
@@ -211,7 +199,6 @@ func _resolve_player_name(peer_id: int) -> String:
 	return "Player"
 
 
-## Activa el modo espectador: des-pausa, cambia a la cámara del primer jugador vivo.
 func _enter_spectator_mode() -> void:
 	_in_spectator_mode = true
 	_spectator_index = 0
@@ -220,7 +207,6 @@ func _enter_spectator_mode() -> void:
 	_switch_spectator_cam(0)
 
 
-## Cambia la cámara activa al jugador vivo en la posición (index mod size) del array.
 func _switch_spectator_cam(index: int) -> void:
 	var alive_players := get_tree().get_nodes_in_group("players")
 	if alive_players.is_empty():
@@ -235,11 +221,9 @@ func _switch_spectator_cam(index: int) -> void:
 	end_screen.show_spectator_label(target.get_display_name())
 
 
-## Retorna true si el espectador local está observando al jugador con victim_id.
 func _is_spectating_player(victim_id: int) -> bool:
 	if not _in_spectator_mode or _active_spectator_cam == null:
 		return false
-	# La cámara vive en Head/Camera3D → Head → Player (hijo directo de game).
 	var node := _active_spectator_cam as Node
 	while node and node != self:
 		if node.get_parent() == self:
@@ -248,7 +232,6 @@ func _is_spectating_player(victim_id: int) -> bool:
 	return false
 
 
-## El jugador que estamos especteando murió: cambiar a su death cam y mostrar WASTED.
 func _spectated_player_died(victim_id: int) -> void:
 	_watching_spectated_die = true
 	var victim = get_node_or_null(str(victim_id))
@@ -262,7 +245,6 @@ func _spectated_player_died(victim_id: int) -> void:
 	end_screen.show_wasted_spectator(_auto_switch_next)
 
 
-## Callback tras el fade del WASTED del espectado: volver al siguiente jugador vivo.
 func _auto_switch_next() -> void:
 	_watching_spectated_die = false
 	var alive_players := get_tree().get_nodes_in_group("players")
@@ -271,7 +253,6 @@ func _auto_switch_next() -> void:
 	_switch_spectator_cam(_spectator_index)
 
 
-## LMB avanza al siguiente jugador, RMB retrocede. Bloqueado mientras ve morir al observado.
 func _handle_spectator_input(event: InputEvent) -> void:
 	if _watching_spectated_die:
 		return
@@ -283,7 +264,6 @@ func _handle_spectator_input(event: InputEvent) -> void:
 		_switch_spectator_cam(_spectator_index - 1)
 
 
-## Inicia el countdown visible para todos y des-pausa el árbol para que el timer corra.
 @rpc("authority", "call_local", "reliable")
 func start_return_countdown() -> void:
 	get_tree().paused = false
@@ -292,7 +272,6 @@ func start_return_countdown() -> void:
 		_schedule_lobby_return()
 
 
-## Solo el servidor programa el regreso real; los demás reciben return_to_lobby vía RPC.
 func _schedule_lobby_return() -> void:
 	var t := get_tree().create_timer(float(LOBBY_RETURN_DELAY), true, false, true)
 	t.timeout.connect(_do_return_to_lobby)
@@ -321,7 +300,6 @@ func _input(event: InputEvent) -> void:
 	if _in_spectator_mode:
 		_handle_spectator_input(event)
 	if event.is_action_pressed("ui_cancel"):
-		# Bloquear pausa solo durante la transición WASTED (antes de entrar a espectador).
 		if _local_done and not _in_spectator_mode:
 			return
 		_toggle_pause_menu()
