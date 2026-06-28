@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://bkmyoutbd4iqa"]
+
+[ext_resource type="PackedScene" uid="uid://cegkaadxu0xh" path="res://scenes/map/Props/Columns/Column2/column2.glb" id="1_fmmr6"]
+
+[node name="Column2" type="Node3D" unique_id=1474832903]
+
+[node name="column2" parent="." unique_id=2009136180 instance=ExtResource("1_fmmr6")]
+transform = Transform3D(2, 0, 0, 0, 2.62, 0, 0, 0, 2, 0, 2.455, 0)
