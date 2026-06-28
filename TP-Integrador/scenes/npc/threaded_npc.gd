@@ -29,6 +29,7 @@ var _model_index := 0
 var _is_idle := false
 var _dead := false
 var _area: Area3D
+var _static_body: StaticBody3D
 var _step_player_1: AudioStreamPlayer3D
 var _step_player_2: AudioStreamPlayer3D
 var _next_step_sound := 0
@@ -63,20 +64,28 @@ func setup(appearance: Dictionary) -> void:
 	CharacterAppearance.play_walk(_anim_player, _model_index)
 
 
-## Crea un Area3D con forma de cápsula para que los raycasts del jugador puedan detectar al NPC.
-## Usa collision_layer = 2 (bit 1) para diferenciarse de los jugadores (layer 1).
+## Crea un Area3D (para raycasts de disparo) y un StaticBody3D (para que el jugador no traspase).
 func _setup_collision() -> void:
+	var capsule := CapsuleShape3D.new()
+	capsule.radius = 0.35
+	capsule.height = 1.7
+
 	_area = Area3D.new()
 	_area.collision_layer = 2
 	_area.collision_mask = 0
 	_area.add_to_group("npcs")
-	var shape := CollisionShape3D.new()
-	var capsule := CapsuleShape3D.new()
-	capsule.radius = 0.35
-	capsule.height = 1.7
-	shape.shape = capsule
-	_area.add_child(shape)
+	var area_shape := CollisionShape3D.new()
+	area_shape.shape = capsule
+	_area.add_child(area_shape)
 	add_child(_area)
+
+	_static_body = StaticBody3D.new()
+	_static_body.collision_layer = 1
+	_static_body.collision_mask = 0
+	var body_shape := CollisionShape3D.new()
+	body_shape.shape = capsule
+	_static_body.add_child(body_shape)
+	add_child(_static_body)
 
 
 func is_dead() -> bool:
@@ -97,10 +106,11 @@ func kill_npc() -> void:
 
 
 func _disable_area() -> void:
-	if _area == null:
-		return
-	_area.set_deferred("monitoring", false)
-	_area.set_deferred("monitorable", false)
+	if _area != null:
+		_area.set_deferred("monitoring", false)
+		_area.set_deferred("monitorable", false)
+	if _static_body != null:
+		_static_body.set_deferred("collision_layer", 0)
 
 
 func _fall_model() -> void:

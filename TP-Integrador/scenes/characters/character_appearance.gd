@@ -237,8 +237,6 @@ static func _make_appearance(model_index: int, hair_index: int, eye_index: int, 
 static func _same_appearance(left: Dictionary, right: Dictionary) -> bool:
 	if left.is_empty() or right.is_empty():
 		return false
-	if int(left.get("model", -1)) != int(right.get("model", -2)):
-		return false
 	return _same_part_colors(left.get("part_colors", {}), right.get("part_colors", {}))
 
 

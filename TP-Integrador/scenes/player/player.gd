@@ -138,11 +138,10 @@ func _resolve_appearance() -> Dictionary:
 			"model": int(players[peer_id]["model"]),
 			"part_colors": players[peer_id].get("part_colors", {}),
 		}
-	# Fallback (ej. --debug_solo, sin lista de red): mismo look canónico de jugador.
-	return {
-		"model": CharacterAppearance.PLAYER_MODEL_INDEX,
-		"part_colors": CharacterAppearance.player_part_colors(),
-	}
+	# Fallback (ej. --debug_solo, sin lista de red): apariencia aleatoria.
+	var rng := RandomNumberGenerator.new()
+	rng.randomize()
+	return CharacterAppearance.random_player_appearance(rng)
 
 ## Nombre del jugador local, leído de la lista de red (fallback para --debug_solo).
 func _resolve_my_name() -> String:
