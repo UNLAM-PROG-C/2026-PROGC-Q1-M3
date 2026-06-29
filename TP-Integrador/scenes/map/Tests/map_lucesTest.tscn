@@ -3,9 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://coee7wevy8ww1" path="res://scenes/map/Floors/floor_70x70.tscn" id="1_weuoj"]
 [ext_resource type="PackedScene" uid="uid://gtbti0kh3wy8" path="res://scenes/map/Walls/textured/wall_5m_bricks097.tscn" id="2_keduv"]
 [ext_resource type="PackedScene" uid="uid://c5lpq1cnsra7b" path="res://scenes/map/Ceilings/ceiling_5x5_tiles133.tscn" id="3_hg6qd"]
-[ext_resource type="PackedScene" uid="uid://b3u4mcy5bolek" path="res://scenes/map/Props/Lamps/lamp_ceiling_lowpoly.tscn" id="4_q3q0m"]
-[ext_resource type="PackedScene" uid="uid://c1f4tad5blxmm" path="res://scenes/map/Props/Lamps/lamp_ceiling_tubes.tscn" id="5_hp7rw"]
-[ext_resource type="PackedScene" uid="uid://bxoibg2361vnx" path="res://scenes/map/Props/Lamps/lamp_wall.tscn" id="6_hp7rw"]
+[ext_resource type="PackedScene" uid="uid://b3u4mcy5bolek" path="res://scenes/map/Lamps/lamp_ceiling_lowpoly.tscn" id="4_q3q0m"]
+[ext_resource type="PackedScene" uid="uid://c1f4tad5blxmm" path="res://scenes/map/Lamps/lamp_ceiling_tubes.tscn" id="5_hp7rw"]
+[ext_resource type="PackedScene" uid="uid://bxoibg2361vnx" path="res://scenes/map/Lamps/lamp_wall.tscn" id="6_hp7rw"]
 
 [node name="Map" type="Node3D" unique_id=1840955683]
 
