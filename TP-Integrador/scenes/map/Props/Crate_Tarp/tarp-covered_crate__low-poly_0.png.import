@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cmfaldj7jed3k"
-path.s3tc="res://.godot/imported/Dead Tree (1)_Bark_DeadTree.png-da3c707cefac62b91f5cc0f1d05773ec.s3tc.ctex"
+uid="uid://clebyjlk6xpy"
+path.s3tc="res://.godot/imported/tarp-covered_crate__low-poly_0.png-f993558374fa72f4784c9e8f6006e2e3.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "eae9b5ef1194b73f5278668bc17df5a3"
+"md5": "127d674a776c4cdd5bc1a1b49cd31120"
 }
 
 [deps]
 
-source_file="res://scenes/map/Props/Trees/Tree2/Dead Tree (1)_Bark_DeadTree.png"
-dest_files=["res://.godot/imported/Dead Tree (1)_Bark_DeadTree.png-da3c707cefac62b91f5cc0f1d05773ec.s3tc.ctex"]
+source_file="res://scenes/map/Props/Crate_Tarp/tarp-covered_crate__low-poly_0.png"
+dest_files=["res://.godot/imported/tarp-covered_crate__low-poly_0.png-f993558374fa72f4784c9e8f6006e2e3.s3tc.ctex"]
 
 [params]
 

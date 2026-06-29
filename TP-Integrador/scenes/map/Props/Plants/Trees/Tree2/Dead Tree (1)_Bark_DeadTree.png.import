@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lsqb3ti1gk53"
-path.s3tc="res://.godot/imported/urban_fuse_box_0.png-7d5479805488170003edd92677566eac.s3tc.ctex"
+uid="uid://cmfaldj7jed3k"
+path.s3tc="res://.godot/imported/Dead Tree (1)_Bark_DeadTree.png-504cb6fc3bcd1cddddc10e92f6ab9636.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "df4541c44ed489143c43c7889db8d6fb"
+"md5": "eae9b5ef1194b73f5278668bc17df5a3"
 }
 
 [deps]
 
-source_file="res://scenes/map/Props/Urban_Fuse_Box/urban_fuse_box_0.png"
-dest_files=["res://.godot/imported/urban_fuse_box_0.png-7d5479805488170003edd92677566eac.s3tc.ctex"]
+source_file="res://scenes/map/Props/Plants/Trees/Tree2/Dead Tree (1)_Bark_DeadTree.png"
+dest_files=["res://.godot/imported/Dead Tree (1)_Bark_DeadTree.png-504cb6fc3bcd1cddddc10e92f6ab9636.s3tc.ctex"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://50j13gly2a1c"
-path="res://.godot/imported/Cable.glb-0feb84b38e22dd1df8d79e4582030fb9.scn"
+uid="uid://l7ms4rphfoe"
+path="res://.godot/imported/Burger.glb-3a6cae8613dfa78d15252970d994fed2.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Cable/Cable.glb"
-dest_files=["res://.godot/imported/Cable.glb-0feb84b38e22dd1df8d79e4582030fb9.scn"]
+source_file="res://scenes/map/Props/Extras/Burger/Burger.glb"
+dest_files=["res://.godot/imported/Burger.glb-3a6cae8613dfa78d15252970d994fed2.scn"]
 
 [params]
 

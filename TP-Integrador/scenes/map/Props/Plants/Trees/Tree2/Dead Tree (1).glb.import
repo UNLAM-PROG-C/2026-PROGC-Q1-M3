@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://l7ms4rphfoe"
-path="res://.godot/imported/Burger.glb-16661358e951373ecbf61e63cbccacac.scn"
+uid="uid://vm0g8k4qrvaq"
+path="res://.godot/imported/Dead Tree (1).glb-8751264fca65327b5ea70ea480c84855.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Food/Burger.glb"
-dest_files=["res://.godot/imported/Burger.glb-16661358e951373ecbf61e63cbccacac.scn"]
+source_file="res://scenes/map/Props/Plants/Trees/Tree2/Dead Tree (1).glb"
+dest_files=["res://.godot/imported/Dead Tree (1).glb-8751264fca65327b5ea70ea480c84855.scn"]
 
 [params]
 

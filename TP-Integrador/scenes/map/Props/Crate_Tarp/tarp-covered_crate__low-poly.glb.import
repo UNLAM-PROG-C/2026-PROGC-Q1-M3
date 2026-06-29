@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://demwha2xtycha"
-path="res://.godot/imported/free_concrete_blocks_-_ps2_style_industrial_prop.glb-792a172fc3539121c926867c09c34282.scn"
+uid="uid://b0aljic45qjyy"
+path="res://.godot/imported/tarp-covered_crate__low-poly.glb-98cb7e9248bcc1e052526b5b84ba6d02.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Concrete_Blocks/free_concrete_blocks_-_ps2_style_industrial_prop.glb"
-dest_files=["res://.godot/imported/free_concrete_blocks_-_ps2_style_industrial_prop.glb-792a172fc3539121c926867c09c34282.scn"]
+source_file="res://scenes/map/Props/Crate_Tarp/tarp-covered_crate__low-poly.glb"
+dest_files=["res://.godot/imported/tarp-covered_crate__low-poly.glb-98cb7e9248bcc1e052526b5b84ba6d02.scn"]
 
 [params]
 

@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5hbwiveo10dg"
-path.s3tc="res://.godot/imported/free_concrete_blocks_-_ps2_style_industrial_prop_0.png-c90aecbc455af3f1d9948741ce5e3608.s3tc.ctex"
+uid="uid://lsqb3ti1gk53"
+path.s3tc="res://.godot/imported/urban_fuse_box_0.png-47c696215d8391fe752def2e44d448c9.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "b03bff20e4a90b0ba9123728144cac07"
+"md5": "df4541c44ed489143c43c7889db8d6fb"
 }
 
 [deps]
 
-source_file="res://scenes/map/Props/Concrete_Blocks/free_concrete_blocks_-_ps2_style_industrial_prop_0.png"
-dest_files=["res://.godot/imported/free_concrete_blocks_-_ps2_style_industrial_prop_0.png-c90aecbc455af3f1d9948741ce5e3608.s3tc.ctex"]
+source_file="res://scenes/map/Props/Boxes/urban_fuse_box_0.png"
+dest_files=["res://.godot/imported/urban_fuse_box_0.png-47c696215d8391fe752def2e44d448c9.s3tc.ctex"]
 
 [params]
 

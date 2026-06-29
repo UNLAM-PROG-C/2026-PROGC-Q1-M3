@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://vm0g8k4qrvaq"
-path="res://.godot/imported/Dead Tree (1).glb-01e09ae96f4c98a3fe09f0d795b1b36b.scn"
+uid="uid://cnljq8ad4p3km"
+path="res://.godot/imported/Cinder Blocks.glb-48ff00a7dc9ebf4d6dd4eacd58c95ca5.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Trees/Tree2/Dead Tree (1).glb"
-dest_files=["res://.godot/imported/Dead Tree (1).glb-01e09ae96f4c98a3fe09f0d795b1b36b.scn"]
+source_file="res://scenes/map/Props/Blocks_Cinder/Cinder Blocks.glb"
+dest_files=["res://.godot/imported/Cinder Blocks.glb-48ff00a7dc9ebf4d6dd4eacd58c95ca5.scn"]
 
 [params]
 

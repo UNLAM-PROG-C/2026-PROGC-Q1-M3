@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b0aljic45qjyy"
-path="res://.godot/imported/tarp-covered_crate__low-poly.glb-497795f976912750caa507b3c920c809.scn"
+uid="uid://55ixhvpkdse7"
+path="res://.godot/imported/Debris Pile.glb-ffe7c08c364865e7c2f9f5866d682a90.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Tarp_crate/tarp-covered_crate__low-poly.glb"
-dest_files=["res://.godot/imported/tarp-covered_crate__low-poly.glb-497795f976912750caa507b3c920c809.scn"]
+source_file="res://scenes/map/Props/Debris/Debris Pile.glb"
+dest_files=["res://.godot/imported/Debris Pile.glb-ffe7c08c364865e7c2f9f5866d682a90.scn"]
 
 [params]
 

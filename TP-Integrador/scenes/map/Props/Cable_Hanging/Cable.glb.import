@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cnljq8ad4p3km"
-path="res://.godot/imported/Cinder Blocks.glb-a2c7597408f67004a5bb708eea32e47d.scn"
+uid="uid://50j13gly2a1c"
+path="res://.godot/imported/Cable.glb-ddad0fa916f73eb2432eb1b3ee88163b.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Cinder_Blocks/Cinder Blocks.glb"
-dest_files=["res://.godot/imported/Cinder Blocks.glb-a2c7597408f67004a5bb708eea32e47d.scn"]
+source_file="res://scenes/map/Props/Cable_Hanging/Cable.glb"
+dest_files=["res://.godot/imported/Cable.glb-ddad0fa916f73eb2432eb1b3ee88163b.scn"]
 
 [params]
 
