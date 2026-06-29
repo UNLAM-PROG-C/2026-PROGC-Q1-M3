@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dyj1423p05y6o"]
+
+[ext_resource type="PackedScene" uid="uid://capyx6v2d2jlo" path="res://scenes/map/Props/Locker/Locker.glb" id="1_2napj"]
+
+[node name="Locker" type="Node3D" unique_id=1213351512]
+
+[node name="Locker" parent="." unique_id=1044714091 instance=ExtResource("1_2napj")]
+transform = Transform3D(1, 0, 0, 0, 2, 0, 0, 0, 1.5, 0, 0, 0)

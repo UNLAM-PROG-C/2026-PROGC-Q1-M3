@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bxuft8623da20"]
+
+[ext_resource type="PackedScene" uid="uid://c1jtdr6a1df7d" path="res://scenes/map/Props/Metal_Bars/Metal Bars.glb" id="1_3qb5n"]
+
+[node name="MetalBars" type="Node3D" unique_id=1951223169]
+
+[node name="Metal Bars" parent="." unique_id=1482628317 instance=ExtResource("1_3qb5n")]

@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dsuiof3lrcty6"]
+
+[ext_resource type="PackedScene" uid="uid://cpcgqt2mqfvna" path="res://scenes/map/Props/Food/Hamburger.glb" id="1_qmu6o"]
+
+[node name="Burger2" type="Node3D" unique_id=377561881]
+
+[node name="Hamburger" parent="." unique_id=78906719 instance=ExtResource("1_qmu6o")]
+transform = Transform3D(0.02, 0, 0, 0, 0.02, 0, 0, 0, 0.02, 0, 0, 0)

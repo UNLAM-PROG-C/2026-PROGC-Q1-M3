@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://ct37vp43i3tfe"]
+
+[ext_resource type="PackedScene" uid="uid://50j13gly2a1c" path="res://scenes/map/Props/Cable/Cable.glb" id="1_1sokl"]
+
+[node name="Cable" type="Node3D" unique_id=1436354783]
+
+[node name="Root Scene" parent="." unique_id=1681983282 instance=ExtResource("1_1sokl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.952, 0)

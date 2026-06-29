@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://btxu8yk2g8h7a"]
+
+[ext_resource type="PackedScene" uid="uid://jn8l2xt0ogpc" path="res://scenes/map/Props/Crates/Crate/crate.glb" id="1_eocfh"]
+
+[node name="Crate" type="Node3D" unique_id=521597423]
+
+[node name="Root Scene" parent="." unique_id=2083634081 instance=ExtResource("1_eocfh")]

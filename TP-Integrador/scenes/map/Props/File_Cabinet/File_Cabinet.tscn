@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bbiwlkdayietf"]
+
+[ext_resource type="PackedScene" uid="uid://u7n673syi6li" path="res://scenes/map/Props/File_Cabinet/File Cabinet.glb" id="1_d5jwf"]
+
+[node name="FileCabinet" type="Node3D" unique_id=2121057033]
+
+[node name="Root Scene" parent="." unique_id=865942860 instance=ExtResource("1_d5jwf")]

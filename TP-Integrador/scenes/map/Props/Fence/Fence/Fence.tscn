@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://d060sacx36pf6"]
+
+[ext_resource type="PackedScene" uid="uid://bqnwy5uin5y27" path="res://scenes/map/Props/Fence/Fence/Fence.glb" id="1_ejwku"]
+
+[node name="Fence" type="Node3D" unique_id=2093343747]
+
+[node name="Fence" parent="." unique_id=1515261675 instance=ExtResource("1_ejwku")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)

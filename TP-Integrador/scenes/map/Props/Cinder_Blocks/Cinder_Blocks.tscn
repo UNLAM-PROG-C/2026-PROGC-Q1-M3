@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cb8n0pkd8eb8i"]
+
+[ext_resource type="PackedScene" uid="uid://cnljq8ad4p3km" path="res://scenes/map/Props/Cinder_Blocks/Cinder Blocks.glb" id="1_u6fr7"]
+
+[node name="CinderBlocks" type="Node3D" unique_id=1707449175]
+
+[node name="Cinder Blocks" parent="." unique_id=824821334 instance=ExtResource("1_u6fr7")]
+transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)

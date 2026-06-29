@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://c7on2nme2n4yo"]
+
+[ext_resource type="PackedScene" uid="uid://gpk3bk77l3yk" path="res://scenes/map/Props/Emergency_Button/low_poly_emergency_button.glb" id="1_63xnk"]
+
+[node name="EmergencyButton" type="Node3D" unique_id=1984796153]
+
+[node name="Sketchfab_Scene" parent="." unique_id=1053327473 instance=ExtResource("1_63xnk")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
