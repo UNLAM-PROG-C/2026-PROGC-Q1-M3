@@ -18,7 +18,20 @@
 [ext_resource type="PackedScene" uid="uid://sfscylnihmex" path="res://scenes/map/Props/Plants/Dead_HousePlant/Dead Houseplant.glb" id="13_cumk7"]
 [ext_resource type="PackedScene" uid="uid://d30s88p6ot88g" path="res://scenes/map/Props/Vent/vent.glb" id="17_e07uo"]
 
+[sub_resource type="Environment" id="Environment_rqo2c"]
+background_mode = 1
+background_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+background_energy_multiplier = 5.0
+glow_enabled = true
+fog_enabled = true
+fog_light_energy = 0.5
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+
 [node name="Map" type="Node3D" unique_id=1364295959]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1425060372]
+environment = SubResource("Environment_rqo2c")
 
 [node name="Ceiling_70x70" parent="." unique_id=200950674 instance=ExtResource("6_jcaow")]
 
