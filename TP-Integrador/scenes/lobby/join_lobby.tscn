@@ -1,8 +1,54 @@
-[gd_scene format=3 uid="uid://join_lobby_v2"]
+[gd_scene format=3 uid="uid://cj3cflu84i4kb"]
 
-[ext_resource type="Script" path="res://scenes/lobby/join_lobby.gd" id="1"]
+[ext_resource type="Script" uid="uid://wsl5pcix31p8" path="res://scenes/lobby/join_lobby.gd" id="1"]
+[ext_resource type="FontFile" uid="uid://mjen1qbot6d1" path="res://fonts/connection_ii/ConnectionII.otf" id="2"]
+[ext_resource type="Texture2D" uid="uid://bjmhi5dk381nh" path="res://imagenes/fondo-menu.png" id="3"]
 
-[node name="Lobby" type="Control"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.04, 0.04, 0.06, 0.6)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08, 0.08, 0.1, 0.7)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.04, 0.04, 0.05, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.98729783, 0, 0.101364575, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[node name="Lobby" type="Control" unique_id=1991266259]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,16 +57,19 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="TextureRect" parent="." unique_id=1868264954]
+modulate = Color(0.6509804, 1, 0.7254902, 1)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.941, 0.929, 0.91, 1)
+texture = ExtResource("3")
+expand_mode = 1
+stretch_mode = 6
 
-[node name="Content" type="HBoxContainer" parent="."]
+[node name="Content" type="HBoxContainer" parent="." unique_id=1120604904]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,134 +78,136 @@ offset_left = 50.0
 offset_top = 50.0
 offset_right = -50.0
 offset_bottom = -50.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 40
 
-[node name="LeftSection" type="VBoxContainer" parent="Content"]
+[node name="LeftSection" type="VBoxContainer" parent="Content" unique_id=1871604537]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 6
 alignment = 1
 
-[node name="SubtitleLabel" type="Label" parent="Content/LeftSection"]
+[node name="SubtitleLabel" type="Label" parent="Content/LeftSection" unique_id=2090832814]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.55, 0.53, 0.5, 1)
-theme_override_font_sizes/font_size = 30
+theme_override_colors/font_color = Color(0.79, 0.79, 0.79, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 40
 text = "TU CARA"
 horizontal_alignment = 1
 
-[node name="MainTitleLabel" type="Label" parent="Content/LeftSection"]
+[node name="MainTitleLabel" type="Label" parent="Content/LeftSection" unique_id=2014743796]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.1, 0.1, 0.1, 1)
+theme_override_colors/font_color = Color(0.98729783, 0, 0.101364575, 1)
+theme_override_fonts/font = ExtResource("2")
 theme_override_font_sizes/font_size = 84
 text = "ME SUENA"
 horizontal_alignment = 1
 
-[node name="TitleCharGap" type="Control" parent="Content/LeftSection"]
+[node name="TitleCharGap" type="Control" parent="Content/LeftSection" unique_id=2003574041]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
 
-[node name="CharContainer" type="Control" parent="Content/LeftSection"]
-custom_minimum_size = Vector2(160, 340)
-layout_mode = 2
-size_flags_horizontal = 4
-
-[node name="Hat" type="ColorRect" parent="Content/LeftSection/CharContainer"]
-layout_mode = 1
-offset_right = 160.0
-offset_bottom = 36.0
-color = Color(0.769, 0.702, 0.62, 1)
-
-[node name="Head" type="ColorRect" parent="Content/LeftSection/CharContainer"]
-layout_mode = 1
-offset_left = 20.0
-offset_top = 36.0
-offset_right = 140.0
-offset_bottom = 124.0
-color = Color(0.925, 0.859, 0.706, 1)
-
-[node name="Body" type="ColorRect" parent="Content/LeftSection/CharContainer"]
-layout_mode = 1
-offset_top = 124.0
-offset_right = 160.0
-offset_bottom = 340.0
-color = Color(0.639, 0.784, 0.871, 1)
-
-[node name="RightPanel" type="PanelContainer" parent="Content"]
+[node name="RightPanel" type="PanelContainer" parent="Content" unique_id=1838156933]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="Margin" type="MarginContainer" parent="Content/RightPanel"]
+[node name="Margin" type="MarginContainer" parent="Content/RightPanel" unique_id=1608203326]
 layout_mode = 2
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 36
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 36
 
-[node name="RightSection" type="VBoxContainer" parent="Content/RightPanel/Margin"]
+[node name="RightSection" type="VBoxContainer" parent="Content/RightPanel/Margin" unique_id=1099136039]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 16
 
-[node name="TitleLabel" type="Label" parent="Content/RightPanel/Margin/RightSection"]
+[node name="TitleLabel" type="Label" parent="Content/RightPanel/Margin/RightSection" unique_id=1069924166]
 layout_mode = 2
-theme_override_colors/font_color = Color(0.12, 0.12, 0.12, 1)
-theme_override_font_sizes/font_size = 32
+theme_override_colors/font_color = Color(0.9, 0.9, 0.9, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 48
 text = "Unirse a Partida"
 
-[node name="NameInput" type="LineEdit" parent="Content/RightPanel/Margin/RightSection"]
+[node name="NameInput" type="LineEdit" parent="Content/RightPanel/Margin/RightSection" unique_id=1716780507]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 30
 placeholder_text = "Nombre"
 max_length = 16
 
-[node name="IPInput" type="LineEdit" parent="Content/RightPanel/Margin/RightSection"]
+[node name="IPInput" type="LineEdit" parent="Content/RightPanel/Margin/RightSection" unique_id=1563900608]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 30
 placeholder_text = "IP de la Partida"
 
-[node name="SetupButtonsRow" type="HBoxContainer" parent="Content/RightPanel/Margin/RightSection"]
+[node name="SetupButtonsRow" type="HBoxContainer" parent="Content/RightPanel/Margin/RightSection" unique_id=831819393]
 layout_mode = 2
 theme_override_constants/separation = 16
 
-[node name="ConnectButton" type="Button" parent="Content/RightPanel/Margin/RightSection/SetupButtonsRow"]
+[node name="ConnectButton" type="Button" parent="Content/RightPanel/Margin/RightSection/SetupButtonsRow" unique_id=1094903741]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 text = "Unirse"
 
-[node name="BackButton" type="Button" parent="Content/RightPanel/Margin/RightSection/SetupButtonsRow"]
+[node name="BackButton" type="Button" parent="Content/RightPanel/Margin/RightSection/SetupButtonsRow" unique_id=374291205]
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 text = "Volver"
 
-[node name="StatusLabel" type="Label" parent="Content/RightPanel/Margin/RightSection"]
+[node name="StatusLabel" type="Label" parent="Content/RightPanel/Margin/RightSection" unique_id=1097840421]
 visible = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.48, 0.46, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 18
 autowrap_mode = 3
 
-[node name="PlayersLabel" type="Label" parent="Content/RightPanel/Margin/RightSection"]
+[node name="PlayersLabel" type="Label" parent="Content/RightPanel/Margin/RightSection" unique_id=1460759422]
 visible = false
 layout_mode = 2
-theme_override_colors/font_color = Color(0.5, 0.48, 0.46, 1)
-theme_override_font_sizes/font_size = 15
+theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 18
 text = "Jugadores  (0/4)"
 
-[node name="PlayerList" type="ItemList" parent="Content/RightPanel/Margin/RightSection"]
+[node name="PlayerList" type="ItemList" parent="Content/RightPanel/Margin/RightSection" unique_id=1442879491]
 visible = false
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2")
 
-[node name="LeaveButton" type="Button" parent="Content/RightPanel/Margin/RightSection"]
+[node name="LeaveButton" type="Button" parent="Content/RightPanel/Margin/RightSection" unique_id=1913612317]
 visible = false
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 24
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 text = "Salir"
 
 [connection signal="pressed" from="Content/RightPanel/Margin/RightSection/SetupButtonsRow/ConnectButton" to="." method="_on_connect_pressed"]

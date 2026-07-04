@@ -1,6 +1,67 @@
-[gd_scene load_steps=2 format=3 uid="uid://bnuwfhmyf6mmm"]
+[gd_scene load_steps=8 format=3 uid="uid://bnuwfhmyf6mmm"]
 
 [ext_resource type="Script" uid="uid://cikwko6k76c6m" path="res://scenes/ui/pause_menu.gd" id="1_6tw0m"]
+[ext_resource type="FontFile" uid="uid://mjen1qbot6d1" path="res://fonts/connection_ii/ConnectionII.otf" id="2"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+content_margin_left = 8.0
+content_margin_top = 8.0
+content_margin_right = 8.0
+content_margin_bottom = 8.0
+bg_color = Color(0.04, 0.04, 0.06, 0.85)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_normal"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.08, 0.08, 0.1, 0.7)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.98729783, 0, 0.101364575, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+bg_color = Color(0.04, 0.04, 0.05, 0.9)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_focus"]
+content_margin_left = 20.0
+content_margin_top = 10.0
+content_margin_right = 20.0
+content_margin_bottom = 10.0
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.98729783, 0, 0.101364575, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=924904016]
 script = ExtResource("1_6tw0m")
@@ -19,12 +80,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -160.0
-offset_top = -120.0
-offset_right = 160.0
-offset_bottom = 120.0
+offset_left = -180.0
+offset_top = -150.0
+offset_right = 180.0
+offset_bottom = 150.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
 [node name="VBox" type="VBoxContainer" parent="Panel" unique_id=1344849651]
 anchors_preset = 15
@@ -36,17 +98,42 @@ offset_right = -24.0
 offset_bottom = -24.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 16
 
-[node name="BtnResume" type="Button" parent="Panel/VBox" unique_id=623092838]
+[node name="TitleLabel" type="Label" parent="Panel/VBox" unique_id=1200000001]
 layout_mode = 2
-text = "Resumir"
+theme_override_colors/font_color = Color(0.98729783, 0, 0.101364575, 1)
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 56
+text = "PAUSA"
+horizontal_alignment = 1
 
-[node name="Spacer" type="Control" parent="Panel/VBox" unique_id=517697193]
+[node name="TopSpacer" type="Control" parent="Panel/VBox" unique_id=1200000002]
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="BtnResume" type="Button" parent="Panel/VBox" unique_id=623092838]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+text = "Reanudar"
+
+[node name="Spacer" type="Control" parent="Panel/VBox" unique_id=517697193]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 8)
+
 [node name="BtnQuit" type="Button" parent="Panel/VBox" unique_id=1459398676]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
 text = "Salir al escritorio"
 
 [connection signal="pressed" from="Panel/VBox/BtnResume" to="." method="_on_btn_resume_pressed"]

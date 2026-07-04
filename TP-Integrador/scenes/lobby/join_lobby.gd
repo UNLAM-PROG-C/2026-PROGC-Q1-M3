@@ -17,8 +17,6 @@ var _state: State = State.SETUP
 
 func _ready() -> void:
 	LobbyMusic.play()
-	_style_panel()
-	_style_buttons()
 	GameNetwork.connection_succeeded.connect(_on_connection_succeeded)
 	GameNetwork.connection_failed.connect(_on_connection_failed)
 	GameNetwork.player_list_changed.connect(_on_player_list_changed)
@@ -29,45 +27,6 @@ func _ready() -> void:
 		_refresh_player_list()
 	else:
 		_set_state(State.SETUP)
-
-
-func _style_panel() -> void:
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.995, 0.990, 0.984)
-	style.set_border_width_all(1)
-	style.border_color = Color(0.820, 0.800, 0.780)
-	style.set_corner_radius_all(14)
-	style.content_margin_left = 0.0
-	style.content_margin_right = 0.0
-	style.content_margin_top = 0.0
-	style.content_margin_bottom = 0.0
-	$Content/RightPanel.add_theme_stylebox_override("panel", style)
-
-
-func _apply_button_style(button: Button) -> void:
-	var normal := StyleBoxFlat.new()
-	normal.bg_color = Color(0.96, 0.945, 0.925)
-	normal.set_border_width_all(2)
-	normal.border_color = Color(0.42, 0.40, 0.38)
-	normal.set_corner_radius_all(10)
-	normal.content_margin_left = 24.0
-	normal.content_margin_right = 24.0
-	normal.content_margin_top = 12.0
-	normal.content_margin_bottom = 12.0
-	button.add_theme_stylebox_override("normal", normal)
-	var hover := normal.duplicate()
-	hover.bg_color = Color(0.84, 0.82, 0.79)
-	button.add_theme_stylebox_override("hover", hover)
-	var pressed := normal.duplicate()
-	pressed.bg_color = Color(0.74, 0.72, 0.69)
-	button.add_theme_stylebox_override("pressed", pressed)
-	button.add_theme_color_override("font_color", Color(0.12, 0.12, 0.12))
-	button.add_theme_font_size_override("font_size", 18)
-
-
-func _style_buttons() -> void:
-	for btn in [connect_btn, back_btn, leave_btn] as Array[Button]:
-		_apply_button_style(btn)
 
 
 func _set_state(new_state: State) -> void:
