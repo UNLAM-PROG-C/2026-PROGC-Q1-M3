@@ -16,7 +16,11 @@
 [ext_resource type="PackedScene" uid="uid://b6514v030pgg4" path="res://scenes/map/mirror/mirror.tscn" id="11_cumk7"]
 [ext_resource type="PackedScene" uid="uid://bxoibg2361vnx" path="res://scenes/map/Lamps/lamp_wall.tscn" id="11_x2kg6"]
 [ext_resource type="PackedScene" uid="uid://sfscylnihmex" path="res://scenes/map/Props/Plants/Dead_HousePlant/Dead Houseplant.glb" id="13_cumk7"]
+[ext_resource type="PackedScene" uid="uid://d0bwxqec1efw2" path="res://scenes/map/Props/Especiales/termo/termo.glb" id="15_30ska"]
+[ext_resource type="PackedScene" uid="uid://b53j1bp5u6kry" path="res://scenes/map/Props/Especiales/mate/mate.glb" id="16_tmgcv"]
 [ext_resource type="PackedScene" uid="uid://d30s88p6ot88g" path="res://scenes/map/Props/Vent/vent.glb" id="17_e07uo"]
+[ext_resource type="PackedScene" uid="uid://c52sdud7jfia1" path="res://scenes/map/Props/Especiales/bombilla/bombilla.glb" id="17_omedl"]
+[ext_resource type="PackedScene" uid="uid://dtq7qijc04js3" path="res://scenes/map/Props/Especiales/yerba/yerba.glb" id="18_3xi6f"]
 
 [sub_resource type="Environment" id="Environment_rqo2c"]
 background_mode = 1
@@ -104,6 +108,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.443314, 0, 28.175629)
 
 [node name="Vent" parent="Room_01" unique_id=1650289341 instance=ExtResource("17_e07uo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.84386, 0.35862464, 10.3977995)
+
+[node name="Barrel2" parent="Room_01" unique_id=96243059 instance=ExtResource("10_e07uo")]
+transform = Transform3D(-1.5, 1.3113416e-07, 0, -1.3113416e-07, -1.5, 0, 0, 0, 1.5, 26.691082, 2.1982644, 17.577562)
+
+[node name="termo" parent="Room_01" unique_id=1739903890 instance=ExtResource("15_30ska")]
+transform = Transform3D(-0.04643897, 0, -0.29638392, 0, 0.29999998, 0, 0.29638392, 0, -0.04643897, 25.048357, 1.9798149, 21.0208)
+
+[node name="mate" parent="Room_01" unique_id=1702977317 instance=ExtResource("16_tmgcv")]
+transform = Transform3D(0.036145095, 0, 0.08242289, 0, 0.09, 0, -0.08242289, 0, 0.036145095, 25.206415, 1.7827815, 20.828146)
+
+[node name="bombilla" parent="Room_01" unique_id=1244989961 instance=ExtResource("17_omedl")]
+transform = Transform3D(0.031466674, -0.02495538, 0.09158098, 0.062138014, 0.0783509, 0, -0.07175453, 0.056906607, 0.04016121, 25.230177, 1.8763429, 20.798613)
+
+[node name="yerba" parent="Room_01" unique_id=1174197394 instance=ExtResource("18_3xi6f")]
+transform = Transform3D(0.19364527, 0, 0.050015174, 0, 0.2, 0, -0.050015174, 0, 0.19364527, 25.464193, 1.8835787, 21.113539)
 
 [node name="Room_02" parent="." unique_id=899778730 instance=ExtResource("3_jcaow")]
 
