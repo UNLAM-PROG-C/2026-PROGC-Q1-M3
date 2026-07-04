@@ -24,10 +24,6 @@ LobbyMusic="*res://autoload/lobby_music.gd"
 
 project/assembly_name="V1"
 
-[editor]
-
-run/main_run_args="--debug_solo"
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/mirror_placer/plugin.cfg")
@@ -35,6 +31,10 @@ enabled=PackedStringArray("res://addons/mirror_placer/plugin.cfg")
 [filesystem]
 
 import/blender/enabled=false
+
+[gui]
+
+theme/custom_font="res://fonts/connection_ii/ConnectionII.otf"
 
 [input]
 

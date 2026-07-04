@@ -101,7 +101,7 @@ anchor_bottom = 0.5
 offset_left = -160.0
 offset_top = 56.0
 offset_right = 160.0
-offset_bottom = 176.0
+offset_bottom = 246.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
@@ -127,5 +127,16 @@ theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 text = "Unirse"
 
+[node name="QuitButton" type="Button" parent="ButtonsBox" unique_id=359136569]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 35
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+text = "Salir"
+
 [connection signal="pressed" from="ButtonsBox/CreateButton" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="ButtonsBox/JoinButton" to="." method="_on_join_pressed"]
+[connection signal="pressed" from="ButtonsBox/QuitButton" to="." method="_on_quit_pressed"]

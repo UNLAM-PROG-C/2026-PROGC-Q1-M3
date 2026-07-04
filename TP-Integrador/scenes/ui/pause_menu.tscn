@@ -126,6 +126,20 @@ text = "Reanudar"
 layout_mode = 2
 custom_minimum_size = Vector2(0, 8)
 
+[node name="BtnMainMenu" type="Button" parent="Panel/VBox" unique_id=1200000003]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_normal")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
+text = "Volver a Menú Principal"
+
+[node name="Spacer2" type="Control" parent="Panel/VBox" unique_id=1200000004]
+layout_mode = 2
+custom_minimum_size = Vector2(0, 8)
+
 [node name="BtnQuit" type="Button" parent="Panel/VBox" unique_id=1459398676]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2")
@@ -137,4 +151,5 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_focus")
 text = "Salir al escritorio"
 
 [connection signal="pressed" from="Panel/VBox/BtnResume" to="." method="_on_btn_resume_pressed"]
+[connection signal="pressed" from="Panel/VBox/BtnMainMenu" to="." method="_on_btn_main_menu_pressed"]
 [connection signal="pressed" from="Panel/VBox/BtnQuit" to="." method="_on_btn_quit_pressed"]

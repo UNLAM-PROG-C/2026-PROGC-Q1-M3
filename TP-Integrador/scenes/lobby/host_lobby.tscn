@@ -146,6 +146,7 @@ visible = false
 custom_minimum_size = Vector2(0, 44)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2")
+theme_override_font_sizes/font_size = 30
 placeholder_text = "IP para Unirse"
 editable = false
 
@@ -154,15 +155,15 @@ visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
 theme_override_fonts/font = ExtResource("2")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 text = "Jugadores  (0/4)"
 
-[node name="PlayerList" type="ItemList" parent="Content/LeftPanel/Margin/LeftSection" unique_id=234420214]
+[node name="PlayerList" type="VBoxContainer" parent="Content/LeftPanel/Margin/LeftSection" unique_id=234420214]
 visible = false
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2")
+theme_override_constants/separation = 8
 
 [node name="ButtonsRow" type="HBoxContainer" parent="Content/LeftPanel/Margin/LeftSection" unique_id=1379138890]
 visible = false

@@ -11,7 +11,7 @@ var _state: State = State.SETUP
 @onready var back_btn: Button              = $Content/RightPanel/Margin/RightSection/SetupButtonsRow/BackButton
 @onready var status_label: Label           = $Content/RightPanel/Margin/RightSection/StatusLabel
 @onready var players_label: Label          = $Content/RightPanel/Margin/RightSection/PlayersLabel
-@onready var player_list: ItemList         = $Content/RightPanel/Margin/RightSection/PlayerList
+@onready var player_list: VBoxContainer    = $Content/RightPanel/Margin/RightSection/PlayerList
 @onready var leave_btn: Button             = $Content/RightPanel/Margin/RightSection/LeaveButton
 
 
@@ -68,15 +68,13 @@ func _resolve_name() -> String:
 
 
 func _refresh_player_list() -> void:
-	player_list.clear()
+	for row in player_list.get_children():
+		player_list.remove_child(row)
+		row.queue_free()
 	var my_id := GameNetwork.get_my_id()
 	for id in GameNetwork.players:
-		var entry: String = GameNetwork.players[id]["name"]
-		if id == 1:
-			entry += " (host)"
-		if id == my_id:
-			entry += " (tú)"
-		player_list.add_item(entry)
+		var player_name: String = GameNetwork.players[id]["name"]
+		player_list.add_child(PlayerRow.create(player_name, id == 1, id == my_id))
 	players_label.text = "Jugadores  (%d/%d)" % [GameNetwork.players.size(), GameNetwork.MAX_PLAYERS]
 
 

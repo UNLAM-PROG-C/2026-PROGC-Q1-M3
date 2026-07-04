@@ -42,7 +42,9 @@ func _ready():
 	_total_count = _get_player_count()
 	_alive_count = _total_count
 	pause_menu.resume_requested.connect(_resume_game)
+	pause_menu.main_menu_requested.connect(_return_to_main_menu)
 	pause_menu.quit_requested.connect(_quit_to_desktop)
+	GameNetwork.server_disconnected.connect(_on_server_disconnected)
 	end_screen = preload("res://scenes/ui/end_screen.gd").new()
 	add_child(end_screen)
 
@@ -318,6 +320,16 @@ func _pause_game():
 func _resume_game():
 	get_tree().paused = false
 	pause_menu.hide_menu()
+
+func _return_to_main_menu():
+	get_tree().paused = false
+	GameNetwork.disconnect_from_game()
+	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
+
+func _on_server_disconnected():
+	# El host cerró la partida: el autoload ya limpió la conexión, solo volvemos al menú.
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://scenes/ui/main_menu.tscn")
 
 func _quit_to_desktop():
 	multiplayer.multiplayer_peer = null

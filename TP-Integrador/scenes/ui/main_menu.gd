@@ -14,3 +14,7 @@ func _on_create_pressed() -> void:
 
 func _on_join_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/lobby/join_lobby.tscn")
+
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()

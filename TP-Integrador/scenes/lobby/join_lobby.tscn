@@ -180,7 +180,7 @@ visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
 theme_override_fonts/font = ExtResource("2")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 autowrap_mode = 3
 
 [node name="PlayersLabel" type="Label" parent="Content/RightPanel/Margin/RightSection" unique_id=1460759422]
@@ -188,15 +188,15 @@ visible = false
 layout_mode = 2
 theme_override_colors/font_color = Color(0.75, 0.75, 0.75, 1)
 theme_override_fonts/font = ExtResource("2")
-theme_override_font_sizes/font_size = 18
+theme_override_font_sizes/font_size = 30
 text = "Jugadores  (0/4)"
 
-[node name="PlayerList" type="ItemList" parent="Content/RightPanel/Margin/RightSection" unique_id=1442879491]
+[node name="PlayerList" type="VBoxContainer" parent="Content/RightPanel/Margin/RightSection" unique_id=1442879491]
 visible = false
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource("2")
+theme_override_constants/separation = 8
 
 [node name="LeaveButton" type="Button" parent="Content/RightPanel/Margin/RightSection" unique_id=1913612317]
 visible = false

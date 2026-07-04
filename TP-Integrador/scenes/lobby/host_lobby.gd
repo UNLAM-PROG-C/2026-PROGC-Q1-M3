@@ -11,7 +11,7 @@ var _state: State = State.SETUP
 @onready var setup_buttons_row: HBoxContainer = $Content/LeftPanel/Margin/LeftSection/SetupButtonsRow
 @onready var ip_display: LineEdit       = $Content/LeftPanel/Margin/LeftSection/IPDisplay
 @onready var players_label: Label       = $Content/LeftPanel/Margin/LeftSection/PlayersLabel
-@onready var player_list: ItemList      = $Content/LeftPanel/Margin/LeftSection/PlayerList
+@onready var player_list: VBoxContainer = $Content/LeftPanel/Margin/LeftSection/PlayerList
 @onready var buttons_row: HBoxContainer = $Content/LeftPanel/Margin/LeftSection/ButtonsRow
 @onready var start_btn: Button          = $Content/LeftPanel/Margin/LeftSection/ButtonsRow/StartButton
 @onready var leave_btn: Button          = $Content/LeftPanel/Margin/LeftSection/ButtonsRow/LeaveButton
@@ -66,15 +66,13 @@ func _show_host_ip() -> void:
 
 
 func _refresh_player_list() -> void:
-	player_list.clear()
+	for row in player_list.get_children():
+		player_list.remove_child(row)
+		row.queue_free()
 	var my_id := GameNetwork.get_my_id()
 	for id in GameNetwork.players:
-		var entry: String = GameNetwork.players[id]["name"]
-		if id == 1:
-			entry += " (host)"
-		if id == my_id:
-			entry += " (tú)"
-		player_list.add_item(entry)
+		var player_name: String = GameNetwork.players[id]["name"]
+		player_list.add_child(PlayerRow.create(player_name, id == 1, id == my_id))
 	players_label.text = "Jugadores  (%d/%d)" % [GameNetwork.players.size(), GameNetwork.MAX_PLAYERS]
 	start_btn.disabled = GameNetwork.players.size() < 2
 
