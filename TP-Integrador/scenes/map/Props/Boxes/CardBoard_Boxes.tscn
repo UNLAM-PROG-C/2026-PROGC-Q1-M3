@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://vy83m7jgbykb"]
+
+[ext_resource type="PackedScene" uid="uid://cpv5g262qksuu" path="res://scenes/map/Props/Boxes/Cardboard Boxes.glb" id="1_yeoxo"]
+
+[node name="CardBoardBoxes" type="Node3D" unique_id=1530223476]
+
+[node name="Root Scene" parent="." unique_id=601948998 instance=ExtResource("1_yeoxo")]

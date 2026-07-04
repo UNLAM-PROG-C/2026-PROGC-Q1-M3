@@ -11,57 +11,22 @@ var _state: State = State.SETUP
 @onready var back_btn: Button              = $Content/RightPanel/Margin/RightSection/SetupButtonsRow/BackButton
 @onready var status_label: Label           = $Content/RightPanel/Margin/RightSection/StatusLabel
 @onready var players_label: Label          = $Content/RightPanel/Margin/RightSection/PlayersLabel
-@onready var player_list: ItemList         = $Content/RightPanel/Margin/RightSection/PlayerList
+@onready var player_list: VBoxContainer    = $Content/RightPanel/Margin/RightSection/PlayerList
 @onready var leave_btn: Button             = $Content/RightPanel/Margin/RightSection/LeaveButton
 
 
 func _ready() -> void:
-	_style_panel()
-	_style_buttons()
+	LobbyMusic.play()
 	GameNetwork.connection_succeeded.connect(_on_connection_succeeded)
 	GameNetwork.connection_failed.connect(_on_connection_failed)
 	GameNetwork.player_list_changed.connect(_on_player_list_changed)
 	GameNetwork.server_disconnected.connect(_on_server_disconnected)
-	_set_state(State.SETUP)
-
-
-func _style_panel() -> void:
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.995, 0.990, 0.984)
-	style.set_border_width_all(1)
-	style.border_color = Color(0.820, 0.800, 0.780)
-	style.set_corner_radius_all(14)
-	style.content_margin_left = 0.0
-	style.content_margin_right = 0.0
-	style.content_margin_top = 0.0
-	style.content_margin_bottom = 0.0
-	$Content/RightPanel.add_theme_stylebox_override("panel", style)
-
-
-func _apply_button_style(button: Button) -> void:
-	var normal := StyleBoxFlat.new()
-	normal.bg_color = Color(0.96, 0.945, 0.925)
-	normal.set_border_width_all(2)
-	normal.border_color = Color(0.42, 0.40, 0.38)
-	normal.set_corner_radius_all(10)
-	normal.content_margin_left = 24.0
-	normal.content_margin_right = 24.0
-	normal.content_margin_top = 12.0
-	normal.content_margin_bottom = 12.0
-	button.add_theme_stylebox_override("normal", normal)
-	var hover := normal.duplicate()
-	hover.bg_color = Color(0.84, 0.82, 0.79)
-	button.add_theme_stylebox_override("hover", hover)
-	var pressed := normal.duplicate()
-	pressed.bg_color = Color(0.74, 0.72, 0.69)
-	button.add_theme_stylebox_override("pressed", pressed)
-	button.add_theme_color_override("font_color", Color(0.12, 0.12, 0.12))
-	button.add_theme_font_size_override("font_size", 18)
-
-
-func _style_buttons() -> void:
-	for btn in [connect_btn, back_btn, leave_btn] as Array[Button]:
-		_apply_button_style(btn)
+	# Si regresamos desde game.tscn con la conexión ENet activa, saltar al estado CONNECTED.
+	if multiplayer.has_multiplayer_peer() and not GameNetwork.players.is_empty():
+		_set_state(State.CONNECTED)
+		_refresh_player_list()
+	else:
+		_set_state(State.SETUP)
 
 
 func _set_state(new_state: State) -> void:
@@ -103,15 +68,13 @@ func _resolve_name() -> String:
 
 
 func _refresh_player_list() -> void:
-	player_list.clear()
+	for row in player_list.get_children():
+		player_list.remove_child(row)
+		row.queue_free()
 	var my_id := GameNetwork.get_my_id()
 	for id in GameNetwork.players:
-		var entry: String = GameNetwork.players[id]["name"]
-		if id == 1:
-			entry += " (host)"
-		if id == my_id:
-			entry += " (tú)"
-		player_list.add_item(entry)
+		var player_name: String = GameNetwork.players[id]["name"]
+		player_list.add_child(PlayerRow.create(player_name, id == 1, id == my_id))
 	players_label.text = "Jugadores  (%d/%d)" % [GameNetwork.players.size(), GameNetwork.MAX_PLAYERS]
 
 

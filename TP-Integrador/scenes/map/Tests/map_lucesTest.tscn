@@ -1,0 +1,62 @@
+[gd_scene format=3 uid="uid://c1ktr5xy8o8b4"]
+
+[ext_resource type="PackedScene" uid="uid://coee7wevy8ww1" path="res://scenes/map/Floors/floor_70x70.tscn" id="1_weuoj"]
+[ext_resource type="PackedScene" uid="uid://gtbti0kh3wy8" path="res://scenes/map/Walls/textured/wall_5m_bricks097.tscn" id="2_keduv"]
+[ext_resource type="PackedScene" uid="uid://c5lpq1cnsra7b" path="res://scenes/map/Ceilings/ceiling_5x5_tiles133.tscn" id="3_hg6qd"]
+[ext_resource type="PackedScene" uid="uid://b3u4mcy5bolek" path="res://scenes/map/Lamps/lamp_ceiling_lowpoly.tscn" id="4_q3q0m"]
+[ext_resource type="PackedScene" uid="uid://c1f4tad5blxmm" path="res://scenes/map/Lamps/lamp_ceiling_tubes.tscn" id="5_hp7rw"]
+[ext_resource type="PackedScene" uid="uid://bxoibg2361vnx" path="res://scenes/map/Lamps/lamp_wall.tscn" id="6_hp7rw"]
+
+[node name="Map" type="Node3D" unique_id=1840955683]
+
+[node name="Floor_70x70" parent="." unique_id=200950674 instance=ExtResource("1_weuoj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.029528618, -1.9073486e-06, 0.017990112)
+
+[node name="Wall_5m" parent="." unique_id=1462315584 instance=ExtResource("2_keduv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.599592e-06, 0.008034468, -0.00018167496)
+
+[node name="Wall_5m2" parent="." unique_id=2137810230 instance=ExtResource("2_keduv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.9757433, 0, 0)
+
+[node name="Wall_5m3" parent="." unique_id=469680115 instance=ExtResource("2_keduv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.13323, 0, 0)
+
+[node name="Wall_5m4" parent="." unique_id=93859189 instance=ExtResource("2_keduv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.718317, 0, 0)
+
+[node name="Wall_5m5" parent="." unique_id=1950842537 instance=ExtResource("2_keduv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.18163, 0, 0)
+
+[node name="Ceiling_5x5_tiles" parent="." unique_id=921302505 instance=ExtResource("3_hg6qd")]
+
+[node name="Ceiling_5x5_tiles2" parent="." unique_id=939734619 instance=ExtResource("3_hg6qd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.0035334, 0, 0)
+
+[node name="Ceiling_5x5_tiles3" parent="." unique_id=1333047854 instance=ExtResource("3_hg6qd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.017933, 0, 0)
+
+[node name="Ceiling_5x5_tiles4" parent="." unique_id=348661315 instance=ExtResource("3_hg6qd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.085004, 0, 0)
+
+[node name="Ceiling_5x5_tiles5" parent="." unique_id=782428652 instance=ExtResource("3_hg6qd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.563095, 0, 0)
+
+[node name="lamp_ceiling_lowpoly" parent="." unique_id=1986794572 instance=ExtResource("4_q3q0m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.2, -0.942)
+visible = false
+
+[node name="lamp_ceiling_tubes" parent="." unique_id=1296863772 instance=ExtResource("5_hp7rw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.55, -2.279)
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="lamp_ceiling_tubes/Sketchfab_Scene" parent_id_path=PackedInt32Array(1296863772, 391440854) index="2" unique_id=801878817]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.1, 0)
+light_energy = 0.6
+omni_attenuation = 0.8
+
+[node name="lamp_wall" parent="." unique_id=1326199374 instance=ExtResource("6_hp7rw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.65)
+
+[editable path="lamp_ceiling_lowpoly"]
+[editable path="lamp_ceiling_lowpoly/Root Scene"]
+[editable path="lamp_ceiling_tubes"]
+[editable path="lamp_ceiling_tubes/Sketchfab_Scene"]

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bqiwi1ar1uejg"]
+
+[ext_resource type="PackedScene" uid="uid://crbu3tphk1g8f" path="res://scenes/map/Props/Barrels/Barrel.glb" id="1_yucxx"]
+
+[node name="Barrel" type="Node3D" unique_id=1180745907]
+
+[node name="Root Scene" parent="." unique_id=1064293171 instance=ExtResource("1_yucxx")]

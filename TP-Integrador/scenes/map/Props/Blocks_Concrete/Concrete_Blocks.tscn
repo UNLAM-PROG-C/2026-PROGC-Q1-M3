@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c13l6ukj4p6tv"]
+
+[ext_resource type="PackedScene" uid="uid://demwha2xtycha" path="res://scenes/map/Props/Concrete_Blocks/free_concrete_blocks_-_ps2_style_industrial_prop.glb" id="1_11vyc"]
+
+[node name="ConcreteBlocks" type="Node3D" unique_id=463175901]
+
+[node name="Sketchfab_Scene" parent="." unique_id=1346017577 instance=ExtResource("1_11vyc")]

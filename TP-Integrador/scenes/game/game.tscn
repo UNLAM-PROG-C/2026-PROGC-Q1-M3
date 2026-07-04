@@ -1,45 +1,131 @@
 [gd_scene format=3 uid="uid://b3d2g8gl54k7k"]
 
-[ext_resource type="Script" uid="uid://bip4nfoytppkx" path="res://scenes/game/game.gd" id="1_sul5r"]
-[ext_resource type="PackedScene" uid="uid://cu4pnet80h04m" path="res://scenes/npc/threaded_npc.tscn" id="2_tnpc"]
-[ext_resource type="Script" uid="uid://cqxxj8bf071n6" path="res://scenes/npc/npc_thread_pool.gd" id="3_pool"]
-[ext_resource type="PackedScene" uid="uid://bnuwfhmyf6mmm" path="res://scenes/ui/pause_menu.tscn" id="4_pause"]
+[ext_resource type="Script" uid="uid://bip4nfoytppkx" path="res://scenes/game/game.gd" id="1_game"]
+[ext_resource type="PackedScene" uid="uid://cvf3xvpkw4gwp" path="res://scenes/map/map.tscn" id="2_map"]
+[ext_resource type="PackedScene" uid="uid://cu4pnet80h04m" path="res://scenes/npc/threaded_npc.tscn" id="3_tnpc"]
+[ext_resource type="Script" uid="uid://cqxxj8bf071n6" path="res://scenes/npc/npc_thread_pool.gd" id="4_pool"]
+[ext_resource type="PackedScene" uid="uid://b6514v030pgg4" path="res://scenes/map/mirror/mirror.tscn" id="5_mirror"]
+[ext_resource type="PackedScene" uid="uid://bnuwfhmyf6mmm" path="res://scenes/ui/pause_menu.tscn" id="5_pause"]
+[ext_resource type="AudioStream" uid="uid://bensdx1w1n6mg" path="res://audio/sfx/people.mp3" id="6_people"]
+[ext_resource type="PackedScene" uid="uid://rrkwfir4iwx0" path="res://scenes/map/Props/Especiales/table/table.glb" id="8_vaxfo"]
+[ext_resource type="PackedScene" uid="uid://d0bwxqec1efw2" path="res://scenes/map/Props/Especiales/termo/termo.glb" id="9_ftsea"]
+[ext_resource type="PackedScene" uid="uid://b53j1bp5u6kry" path="res://scenes/map/Props/Especiales/mate/mate.glb" id="10_otnwt"]
+[ext_resource type="PackedScene" uid="uid://c52sdud7jfia1" path="res://scenes/map/Props/Especiales/bombilla/bombilla.glb" id="11_3xj4h"]
+[ext_resource type="PackedScene" uid="uid://dtq7qijc04js3" path="res://scenes/map/Props/Especiales/yerba/yerba.glb" id="12_5v6r0"]
+[ext_resource type="PackedScene" uid="uid://cka3a3rreqp28" path="res://scenes/map/Props/Especiales/fulbo/pelota.glb" id="13_uyinl"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_ifgtf"]
-size = Vector2(150, 150)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_sul5r"]
-size = Vector3(150, 0, 150)
-
-[sub_resource type="Curve3D" id="Curve3D_npc_path"]
+[sub_resource type="Curve3D" id="Curve3D_5i0tg"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 8.557237, 1, -59.40274, 0, 0, 0, 0, 0, 0, -47.75087, 1, -24.943138, 0, 0, 0, 0, 0, 0, 40.527, 1, -18.03231, 0, 0, 0, 0, 0, 0, 8.550598, 1, 3, 0, 0, 0, 0, 0, 0, -63.63496, 1, 6, 0, 0, 0, 0, 0, 0, 9.433011, 1, 50.78965),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 8.557237, 1, -22.77348, 0, 0, 0, 0, 0, 0, 2.8760147, 1, -9.84051, 0, 0, 0, 0, 0, 0, 8.787727, 1, -1.2982864, 0, 0, 0, 0, 0, 0, 20.03688, 1, 3, 0, 0, 0, 0, 0, 0, -2.907528, 1, 6, 0, 0, 0, 0, 0, 0, 5.3658485, 1, 22.94569),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0)
 }
 point_count = 6
 
+[sub_resource type="Curve3D" id="Curve3D_bdhmt"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -16.906805, 1, 10.104532, 0, 0, 0, 0, 0, 0, -16.91035, 1, 14.889469, 0, 0, 0, 0, 0, 0, -10.235299, 1, 17, 0, 0, 0, 0, 0, 0, -1.0788708, 1, 22.881691, 0, 0, 0, 0, 0, 0, -14, 1, 26.170525, 0, 0, 0, 0, 0, 0, -25.73798, 1, 24.49789, 0, 0, 0, 0, 0, 0, -25.492043, 1, 18.226479, 0, 0, 0, 0, 0, 0, -19.029171, 1, 5.015388, 0, 0, 0, 0, 0, 0, -17.690788, 1, -0.4217962, 0, 0, 0, 0, 0, 0, -15.014019, 1, -1.9274772, 0, 0, 0, 0, 0, 0, -7.5692596, 1, -5.02249, 0, 0, 0, 0, 0, 0, -4.7110977, 1, -10.959838, 0, 0, 0, 0, 0, 0, 3.6973648, 1, -11.97599, 0, 0, 0, 0, 0, 0, 7.568077, 1, -9.343906, 0, 0, 0, 0, 0, 0, 14.225693, 1, -5.6280255, 0, 0, 0, 0, 0, 0, 16.857788, 1, -0.054200534, 0, 0, 0, 0, 0, 0, 16.702957, 1, 7.996878, 0, 0, 0, 0, 0, 0, 16.238464, 1, 12.022418, 0, 0, 0, 0, 0, 0, 12.212929, 1, 11.712762, 0, 0, 0, 0, 0, 0, 8.032555, 1, 12.486904, 0, 0, 0, 0, 0, 0, 4.007019, 1, 12.641731, 0, 0, 0, 0, 0, 0, -1.7216263, 1, 11.093449, 0, 0, 0, 0, 0, 0, -4.818199, 1, 11.557935, 0, 0, 0, 0, 0, 0, -10.082359, 1, 9.390334, 0, 0, 0, 0, 0, 0, -12.714455, 1, 4.590653, 0, 0, 0, 0, 0, 0, -16.585167, 1, 2.4230552, 0, 0, 0, 0, 0, 0, -22.568817, 1, 10.474134),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 27
+
+[sub_resource type="Curve3D" id="Curve3D_87uf6"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -16.517143, 1, -14.574232, 0, 0, 0, 0, 0, 0, -11, 1, -22.588058, 0, 0, 0, 0, 0, 0, 7.930847, 1, -22.54713, 0, 0, 0, 0, 0, 0, 15.537788, 1, -25.123081, 0, 0, 0, 0, 0, 0, 20.860779, 1, -25.9956, 0, 0, 0, 0, 0, 0, 28.628141, 1, -22.670567, 0, 0, 0, 0, 0, 0, 27.77738, 1, -9.003763, 0, 0, 0, 0, 0, 0, 10.356613, 1, -6.8444448, 0, 0, 0, 0, 0, 0, -12.967197, 1, -9.193845),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 9
+
+[sub_resource type="Curve3D" id="Curve3D_2a8rs"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 9.203102, 1, 8.788868, 0, 0, 0, 0, 0, 0, 22, 1, 1.5496273, 0, 0, 0, 0, 0, 0, 22.672997, 1, 16, 0, 0, 0, 0, 0, 0, 26.581753, 1, 22.47495, 0, 0, 0, 0, 0, 0, 20.993385, 1, 27.575994, 0, 0, 0, 0, 0, 0, 13.978674, 1, 27.803436, 0, 0, 0, 0, 0, 0, 13.165203, 1, 19.171597, 0, 0, 0, 0, 0, 0, 4.9683714, 1, 18.7185),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 8
+
 [node name="Game" type="Node3D" unique_id=2105391499]
-script = ExtResource("1_sul5r")
+script = ExtResource("1_game")
 
-[node name="Piso" type="StaticBody3D" parent="." unique_id=214331217]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Piso" unique_id=1666728670]
-mesh = SubResource("PlaneMesh_ifgtf")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Piso" unique_id=432364498]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.37782288)
-shape = SubResource("BoxShape3D_sul5r")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1133832815]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.5117655, 0)
-shadow_enabled = true
-
-[node name="NPCPath" type="Path3D" parent="." unique_id=1651239944]
-curve = SubResource("Curve3D_npc_path")
+[node name="Map" parent="." unique_id=387694351 instance=ExtResource("2_map")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012722015, 0, 0.0010223389)
 
 [node name="NPCThreadPool" type="Node3D" parent="." unique_id=2069397212]
-script = ExtResource("3_pool")
-npc_scene = ExtResource("2_tnpc")
+script = ExtResource("4_pool")
+npc_scene = ExtResource("3_tnpc")
 path_node_path = NodePath("../NPCPath")
+paths_root_path = NodePath("..")
 
-[node name="PauseMenu" parent="." unique_id=1460788289 instance=ExtResource("4_pause")]
+[node name="PauseMenu" parent="." unique_id=1460788289 instance=ExtResource("5_pause")]
+
+[node name="AmbientPeople" type="AudioStreamPlayer" parent="." unique_id=1375794940]
+stream = ExtResource("6_people")
+volume_db = -24.0
+autoplay = true
+
+[node name="NPCPath" type="Path3D" parent="." unique_id=1880452308]
+visible = false
+curve = SubResource("Curve3D_5i0tg")
+
+[node name="NPCPath_RedRoom" type="Path3D" parent="." unique_id=1876474775]
+curve = SubResource("Curve3D_bdhmt")
+
+[node name="NPCPath_GreenRoom" type="Path3D" parent="." unique_id=305953925]
+curve = SubResource("Curve3D_87uf6")
+
+[node name="NPCPath_BlueRoom" type="Path3D" parent="." unique_id=1257960321]
+curve = SubResource("Curve3D_2a8rs")
+
+[node name="Mirror" parent="." unique_id=519078282 instance=ExtResource("5_mirror")]
+transform = Transform3D(-0.99951035, 0, 0.03128901, 0, 1, 0, -0.03128901, 0, -0.99951035, 11.444567, 2.3841858e-07, 12.652145)
+
+[node name="Mirror2" parent="." unique_id=1416782349 instance=ExtResource("5_mirror")]
+transform = Transform3D(0.9998404, 0, 0.017865717, 0, 1, 0, -0.017865717, 0, 0.9998404, -4.5467844, 0, -12.032681)
+
+[node name="Objects" type="Node3D" parent="." unique_id=665816031]
+
+[node name="termo" parent="Objects" unique_id=1748327462 instance=ExtResource("9_ftsea")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -22.29041, 1.5554338, -12.723953)
+
+[node name="mate" parent="Objects" unique_id=1576866765 instance=ExtResource("10_otnwt")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -22.336256, 1.4040606, -12.943359)
+
+[node name="bombilla" parent="Objects" unique_id=1879291411 instance=ExtResource("11_3xj4h")]
+transform = Transform3D(0.07619677, -0.06476146, 0, 0.06476146, 0.07619677, 0, 0, 0, 0.09999998, -22.31085, 1.4664994, -12.945919)
+
+[node name="yerba" parent="Objects" unique_id=1298658674 instance=ExtResource("12_5v6r0")]
+transform = Transform3D(0.002122282, 0, -0.19998874, 0, 0.2, 0, 0.19998874, 0, 0.002122282, -22.540834, 2.0422997, -12.786052)
+
+[node name="pelota" parent="Objects" unique_id=1129198825 instance=ExtResource("13_uyinl")]
+transform = Transform3D(-0.005249359, 0, 0.1999311, 0, 0.2, 0, -0.1999311, 0, -0.005249359, -22.549124, 0.14160573, -14.650328)
+
+[node name="table" parent="Objects" unique_id=398744470 instance=ExtResource("8_vaxfo")]
+transform = Transform3D(-0.0041189515, 0, 0.99999154, 0, 1, 0, -0.99999154, 0, -0.0041189515, -22.458654, 0.93161386, -13.456919)
+
+[node name="SpawnsPoints" type="Node3D" parent="." unique_id=797346652]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012722015, 0, 0.0010223389)
+
+[node name="SP1" type="Marker3D" parent="SpawnsPoints" unique_id=154762175 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.552217, 0, 24.309746)
+
+[node name="SP2" type="Marker3D" parent="SpawnsPoints" unique_id=622378993 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.557346, 0, -22.585732)
+
+[node name="SP3" type="Marker3D" parent="SpawnsPoints" unique_id=1576926493 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.440865, 0, -14.661396)
+
+[node name="SP4" type="Marker3D" parent="SpawnsPoints" unique_id=377872854 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.498106, 0, 22.22776)
+
+[node name="SP5" type="Marker3D" parent="SpawnsPoints" unique_id=1990138595 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.76803, 0, 0)
+
+[node name="SP6" type="Marker3D" parent="SpawnsPoints" unique_id=1070303245 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7519, 0, -0.8097358)
+
+[node name="SP7" type="Marker3D" parent="SpawnsPoints" unique_id=50871706 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.898098, 0, -12.033264)
+
+[node name="SP8" type="Marker3D" parent="SpawnsPoints" unique_id=1030097126 groups=["SpawnPoints"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.118271, 0, 18.897305)

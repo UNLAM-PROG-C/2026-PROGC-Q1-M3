@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dalk8sjj4d6jp"]
+
+[ext_resource type="PackedScene" uid="uid://bvbfnyx5blhvy" path="res://scenes/map/Props/Pallets/Pallet_Broken2/Pallet Broken (1).glb" id="1_2t5tv"]
+
+[node name="PalletBroken" type="Node3D" unique_id=1589938209]
+
+[node name="Root Scene" parent="." unique_id=1151314170 instance=ExtResource("1_2t5tv")]

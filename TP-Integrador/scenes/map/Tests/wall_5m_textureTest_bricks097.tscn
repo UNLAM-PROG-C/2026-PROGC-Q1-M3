@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://41rlk310hse8"]
+
+[ext_resource type="Texture2D" uid="uid://krj4pkgixfvl" path="res://textures/Walls/Bricks097_1K-PNG/Bricks097_1K-PNG_Color.png" id="1_5xca2"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_8b4oq"]
+size = Vector3(5, 5, 0.3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4iya8"]
+albedo_color = Color(0.5700176, 0.4183288, 0.36222062, 1)
+albedo_texture = ExtResource("1_5xca2")
+uv1_scale = Vector3(3, 3, 3)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_3gkn0"]
+data = PackedVector3Array(-2.5, 2.5, 0.14999999, 2.5, 2.5, 0.14999999, -2.5, -2.5, 0.14999999, 2.5, 2.5, 0.14999999, 2.5, -2.5, 0.14999999, -2.5, -2.5, 0.14999999, 2.5, 2.5, -0.14999999, -2.5, 2.5, -0.14999999, 2.5, -2.5, -0.14999999, -2.5, 2.5, -0.14999999, -2.5, -2.5, -0.14999999, 2.5, -2.5, -0.14999999, 2.5, 2.5, 0.14999999, 2.5, 2.5, -0.14999999, 2.5, -2.5, 0.14999999, 2.5, 2.5, -0.14999999, 2.5, -2.5, -0.14999999, 2.5, -2.5, 0.14999999, -2.5, 2.5, -0.14999999, -2.5, 2.5, 0.14999999, -2.5, -2.5, -0.14999999, -2.5, 2.5, 0.14999999, -2.5, -2.5, 0.14999999, -2.5, -2.5, -0.14999999, 2.5, 2.5, 0.14999999, -2.5, 2.5, 0.14999999, 2.5, 2.5, -0.14999999, -2.5, 2.5, 0.14999999, -2.5, 2.5, -0.14999999, 2.5, 2.5, -0.14999999, -2.5, -2.5, 0.14999999, 2.5, -2.5, 0.14999999, -2.5, -2.5, -0.14999999, 2.5, -2.5, 0.14999999, 2.5, -2.5, -0.14999999, -2.5, -2.5, -0.14999999)
+
+[node name="Wall_5m_bricks" type="Node3D" unique_id=200950674]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=444327244]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012044907, 2.511797, 0.0014686584)
+mesh = SubResource("BoxMesh_8b4oq")
+surface_material_override/0 = SubResource("StandardMaterial3D_4iya8")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D" unique_id=1499135056]
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D" unique_id=183133687]
+shape = SubResource("ConcavePolygonShape3D_3gkn0")

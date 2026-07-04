@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cyqd0konaapjo"]
+
+[node name="Map" type="Node3D" unique_id=923042431]
+
+[node name="Floor_PB" type="CSGBox3D" parent="." unique_id=1938412235]
+use_collision = true
+size = Vector3(50, 1, 50)
+
+[node name="Ext_Wall_01" type="CSGBox3D" parent="." unique_id=150420927]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.449998, 2, 25)
+size = Vector3(26.7, 5, 1)
+
+[node name="Ext_Wall_02" type="CSGBox3D" parent="." unique_id=352894940]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.55, 2, 25)
+size = Vector3(22.9, 5, 1)
+
+[node name="Ext_Wall_03" type="CSGBox3D" parent="." unique_id=997744062]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.55, 2, -25.099998)
+size = Vector3(22.9, 5, 1)
+
+[node name="Ext_Wall_04" type="CSGBox3D" parent="." unique_id=1537173185]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.1, 2, -25.099998)
+size = Vector3(22, 5, 1)
+
+[node name="Ext_Wall_05" type="CSGBox3D" parent="." unique_id=1017083857]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -26.149998, 2, 12)
+size = Vector3(23.9, 5, 1)
+
+[node name="Ext_Wall_06" type="CSGBox3D" parent="." unique_id=1953150922]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -24.549997, 2, -13.950001)
+size = Vector3(22.5, 5, 1)
+
+[node name="Ext_Wall_07" type="CSGBox3D" parent="." unique_id=1798106554]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24.250004, 2, 12)
+size = Vector3(23.9, 5, 1)
+
+[node name="Ext_Wall_08" type="CSGBox3D" parent="." unique_id=292398371]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24.150002, 2, -13.700001)
+size = Vector3(23.9, 5, 1)
