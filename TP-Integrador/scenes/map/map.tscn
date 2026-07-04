@@ -110,7 +110,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.443314, 0, 28.175629)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.84386, 0.35862464, 10.3977995)
 
 [node name="Barrel2" parent="Room_01" unique_id=96243059 instance=ExtResource("10_e07uo")]
-transform = Transform3D(-1.5, 1.3113416e-07, 0, -1.3113416e-07, -1.5, 0, 0, 0, 1.5, 26.691082, 2.1982644, 17.577562)
+transform = Transform3D(-1.5, 1.3113416e-07, 0, -1.3113416e-07, -1.5, 0, 0, 0, 1.5, 25.20035, 1.6996008, 21.08617)
 
 [node name="termo" parent="Room_01" unique_id=1739903890 instance=ExtResource("15_30ska")]
 transform = Transform3D(-0.04643897, 0, -0.29638392, 0, 0.29999998, 0, 0.29638392, 0, -0.04643897, 25.048357, 1.9798149, 21.0208)
