@@ -21,15 +21,17 @@
 [ext_resource type="PackedScene" uid="uid://d30s88p6ot88g" path="res://scenes/map/Props/Vent/vent.glb" id="17_e07uo"]
 [ext_resource type="PackedScene" uid="uid://c52sdud7jfia1" path="res://scenes/map/Props/Especiales/bombilla/bombilla.glb" id="17_omedl"]
 [ext_resource type="PackedScene" uid="uid://dtq7qijc04js3" path="res://scenes/map/Props/Especiales/yerba/yerba.glb" id="18_3xi6f"]
+[ext_resource type="PackedScene" uid="uid://ct37vp43i3tfe" path="res://scenes/map/Props/Cable_Hanging/Cable.tscn" id="22_omedl"]
+[ext_resource type="PackedScene" uid="uid://cnbhmwpwut0ye" path="res://scenes/map/Props/Doors/Metal Door.glb" id="23_3xi6f"]
+[ext_resource type="PackedScene" uid="uid://c4plturh6x75s" path="res://scenes/map/Props/Columns/Column1/column1.tscn" id="24_3xi6f"]
+[ext_resource type="PackedScene" uid="uid://8v2ndduq6g50" path="res://scenes/map/Props/Columns/Column3/column3.tscn" id="25_xks3a"]
+[ext_resource type="PackedScene" uid="uid://d060sacx36pf6" path="res://scenes/map/Props/Fence/Fence/Fence.tscn" id="26_78kcs"]
 
 [sub_resource type="Environment" id="Environment_rqo2c"]
 background_mode = 1
 background_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
 background_energy_multiplier = 5.0
-glow_enabled = true
-fog_enabled = true
 fog_light_energy = 0.5
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
 
 [node name="Map" type="Node3D" unique_id=1364295959]
@@ -38,8 +40,10 @@ volumetric_fog_density = 0.02
 environment = SubResource("Environment_rqo2c")
 
 [node name="Ceiling_70x70" parent="." unique_id=200950674 instance=ExtResource("6_jcaow")]
+visible = false
 
 [node name="Floor_70x70" parent="." unique_id=1116606908 instance=ExtResource("1_04w0f")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.00018548965, -4.7683716e-07, -0.026960611)
 
 [node name="Room_01" parent="." unique_id=1204253539 instance=ExtResource("2_fcby6")]
 
@@ -131,3 +135,99 @@ transform = Transform3D(0.19364527, 0, 0.050015174, 0, 0.2, 0, -0.050015174, 0, 
 [node name="Room_04" parent="." unique_id=1986395522 instance=ExtResource("5_sqgf4")]
 
 [node name="Hall" type="Node3D" parent="." unique_id=55363357]
+
+[node name="Cable" parent="Hall" unique_id=1436354783 instance=ExtResource("22_omedl")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 11.233027, 2.5822039, -5.052863)
+
+[node name="lamp_ceiling_tubes2" parent="Hall" unique_id=804231042 instance=ExtResource("10_b56te")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.7240987, -0.53688896, 24.178993)
+
+[node name="Metal Door" parent="Hall" unique_id=2143170937 instance=ExtResource("23_3xi6f")]
+transform = Transform3D(0.07296084, 0, -1.4982245, 0, 1.5, 0, 1.4982245, 0, 0.07296084, 10.459922, 0.02012074, 24.58491)
+
+[node name="Door_placeholder_Scene_002" parent="Hall/Metal Door" index="0" unique_id=1689167279]
+visible = false
+
+[node name="lamp_ceiling_tubes" parent="Hall" unique_id=1353222658 instance=ExtResource("10_b56te")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24.6241, -0.53688896, 0.7)
+
+[node name="Metal Door2" parent="Hall" unique_id=1905919877 instance=ExtResource("23_3xi6f")]
+transform = Transform3D(1.4982245, 0, 0.072960906, 0, 1.4999999, 0, -0.072960906, 0, 1.4982245, 24.718445, 0.02012074, -0.22611499)
+
+[node name="Door_placeholder_004_Scene_005" parent="Hall/Metal Door2" index="1" unique_id=658316226]
+visible = false
+
+[node name="Door_placeholder_005_Scene_006" parent="Hall/Metal Door2" index="2" unique_id=1476717622]
+visible = false
+
+[node name="Door_placeholder_006_Scene_007" parent="Hall/Metal Door2" index="3" unique_id=2130620208]
+visible = false
+
+[node name="Door_placeholder_007_Scene_008" parent="Hall/Metal Door2" index="4" unique_id=1598634860]
+visible = false
+
+[node name="Door_placeholder_008_Scene_009" parent="Hall/Metal Door2" index="5" unique_id=1532313556]
+visible = false
+
+[node name="Door_placeholder_001_Scene_017" parent="Hall/Metal Door2" index="6" unique_id=272180996]
+visible = false
+
+[node name="Door_placeholder_002_Scene_018" parent="Hall/Metal Door2" index="7" unique_id=1069805369]
+visible = false
+
+[node name="Door_placeholder_014_Scene_015" parent="Hall/Metal Door2" index="8" unique_id=871193063]
+visible = false
+
+[node name="Door_placeholder_010_Scene_011" parent="Hall/Metal Door2" index="9" unique_id=1825586617]
+visible = false
+
+[node name="Column1" parent="Hall" unique_id=495654817 instance=ExtResource("24_3xi6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.529591, 0.0046133995, 5.760273)
+
+[node name="Column2" parent="Hall" unique_id=1834587483 instance=ExtResource("11_58ndj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.48482, 0.041949272, -4.3434315)
+
+[node name="Column3" parent="Hall" unique_id=433093379 instance=ExtResource("24_3xi6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.6208687, 0.0046129227, -4.3397274)
+
+[node name="Column4" parent="Hall" unique_id=1576466674 instance=ExtResource("11_58ndj")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 2.5760984, 0.041948795, 5.775692)
+
+[node name="Column5" parent="Hall" unique_id=628581487 instance=ExtResource("24_3xi6f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.2626524, 0.0046129227, 5.760273)
+
+[node name="Column6" parent="Hall" unique_id=826662572 instance=ExtResource("11_58ndj")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.3074226, 0.041948795, -4.3434315)
+
+[node name="Column_metal" parent="Hall" unique_id=1412260152 instance=ExtResource("25_xks3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0, 0.8000002)
+
+[node name="Column_metal2" parent="Hall" unique_id=1257039913 instance=ExtResource("25_xks3a")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8, 0, 0.8000002)
+
+[node name="Fence" parent="Hall" unique_id=2093343747 instance=ExtResource("26_78kcs")]
+transform = Transform3D(1, 0, 0, 0, 0.9938687, 0.11056697, 0, -0.11056697, 0.9938687, -5.6814814, -9.536743e-07, 6.4018006)
+
+[node name="Fence2" parent="Hall" unique_id=2083891126 instance=ExtResource("26_78kcs")]
+transform = Transform3D(0.95971215, 0.031067662, -0.27926219, 0, 0.99386865, 0.11056697, 0.28098497, -0.106112465, 0.9538278, -6.7841372, -9.536743e-07, 6.7919416)
+
+[node name="Fence3" parent="Hall" unique_id=1743574591 instance=ExtResource("26_78kcs")]
+transform = Transform3D(1.3113416e-07, 0, 1, 0, 1, 0, -1, 0, 1.3113416e-07, -15.44444, 0.11819267, 2.9324806)
+
+[node name="Fence5" parent="Hall" unique_id=1749914859 instance=ExtResource("26_78kcs")]
+transform = Transform3D(-0.46331537, -0.26409402, 0.8459275, -0.035873, 0.9593695, 0.27986234, -0.8854673, 0.099318564, -0.4539646, -14.733324, 0.1049459, 0.45523)
+
+[node name="Fence4" parent="Hall" unique_id=682099655 instance=ExtResource("26_78kcs")]
+transform = Transform3D(-0.46066374, -0.16713014, 0.8716975, -0.012600452, 0.98324406, 0.18185794, -0.88748527, 0.07279157, -0.45505077, -15.35913, 0.11819267, 0.12751627)
+
+[node name="Fence6" parent="Hall" unique_id=1768618073 instance=ExtResource("26_78kcs")]
+transform = Transform3D(-1, -9.353619e-09, 8.692095e-08, 0, 0.9942598, 0.10699293, -8.742278e-08, 0.10699293, -0.9942598, 11.901761, 0, 4.9483604)
+
+[node name="Fence7" parent="Hall" unique_id=240066653 instance=ExtResource("26_78kcs")]
+transform = Transform3D(-1, -1.6456328e-08, 8.585995e-08, 0, 0.9821234, 0.18823844, -8.742278e-08, 0.18823844, -0.9821234, 14.763909, 0, 4.9483604)
+
+[node name="Fence9" parent="Hall" unique_id=1732594053 instance=ExtResource("26_78kcs")]
+transform = Transform3D(-0.99787575, -0.058779426, -0.028088925, -0.06507554, 0.8793247, 0.47175568, -0.0030302235, 0.47258145, -0.88128173, 13.862249, 0, 3.9209347)
+
+[editable path="Hall/Metal Door"]
+[editable path="Hall/Metal Door2"]
