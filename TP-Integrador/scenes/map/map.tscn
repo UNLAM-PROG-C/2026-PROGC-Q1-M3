@@ -53,7 +53,9 @@ background_mode = 1
 background_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
 background_energy_multiplier = 5.0
 glow_enabled = true
+fog_enabled = true
 fog_light_energy = 0.5
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
 
 [node name="Map" type="Node3D" unique_id=1364295959]
@@ -238,7 +240,7 @@ transform = Transform3D(-0.023961082, 0, -0.9997129, 0, 1, 0, 0.9997129, 0, -0.0
 transform = Transform3D(-0.18660074, 0, 0.07197331, 0, 0.19999999, 0, -0.07197331, 0, -0.18660074, -26.36671, 1.253994, 22.677822)
 
 [node name="Wall_Window" parent="Room_03" unique_id=865179498 instance=ExtResource("31_dcmu3")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.328112, 0, 20.551098)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.328112, 0, 20.628414)
 
 [node name="Wall_door" parent="Room_03" unique_id=285917033 instance=ExtResource("32_3l3wi")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -16.74071, 0.016756773, 25.403051)
@@ -301,7 +303,7 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.6
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.595297, 0.06644344, 29.306715)
 
 [node name="flowerpot" parent="Room_03" unique_id=2123093871 instance=ExtResource("42_6kl12")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.6373458, 3.3468084, 14.118651)
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.6373458, 3.3468084, 15.506492)
 
 [node name="potplant" parent="Room_03" unique_id=898024643 instance=ExtResource("43_xx7ti")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -1.6454744, 0.34140635, 17.845)
