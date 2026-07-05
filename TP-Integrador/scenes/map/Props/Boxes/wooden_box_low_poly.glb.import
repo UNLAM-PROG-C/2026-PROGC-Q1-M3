@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b0aljic45qjyy"
-path="res://.godot/imported/tarp-covered_crate__low-poly.glb-98cb7e9248bcc1e052526b5b84ba6d02.scn"
+uid="uid://cr1jucjvqq7io"
+path="res://.godot/imported/wooden_box_low_poly.glb-76e91a6b790fe79d629db3d8ebc78fe9.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Crate_Tarp/tarp-covered_crate__low-poly.glb"
-dest_files=["res://.godot/imported/tarp-covered_crate__low-poly.glb-98cb7e9248bcc1e052526b5b84ba6d02.scn"]
+source_file="res://scenes/map/Props/Boxes/wooden_box_low_poly.glb"
+dest_files=["res://.godot/imported/wooden_box_low_poly.glb-76e91a6b790fe79d629db3d8ebc78fe9.scn"]
 
 [params]
 
