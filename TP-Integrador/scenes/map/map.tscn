@@ -39,7 +39,6 @@
 [ext_resource type="PackedScene" uid="uid://bf81gditjve1d" path="res://scenes/map/Props/Pallets/free_wood_palette.glb" id="37_eat5w"]
 [ext_resource type="PackedScene" uid="uid://dj00evtco5s0m" path="res://scenes/map/Props/Pallets/realistic_wooden_pallet_low-poly.glb" id="38_uo64c"]
 [ext_resource type="PackedScene" uid="uid://c0otql6m7bofy" path="res://scenes/map/Props/Pallets/wooden_box_-_pallet._game_asset.glb" id="39_eat5w"]
-[ext_resource type="PackedScene" uid="uid://biyop2jej8ebb" path="res://scenes/map/Props/crate_a_from_fps_creator_classic.glb" id="40_sxtst"]
 [ext_resource type="PackedScene" uid="uid://dlb8ximi28kye" path="res://scenes/map/Props/junkyard_props.glb" id="41_4st6g"]
 [ext_resource type="Texture2D" uid="uid://b1l0p80elg8de" path="res://scenes/map/Props/junkyard_props_0.png" id="42_yuyn0"]
 
@@ -47,7 +46,10 @@
 background_mode = 1
 background_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
 background_energy_multiplier = 5.0
+glow_enabled = true
+fog_enabled = true
 fog_light_energy = 0.5
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bswn0"]
@@ -144,7 +146,6 @@ shadow_mesh = SubResource("ArrayMesh_kn57s")
 environment = SubResource("Environment_rqo2c")
 
 [node name="Ceiling_70x70" parent="." unique_id=200950674 instance=ExtResource("6_jcaow")]
-visible = false
 
 [node name="Floor_70x70" parent="." unique_id=1116606908 instance=ExtResource("1_04w0f")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.046718597, 0.011943817, 0.024169922)
@@ -241,19 +242,37 @@ transform = Transform3D(0.19364527, 0, 0.050015174, 0, 0.2, 0, -0.050015174, 0, 
 
 [node name="Hall" type="Node3D" parent="." unique_id=55363357]
 
-[node name="pipe6" parent="Hall" unique_id=562245992 instance=ExtResource("7_mgs8m")]
-transform = Transform3D(-0.6358183, 1.3079954, -0.36726344, -0.08546164, 0.3661837, 1.4521041, 1.3558882, 0.6364407, -0.08069521, 21.729563, 0.41206515, 0.3807683)
+[node name="LampsHall" type="Node3D" parent="Hall" unique_id=1704476951]
 
-[node name="pipe2_elbow5" parent="Hall" unique_id=733809961 instance=ExtResource("8_mrjnl")]
-transform = Transform3D(0.42387873, 0.87199706, 0.24484241, 0.05697448, 0.2441225, -0.9680694, -0.90392524, 0.42429382, 0.053796764, 22.355686, 0.44545522, -1.8679802)
-
-[node name="Lamps" type="Node3D" parent="Hall" unique_id=1704476951]
-
-[node name="lamp_ceiling_tubes2" parent="Hall/Lamps" unique_id=804231042 instance=ExtResource("10_b56te")]
+[node name="lamp_ceiling_tubes2" parent="Hall/LampsHall" unique_id=804231042 instance=ExtResource("10_b56te")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5.7240987, -0.53688896, 24.178993)
 
-[node name="lamp_ceiling_tubes" parent="Hall/Lamps" unique_id=1353222658 instance=ExtResource("10_b56te")]
+[node name="lamp_ceiling_tubes" parent="Hall/LampsHall" unique_id=1353222658 instance=ExtResource("10_b56te")]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 24.6241, -0.53688896, 0.7)
+
+[node name="lamp_ceiling_tubes3" parent="Hall/LampsHall" unique_id=2092532165 instance=ExtResource("10_b56te")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8929703, -0.51938856, 0)
+
+[node name="lamp_ceiling_tubes6" parent="Hall/LampsHall" unique_id=1778728589 instance=ExtResource("10_b56te")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8929703, -0.51938856, -10.263662)
+
+[node name="lamp_ceiling_tubes5" parent="Hall/LampsHall" unique_id=795439688 instance=ExtResource("10_b56te")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8929703, -0.51938856, 14.039)
+
+[node name="lamp_ceiling_tubes4" parent="Hall/LampsHall" unique_id=1174290539 instance=ExtResource("10_b56te")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.8929703, -0.51938856, -17.890146)
+
+[node name="lamp_wall_Hall" parent="Hall/LampsHall" unique_id=1882131194 instance=ExtResource("11_x2kg6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.261012, 0, 4.9861507)
+
+[node name="lamp_wall_Hall2" parent="Hall/LampsHall" unique_id=726213950 instance=ExtResource("11_x2kg6")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, -7.261012, 0, -3.6138494)
+
+[node name="lamp_wall" parent="Hall/LampsHall" unique_id=2100534863 instance=ExtResource("11_x2kg6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.550797, 0, 4.9414916)
+
+[node name="lamp_wall2" parent="Hall/LampsHall" unique_id=20858948 instance=ExtResource("11_x2kg6")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 12.550797, 0, -3.6417282)
 
 [node name="Metal Door" parent="Hall" unique_id=2143170937 instance=ExtResource("23_3xi6f")]
 transform = Transform3D(0.07296084, 0, -1.4982245, 0, 1.5, 0, 1.4982245, 0, 0.07296084, 10.459922, 0.02012074, 24.58491)
@@ -353,22 +372,42 @@ transform = Transform3D(0.99787575, 0.058779404, 0.028089011, -0.06507554, 0.879
 [node name="Fence10" parent="Hall/VallasHall" unique_id=656367855 instance=ExtResource("26_78kcs")]
 transform = Transform3D(0.9979724, 0.062430527, 0.01239932, -0.06361703, 0.9720892, 0.22582142, 0.002044903, -0.22615232, 0.97408956, -6.3272448, -2.861023e-06, -12.134215)
 
-[node name="FuseBox" parent="Hall" unique_id=1492271622 instance=ExtResource("29_j4o0h")]
+[node name="MirrorsHall" type="Node3D" parent="Hall" unique_id=1539275588]
+
+[node name="MirrorHall1" parent="Hall/MirrorsHall" unique_id=90300604 instance=ExtResource("11_cumk7")]
+transform = Transform3D(-0.70354354, 0, 0.7106522, 0, 1, 0, -0.7106522, 0, -0.70354354, -12.848532, 0.011943817, 5.8066835)
+
+[node name="MirrorHall2" parent="Hall/MirrorsHall" unique_id=1543839425 instance=ExtResource("11_cumk7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.599149, 0.011943817, -9.998127)
+
+[node name="MirrorHall3" parent="Hall/MirrorsHall" unique_id=153834921 instance=ExtResource("11_cumk7")]
+transform = Transform3D(-0.4479307, 0, 0.89406836, 0, 1, 0, -0.89406836, 0, -0.4479307, -1.291111, 0.01194191, -13.608657)
+
+[node name="MirrorHall4" parent="Hall/MirrorsHall" unique_id=1540975544 instance=ExtResource("11_cumk7")]
+transform = Transform3D(-0.7140208, 0, 0.70012456, 0, 1, 0, -0.70012456, 0, -0.7140208, 0.4236822, 0.011943817, 15.7628355)
+
+[node name="FuseBoxHall" parent="Hall" unique_id=1492271622 instance=ExtResource("29_j4o0h")]
 transform = Transform3D(-1.3113416e-08, 0, -0.29999998, 0, 0.29999998, 0, 0.29999998, 0, -1.3113416e-08, 7.2000003, 0, -26.4)
 
-[node name="coveredBlue" parent="Hall" unique_id=1778715317 instance=ExtResource("29_25aov")]
+[node name="CoveredBoxesBlue" parent="Hall" unique_id=1778715317 instance=ExtResource("29_25aov")]
 transform = Transform3D(2.171143, 0, 2.0702991, 0, 3.0000014, 0, -2.0702991, 0, 2.171143, -5.2731457, 0, 2.6554537)
 
-[node name="pelota" parent="Hall" unique_id=2042036953 instance=ExtResource("31_hs4c0")]
+[node name="WC2026Ball" parent="Hall" unique_id=2042036953 instance=ExtResource("31_hs4c0")]
 transform = Transform3D(0.21711425, 0, 0.20702985, 0, 0.29999992, 0, -0.20702985, 0, 0.21711425, -5.2511196, 1.1971197, 1.9561391)
 
-[node name="Cable" parent="Hall" unique_id=1436354783 instance=ExtResource("22_omedl")]
+[node name="CableHall" parent="Hall" unique_id=1436354783 instance=ExtResource("22_omedl")]
 transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 11.233027, 2.5822039, -5.052863)
 
-[node name="Boxes_covered" parent="Hall" unique_id=686524456 instance=ExtResource("27_hs4c0")]
+[node name="CableHall2" parent="Hall" unique_id=1340283808 instance=ExtResource("22_omedl")]
+transform = Transform3D(0.96986353, 0, 1.749104, 0, 2, 0, -1.749104, 0, 0.96986353, 10.156495, 3.034532, 6.1671853)
+
+[node name="CableHall3" parent="Hall" unique_id=83761435 instance=ExtResource("22_omedl")]
+transform = Transform3D(-0.80908215, 0, 1.2630858, 0, 1.5, 0, -1.2630858, 0, -0.80908215, 10.269299, 3.4673014, 6.1864696)
+
+[node name="Boxes_coveredHall" parent="Hall" unique_id=686524456 instance=ExtResource("27_hs4c0")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.700001, -1.2216774, 7.200001)
 
-[node name="Boxes_covered2" parent="Hall" unique_id=450901044 instance=ExtResource("27_hs4c0")]
+[node name="Boxes_covered2Hall" parent="Hall" unique_id=450901044 instance=ExtResource("27_hs4c0")]
 transform = Transform3D(-0.70409185, 0, 1.3244829, 0, 1.5, 0, -1.3244829, 0, -0.70409185, -4.268861, -0.8000001, -9.970266)
 
 [node name="wooden_boxes" parent="Hall" unique_id=1210632326 instance=ExtResource("32_p2b7t")]
@@ -422,64 +461,73 @@ mesh = SubResource("ArrayMesh_fsyr3")
 [node name="wooden_crate" parent="Hall" unique_id=1596252803 instance=ExtResource("34_gqpwe")]
 transform = Transform3D(0.90528727, 0, 0.42479995, 0, 1, 0, -0.42479995, 0, 0.90528727, 17.04149, 0.28650403, -4.5077744)
 
-[node name="Sketchfab_Scene" parent="Hall" unique_id=518213273 instance=ExtResource("36_f24ks")]
+[node name="CoveredPalletHall" parent="Hall" unique_id=518213273 instance=ExtResource("36_f24ks")]
 transform = Transform3D(1.4939141, 0, 0.13498418, 0, 1.5, 0, -0.13498418, 0, 1.4939141, -17.26707, 0, 2.8669167)
 
-[node name="Sketchfab_Scene2" parent="Hall" unique_id=1203203656 instance=ExtResource("37_eat5w")]
+[node name="BigDarkPalleteHall" parent="Hall" unique_id=1203203656 instance=ExtResource("37_eat5w")]
 transform = Transform3D(0.24063122, 0, 0.31952563, 0, 0.4, 0, -0.31952563, 0, 0.24063122, 1.1300459, 0, 5.042079)
 
-[node name="Sketchfab_Scene3" parent="Hall" unique_id=1453879188 instance=ExtResource("38_uo64c")]
+[node name="SmallPalletHall" parent="Hall" unique_id=1453879188 instance=ExtResource("38_uo64c")]
 transform = Transform3D(0.4964142, 0, -0.05977385, 0, 0.5, 0, 0.05977385, 0, 0.4964142, 16.774504, 0, -4.1337857)
 
-[node name="Sketchfab_Scene4" parent="Hall" unique_id=144835660 instance=ExtResource("39_eat5w")]
+[node name="MediumBrokenPalletteHall" parent="Hall" unique_id=144835660 instance=ExtResource("39_eat5w")]
 transform = Transform3D(0.47575966, 0, 0.15379457, 0, 0.5, 0, -0.15379457, 0, 0.47575966, 9.142458, -0.12264347, -10.317601)
 
-[node name="ConcreteBlocks2" parent="Hall" unique_id=270706163 instance=ExtResource("10_58ndj")]
+[node name="ConcreteBlocksHall" parent="Hall" unique_id=270706163 instance=ExtResource("10_58ndj")]
 transform = Transform3D(1.4999549, -0.01001683, -0.0059023476, 0.010013918, 1.4999664, -0.0007592263, 0.005907285, 0.0007197998, 1.4999882, -21.353, 0.18330202, -3.512001)
 
-[node name="palletsClaros" parent="Hall" unique_id=173738471 instance=ExtResource("40_sxtst")]
-transform = Transform3D(1.0251973, 0, -1.0949751, 0, 1.5, 0, 1.0949751, 0, 1.0251973, 8.13421, 0, 15.303484)
+[node name="pipe1_hall" parent="Hall" unique_id=562245992 instance=ExtResource("7_mgs8m")]
+transform = Transform3D(-0.6358183, 1.3079954, -0.36726344, -0.08546164, 0.3661837, 1.4521041, 1.3558882, 0.6364407, -0.08069521, 21.729563, 0.41206515, 0.3807683)
 
-[node name="Sketchfab_Scene6" parent="Hall" unique_id=1609043725 instance=ExtResource("41_4st6g")]
+[node name="pipe2_elbow_hall" parent="Hall" unique_id=733809961 instance=ExtResource("8_mrjnl")]
+transform = Transform3D(0.42387873, 0.87199706, 0.24484241, 0.05697448, 0.2441225, -0.9680694, -0.90392524, 0.42429382, 0.053796764, 22.355686, 0.44545522, -1.8679802)
+
+[node name="JunkEverywhereHall" parent="Hall" unique_id=1609043725 instance=ExtResource("41_4st6g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.575253)
 
-[node name="Barrel v1 " parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="0" unique_id=676345702]
+[node name="Barrel v1 " parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="0" unique_id=676345702]
 transform = Transform3D(79.99999, 0, 0, 0, -3.4969112e-06, 79.99999, 0, -79.99999, -3.4969112e-06, 975.9476, 129.88632, 1073.5219)
 
-[node name="Barrel v2_001" parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="1" unique_id=469150825]
+[node name="Barrel v1 _Barrel v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v1 " index="0" unique_id=273864920]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, -1.0658141e-14, 0, 1.0658141e-14, 0.9999999, 0, -2.0614338, -1.1920929e-07)
+
+[node name="Barrel v2_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="1" unique_id=469150825]
 transform = Transform3D(79.99999, 0, 0, 0, -3.4969112e-06, 79.99999, 0, -79.99999, -3.4969112e-06, 374.29095, 136.52031, -620.8827)
 
-[node name="Gear v1_001" parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="2" unique_id=367363724]
+[node name="Gear v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="2" unique_id=367363724]
 visible = false
 
-[node name="Metal peice 2 v1_001_Metal peice 2 v1 low poly_0" parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v1_001" parent_id_path=PackedInt32Array(1609043725, 837214971) index="0" unique_id=363372738]
+[node name="Metal peice 2 v1_001_Metal peice 2 v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v1_001" parent_id_path=PackedInt32Array(1609043725, 837214971) index="0" unique_id=363372738]
 transform = Transform3D(-0.6881355, -0.12044797, 0.04429233, 0.08953556, -0.27751592, 0.6363712, -0.09193968, 0.6312505, 0.28821862, 2.9417162, 0.24558687, 1.450423)
 
-[node name="Metal peice 2 v2_001_Metal peice 2 v2 low poly_0" parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v2_001" parent_id_path=PackedInt32Array(1609043725, 1198871483) index="0" unique_id=1223856175]
+[node name="Metal peice 2 v2_001_Metal peice 2 v2 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v2_001" parent_id_path=PackedInt32Array(1609043725, 1198871483) index="0" unique_id=1223856175]
 transform = Transform3D(0.88250476, 0.4703035, 3.5506925e-08, 0.4703035, -0.88250476, 9.629342e-08, 7.6622165e-08, -6.828037e-08, -1, 4.9809217, 16.313568, 0.20000266)
 
-[node name="Metal peice 2 v2_001_Metal peice 2 v2 low poly_1" type="MeshInstance3D" parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v2_001" parent_id_path=PackedInt32Array(1609043725, 1198871483) index="1" unique_id=759286197]
+[node name="Metal peice 2 v2_001_Metal peice 2 v2 low poly_1" type="MeshInstance3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v2_001" parent_id_path=PackedInt32Array(1609043725, 1198871483) index="1" unique_id=759286197]
 transform = Transform3D(-0.9463902, 0.32302552, 2.4387747e-08, -0.32302552, -0.9463902, -3.2179395e-07, -8.086735e-08, -3.1242047e-07, 1, 7.9809217, -21.982449, 0.1999964)
 mesh = SubResource("ArrayMesh_x3t56")
 
-[node name="Metal plank v1_001" parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="5" unique_id=495370044]
+[node name="Metal plank v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="5" unique_id=495370044]
 visible = false
 
-[node name="Metal sheet v1_001" parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="6" unique_id=105864590]
+[node name="Metal sheet v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="6" unique_id=105864590]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 0, 12.63957, 1129.867)
 
-[node name="Metal sheet v1_001_Metal sheet v1 low poly_0" parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal sheet v1_001" index="0" unique_id=932571372]
+[node name="Metal sheet v1_001_Metal sheet v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal sheet v1_001" index="0" unique_id=932571372]
 transform = Transform3D(0.84827924, -0.5295492, -8.627451e-08, 0.5295492, 0.84827924, -2.4718446e-08, 8.627451e-08, -2.4718446e-08, 1, 15.6596985, 11.842027, -0.08669338)
 
-[node name="Metal sheet v2_001_Metal sheet v2 low poly_0" parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal sheet v2_001" parent_id_path=PackedInt32Array(1609043725, 815923967) index="0" unique_id=1808097663]
+[node name="Metal sheet v2_001_Metal sheet v2 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal sheet v2_001" parent_id_path=PackedInt32Array(1609043725, 815923967) index="0" unique_id=1808097663]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8183975, 14.565258, 0.14503364)
 
-[node name="Metal spring v1_001" parent="Hall/Sketchfab_Scene6/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="8" unique_id=227596907]
+[node name="Metal spring v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="8" unique_id=227596907]
 visible = false
+
+[node name="lamp_wall" parent="." unique_id=278941904 instance=ExtResource("11_x2kg6")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.019707, -0.031354427, -28.82068)
 
 [editable path="Hall/Metal Door"]
 [editable path="Hall/Metal Door2"]
 [editable path="Hall/wooden_boxes"]
 [editable path="Hall/wooden_boxes2"]
 [editable path="Hall/wooden_boxes3"]
-[editable path="Hall/Sketchfab_Scene6"]
+[editable path="Hall/JunkEverywhereHall"]
