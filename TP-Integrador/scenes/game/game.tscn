@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://b3d2g8gl54k7k"]
 
 [ext_resource type="Script" uid="uid://bip4nfoytppkx" path="res://scenes/game/game.gd" id="1_game"]
-[ext_resource type="PackedScene" uid="uid://cg25o1phep4pg" path="res://scenes/map/map.tscn" id="2_map"]
+[ext_resource type="PackedScene" uid="uid://cvf3xvpkw4gwp" path="res://scenes/map/map.tscn" id="2_map"]
 [ext_resource type="PackedScene" uid="uid://cu4pnet80h04m" path="res://scenes/npc/threaded_npc.tscn" id="3_tnpc"]
 [ext_resource type="Script" uid="uid://cqxxj8bf071n6" path="res://scenes/npc/npc_thread_pool.gd" id="4_pool"]
 [ext_resource type="PackedScene" uid="uid://b6514v030pgg4" path="res://scenes/map/mirror/mirror.tscn" id="5_mirror"]
 [ext_resource type="PackedScene" uid="uid://bnuwfhmyf6mmm" path="res://scenes/ui/pause_menu.tscn" id="5_pause"]
 [ext_resource type="AudioStream" uid="uid://bensdx1w1n6mg" path="res://audio/sfx/people.mp3" id="6_people"]
+[ext_resource type="PackedScene" uid="uid://rrkwfir4iwx0" path="res://scenes/map/Props/Especiales/table/table.glb" id="8_vaxfo"]
+[ext_resource type="PackedScene" uid="uid://d0bwxqec1efw2" path="res://scenes/map/Props/Especiales/termo/termo.glb" id="9_ftsea"]
+[ext_resource type="PackedScene" uid="uid://b53j1bp5u6kry" path="res://scenes/map/Props/Especiales/mate/mate.glb" id="10_otnwt"]
+[ext_resource type="PackedScene" uid="uid://c52sdud7jfia1" path="res://scenes/map/Props/Especiales/bombilla/bombilla.glb" id="11_3xj4h"]
+[ext_resource type="PackedScene" uid="uid://dtq7qijc04js3" path="res://scenes/map/Props/Especiales/yerba/yerba.glb" id="12_5v6r0"]
+[ext_resource type="PackedScene" uid="uid://cka3a3rreqp28" path="res://scenes/map/Props/Especiales/fulbo/pelota.glb" id="13_uyinl"]
 
 [sub_resource type="Curve3D" id="Curve3D_5i0tg"]
 _data = {
@@ -76,6 +82,26 @@ transform = Transform3D(-0.99951035, 0, 0.03128901, 0, 1, 0, -0.03128901, 0, -0.
 
 [node name="Mirror2" parent="." unique_id=1416782349 instance=ExtResource("5_mirror")]
 transform = Transform3D(0.9998404, 0, 0.017865717, 0, 1, 0, -0.017865717, 0, 0.9998404, -4.5467844, 0, -12.032681)
+
+[node name="Objects" type="Node3D" parent="." unique_id=665816031]
+
+[node name="termo" parent="Objects" unique_id=1748327462 instance=ExtResource("9_ftsea")]
+transform = Transform3D(0.25, 0, 0, 0, 0.25, 0, 0, 0, 0.25, -22.29041, 1.5554338, -12.723953)
+
+[node name="mate" parent="Objects" unique_id=1576866765 instance=ExtResource("10_otnwt")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -22.336256, 1.4040606, -12.943359)
+
+[node name="bombilla" parent="Objects" unique_id=1879291411 instance=ExtResource("11_3xj4h")]
+transform = Transform3D(0.07619677, -0.06476146, 0, 0.06476146, 0.07619677, 0, 0, 0, 0.09999998, -22.31085, 1.4664994, -12.945919)
+
+[node name="yerba" parent="Objects" unique_id=1298658674 instance=ExtResource("12_5v6r0")]
+transform = Transform3D(0.002122282, 0, -0.19998874, 0, 0.2, 0, 0.19998874, 0, 0.002122282, -22.540834, 2.0422997, -12.786052)
+
+[node name="pelota" parent="Objects" unique_id=1129198825 instance=ExtResource("13_uyinl")]
+transform = Transform3D(-0.005249359, 0, 0.1999311, 0, 0.2, 0, -0.1999311, 0, -0.005249359, -22.549124, 0.14160573, -14.650328)
+
+[node name="table" parent="Objects" unique_id=398744470 instance=ExtResource("8_vaxfo")]
+transform = Transform3D(-0.0041189515, 0, 0.99999154, 0, 1, 0, -0.99999154, 0, -0.0041189515, -22.458654, 0.93161386, -13.456919)
 
 [node name="SpawnsPoints" type="Node3D" parent="." unique_id=797346652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0012722015, 0, 0.0010223389)

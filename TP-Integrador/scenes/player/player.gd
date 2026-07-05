@@ -257,14 +257,10 @@ func _physics_process(delta):
 func _parse_hit(hit: Dictionary) -> Array:
 	if hit.is_empty():
 		return [null, null]
-	var col = hit.collider
-	if col.is_in_group("players"):
-		return [col, null]
-	# El NPC tiene Area3D (capa 2, grupo "npcs") y StaticBody3D (capa 1) coincidentes; el rayo
-	# (mask 1|2) puede devolver cualquiera. El ThreadedNPC (que expone kill_npc) es padre de ambos.
-	var npc = col.get_parent()
-	if npc != null and npc.has_method("kill_npc"):
-		return [null, npc]
+	if hit.collider.is_in_group("players"):
+		return [hit.collider, null]
+	if hit.collider.is_in_group("npcs"):
+		return [null, hit.collider.get_parent()]
 	return [null, null]
 
 
@@ -337,10 +333,10 @@ func _fire_at_player() -> void:
 func _fire_at_npc() -> void:
 	var game = get_parent()
 	var npc_idx: int = _current_npc_target.npc_index
-	if multiplayer.has_multiplayer_peer() and not multiplayer.is_server():
-		game.report_npc_kill.rpc_id(1, npc_idx)  # cliente → server
+	if multiplayer.is_server():
+		game.report_npc_kill(npc_idx)
 	else:
-		game.report_npc_kill(npc_idx)            # server u offline/solo: directo
+		game.report_npc_kill.rpc_id(1, npc_idx)
 
 
 func set_eliminated() -> void:

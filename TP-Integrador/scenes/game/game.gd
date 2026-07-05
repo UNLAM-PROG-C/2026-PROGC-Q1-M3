@@ -129,23 +129,17 @@ func report_capture(victim_id: int) -> void:
 
 @rpc("any_peer", "reliable")
 func report_npc_kill(npc_index: int) -> void:
-	if _game_over:
-		return
-	# Aceptar offline (sin peer); si hay red, solo el server resuelve.
-	if multiplayer.has_multiplayer_peer() and not multiplayer.is_server():
+	if _game_over or not multiplayer.is_server():
 		return
 	var attacker_id := multiplayer.get_remote_sender_id()
 	if attacker_id == 0:
 		attacker_id = 1
 	var is_solo := "--debug_solo" in OS.get_cmdline_args()
-	if multiplayer.has_multiplayer_peer() and not is_solo and not _alive.has(attacker_id):
+	if not is_solo and not _alive.has(attacker_id):
 		return
 	var attacker = get_node_or_null(str(attacker_id))
 	var alarm_pos : Vector3 = attacker.global_position if attacker else Vector3.ZERO
-	if multiplayer.has_multiplayer_peer():
-		apply_npc_kill.rpc(npc_index, alarm_pos)
-	else:
-		apply_npc_kill(npc_index, alarm_pos)  # offline: aplicar local
+	apply_npc_kill.rpc(npc_index, alarm_pos)
 
 
 @rpc("authority", "call_local", "reliable")

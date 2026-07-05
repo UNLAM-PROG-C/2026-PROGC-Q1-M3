@@ -2,15 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://jn8l2xt0ogpc" path="res://scenes/map/Props/Crates/Crate/crate.glb" id="1_eocfh"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_eocfh"]
-size = Vector3(1.1684265, 1.1964111, 1.2837219)
-
 [node name="Crate" type="Node3D" unique_id=521597423]
 
 [node name="Root Scene" parent="." unique_id=2083634081 instance=ExtResource("1_eocfh")]
-
-[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=1783127242]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=1832552104]
-transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, -0.0039820597, 0.43482006, 0.011719894)
-shape = SubResource("BoxShape3D_eocfh")
