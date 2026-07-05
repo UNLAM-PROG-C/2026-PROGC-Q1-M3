@@ -60,7 +60,7 @@ func join_server(ip: String, player_name: String) -> Error:
 
 
 func disconnect_from_game() -> void:
-	multiplayer.multiplayer_peer = null
+	multiplayer.multiplayer_peer = OfflineMultiplayerPeer.new()
 	_awaiting_confirmation = false
 	_shared_player_appearance.clear()
 	players.clear()

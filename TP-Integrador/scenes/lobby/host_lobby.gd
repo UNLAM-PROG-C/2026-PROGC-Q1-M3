@@ -58,11 +58,28 @@ func _resolve_name() -> String:
 
 
 func _show_host_ip() -> void:
-	for addr in IP.get_local_addresses():
-		if "." in addr and not addr.begins_with("127.") and not addr.begins_with("169.254."):
-			ip_display.text = addr
-			return
-	ip_display.text = "127.0.0.1"
+	# En PCs con VPN, VirtualBox, Hyper-V, WSL, etc. get_local_addresses() puede
+	# devolver varias IPs y la primera no es necesariamente la de la red LAN real.
+	# Priorizamos las de interfaces físicas (Wi-Fi/Ethernet) sobre las virtuales.
+	var virtual_keywords := ["virtual", "vethernet", "virtualbox", "vmware", "hyper-v",
+		"loopback", "tailscale", "zerotier", "tap", "wsl", "docker", "npcap"]
+	var all_candidates: Array[String] = []
+	var preferred: Array[String] = []
+	for iface in IP.get_local_interfaces():
+		var friendly: String = str(iface.get("friendly", iface.get("name", ""))).to_lower()
+		var is_virtual := virtual_keywords.any(func(k): return friendly.contains(k))
+		for addr in iface.get("addresses", []):
+			if "." in addr and not addr.begins_with("127.") and not addr.begins_with("169.254."):
+				all_candidates.append(addr)
+				if not is_virtual:
+					preferred.append(addr)
+	var candidates := preferred if not preferred.is_empty() else all_candidates
+	if candidates.is_empty():
+		ip_display.text = "127.0.0.1"
+		return
+	ip_display.text = candidates[0]
+	if all_candidates.size() > 1:
+		print("GameNetwork: IPs locales detectadas: %s (mostrando %s). Si el cliente no logra conectar, probá con otra de estas IPs." % [all_candidates, candidates[0]])
 
 
 func _refresh_player_list() -> void:

@@ -12,7 +12,6 @@ mecanismos de concurrencia funcionando de forma coordinada:
 | Concepto de la materia | Cómo se demuestra en el juego |
 |------------------------|-------------------------------|
 | **Comunicación entre procesos** | Varias instancias del juego (en distintas PCs o ventanas) se comunican por red mediante RPC |
-| **Estado distribuido y consistencia** | Un servidor autoritativo mantiene una única fuente de verdad sincronizada entre todos los jugadores |
 | **Hilos (threads)** | El movimiento de los NPCs se calcula en un hilo separado, sin bloquear el bucle principal del juego |
 | **Exclusión mutua (mutex)** | El acceso a las posiciones compartidas de los NPCs se protege con un `Mutex` para evitar condiciones de carrera |
 
@@ -26,8 +25,7 @@ Pero hay un problema: *los clones y los jugadores son casi identicos*, por lo qu
 
 ### Reglas
 - De **2 a 4 jugadores** por partida.
-- La ronda termina cuando queda **un solo jugador vivo**, que suma **1 punto**.
-- Gana la partida el primero en llegar a **3 puntos** (configurable).
+- Gana el jugador que gane la ronda.
 
 ### Controles
 | Acción | Tecla |

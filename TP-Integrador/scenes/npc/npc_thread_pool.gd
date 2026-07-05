@@ -95,6 +95,7 @@ func _get_current_player_count() -> int:
 
 
 func _start_workers():
+	# Inicializa el ThreadPool
 	_running = true
 	var count: int = int(max(1, worker_count))
 
@@ -524,12 +525,12 @@ func _update_npc_player_reactions(delta: float) -> void:
 
 func _random_signed_offset() -> float:
 	var magnitude: float = _rng.randf_range(random_offset_min, random_offset_max)
-	var sign: float = 1.0
+	var _sign: float = 1.0
 
 	if _rng.randi_range(0, 1) == 0:
-		sign = -1.0
+		_sign = -1.0
 
-	return magnitude * sign
+	return magnitude * _sign
 
 
 func _balanced_path_distance(index: int, path_used_counts: Array[int]) -> float:
