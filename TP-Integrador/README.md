@@ -26,8 +26,7 @@ Pero hay un problema: *los clones y los jugadores son casi identicos*, por lo qu
 
 ### Reglas
 - De **2 a 4 jugadores** por partida.
-- La ronda termina cuando queda **un solo jugador vivo**, que suma **1 punto**.
-- Gana la partida el primero en llegar a **3 puntos** (configurable).
+- Gana el jugador que gane la ronda.
 
 ### Controles
 | Acción | Tecla |

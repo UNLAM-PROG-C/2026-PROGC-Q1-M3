@@ -118,7 +118,7 @@ func _setup_appearance():
 	_anim_player = CharacterAppearance.find_animation_player(_model)
 	_walk_model_index = model_index
 
-	# Primera persona: el jugador local no ve su propio cuerpo (salvo espejo, futuro).
+	# Primera persona: el jugador local no ve su propio cuerpo (salvo en el espejo)
 	if is_local_player():
 		_set_visual_layer_recursive(_model, FIRST_PERSON_MODEL_LAYER)
 

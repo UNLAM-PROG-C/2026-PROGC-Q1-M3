@@ -209,14 +209,14 @@ func _update_activation(source_camera: Camera3D) -> void:
 	_local_player_in_area = _is_position_near_mirror(local_player.global_position)
 
 
-func _is_position_near_mirror(position: Vector3) -> bool:
+func _is_position_near_mirror(_position: Vector3) -> bool:
 	var anchors: Array[Vector3] = [global_position]
 	if _mirror_mesh != null:
 		anchors.append(_mirror_mesh.global_position)
 		anchors.append(_mirror_mesh.to_global(MIRROR_LOCAL_CENTER))
 
 	for anchor in anchors:
-		var flat_position := position
+		var flat_position := _position
 		flat_position.y = anchor.y
 		if flat_position.distance_to(anchor) <= activation_radius:
 			return true
