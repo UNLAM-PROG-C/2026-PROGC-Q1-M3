@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://clebyjlk6xpy"
-path.s3tc="res://.godot/imported/tarp-covered_crate__low-poly_0.png-f993558374fa72f4784c9e8f6006e2e3.s3tc.ctex"
+uid="uid://mty0y5nc7dt3"
+path.s3tc="res://.godot/imported/barrels_on_a_pallet_3.png-ab869ff9b0ed26d40820044c2be85a89.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "127d674a776c4cdd5bc1a1b49cd31120"
+"md5": "c80b05d23842ebeac5b5229351646d01"
 }
 
 [deps]
 
-source_file="res://scenes/map/Props/Crate_Tarp/tarp-covered_crate__low-poly_0.png"
-dest_files=["res://.godot/imported/tarp-covered_crate__low-poly_0.png-f993558374fa72f4784c9e8f6006e2e3.s3tc.ctex"]
+source_file="res://scenes/map/Props/Pallets/barrels_on_a_pallet_3.png"
+dest_files=["res://.godot/imported/barrels_on_a_pallet_3.png-ab869ff9b0ed26d40820044c2be85a89.s3tc.ctex"]
 
 [params]
 

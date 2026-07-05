@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw1m4vgqw11p1"
-path.s3tc="res://.godot/imported/tarp-covered_crate__low-poly_2.png-c94faae83c67534130409a16ea2a95eb.s3tc.ctex"
+uid="uid://dsnxnfa3avp4h"
+path.s3tc="res://.godot/imported/tarp-covered_crate__low-poly_1.png-66d1808256f11e1a7d5b1a44d0c88c55.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "af94ff7629a19c8c23571a4d1f1d1297"
+"md5": "865179658117b1966f1097df8ccdc364"
 }
 
 [deps]
 
-source_file="res://scenes/map/Props/Crate_Tarp/tarp-covered_crate__low-poly_2.png"
-dest_files=["res://.godot/imported/tarp-covered_crate__low-poly_2.png-c94faae83c67534130409a16ea2a95eb.s3tc.ctex"]
+source_file="res://scenes/map/Props/Crates/Crate_Tarp/tarp-covered_crate__low-poly_1.png"
+dest_files=["res://.godot/imported/tarp-covered_crate__low-poly_1.png-66d1808256f11e1a7d5b1a44d0c88c55.s3tc.ctex"]
 
 [params]
 
@@ -25,11 +25,11 @@ compress/lossy_quality=0.7
 compress/uastc_level=0
 compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
-roughness/mode=1
+roughness/mode=8
 roughness/src_normal="res://scenes/map/Props/Tarp_crate/tarp-covered_crate__low-poly_2.png"
 process/channel_remap/red=0
 process/channel_remap/green=1

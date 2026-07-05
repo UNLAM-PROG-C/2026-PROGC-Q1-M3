@@ -24,6 +24,10 @@ LobbyMusic="*res://autoload/lobby_music.gd"
 
 project/assembly_name="V1"
 
+[editor]
+
+run/main_run_args="--debug_solo"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/mirror_placer/plugin.cfg")
