@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://blxu3cobhf8ec"
-path="res://.godot/imported/column1.glb-76f60aace3d1f726cc7735a8ea109cc0.scn"
+uid="uid://d2kv046bnbnyp"
+path="res://.godot/imported/Wheels Stack.glb-7189841e3291ac88732408ad06294860.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Columns/Column1/column1.glb"
-dest_files=["res://.godot/imported/column1.glb-76f60aace3d1f726cc7735a8ea109cc0.scn"]
+source_file="res://scenes/map/Props/Tires/Wheels Stack.glb"
+dest_files=["res://.godot/imported/Wheels Stack.glb-7189841e3291ac88732408ad06294860.scn"]
 
 [params]
 
@@ -37,14 +37,6 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={
-"nodes": {
-"PATH:Mesh": {
-"generate/physics": true,
-"physics/shape_type": 5,
-"primitive/radius": 0.2
-}
-}
-}
+_subresources={}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
