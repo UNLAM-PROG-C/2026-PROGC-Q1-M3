@@ -74,6 +74,7 @@
 [ext_resource type="PackedScene" uid="uid://ds4gkgyulhelf" path="res://scenes/map/Props/Shelves/WallShelf.glb" id="45_84k81"]
 [ext_resource type="PackedScene" uid="uid://8tfokmesgsos" path="res://scenes/map/Props/Especiales/Burger/Burger1.tscn" id="46_pyevw"]
 [ext_resource type="Texture2D" uid="uid://5q74cpejava6" path="res://scenes/map/Graffities/prograconcu.png" id="74_nk5hx"]
+[ext_resource type="Texture2D" uid="uid://g30s0ey8pla0" path="res://scenes/map/Graffities/scorpion.png" id="75_84k81"]
 
 [sub_resource type="Environment" id="Environment_rqo2c"]
 background_mode = 1
@@ -900,10 +901,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8183975, 14.565258, 0.1450
 [node name="Metal spring v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 626689715) index="8" unique_id=1006578179]
 visible = false
 
-[node name="Sprite3D" type="Sprite3D" parent="Hall" unique_id=481352833]
+[node name="GraffitiePrograConcu" type="Sprite3D" parent="Hall" unique_id=481352833]
 transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, -1.84, 2.367, -15.668)
 shaded = true
 texture = ExtResource("74_nk5hx")
+
+[node name="Sprite3D" type="Sprite3D" parent="Hall" unique_id=340959558]
+transform = Transform3D(-4.371139e-08, 0, 1, -0.03149798, 0.9995038, -1.3768205e-09, -0.9995038, -0.03149798, -4.36897e-08, -22.84, 1.274, -1.85)
+shaded = true
+texture = ExtResource("75_84k81")
 
 [node name="Sketchfab_Scene" parent="." unique_id=1831560731 instance=ExtResource("29_j4o0h")]
 transform = Transform3D(-0.33456534, 0, -0.3715724, 0, 0.5, 0, 0.3715724, 0, -0.33456534, -3.1240387, 0.56643486, -25.225103)
