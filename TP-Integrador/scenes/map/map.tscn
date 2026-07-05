@@ -26,6 +26,10 @@
 [ext_resource type="PackedScene" uid="uid://bp13uefr6egfm" path="res://scenes/map/Props/Pipes/Pipe_elbow/pipe_elbow.tscn" id="22_78kcs"]
 [ext_resource type="PackedScene" uid="uid://xjrgqtkhj7iv" path="res://scenes/map/Props/Boxes/urban_fuse_box.glb" id="25_2kc6l"]
 [ext_resource type="PackedScene" uid="uid://55ixhvpkdse7" path="res://scenes/map/Props/Debris/Debris Pile.glb" id="26_eix18"]
+[ext_resource type="PackedScene" uid="uid://d0bwxqec1efw2" path="res://scenes/map/Props/Especiales/termo/termo.glb" id="15_30ska"]
+[ext_resource type="PackedScene" uid="uid://b53j1bp5u6kry" path="res://scenes/map/Props/Especiales/mate/mate.glb" id="16_tmgcv"]
+[ext_resource type="PackedScene" uid="uid://c52sdud7jfia1" path="res://scenes/map/Props/Especiales/bombilla/bombilla.glb" id="17_omedl"]
+[ext_resource type="PackedScene" uid="uid://dtq7qijc04js3" path="res://scenes/map/Props/Especiales/yerba/yerba.glb" id="18_3xi6f"]
 
 [sub_resource type="Environment" id="Environment_rqo2c"]
 background_mode = 1
