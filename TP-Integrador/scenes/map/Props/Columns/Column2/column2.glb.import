@@ -41,7 +41,6 @@ _subresources={
 "nodes": {
 "PATH:Mesh": {
 "generate/navmesh": 1,
-"generate/physics": true,
 "physics/shape_type": 5,
 "primitive/radius": 0.2
 }
