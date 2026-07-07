@@ -1,8 +1,11 @@
-# Tu Cara Me Suena 🎭
+
+![Tu Cara Me Suena](portada.png)
+
+# Tu Cara Me Suena 
 
 Juego multijugador 3D en primera persona desarrollado como **Trabajo Práctico Integrador**
 de la materia **Programación Concurrente**. 
----
+
 
 ## 🎯 Finalidad
 
@@ -12,8 +15,8 @@ mecanismos de concurrencia funcionando de forma coordinada:
 | Concepto de la materia | Cómo se demuestra en el juego |
 |------------------------|-------------------------------|
 | **Comunicación entre procesos** | Varias instancias del juego (en distintas PCs o ventanas) se comunican por red mediante RPC |
-| **Hilos (threads)** | El movimiento de los NPCs se calcula en un hilo separado, sin bloquear el bucle principal del juego |
-| **Exclusión mutua (mutex)** | El acceso a las posiciones compartidas de los NPCs se protege con un `Mutex` para evitar condiciones de carrera |
+| **Hilos (threads)** | El movimiento de los clones se calcula en un hilo separado, sin bloquear el bucle principal del juego |
+| **Exclusión mutua (mutex)** | El acceso a las posiciones compartidas de los clones se protege con un `Mutex` para evitar condiciones de carrera |
 
 ---
 
@@ -55,14 +58,17 @@ El juego usa un modelo **cliente-servidor** donde uno de los jugadores actúa co
    └─────┘ └─────┘ └─────┘
 ```
 
-El código se organiza en **tres módulos globales (autoloads)** y un conjunto de **escenas**:
+El código se organiza en diferentes módulos y escenas:
 
 | Componente | Responsabilidad |
 |------------|-----------------|
 | `GameNetwork` | Conexiones de red, lista de jugadores y sincronización (RPC) |
-| `Game` | Estado de la partida: rondas, puntajes, eliminaciones (servidor autoritativo) |
-| `NPCThreadPool` | Movimiento de los NPCs mediante **Thread + Mutex** |
-| Escenas (`Player`, `NPC`, `Map`, `Lobby`) | Entidades visuales e interfaz |
+| `Game` | Estado de la partida: jugadores restantes, eliminaciones (servidor autoritativo) |
+| `NPCThreadPool` | Movimiento de los clones mediante **Thread Pool** |
+| `NPC`| Aspecto y funcionalidades de los clones |
+| `Player`| Funcionalidades del Jugador y la interacción con el usuario |
+| `Map` | Mapa de la partida |
+| `CharacterAppearence` | Define el aspecto que tendrán los jugadores y los clones |
 
 ---
 
@@ -70,18 +76,18 @@ El código se organiza en **tres módulos globales (autoloads)** y un conjunto d
 
 | Aspecto | Detalle |
 |---------|---------|
-| **Motor / Framework** | [Godot Engine 4.x](https://godotengine.org/) (versión 4.3 o superior) |
+| **Motor / Framework** | [Godot Engine 4.x](https://godotengine.org/) (versión 4.6 o superior) |
 | **Lenguaje** | GDScript (lenguaje nativo de Godot) |
 | **Red** | API de multiplayer de alto nivel de Godot — `ENetMultiplayerPeer` (protocolo ENet sobre UDP) |
-| **Concurrencia** | `Thread` y `Mutex` de Godot; RPC para comunicación entre procesos |
-| **Gráficos** | Assets 3D custom |
+| **Concurrencia** | `Pool de Threads`, `Mutex` y `Semáforo` de Godot; RPC para comunicación entre procesos |
+| **Gráficos** | Assets 3D custom y de uso libre |
 
 ---
 
 ## ⚙️ Requisitos
 
 ### Software
-- **Godot Engine 4.3 o superior** ([descarga oficial](https://godotengine.org/download)).
+- **Godot Engine 4.6 o superior** ([descarga oficial](https://godotengine.org/download)).
   No requiere instalación de dependencias adicionales: Godot es un único ejecutable.
 
 ### Sistema operativo
@@ -103,14 +109,14 @@ Los requisitos son **bajos**, ya que el juego usa geometría simple:
 | **CPU** | Procesador de doble núcleo (el hilo de NPCs aprovecha un segundo núcleo) |
 | **RAM** | 4 GB |
 | **GPU** | Tarjeta gráfica compatible con **OpenGL 3.3 / Vulkan** (la mayoría desde ~2012) |
-| **Red** | Conexión LAN o Internet entre los jugadores (puerto **7777** abierto en el host) |
+| **Red** | Conexión LAN entre los jugadores |
 | **Almacenamiento** | < 100 MB |
 
 ---
 
 ## 🚀 Cómo ejecutar
 
-1. Instalar **Godot 4.3+**.
+1. Instalar **Godot 4.6+**.
 2. Abrir el proyecto: `Godot → Importar →` seleccionar el archivo `project.godot`.
 3. Ejecutar con **F5**.
 4. Para probar el multijugador en una sola máquina:
