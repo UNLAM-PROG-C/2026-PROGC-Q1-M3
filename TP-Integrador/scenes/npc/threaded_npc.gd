@@ -21,6 +21,13 @@ var npc_index := -1
 @export var step_sound_1: AudioStream
 @export var step_sound_2: AudioStream
 @export var step_volume_db := -10
+## Tope real del volumen cuando el player está pegado al NPC. Con la atenuación
+## logarítmica la ganancia dispara de cerca y queda clampeada acá, así que si
+## esto es mayor que step_volume_db, ajustar step_volume_db no se nota de cerca.
+@export var step_max_db := -10
+## Distancia (m) a la que el sonido está en su volumen base; más cerca sube.
+## Valores chicos (1-3) hacen que atenúe mucho antes.
+@export var step_unit_size := 2.0
 @export var step_max_distance := 12.0
 
 var _model: Node3D
@@ -171,6 +178,8 @@ func _make_step_player(stream: AudioStream) -> AudioStreamPlayer3D:
 	var player := AudioStreamPlayer3D.new()
 	player.stream = stream
 	player.volume_db = step_volume_db
+	player.max_db = step_max_db
+	player.unit_size = step_unit_size
 	player.max_distance = step_max_distance
 	player.attenuation_model = AudioStreamPlayer3D.ATTENUATION_LOGARITHMIC
 	add_child(player)
