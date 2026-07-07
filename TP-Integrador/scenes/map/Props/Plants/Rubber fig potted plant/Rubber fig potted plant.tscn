@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cr10h28nugrfm"]
+
+[ext_resource type="PackedScene" uid="uid://p8tuj4r5ead7" path="res://scenes/map/Props/Plants/Rubber fig potted plant/Rubber fig potted plant.glb" id="1_onny4"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_22x2v"]
+radius = 1.1855469
+
+[node name="RubberFigPottedPlant" type="Node3D" unique_id=485055155]
+
+[node name="Rubber fig potted plant" parent="." unique_id=1596795010 instance=ExtResource("1_onny4")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Rubber fig potted plant" unique_id=254325627]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rubber fig potted plant/StaticBody3D" unique_id=667155115]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00079774857, 1.2781372, -0.006470084)
+shape = SubResource("CylinderShape3D_22x2v")

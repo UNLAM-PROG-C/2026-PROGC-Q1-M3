@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://bl724ffklmomy"
-path="res://.godot/imported/Ladder.glb-aa3d47fc20c0409ba3873595d06a1a1c.scn"
+uid="uid://3rrtdsocvk13"
+path="res://.godot/imported/Standing Desk.glb-8c99d03afc581dd48b3fc334d845c6b6.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Tools/Ladder.glb"
-dest_files=["res://.godot/imported/Ladder.glb-aa3d47fc20c0409ba3873595d06a1a1c.scn"]
+source_file="res://scenes/map/Props/Furnitures/Tables/Standing Desk/Standing Desk.glb"
+dest_files=["res://.godot/imported/Standing Desk.glb-8c99d03afc581dd48b3fc334d845c6b6.scn"]
 
 [params]
 

@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://cjsifnaww1xbn"
-path="res://.godot/imported/Dumpster.glb-0ed32b88d5f922cc2eb6cac479422f13.scn"
+path="res://.godot/imported/Dumpster.glb-7f21cf50872ef12a86a6a134a90b1eb5.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Trash/Dumpster.glb"
-dest_files=["res://.godot/imported/Dumpster.glb-0ed32b88d5f922cc2eb6cac479422f13.scn"]
+source_file="res://scenes/map/Props/Trash/Dumpster/Dumpster.glb"
+dest_files=["res://.godot/imported/Dumpster.glb-7f21cf50872ef12a86a6a134a90b1eb5.scn"]
 
 [params]
 

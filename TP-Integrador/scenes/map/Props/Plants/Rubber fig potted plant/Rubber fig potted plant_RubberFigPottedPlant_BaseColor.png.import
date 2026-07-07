@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rv6nqymufqpw"
-path.s3tc="res://.godot/imported/Rubber fig potted plant_RubberFigPottedPlant_BaseColor.png-efbc3ff45005b55178dd3c401941e93c.s3tc.ctex"
+uid="uid://dmg3qquw4rn0j"
+path.s3tc="res://.godot/imported/Rubber fig potted plant_RubberFigPottedPlant_BaseColor.png-cc36c0a94c215cd1f44370519f7df137.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://scenes/map/Props/Plants/Rubber fig potted plant_RubberFigPottedPlant_BaseColor.png"
-dest_files=["res://.godot/imported/Rubber fig potted plant_RubberFigPottedPlant_BaseColor.png-efbc3ff45005b55178dd3c401941e93c.s3tc.ctex"]
+source_file="res://scenes/map/Props/Plants/Rubber fig potted plant/Rubber fig potted plant_RubberFigPottedPlant_BaseColor.png"
+dest_files=["res://.godot/imported/Rubber fig potted plant_RubberFigPottedPlant_BaseColor.png-cc36c0a94c215cd1f44370519f7df137.s3tc.ctex"]
 
 [params]
 

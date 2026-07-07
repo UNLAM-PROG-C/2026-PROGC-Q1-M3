@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://3rrtdsocvk13"
-path="res://.godot/imported/Standing Desk.glb-b3982fbf868b1df4d498fd3836e11aa6.scn"
+uid="uid://dvny6n2mctihi"
+path="res://.godot/imported/Pallet Truck.glb-81a65b0b02eb6d6c7623cf5a7cf207d8.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Furnitures/Tables/Standing Desk.glb"
-dest_files=["res://.godot/imported/Standing Desk.glb-b3982fbf868b1df4d498fd3836e11aa6.scn"]
+source_file="res://scenes/map/Props/Tools/Pallet Truck/Pallet Truck.glb"
+dest_files=["res://.godot/imported/Pallet Truck.glb-81a65b0b02eb6d6c7623cf5a7cf207d8.scn"]
 
 [params]
 

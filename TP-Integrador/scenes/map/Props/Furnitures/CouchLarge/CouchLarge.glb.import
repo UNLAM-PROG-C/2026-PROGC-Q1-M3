@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://p8tuj4r5ead7"
-path="res://.godot/imported/Rubber fig potted plant.glb-46d342e458eea400ee8e483017969421.scn"
+uid="uid://cod813ikxi6f2"
+path="res://.godot/imported/CouchLarge.glb-a3981925a90d06eb53f162f7a1b26d00.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Plants/Rubber fig potted plant.glb"
-dest_files=["res://.godot/imported/Rubber fig potted plant.glb-46d342e458eea400ee8e483017969421.scn"]
+source_file="res://scenes/map/Props/Furnitures/CouchLarge/CouchLarge.glb"
+dest_files=["res://.godot/imported/CouchLarge.glb-a3981925a90d06eb53f162f7a1b26d00.scn"]
 
 [params]
 

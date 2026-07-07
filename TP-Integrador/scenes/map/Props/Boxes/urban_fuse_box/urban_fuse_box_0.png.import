@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c1r7jq56l3gvn"
-path.s3tc="res://.godot/imported/Ladder_House_Props_Diffuse.png-43aee0e8e082442aa6307650b14270aa.s3tc.ctex"
+uid="uid://lsqb3ti1gk53"
+path.s3tc="res://.godot/imported/urban_fuse_box_0.png-65ba65b50bba62fddb86b4132bcdc38f.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 generator_parameters={
-"md5": "86f397ace68d6e758810bd2471c3c8f3"
+"md5": "df4541c44ed489143c43c7889db8d6fb"
 }
 
 [deps]
 
-source_file="res://scenes/map/Props/Tools/Ladder_House_Props_Diffuse.png"
-dest_files=["res://.godot/imported/Ladder_House_Props_Diffuse.png-43aee0e8e082442aa6307650b14270aa.s3tc.ctex"]
+source_file="res://scenes/map/Props/Boxes/urban_fuse_box/urban_fuse_box_0.png"
+dest_files=["res://.godot/imported/urban_fuse_box_0.png-65ba65b50bba62fddb86b4132bcdc38f.s3tc.ctex"]
 
 [params]
 

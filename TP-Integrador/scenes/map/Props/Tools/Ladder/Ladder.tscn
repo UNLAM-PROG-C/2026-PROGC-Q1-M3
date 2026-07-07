@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cm8eppybjhc3i"]
+
+[ext_resource type="PackedScene" uid="uid://bl724ffklmomy" path="res://scenes/map/Props/Tools/Ladder/Ladder.glb" id="1_3xdcc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lyrxx"]
+size = Vector3(1.2055054, 1.6436768, 0.71362305)
+
+[node name="Ladder" type="Node3D" unique_id=114798456]
+
+[node name="Root Scene" parent="." unique_id=231960405 instance=ExtResource("1_3xdcc")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=375007538]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=1503349859]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0035705566, 0.9266747, 0.0018310547)
+shape = SubResource("BoxShape3D_lyrxx")

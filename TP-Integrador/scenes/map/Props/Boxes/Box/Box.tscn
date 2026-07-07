@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://8suldi80muf0"]
+
+[ext_resource type="PackedScene" uid="uid://cgh7s1y2i5fjw" path="res://scenes/map/Props/Boxes/Box/Box.glb" id="1_87g11"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3wagj"]
+size = Vector3(0.19346619, 0.12298584, 0.19580078)
+
+[node name="Box" type="Node3D" unique_id=469135675]
+
+[node name="Root Scene" parent="." unique_id=1425447237 instance=ExtResource("1_87g11")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=2129837022]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=244347431]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0014266968, 0.075286865, 0.0007324219)
+shape = SubResource("BoxShape3D_3wagj")

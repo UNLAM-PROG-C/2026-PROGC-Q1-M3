@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dvny6n2mctihi"
-path="res://.godot/imported/Pallet Truck.glb-7323a6b5ffcb9da05a2ef92e9c293eec.scn"
+uid="uid://tjo1kqgtdhr5"
+path="res://.godot/imported/Cardboard Box Open.glb-4fb54cbbe88ee655d9e32b394c80c7bc.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Tools/Pallet Truck.glb"
-dest_files=["res://.godot/imported/Pallet Truck.glb-7323a6b5ffcb9da05a2ef92e9c293eec.scn"]
+source_file="res://scenes/map/Props/Boxes/Cardboard Box Open/Cardboard Box Open.glb"
+dest_files=["res://.godot/imported/Cardboard Box Open.glb-4fb54cbbe88ee655d9e32b394c80c7bc.scn"]
 
 [params]
 

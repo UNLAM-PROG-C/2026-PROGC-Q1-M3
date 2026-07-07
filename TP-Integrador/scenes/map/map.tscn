@@ -41,7 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://c8cl473dx4011" path="res://scenes/map/Props/Boxes/boxes_atticbasement_covered_with_dirty_sheet.glb" id="27_hs4c0"]
 [ext_resource type="PackedScene" uid="uid://cka3a3rreqp28" path="res://scenes/map/Props/Especiales/fulbo/pelota.glb" id="28_gqklb"]
 [ext_resource type="PackedScene" uid="uid://byojd6ie026de" path="res://scenes/map/Props/Pipes/Pipe5/Pipe5.glb" id="29_2p2ch"]
-[ext_resource type="PackedScene" uid="uid://xjrgqtkhj7iv" path="res://scenes/map/Props/Boxes/urban_fuse_box.glb" id="29_j4o0h"]
+[ext_resource type="PackedScene" uid="uid://xjrgqtkhj7iv" path="res://scenes/map/Props/Boxes/urban_fuse_box/urban_fuse_box.glb" id="29_j4o0h"]
 [ext_resource type="PackedScene" uid="uid://clkh7o0mswsxs" path="res://scenes/map/Props/Especiales/cat/cat.glb" id="30_u08rw"]
 [ext_resource type="PackedScene" uid="uid://cwb1tfv2nne75" path="res://scenes/map/Walls/textured/wall_window_bricks097.tscn" id="31_dcmu3"]
 [ext_resource type="PackedScene" uid="uid://dljsg52k5ly1v" path="res://scenes/map/Walls/textured/wall_door_bricks097.tscn" id="32_3l3wi"]
@@ -57,7 +57,7 @@
 [ext_resource type="PackedScene" uid="uid://50j13gly2a1c" path="res://scenes/map/Props/Cable_Hanging/Cable.glb" id="36_rdctk"]
 [ext_resource type="PackedScene" uid="uid://bf81gditjve1d" path="res://scenes/map/Props/Pallets/free_wood_palette.glb" id="37_eat5w"]
 [ext_resource type="PackedScene" uid="uid://opqe6ixddqfh" path="res://scenes/map/Props/Boxes/Cardboard Boxes.glb" id="37_t4men"]
-[ext_resource type="PackedScene" uid="uid://cod813ikxi6f2" path="res://scenes/map/Props/Furnitures/CouchLarge.glb" id="38_iesak"]
+[ext_resource type="PackedScene" uid="uid://cod813ikxi6f2" path="res://scenes/map/Props/Furnitures/CouchLarge/CouchLarge.glb" id="38_iesak"]
 [ext_resource type="PackedScene" uid="uid://dj00evtco5s0m" path="res://scenes/map/Props/Pallets/realistic_wooden_pallet_low-poly.glb" id="38_uo64c"]
 [ext_resource type="PackedScene" uid="uid://blxu3cobhf8ec" path="res://scenes/map/Props/Columns/Column1/column1.glb" id="39_2b0nu"]
 [ext_resource type="PackedScene" uid="uid://c0otql6m7bofy" path="res://scenes/map/Props/Pallets/wooden_box_-_pallet._game_asset.glb" id="39_eat5w"]
@@ -71,13 +71,11 @@
 [ext_resource type="PackedScene" uid="uid://ds4gkgyulhelf" path="res://scenes/map/Props/Shelves/WallShelf.glb" id="45_84k81"]
 [ext_resource type="PackedScene" uid="uid://8tfokmesgsos" path="res://scenes/map/Props/Especiales/Burger/Burger1.tscn" id="46_pyevw"]
 [ext_resource type="PackedScene" uid="uid://co33ystgvc4ee" path="res://scenes/map/Props/Trash/trash bag black.glb" id="48_35yk5"]
-[ext_resource type="PackedScene" uid="uid://cjsifnaww1xbn" path="res://scenes/map/Props/Trash/Dumpster.glb" id="49_0ae62"]
-[ext_resource type="PackedScene" uid="uid://be7k4wihaqybx" path="res://scenes/map/Props/Trash/Rubbish.glb" id="50_r66ou"]
+[ext_resource type="PackedScene" uid="uid://cjsifnaww1xbn" path="res://scenes/map/Props/Trash/Dumpster/Dumpster.glb" id="49_0ae62"]
 [ext_resource type="PackedScene" uid="uid://blewwy7x4cw11" path="res://scenes/map/Props/Trash/trah bag grey.glb" id="51_0i17h"]
 [ext_resource type="PackedScene" uid="uid://d060sacx36pf6" path="res://scenes/map/Props/Fence/Fence/Fence.tscn" id="52_1ex7q"]
 [ext_resource type="PackedScene" uid="uid://ckdy3yh1njri0" path="res://scenes/map/Props/Trash/Debris Papers.glb" id="53_bopsa"]
 [ext_resource type="PackedScene" uid="uid://cfvkg7xwa3ud2" path="res://scenes/map/Props/Trash/Floor Trash.glb" id="54_w76wi"]
-[ext_resource type="PackedScene" uid="uid://duxab48a3lkhv" path="res://scenes/map/Props/Trash/Trash Container Open.glb" id="55_3un07"]
 [ext_resource type="PackedScene" uid="uid://c4s6d6yte5ylh" path="res://scenes/map/Props/Trash/Trash Bags.glb" id="56_24f7v"]
 [ext_resource type="PackedScene" uid="uid://gtufsev6r0sm" path="res://scenes/map/Props/Trash/Soda Can Crushed.glb" id="57_eobg5"]
 [ext_resource type="PackedScene" uid="uid://df0byre1avtoh" path="res://scenes/map/Props/Pallets/Pallet_Broken/Pallet Broken.glb" id="58_gpf8y"]
@@ -95,10 +93,8 @@
 [ext_resource type="Texture2D" uid="uid://5q74cpejava6" path="res://scenes/map/Graffities/prograconcu.png" id="74_nk5hx"]
 [ext_resource type="Texture2D" uid="uid://g30s0ey8pla0" path="res://scenes/map/Graffities/scorpion.png" id="75_84k81"]
 [ext_resource type="PackedScene" uid="uid://gpk3bk77l3yk" path="res://scenes/map/Props/Emergency_Button/low_poly_emergency_button.glb" id="75_ylkcv"]
-[ext_resource type="PackedScene" uid="uid://3rrtdsocvk13" path="res://scenes/map/Props/Furnitures/Tables/Standing Desk.glb" id="76_665va"]
 [ext_resource type="PackedScene" uid="uid://bhojlfha4ydxw" path="res://scenes/map/Props/Paints/Op Art.glb" id="77_f1ujk"]
 [ext_resource type="PackedScene" uid="uid://2bhrbu4a23k1" path="res://scenes/map/Lamps/Lamp Round Table.glb" id="78_1qxom"]
-[ext_resource type="PackedScene" uid="uid://p8tuj4r5ead7" path="res://scenes/map/Props/Plants/Rubber fig potted plant.glb" id="79_qk0h3"]
 [ext_resource type="Texture2D" uid="uid://paooilsnfbrq" path="res://scenes/map/Graffities/messiDePaul.jpg" id="81_f1ujk"]
 [ext_resource type="PackedScene" uid="uid://c1qgpksqso7eh" path="res://scenes/map/Props/Furnitures/Tables/Light Desk.glb" id="81_sujk3"]
 [ext_resource type="PackedScene" uid="uid://dy1c17mobeea0" path="res://scenes/map/Props/Office/Cups/Mug With Office Tool.glb" id="83_jrsvk"]
@@ -108,8 +104,6 @@
 [ext_resource type="PackedScene" uid="uid://dvupsyfiptw35" path="res://scenes/map/Props/Pipes/Pipe4/Pipe4.glb" id="87_pnm78"]
 [ext_resource type="PackedScene" uid="uid://bvbfnyx5blhvy" path="res://scenes/map/Props/Pallets/Pallet_Broken2/Pallet Broken (1).glb" id="88_clbqs"]
 [ext_resource type="PackedScene" uid="uid://d3s6s72lee8be" path="res://scenes/map/Props/Pallets/Pallet_Broken/Pallet_Broken2.tscn" id="89_wlo7a"]
-[ext_resource type="PackedScene" uid="uid://dvny6n2mctihi" path="res://scenes/map/Props/Tools/Pallet Truck.glb" id="90_gx20c"]
-[ext_resource type="PackedScene" uid="uid://bl724ffklmomy" path="res://scenes/map/Props/Tools/Ladder.glb" id="91_sfmod"]
 [ext_resource type="PackedScene" uid="uid://bfp7tn6rcimcx" path="res://scenes/map/Props/Furnitures/Chair/Chair/Chair.tscn" id="92_f8clw"]
 [ext_resource type="PackedScene" uid="uid://ddde3u2xq6d7i" path="res://scenes/map/Props/Furnitures/Tables/L Shaped Desk/L Shaped Desk.tscn" id="92_ylkcv"]
 [ext_resource type="PackedScene" uid="uid://26v1qx8beqim" path="res://scenes/map/Props/Furnitures/Tables/Messy Office/Messy Office.tscn" id="93_1qxom"]
@@ -117,21 +111,28 @@
 [ext_resource type="PackedScene" uid="uid://biothitqxhg6y" path="res://scenes/map/Props/Furnitures/Chair/Couch Small/Couch Small.tscn" id="93_f1ujk"]
 [ext_resource type="PackedScene" uid="uid://bmsrgh2v0rc6d" path="res://scenes/map/Props/Shelves/Shelves.tscn" id="93_f5bbs"]
 [ext_resource type="PackedScene" uid="uid://bbiwlkdayietf" path="res://scenes/map/Props/File_Cabinet/File_Cabinet.tscn" id="93_ylkcv"]
-[ext_resource type="PackedScene" uid="uid://dk3w23bmwwi5c" path="res://scenes/map/Props/Pallets/Pallet.glb" id="94_01e7u"]
 [ext_resource type="PackedScene" uid="uid://df3ogwhejjof" path="res://scenes/map/Props/Plants/Dead_HousePlant/Dead Houseplant.tscn" id="94_665va"]
 [ext_resource type="PackedScene" uid="uid://k36tb2oy7826" path="res://scenes/map/Props/Furnitures/Tables/Table/Table.tscn" id="95_1qxom"]
 [ext_resource type="Texture2D" uid="uid://cs3dqr2bkyxt3" path="res://scenes/map/Graffities/portada.png" id="95_f1ujk"]
 [ext_resource type="PackedScene" uid="uid://cd3vq7ags3ld4" path="res://scenes/map/Props/Furnitures/Tables/Drawer/Drawer.tscn" id="95_qk0h3"]
 [ext_resource type="PackedScene" uid="uid://dksmhf8mws736" path="res://scenes/map/Props/Tools/Toolbox.glb" id="95_x7xca"]
-[ext_resource type="PackedScene" uid="uid://tjo1kqgtdhr5" path="res://scenes/map/Props/Boxes/Cardboard Box Open.glb" id="96_qge83"]
-[ext_resource type="PackedScene" uid="uid://cgh7s1y2i5fjw" path="res://scenes/map/Props/Boxes/Box.glb" id="97_yceh8"]
+[ext_resource type="PackedScene" uid="uid://cwbac272itn0b" path="res://scenes/map/Props/Furnitures/CouchLarge/CouchLarge.tscn" id="96_1qxom"]
+[ext_resource type="PackedScene" uid="uid://cr10h28nugrfm" path="res://scenes/map/Props/Plants/Rubber fig potted plant/Rubber fig potted plant.tscn" id="96_lohkh"]
+[ext_resource type="PackedScene" uid="uid://dopfj2a8in1lt" path="res://scenes/map/Props/Furnitures/Tables/Standing Desk/Standing Desk.tscn" id="96_qk0h3"]
 [ext_resource type="PackedScene" uid="uid://cl2sx7d7ws65q" path="res://scenes/map/Props/Tools/Paint Can.glb" id="98_8uqrm"]
 [ext_resource type="PackedScene" uid="uid://e6cht1mfbuq6" path="res://scenes/map/Props/Tools/Paint Bucket.glb" id="99_v4263"]
 [ext_resource type="PackedScene" uid="uid://b2fjkr3u0l6jj" path="res://scenes/map/Props/Tools/Screwdriver.glb" id="100_3pif5"]
+[ext_resource type="PackedScene" uid="uid://cg81f3jlwl2k3" path="res://scenes/map/Props/Pipes/Pipe5/Pipe5.tscn" id="101_qk0h3"]
 [ext_resource type="PackedScene" uid="uid://ca01nssk6xx33" path="res://scenes/map/Props/Tools/Wrench.glb" id="101_s67sl"]
 [ext_resource type="PackedScene" uid="uid://bcxe8bclex7my" path="res://scenes/map/Props/Tools/Drill.glb" id="102_723ba"]
 [ext_resource type="PackedScene" uid="uid://b7sio60hr011l" path="res://scenes/map/Props/Tools/Hand Saw.glb" id="103_lq3gn"]
+[ext_resource type="PackedScene" uid="uid://dof672u5d0wtg" path="res://scenes/map/Props/Pallets/Pallet/Pallet.tscn" id="104_1qxom"]
 [ext_resource type="PackedScene" uid="uid://dv3dkk13cckl2" path="res://scenes/map/Props/Shelves/Bookshelf/Bookshelf.tscn" id="113_f1ujk"]
+[ext_resource type="PackedScene" uid="uid://dwchmprrqp05j" path="res://scenes/map/Props/Boxes/Cardboard Box Open/Cardboard Box Open.tscn" id="114_1qxom"]
+[ext_resource type="PackedScene" uid="uid://cnkpv7kk000ix" path="res://scenes/map/Props/Tools/Pallet Truck/Pallet Truck.tscn" id="114_qk0h3"]
+[ext_resource type="PackedScene" uid="uid://cm8eppybjhc3i" path="res://scenes/map/Props/Tools/Ladder/Ladder.tscn" id="115_lohkh"]
+[ext_resource type="PackedScene" uid="uid://8suldi80muf0" path="res://scenes/map/Props/Boxes/Box/Box.tscn" id="115_qk0h3"]
+[ext_resource type="PackedScene" uid="uid://crruf7k2014fm" path="res://scenes/map/Props/Boxes/urban_fuse_box/urban_fuse_box.tscn" id="119_lohkh"]
 
 [sub_resource type="Environment" id="Environment_rqo2c"]
 background_mode = 1
@@ -686,16 +687,13 @@ transform = Transform3D(3.8025482, 0.8443276, -0.90980077, -0.8670534, 3.9048967
 transform = Transform3D(0.6984278, 0, -0.71568054, 0, 1, 0, 0.71568054, 0, 0.6984278, 12.774207, -0.0065535903, -23.084396)
 
 [node name="Dumpster2" parent="Room_04/Basurero" unique_id=500308611 instance=ExtResource("49_0ae62")]
-transform = Transform3D(0.9581279, 0, 0.28634062, 0, 1, 0, -0.28634062, 0, 0.9581279, 7.062403, 0, -28.224827)
-
-[node name="Rubbish" parent="Room_04/Basurero" unique_id=1966804230 instance=ExtResource("50_r66ou")]
-transform = Transform3D(0.02635702, 0, -0.014806183, 0, 0.031000003, 0, 0.014328564, 0, 0.027235586, 12.423158, 0, -28.487053)
+transform = Transform3D(-0.025199808, 0, -0.99968237, 0, 1, 0, 0.99968237, 0, -0.025199808, 10.139909, 0, -20.639374)
 
 [node name="trah bag grey" parent="Room_04/Basurero" unique_id=496141885 instance=ExtResource("51_0i17h")]
-transform = Transform3D(3.6, 0, 0, 0, 3.5366924, 0.6721655, 0, -0.6721655, 3.5366924, 6.904337, 0.41716683, -27.011715)
+transform = Transform3D(3.6, 0, 0, 0, 3.5366924, 0.6721655, 0, -0.6721655, 3.5366924, 5.9728637, 0.41716683, -25.945284)
 
 [node name="trah bag grey2" parent="Room_04/Basurero" unique_id=1185307749 instance=ExtResource("51_0i17h")]
-transform = Transform3D(3.2307465, -0.32355344, -2.3361487, 0.39859888, 3.9800904, 0, 2.3245208, -0.23279656, 3.2469077, 6.0630984, 0.50988996, -26.835428)
+transform = Transform3D(3.2307465, -0.32355344, -2.3361487, 0.39859888, 3.9800904, 0, 2.3245208, -0.23279656, 3.2469077, 7.850974, 0.50988996, -28.807945)
 
 [node name="Fence" parent="Room_04/Basurero" unique_id=2093343747 instance=ExtResource("52_1ex7q")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 8.199385, -0.12099266, -19.097183)
@@ -711,9 +709,6 @@ transform = Transform3D(1.6868579, 0, -1.0744815, 0, 2, 0, 1.0744815, 0, 1.68685
 
 [node name="trash pile" parent="Room_04/Basurero" unique_id=763779365 instance=ExtResource("54_w76wi")]
 transform = Transform3D(0.5582006, 0, -0.22002739, 0, 0.59999996, 0, 0.22002739, 0, 0.5582006, 8.4331, 0.05723101, -27.25193)
-
-[node name="Dumpster" parent="Room_04/Basurero" unique_id=270770730 instance=ExtResource("55_3un07")]
-transform = Transform3D(0.9998204, 0, 0.018953169, 0, 1, 0, -0.018953169, 0, 0.9998204, 9.713895, 0.005014725, -28.429827)
 
 [node name="Bolsas" parent="Room_04/Basurero" unique_id=746355795 instance=ExtResource("56_24f7v")]
 transform = Transform3D(1.6675982, 0, -1.1041359, 0, 2, 0, 1.1041359, 0, 1.6675982, 12.976574, 0.023245547, -28.725002)
@@ -756,9 +751,6 @@ transform = Transform3D(0.71827203, 0, -0.6957624, 0, 1, 0, 0.6957624, 0, 0.7182
 
 [node name="pallet roto" parent="Room_04/Basurero" unique_id=287190269 instance=ExtResource("58_gpf8y")]
 transform = Transform3D(0.970813, 0, -0.23983838, 0, 1, 0, 0.23983838, 0, 0.970813, 12.037804, 0.015059471, -23.208015)
-
-[node name="cajas" parent="Room_04/Basurero" unique_id=1387125268 instance=ExtResource("37_t4men")]
-transform = Transform3D(-0.2679446, 0, -0.96343434, 0, 1, 0, 0.96343434, 0, -0.2679446, 10.1178665, 0.015059367, -20.24534)
 
 [node name="Oficina" type="Node3D" parent="Room_04" unique_id=810527013]
 
@@ -834,6 +826,9 @@ transform = Transform3D(0.004, 0, 0, 0, 0.004, 0, 0, 0, 0.004, 15.004661, 4.2371
 [node name="vaso con lapices" parent="Room_04/Oficina/Props" unique_id=1236005979 instance=ExtResource("83_jrsvk")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 12.287303, 1.0217412, -21.052763)
 
+[node name="Lamp Round Table" parent="Room_04/Oficina/Props" unique_id=1955064749 instance=ExtResource("78_1qxom")]
+transform = Transform3D(1.8313252, 0, -0.80389553, 0, 2, 0, 0.80389553, 0, 1.8313252, 30.255753, 0.9509469, -10.043028)
+
 [node name="Column2" parent="Room_04/Oficina" unique_id=417730919 instance=ExtResource("11_58ndj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.952673, -0.1, -16.498348)
 
@@ -843,20 +838,8 @@ transform = Transform3D(-0.052828483, 0, -2.9995353, 0, 3.0000005, 0, 2.9995353,
 [node name="Mirror" parent="Room_04/Oficina" unique_id=1453094359 instance=ExtResource("11_cumk7")]
 transform = Transform3D(0.69854015, 0, 0.7155708, 0, 1, 0, -0.7155708, 0, 0.69854015, 25.749449, 0.015058994, -14.756626)
 
-[node name="sillon3" parent="Room_04/Oficina" unique_id=949888627 instance=ExtResource("38_iesak")]
-transform = Transform3D(0.0010995739, 0, -0.69999915, 0, 0.7, 0, 0.69999915, 0, 0.0010995739, 30.29662, 0.015059002, -7.4421406)
-
-[node name="mesita" parent="Room_04/Oficina" unique_id=1216419743 instance=ExtResource("76_665va")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.144295, 0.39167157, -9.96938)
-
-[node name="Lamp Round Table" parent="Room_04/Oficina" unique_id=1955064749 instance=ExtResource("78_1qxom")]
-transform = Transform3D(1.8313252, 0, -0.80389553, 0, 2, 0, 0.80389553, 0, 1.8313252, 30.255753, 0.9509469, -10.043028)
-
 [node name="lamp_ceiling_lowpoly" parent="Room_04/Oficina" unique_id=1220414215 instance=ExtResource("34_l8wof")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.79814, -0.23303366, -10.110668)
-
-[node name="Rubber fig potted plant" parent="Room_04/Oficina" unique_id=1786445472 instance=ExtResource("79_qk0h3")]
-transform = Transform3D(0.18300602, 0, -0.080677114, 0, 0.2, 0, 0.080677114, 0, 0.18300602, 25.763885, 0.015058994, -9.619095)
 
 [node name="Chair" parent="Room_04/Oficina" unique_id=413545520 instance=ExtResource("92_f8clw")]
 transform = Transform3D(-0.4868097, 0, -0.63483566, 0, 0.8, 0, 0.63483566, 0, -0.4868097, 12.8812685, 0.018375963, -19.477083)
@@ -926,10 +909,16 @@ transform = Transform3D(0.022165233, 0, -1.9998772, 0, 2, 0, 1.9998772, 0, 0.022
 [node name="Drawer" parent="Room_04/Oficina" unique_id=2002612226 instance=ExtResource("95_qk0h3")]
 transform = Transform3D(-0.84999996, 0, 0.00026702601, 0, 0.85, 0, -0.00026702601, 0, -0.84999996, 21.832207, -0.04131609, -4.748328)
 
-[node name="Tuberias" type="Node3D" parent="Room_04" unique_id=854363346]
+[node name="CouchLarge" parent="Room_04/Oficina" unique_id=1219948377 instance=ExtResource("96_1qxom")]
+transform = Transform3D(0.0010995739, 0, -0.69999915, 0, 0.7, 0, 0.69999915, 0, 0.0010995739, 30.29662, 0.015059002, -7.4421406)
 
-[node name="tubo apilado" parent="Room_04/Tuberias" unique_id=1924964236 instance=ExtResource("29_2p2ch")]
-transform = Transform3D(-0.15950212, 0, 0.9871977, 0, 1, 0, -0.9871977, 0, -0.15950212, 16.359112, 0.015058994, -23.327986)
+[node name="StandingDesk" parent="Room_04/Oficina" unique_id=520506194 instance=ExtResource("96_qk0h3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.144295, 0.39167157, -9.96938)
+
+[node name="RubberFigPottedPlant" parent="Room_04/Oficina" unique_id=485055155 instance=ExtResource("96_lohkh")]
+transform = Transform3D(0.18300602, 0, -0.080677114, 0, 0.2, 0, 0.080677114, 0, 0.18300602, 25.763885, 0.015058994, -9.619095)
+
+[node name="Tuberias" type="Node3D" parent="Room_04" unique_id=854363346]
 
 [node name="tubo doble" parent="Room_04/Tuberias" unique_id=131304302 instance=ExtResource("84_8waik")]
 transform = Transform3D(0.0030892268, 0, 0.99999523, 0, 1, 0, -0.99999523, 0, 0.0030892268, 16.543251, 0.037857506, -28.487741)
@@ -1007,9 +996,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 17.45927, -5.2305527, -29.853
 [node name="tubos pared2" parent="Room_04/Tuberias" unique_id=2081784872 instance=ExtResource("87_pnm78")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 21.08145, -5.2305527, -29.853695)
 
-[node name="tubo apilado2" parent="Room_04/Tuberias" unique_id=1584300190 instance=ExtResource("29_2p2ch")]
-transform = Transform3D(0.28535718, 0.08657885, 0.9545029, 0.44988653, 0.8672734, -0.21316426, -0.8462702, 0.49024582, 0.20853205, 16.959848, 0.50562406, -23.101303)
-
 [node name="pallet" parent="Room_04/Tuberias" unique_id=1318782270 instance=ExtResource("58_gpf8y")]
 transform = Transform3D(0.8904852, -0.14739512, -0.43047735, 0.1327026, 0.9890777, -0.06415094, 0.4352311, 0, 0.9003188, 19.676165, 0.12379336, -23.334503)
 
@@ -1034,64 +1020,57 @@ transform = Transform3D(0.9315199, 0, -0.36369023, 0, 1, 0, 0.36369023, 0, 0.931
 [node name="pallet apilado 3" parent="Room_04/Tuberias" unique_id=996865933 instance=ExtResource("88_clbqs")]
 transform = Transform3D(0.27004611, 0.031605046, -0.5904034, -0.013146041, 0.64923114, 0.028741267, 0.59110254, 0, 0.2703659, 15.999368, 0.20764604, -27.651606)
 
-[node name="Fence" parent="Room_04/Tuberias" unique_id=1059101354 instance=ExtResource("41_wseh3")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 22.033272, 0.19815454, -26.590155)
-
-[node name="Fence2" parent="Room_04/Tuberias" unique_id=29312239 instance=ExtResource("41_wseh3")]
-transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 16.775047, 0.19815454, -26.590155)
-
 [node name="lamp_wall" parent="Room_04/Tuberias" unique_id=1349728938 instance=ExtResource("11_x2kg6")]
 transform = Transform3D(-0.0013089057, 0, -0.9999991, 0, 1, 0, 0.9999991, 0, -0.0013089057, 25.6796, 0.069369555, -24.997177)
 
 [node name="lamp_wall2" parent="Room_04/Tuberias" unique_id=1776914897 instance=ExtResource("11_x2kg6")]
 transform = Transform3D(-0.003804901, 0, -0.9999927, 0, 1, 0, 0.9999927, 0, -0.003804901, 14.604271, 0.069369555, -24.997177)
 
+[node name="Pipe5" parent="Room_04/Tuberias" unique_id=1483287324 instance=ExtResource("101_qk0h3")]
+transform = Transform3D(-0.15950212, 0, 0.9871977, 0, 1, 0, -0.9871977, 0, -0.15950212, 16.359112, 0.015058994, -23.327986)
+
+[node name="Pipe6" parent="Room_04/Tuberias" unique_id=1519231892 instance=ExtResource("101_qk0h3")]
+transform = Transform3D(0.28535718, 0.08657885, 0.9545029, 0.44988653, 0.8672734, -0.21316426, -0.8462702, 0.49024582, 0.20853205, 16.959848, 0.50562406, -23.101303)
+
+[node name="Fence3" parent="Room_04/Tuberias" unique_id=1388844051 instance=ExtResource("52_1ex7q")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.75, 22.033272, 0.19815454, -26.590155)
+
+[node name="Fence" parent="Room_04/Tuberias" unique_id=951145854 instance=ExtResource("52_1ex7q")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 0.75, 16.775047, 0.19815454, -26.590155)
+
 [node name="Herramientas" type="Node3D" parent="Room_04" unique_id=1740074981]
-
-[node name="Pallet Truck" parent="Room_04/Herramientas" unique_id=54552711 instance=ExtResource("90_gx20c")]
-transform = Transform3D(0.9724554, 0, -0.23308896, 0, 1, 0, 0.23308896, 0, 0.9724554, -18.872114, 0.19966626, -38.670128)
-
-[node name="Stairs" parent="Room_04/Herramientas" unique_id=965811429 instance=ExtResource("91_sfmod")]
-transform = Transform3D(0.9097244, 0, -0.92865574, 0, 1.3, 0, 0.92865574, 0, 0.9097244, 29.423021, 0.015058994, -27.876953)
 
 [node name="Shelves" parent="Room_04/Herramientas" unique_id=1277375895 instance=ExtResource("93_f5bbs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.642977, 0.026222233, -21.997463)
 
-[node name="Pallet" parent="Room_04/Herramientas" unique_id=1332704681 instance=ExtResource("94_01e7u")]
-transform = Transform3D(-0.5682889, 0, 0.82282907, 0, 1, 0, -0.82282907, 0, -0.5682889, 26.252254, 0.021236068, -17.214508)
-
-[node name="Pallet2" parent="Room_04/Herramientas" unique_id=237666398 instance=ExtResource("94_01e7u")]
-transform = Transform3D(-0.36002928, 0, 0.93294096, 0, 1, 0, -0.93294096, 0, -0.36002928, 26.252254, 0.3349923, -17.20441)
-
-[node name="Pallet3" parent="Room_04/Herramientas" unique_id=909554879 instance=ExtResource("94_01e7u")]
-transform = Transform3D(-0.9782491, 0, 0.20743379, 0, 1, 0, -0.20743379, 0, -0.9782491, 26.252254, 0.58639085, -17.245913)
-
 [node name="WallShelf" parent="Room_04/Herramientas" unique_id=1968759832 instance=ExtResource("45_84k81")]
 transform = Transform3D(-1, 0, 0.00022688706, 0, 1, 0, -0.00022688706, 0, -1, 30.31752, 2.7008986, -18.45255)
+
+[node name="PalletBlock" type="Node3D" parent="Room_04/Herramientas" unique_id=1311640577]
+
+[node name="Pallet" parent="Room_04/Herramientas/PalletBlock" unique_id=561238644 instance=ExtResource("104_1qxom")]
+transform = Transform3D(-0.9782491, 0, 0.20743379, 0, 1, 0, -0.20743379, 0, -0.9782491, 26.252254, 0.58639085, -17.245913)
+
+[node name="Pallet2" parent="Room_04/Herramientas/PalletBlock" unique_id=802185400 instance=ExtResource("104_1qxom")]
+transform = Transform3D(-0.36002928, 0, 0.93294096, 0, 1, 0, -0.93294096, 0, -0.36002928, 26.252254, 0.3349923, -17.20441)
+
+[node name="Pallet3" parent="Room_04/Herramientas/PalletBlock" unique_id=202049897 instance=ExtResource("104_1qxom")]
+transform = Transform3D(-0.5682889, 0, 0.82282907, 0, 1, 0, -0.82282907, 0, -0.5682889, 26.252254, 0.021236068, -17.214508)
+
+[node name="Pallet4" parent="Room_04/Herramientas/PalletBlock" unique_id=533069940 instance=ExtResource("104_1qxom")]
+transform = Transform3D(0.12155755, 5.1058153e-09, -0.99258447, 0.2234855, 0.9743228, 0.027369302, 0.9670978, -0.22515516, 0.118436314, 26.25013, 0.63924676, -18.607418)
+
+[node name="Pallet5" parent="Room_04/Herramientas/PalletBlock" unique_id=801441835 instance=ExtResource("104_1qxom")]
+transform = Transform3D(0.9272427, 0, 0.37446094, 0, 1, 0, -0.37446094, 0, 0.9272427, 26.175936, 0.20664483, -19.322163)
+
+[node name="Pallet6" parent="Room_04/Herramientas/PalletBlock" unique_id=1737917037 instance=ExtResource("104_1qxom")]
+transform = Transform3D(0.6350946, 0, 0.7724344, 0, 1, 0, -0.7724344, 0, 0.6350946, 26.26512, 0.015059088, -19.51601)
 
 [node name="WallShelf2" parent="Room_04/Herramientas" unique_id=328849435 instance=ExtResource("45_84k81")]
 transform = Transform3D(-1, 0, 0.00022688706, 0, 1, 0, -0.00022688706, 0, -1, 30.31752, 2.7008986, -21.219255)
 
 [node name="Toolbox" parent="Room_04/Herramientas" unique_id=1705730242 instance=ExtResource("95_x7xca")]
 transform = Transform3D(0.06993778, 0, 0.0029508132, 0, 0.07000001, 0, -0.0029508132, 0, 0.06993778, 25.66722, 0.36527675, -21.769772)
-
-[node name="pallet 3" parent="Room_04/Herramientas" unique_id=1307725601 instance=ExtResource("88_clbqs")]
-transform = Transform3D(0.6350946, 0, 0.7724344, 0, 1, 0, -0.7724344, 0, 0.6350946, 26.26512, 0.015059088, -19.51601)
-
-[node name="pallet 2" parent="Room_04/Herramientas" unique_id=2039381373 instance=ExtResource("94_01e7u")]
-transform = Transform3D(0.9272427, 0, 0.37446094, 0, 1, 0, -0.37446094, 0, 0.9272427, 26.175936, 0.20664483, -19.322163)
-
-[node name="pallet 1" parent="Room_04/Herramientas" unique_id=1434024283 instance=ExtResource("88_clbqs")]
-transform = Transform3D(0.12155755, 5.1058153e-09, -0.99258447, 0.2234855, 0.9743228, 0.027369302, 0.9670978, -0.22515516, 0.118436314, 26.25013, 0.63924676, -18.607418)
-
-[node name="caja abierta" parent="Room_04/Herramientas" unique_id=1687781137 instance=ExtResource("96_qge83")]
-transform = Transform3D(-0.54735804, 0, 3.9623728, 0, 4, 0, -3.9623728, 0, -0.54735804, 29.782677, 0.02364105, -19.094368)
-
-[node name="caja 5" parent="Room_04/Herramientas" unique_id=1197353603 instance=ExtResource("97_yceh8")]
-transform = Transform3D(0.91126317, 0, -4.916259, 0, 5, 0, 4.916259, 0, 0.91126317, 30.262213, 0.015059042, -20.014688)
-
-[node name="Caja 4" parent="Room_04/Herramientas" unique_id=557671369 instance=ExtResource("97_yceh8")]
-transform = Transform3D(1.8528005, 0, 2.9693654, 0, 3.5, 0, -2.9693654, 0, 1.8528005, 30.13916, 0.92419434, -20.019426)
 
 [node name="Paint Can" parent="Room_04/Herramientas" unique_id=750109477 instance=ExtResource("98_8uqrm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.48336, 3.347136, -20.906052)
@@ -1114,17 +1093,32 @@ transform = Transform3D(-0.021434547, 0.020903504, 0.0018983214, 0, 0.0027132411
 [node name="Handsaw" parent="Room_04/Herramientas" unique_id=1706724966 instance=ExtResource("103_lq3gn")]
 transform = Transform3D(1.8069293, 0.11178243, -0.8500068, -0.10114957, 1.9968737, 0.04758228, 0.8513376, 0, 1.8097583, 25.615505, 1.7307436, -21.548826)
 
-[node name="caja3" parent="Room_04/Herramientas" unique_id=335098895 instance=ExtResource("97_yceh8")]
-transform = Transform3D(0.0075960374, 5.726813, -1.7898474, -5.9999943, 0.007958384, 0, 0.0023740495, 1.789846, 5.726818, 25.43876, 0.6075244, -28.246721)
-
-[node name="caja2" parent="Room_04/Herramientas" unique_id=1010692048 instance=ExtResource("97_yceh8")]
-transform = Transform3D(3.7948647, 0, 1.2645171, 0, 4, 0, -1.2645171, 0, 3.7948647, 25.636206, 0.015059072, -26.925455)
-
-[node name="caja" parent="Room_04/Herramientas" unique_id=5179599 instance=ExtResource("97_yceh8")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 25.959297, 1.2178763, -27.965937)
-
 [node name="Bookshelf2" parent="Room_04/Herramientas" unique_id=322188537 instance=ExtResource("113_f1ujk")]
 transform = Transform3D(-0.081172176, 0, 0.49336708, 0, 0.5, 0, -0.49336708, 0, -0.081172176, 24.598757, 1.167573, -15.173516)
+
+[node name="CardboardBoxOpen" parent="Room_04/Herramientas" unique_id=822749749 instance=ExtResource("114_1qxom")]
+transform = Transform3D(-0.54735804, 0, 3.9623728, 0, 4, 0, -3.9623728, 0, -0.54735804, 29.782677, 0.02364105, -19.094368)
+
+[node name="PalletTruck" parent="Room_04/Herramientas" unique_id=1973475998 instance=ExtResource("114_qk0h3")]
+transform = Transform3D(0.9724554, 0, -0.23308896, 0, 1, 0, 0.23308896, 0, 0.9724554, -18.872114, 0.19966626, -38.670128)
+
+[node name="Box" parent="Room_04/Herramientas" unique_id=469135675 instance=ExtResource("115_qk0h3")]
+transform = Transform3D(0.91126317, 0, -4.916259, 0, 5, 0, 4.916259, 0, 0.91126317, 30.262213, 0.015059042, -20.014688)
+
+[node name="Box2" parent="Room_04/Herramientas" unique_id=1900878454 instance=ExtResource("115_qk0h3")]
+transform = Transform3D(1.8528005, 0, 2.9693654, 0, 3.5, 0, -2.9693654, 0, 1.8528005, 30.13916, 0.92419434, -20.019426)
+
+[node name="Ladder" parent="Room_04/Herramientas" unique_id=114798456 instance=ExtResource("115_lohkh")]
+transform = Transform3D(0.9097244, 0, -0.92865574, 0, 1.3, 0, 0.92865574, 0, 0.9097244, 29.423021, 0.015058994, -27.876953)
+
+[node name="Box3" parent="Room_04/Herramientas" unique_id=1319677331 instance=ExtResource("115_qk0h3")]
+transform = Transform3D(0.0075960374, 5.726813, -1.7898474, -5.9999943, 0.007958384, 0, 0.0023740495, 1.789846, 5.726818, 25.43876, 0.6075244, -28.246721)
+
+[node name="Box4" parent="Room_04/Herramientas" unique_id=155024553 instance=ExtResource("115_qk0h3")]
+transform = Transform3D(3.7948647, 0, 1.2645171, 0, 4, 0, -1.2645171, 0, 3.7948647, 25.636206, 0.015059072, -26.925455)
+
+[node name="Box5" parent="Room_04/Herramientas" unique_id=172510252 instance=ExtResource("115_qk0h3")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 25.959297, 1.2178763, -27.965937)
 
 [node name="lamp_wall" parent="Room_04" unique_id=278941904 instance=ExtResource("11_x2kg6")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 10.019707, -0.031354427, -28.82068)
@@ -1278,8 +1272,7 @@ transform = Transform3D(-0.4479307, 0, 0.89406836, 0, 1, 0, -0.89406836, 0, -0.4
 [node name="MirrorHall4" parent="Hall/MirrorsHall" unique_id=1540975544 instance=ExtResource("11_cumk7")]
 transform = Transform3D(-0.7140208, 0, 0.70012456, 0, 1, 0, -0.70012456, 0, -0.7140208, 0.4236822, 0.011943817, 15.7628355)
 
-[node name="FuseBoxHall" parent="Hall" unique_id=1492271622 instance=ExtResource("29_j4o0h")]
-transform = Transform3D(-1.3113416e-08, 0, -0.29999998, 0, 0.29999998, 0, 0.29999998, 0, -1.3113416e-08, 7.2000003, 0, -26.4)
+[node name="UrbanFuseBox" parent="Hall" unique_id=982956486 instance=ExtResource("119_lohkh")]
 
 [node name="CoveredBoxesBlue" parent="Hall" unique_id=1778715317 instance=ExtResource("40_qcbqi")]
 transform = Transform3D(2.171143, 0, 2.0702991, 0, 3.0000014, 0, -2.0702991, 0, 2.171143, -5.2731457, 0, 2.6554537)
@@ -1424,25 +1417,28 @@ transform = Transform3D(-4.371139e-08, 0, 1, -0.03149798, 0.9995038, -1.3768205e
 shaded = true
 texture = ExtResource("75_84k81")
 
+[node name="UrbanFuseBox2" parent="Hall" unique_id=246903254 instance=ExtResource("119_lohkh")]
+transform = Transform3D(-1.3113416e-08, 0, -0.29999998, 0, 0.29999998, 0, 0.29999998, 0, -1.3113416e-08, 7.2000003, 0, -26.4)
+
 [node name="Sketchfab_Scene" parent="." unique_id=1831560731 instance=ExtResource("29_j4o0h")]
 transform = Transform3D(-0.33456534, 0, -0.3715724, 0, 0.5, 0, 0.3715724, 0, -0.33456534, -3.1240387, 0.56643486, -25.225103)
 
-[node name="ELBox_fbx" parent="Sketchfab_Scene/Sketchfab_model" parent_id_path=PackedInt32Array(1831560731, 1300884208) index="0" unique_id=484403125]
+[node name="ELBox_fbx" parent="Sketchfab_Scene/Sketchfab_model" parent_id_path=PackedInt32Array(1831560731, 464817734) index="0" unique_id=1601651370]
 transform = Transform3D(0.01, -1.0339758e-25, -4.656613e-10, -4.656613e-10, 0, -0.01, 1.0339758e-25, 0.01, 0, -1.8197556, 2.0210457, -0.9881587)
 
-[node name="BOXBase" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 577861011) index="0" unique_id=1377131869]
+[node name="BOXBase" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 1912784180) index="0" unique_id=183775973]
 visible = false
 
-[node name="Box" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 577861011) index="1" unique_id=137443705]
+[node name="Box" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 1912784180) index="1" unique_id=2070723351]
 visible = false
 
-[node name="Box_001" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 577861011) index="2" unique_id=1813132681]
+[node name="Box_001" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 1912784180) index="2" unique_id=1765768916]
 visible = false
 
-[node name="Door" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 577861011) index="3" unique_id=1742269449]
+[node name="Door" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 1912784180) index="3" unique_id=1184090831]
 visible = false
 
-[node name="door2" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 577861011) index="11" unique_id=1935455340]
+[node name="door2" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 1912784180) index="11" unique_id=126269360]
 visible = false
 
 [node name="ConcreteBlocks" parent="." unique_id=1911702640 instance=ExtResource("10_58ndj")]

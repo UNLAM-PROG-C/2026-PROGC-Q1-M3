@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://xjrgqtkhj7iv"
-path="res://.godot/imported/urban_fuse_box.glb-44187e0e71513f58555fa6ab0a3a08eb.scn"
+uid="uid://p8tuj4r5ead7"
+path="res://.godot/imported/Rubber fig potted plant.glb-f266bc8536a7f12b396453d26ee7507a.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Boxes/urban_fuse_box.glb"
-dest_files=["res://.godot/imported/urban_fuse_box.glb-44187e0e71513f58555fa6ab0a3a08eb.scn"]
+source_file="res://scenes/map/Props/Plants/Rubber fig potted plant/Rubber fig potted plant.glb"
+dest_files=["res://.godot/imported/Rubber fig potted plant.glb-f266bc8536a7f12b396453d26ee7507a.scn"]
 
 [params]
 

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://tjo1kqgtdhr5"
-path="res://.godot/imported/Cardboard Box Open.glb-b6fed960fc912a633efb78643ec9cddd.scn"
+uid="uid://bl724ffklmomy"
+path="res://.godot/imported/Ladder.glb-b15d1c6683bb09753b5936f0cdf14e55.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Boxes/Cardboard Box Open.glb"
-dest_files=["res://.godot/imported/Cardboard Box Open.glb-b6fed960fc912a633efb78643ec9cddd.scn"]
+source_file="res://scenes/map/Props/Tools/Ladder/Ladder.glb"
+dest_files=["res://.godot/imported/Ladder.glb-b15d1c6683bb09753b5936f0cdf14e55.scn"]
 
 [params]
 

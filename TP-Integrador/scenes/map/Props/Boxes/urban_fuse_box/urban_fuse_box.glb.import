@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cgh7s1y2i5fjw"
-path="res://.godot/imported/Box.glb-0bb1dedf989b4b17ccfeb8f99e13e199.scn"
+uid="uid://xjrgqtkhj7iv"
+path="res://.godot/imported/urban_fuse_box.glb-8cccf23869daec75839b11ed869253e8.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Boxes/Box.glb"
-dest_files=["res://.godot/imported/Box.glb-0bb1dedf989b4b17ccfeb8f99e13e199.scn"]
+source_file="res://scenes/map/Props/Boxes/urban_fuse_box/urban_fuse_box.glb"
+dest_files=["res://.godot/imported/urban_fuse_box.glb-8cccf23869daec75839b11ed869253e8.scn"]
 
 [params]
 

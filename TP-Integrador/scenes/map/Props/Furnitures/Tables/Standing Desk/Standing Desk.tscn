@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dopfj2a8in1lt"]
+
+[ext_resource type="PackedScene" uid="uid://3rrtdsocvk13" path="res://scenes/map/Props/Furnitures/Tables/Standing Desk/Standing Desk.glb" id="1_vgf74"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6k6w6"]
+size = Vector3(1.4769287, 0.6963501, 0.8008423)
+
+[node name="StandingDesk" type="Node3D" unique_id=520506194]
+
+[node name="Root Scene" parent="." unique_id=755762640 instance=ExtResource("1_vgf74")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=197781458]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=1881623968]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0006713867, 0.23754525, -0.0028381348)
+shape = SubResource("BoxShape3D_6k6w6")
