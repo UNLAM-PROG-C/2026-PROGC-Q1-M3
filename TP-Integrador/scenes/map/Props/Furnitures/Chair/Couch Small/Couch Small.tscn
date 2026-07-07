@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://biothitqxhg6y"]
+
+[ext_resource type="PackedScene" uid="uid://ckuseemp1s80j" path="res://scenes/map/Props/Furnitures/Chair/Couch Small/Couch Small.glb" id="1_0ncy3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_04ffe"]
+size = Vector3(2.8339844, 1.6778564, 2.1604004)
+
+[node name="CouchSmall" type="Node3D" unique_id=862969431]
+
+[node name="Root Scene" parent="." unique_id=44493929 instance=ExtResource("1_0ncy3")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=2088439054]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=1239421255]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016601563, 0.96051025, -0.067993164)
+shape = SubResource("BoxShape3D_04ffe")

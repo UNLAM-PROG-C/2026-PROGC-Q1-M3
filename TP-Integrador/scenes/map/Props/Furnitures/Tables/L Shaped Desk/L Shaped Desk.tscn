@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://ddde3u2xq6d7i"]
+
+[ext_resource type="PackedScene" uid="uid://bv1bsicix7gfq" path="res://scenes/map/Props/Furnitures/Tables/L Shaped Desk/L Shaped Desk.glb" id="1_3f3pq"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1icd"]
+size = Vector3(2.4465332, 1, 0.7730713)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_mg4hv"]
+size = Vector3(0.77319336, 1, 2.208435)
+
+[node name="LShapedDesk" type="Node3D" unique_id=168362878]
+
+[node name="Root Scene" parent="." unique_id=755586487 instance=ExtResource("1_3f3pq")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=953388673]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=524015710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20300293, 0, -0.8070422)
+shape = SubResource("BoxShape3D_r1icd")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=901481460]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.6422119, 0, 0.6877136)
+shape = SubResource("BoxShape3D_mg4hv")

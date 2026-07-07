@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://26v1qx8beqim"]
+
+[ext_resource type="PackedScene" uid="uid://bi8uthp8bf0hg" path="res://scenes/map/Props/Furnitures/Tables/Messy Office/Messy Office.glb" id="1_h06w0"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_h06w0"]
+size = Vector3(0.087005615, 0.10644531, 0.09137726)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2b8ta"]
+size = Vector3(0.13232422, 0.11126709, 0.34881592)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cxxyo"]
+size = Vector3(0.16564941, 0.10624695, 0.20071411)
+
+[node name="MessyOffice" type="Node3D" unique_id=885191059]
+
+[node name="Messy Office" parent="." unique_id=470810354 instance=ExtResource("1_h06w0")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Messy Office" unique_id=581625985]
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="Messy Office/StaticBody3D" unique_id=1894801807]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.08932176, 0.054053463, -0.18565635)
+shape = SubResource("BoxShape3D_h06w0")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Messy Office/StaticBody3D" unique_id=744727329]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021773905, 0.03658998, -0.20333862)
+shape = SubResource("BoxShape3D_2b8ta")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Messy Office/StaticBody3D" unique_id=1245544167]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0068156123, -0.0039749146, 0.07435608)
+shape = SubResource("BoxShape3D_cxxyo")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Messy Office/StaticBody3D" unique_id=641537180]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.045858696, 0.049804688, 0.16660453)
+shape = SubResource("BoxShape3D_h06w0")

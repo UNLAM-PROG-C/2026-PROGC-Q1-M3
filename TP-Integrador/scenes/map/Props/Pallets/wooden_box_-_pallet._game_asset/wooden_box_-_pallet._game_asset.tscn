@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ddtfeben7jt0m"]
+
+[ext_resource type="PackedScene" uid="uid://c0otql6m7bofy" path="res://scenes/map/Props/Pallets/wooden_box_-_pallet._game_asset/wooden_box_-_pallet._game_asset.glb" id="1_u0s0s"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2ymmg"]
+size = Vector3(5.0375977, 2.901245, 5.2072754)
+
+[node name="WoodenBoxPallet_GameAsset" type="Node3D" unique_id=1401815467]
+
+[node name="Sketchfab_Scene" parent="." unique_id=1039741513 instance=ExtResource("1_u0s0s")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene" unique_id=1337192148]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/StaticBody3D" unique_id=1606004538]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.015380859, 1.6877921, -5.903738)
+shape = SubResource("BoxShape3D_2ymmg")

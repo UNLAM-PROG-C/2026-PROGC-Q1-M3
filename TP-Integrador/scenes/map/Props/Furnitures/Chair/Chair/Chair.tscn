@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bfp7tn6rcimcx"]
+
+[ext_resource type="PackedScene" uid="uid://866eprkqfgia" path="res://scenes/map/Props/Furnitures/Chair/Chair/Chair.glb" id="1_a1hck"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_58psg"]
+height = 0.5808182
+
+[node name="Chair" type="Node3D" unique_id=413545520]
+
+[node name="Root Scene" parent="." unique_id=542978754 instance=ExtResource("1_a1hck")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=1217866788]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=2043255566]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.53531265, 0)
+shape = SubResource("CylinderShape3D_58psg")

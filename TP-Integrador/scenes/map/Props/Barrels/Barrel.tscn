@@ -2,6 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://crbu3tphk1g8f" path="res://scenes/map/Props/Barrels/Barrel.glb" id="1_yucxx"]
 
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1"]
+height = 1.0
+
 [node name="Barrel" type="Node3D" unique_id=1180745907]
 
 [node name="Root Scene" parent="." unique_id=1064293171 instance=ExtResource("1_yucxx")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=1330488822]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=1427136737]
+transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, 0, 0.6297896, 0)
+shape = SubResource("CylinderShape3D_1")
