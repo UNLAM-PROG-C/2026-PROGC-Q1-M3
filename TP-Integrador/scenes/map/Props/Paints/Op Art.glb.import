@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cod813ikxi6f2"
-path="res://.godot/imported/CouchLarge.glb-b2dab3625aeadd4b2656c6cc3eedd94c.scn"
+uid="uid://bhojlfha4ydxw"
+path="res://.godot/imported/Op Art.glb-c965fe14b75618bcfcba251438e17e11.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Furnichures/CouchLarge.glb"
-dest_files=["res://.godot/imported/CouchLarge.glb-b2dab3625aeadd4b2656c6cc3eedd94c.scn"]
+source_file="res://scenes/map/Props/Paints/Op Art.glb"
+dest_files=["res://.godot/imported/Op Art.glb-c965fe14b75618bcfcba251438e17e11.scn"]
 
 [params]
 

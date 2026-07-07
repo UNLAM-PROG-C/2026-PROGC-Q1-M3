@@ -2,6 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://u7n673syi6li" path="res://scenes/map/Props/File_Cabinet/File Cabinet.glb" id="1_d5jwf"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_d5jwf"]
+size = Vector3(0.68066406, 1.5600586, 0.6668701)
+
 [node name="FileCabinet" type="Node3D" unique_id=2121057033]
 
 [node name="Root Scene" parent="." unique_id=865942860 instance=ExtResource("1_d5jwf")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=246978847]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=649425327]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.049316406, 0.76536477, 0.0018920898)
+shape = SubResource("BoxShape3D_d5jwf")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://df3ogwhejjof"]
+
+[ext_resource type="PackedScene" uid="uid://sfscylnihmex" path="res://scenes/map/Props/Plants/Dead_HousePlant/Dead Houseplant.glb" id="1_mhgrm"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1cl6q"]
+height = 0.93621826
+radius = 0.2685547
+
+[node name="DeadHouseplant" type="Node3D" unique_id=781044831]
+
+[node name="Root Scene" parent="." unique_id=1219616423 instance=ExtResource("1_mhgrm")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1905747815]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=1167313571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.55319214, 0)
+shape = SubResource("CylinderShape3D_1cl6q")

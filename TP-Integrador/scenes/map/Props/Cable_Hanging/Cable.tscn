@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ct37vp43i3tfe"]
 
-[ext_resource type="PackedScene" uid="uid://50j13gly2a1c" path="res://scenes/map/Props/Cable/Cable.glb" id="1_1sokl"]
+[ext_resource type="PackedScene" uid="uid://50j13gly2a1c" path="res://scenes/map/Props/Cable_Hanging/Cable.glb" id="1_1sokl"]
 
 [node name="Cable" type="Node3D" unique_id=1436354783]
 
