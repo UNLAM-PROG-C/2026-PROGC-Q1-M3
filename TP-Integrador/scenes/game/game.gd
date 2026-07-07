@@ -15,6 +15,10 @@ const SPECTATOR_CAM_LOOK_HEIGHT := 1.2
 const SPECTATOR_CAM_COLLISION_MASK := 1
 const SPECTATOR_CAM_MARGIN := 0.3
 
+# Handshake de spawn: el server espera a que todos confirmen escena lista.
+var _ready_peers := {}          # peer_id -> true (quiénes confirmaron game.tscn cargada)
+var _players_spawned := false   
+
 # Combate / fin de ronda (last-man-standing).
 var end_screen
 var _alive: Array[int] = []
@@ -62,18 +66,52 @@ func _ready():
 		return
 
 	if multiplayer.is_server():
-		var used: Array[Vector3] = []
-		var pos_server := _pick_spawn_pos(used)
-		used.append(pos_server)
-		spawn_player.rpc(1, pos_server)
-		for id in multiplayer.get_peers():
-			var pos := _pick_spawn_pos(used)
-			used.append(pos)
-			spawn_player.rpc(id, pos)
-		npc_thread_pool.set_player_count(_get_player_count())
-		_alive.append(1)
-		for id in multiplayer.get_peers():
-			_alive.append(id)
+		multiplayer.peer_disconnected.connect(_on_peer_left_during_start)
+		_ready_peers[1] = true       # el host ya tiene su escena cargada
+		_try_spawn_all()             # spawnea cuando estén todos (o si no hay peers)
+	elif multiplayer.has_multiplayer_peer():
+		notify_ready.rpc_id(1)       # avisar al server: mi escena está lista
+
+
+# El server no spawnea hasta que host + todos los peers confirmen tener game.tscn cargada.
+@rpc("any_peer", "reliable")
+func notify_ready() -> void:
+	if not multiplayer.is_server():
+		return
+	_ready_peers[multiplayer.get_remote_sender_id()] = true
+	_try_spawn_all()
+
+
+func _try_spawn_all() -> void:
+	if _players_spawned:
+		return
+	if not _ready_peers.has(1):
+		return
+	for id in multiplayer.get_peers():
+		if not _ready_peers.has(id):
+			return               # falta alguien: esperar
+	_players_spawned = true
+	_spawn_all_players()
+
+
+func _spawn_all_players() -> void:
+	var used: Array[Vector3] = []
+	var pos_server := _pick_spawn_pos(used)
+	used.append(pos_server)
+	spawn_player.rpc(1, pos_server)
+	_alive.append(1)
+	for id in multiplayer.get_peers():
+		var pos := _pick_spawn_pos(used)
+		used.append(pos)
+		spawn_player.rpc(id, pos)
+		_alive.append(id)
+	npc_thread_pool.set_player_count(_get_player_count())
+
+
+# Si un peer se cae mientras cargaba, sacarlo de la espera para no colgar el spawn.
+func _on_peer_left_during_start(id: int) -> void:
+	_ready_peers.erase(id)
+	_try_spawn_all()
 
 
 func _setup_ambient_people() -> void:
