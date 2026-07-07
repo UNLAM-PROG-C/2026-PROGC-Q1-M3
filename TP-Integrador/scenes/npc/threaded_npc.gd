@@ -20,7 +20,7 @@ var npc_index := -1
 
 @export var step_sound_1: AudioStream
 @export var step_sound_2: AudioStream
-@export var step_volume_db := -22.0
+@export var step_volume_db := -10
 @export var step_max_distance := 12.0
 
 var _model: Node3D
@@ -159,10 +159,10 @@ func _make_blood_mesh() -> SphereMesh:
 
 
 func _setup_step_sound() -> void:
-	if step_sound_1 == null and ResourceLoader.exists("res://audio/sfx/step-slow1.mp3"):
-		step_sound_1 = load("res://audio/sfx/step-slow1.mp3")
-	if step_sound_2 == null and ResourceLoader.exists("res://audio/sfx/step-slow2.mp3"):
-		step_sound_2 = load("res://audio/sfx/step-slow2.mp3")
+	if step_sound_1 == null and ResourceLoader.exists("res://audio/sfx/footsteps_hallway_1.mp3"):
+		step_sound_1 = load("res://audio/sfx/footsteps_hallway_1.mp3")
+	if step_sound_2 == null and ResourceLoader.exists("res://audio/sfx/footsteps_hallway_2.mp3"):
+		step_sound_2 = load("res://audio/sfx/footsteps_hallway_2.mp3")
 	_step_player_1 = _make_step_player(step_sound_1)
 	_step_player_2 = _make_step_player(step_sound_2)
 

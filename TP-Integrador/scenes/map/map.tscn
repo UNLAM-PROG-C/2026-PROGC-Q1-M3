@@ -1189,37 +1189,37 @@ transform = Transform3D(-4.3711385e-08, 0, 0.99999994, 0, 1, 0, -0.99999994, 0, 
 [node name="Metal Door" parent="Hall" unique_id=2143170937 instance=ExtResource("23_3xi6f")]
 transform = Transform3D(0.07296084, 0, -1.4982245, 0, 1.5, 0, 1.4982245, 0, 0.07296084, 10.459922, 0.02012074, 24.58491)
 
-[node name="Door_placeholder_Scene_002" parent="Hall/Metal Door" index="0" unique_id=637495993]
+[node name="Door_placeholder_Scene_002" parent="Hall/Metal Door" index="0" unique_id=1689167279]
 visible = false
 
 [node name="Metal Door2" parent="Hall" unique_id=1905919877 instance=ExtResource("23_3xi6f")]
 transform = Transform3D(1.4982245, 0, 0.072960906, 0, 1.4999999, 0, -0.072960906, 0, 1.4982245, 24.718445, 0.02012074, -0.22611499)
 
-[node name="Door_placeholder_004_Scene_005" parent="Hall/Metal Door2" index="1" unique_id=1330657010]
+[node name="Door_placeholder_004_Scene_005" parent="Hall/Metal Door2" index="1" unique_id=658316226]
 visible = false
 
-[node name="Door_placeholder_005_Scene_006" parent="Hall/Metal Door2" index="2" unique_id=1690921311]
+[node name="Door_placeholder_005_Scene_006" parent="Hall/Metal Door2" index="2" unique_id=1476717622]
 visible = false
 
-[node name="Door_placeholder_006_Scene_007" parent="Hall/Metal Door2" index="3" unique_id=356911386]
+[node name="Door_placeholder_006_Scene_007" parent="Hall/Metal Door2" index="3" unique_id=2130620208]
 visible = false
 
-[node name="Door_placeholder_007_Scene_008" parent="Hall/Metal Door2" index="4" unique_id=575079836]
+[node name="Door_placeholder_007_Scene_008" parent="Hall/Metal Door2" index="4" unique_id=1598634860]
 visible = false
 
-[node name="Door_placeholder_008_Scene_009" parent="Hall/Metal Door2" index="5" unique_id=1183377031]
+[node name="Door_placeholder_008_Scene_009" parent="Hall/Metal Door2" index="5" unique_id=1532313556]
 visible = false
 
-[node name="Door_placeholder_001_Scene_017" parent="Hall/Metal Door2" index="6" unique_id=1962779083]
+[node name="Door_placeholder_001_Scene_017" parent="Hall/Metal Door2" index="6" unique_id=272180996]
 visible = false
 
-[node name="Door_placeholder_002_Scene_018" parent="Hall/Metal Door2" index="7" unique_id=1988604053]
+[node name="Door_placeholder_002_Scene_018" parent="Hall/Metal Door2" index="7" unique_id=1069805369]
 visible = false
 
-[node name="Door_placeholder_014_Scene_015" parent="Hall/Metal Door2" index="8" unique_id=435623107]
+[node name="Door_placeholder_014_Scene_015" parent="Hall/Metal Door2" index="8" unique_id=871193063]
 visible = false
 
-[node name="Door_placeholder_010_Scene_011" parent="Hall/Metal Door2" index="9" unique_id=112682680]
+[node name="Door_placeholder_010_Scene_011" parent="Hall/Metal Door2" index="9" unique_id=1825586617]
 visible = false
 
 [node name="ColumnasHall" type="Node3D" parent="Hall" unique_id=482112415]
@@ -1313,16 +1313,16 @@ transform = Transform3D(-0.80908215, 0, 1.2630858, 0, 1.5, 0, -1.2630858, 0, -0.
 [node name="wooden_boxes" parent="Hall" unique_id=1210632326 instance=ExtResource("32_p2b7t")]
 transform = Transform3D(3.4285612, 0, 2.0603318, 0, 4, 0, -2.0603318, 0, 3.4285612, 0, 0, 0)
 
-[node name="box1" parent="Hall/wooden_boxes/Sketchfab_model/box_fbx/RootNode" parent_id_path=PackedInt32Array(1210632326, 740427785) index="0" unique_id=358578826]
+[node name="box1" parent="Hall/wooden_boxes/Sketchfab_model/box_fbx/RootNode" parent_id_path=PackedInt32Array(1210632326, 887556553) index="0" unique_id=1949998489]
 visible = false
 
-[node name="box2_box_0" parent="Hall/wooden_boxes/Sketchfab_model/box_fbx/RootNode/box2" parent_id_path=PackedInt32Array(1210632326, 2090849413) index="0" unique_id=1471831560]
+[node name="box2_box_0" parent="Hall/wooden_boxes/Sketchfab_model/box_fbx/RootNode/box2" parent_id_path=PackedInt32Array(1210632326, 389249286) index="0" unique_id=455127446]
 visible = false
 
-[node name="box_box_0" parent="Hall/wooden_boxes/Sketchfab_model/box_fbx/RootNode/box" parent_id_path=PackedInt32Array(1210632326, 1758797697) index="0" unique_id=1165872137]
+[node name="box_box_0" parent="Hall/wooden_boxes/Sketchfab_model/box_fbx/RootNode/box" parent_id_path=PackedInt32Array(1210632326, 448478313) index="0" unique_id=1602003476]
 transform = Transform3D(0.66040826, 3.2823166e-08, 0.7509067, -3.282319e-08, 1, -1.4844019e-08, -0.7509067, -1.4844035e-08, 0.66040826, -3.6338892, -7.986091e-08, -1.8319101)
 
-[node name="box_box_1" type="MeshInstance3D" parent="Hall/wooden_boxes/Sketchfab_model/box_fbx/RootNode/box" parent_id_path=PackedInt32Array(1210632326, 1758797697) index="1" unique_id=1315343024]
+[node name="box_box_1" type="MeshInstance3D" parent="Hall/wooden_boxes/Sketchfab_model/box_fbx/RootNode/box" parent_id_path=PackedInt32Array(1210632326, 448478313) index="1" unique_id=1315343024]
 transform = Transform3D(0.66040826, 3.2823166e-08, 0.7509067, -3.282319e-08, 1, -1.4844019e-08, -0.7509067, -1.4844035e-08, 0.66040826, -3.6338892, -7.986091e-08, -1.8319101)
 mesh = SubResource("ArrayMesh_fsyr3")
 
@@ -1335,28 +1335,28 @@ shape = SubResource("BoxShape3D_lohkh")
 [node name="wooden_boxes2" parent="Hall" unique_id=1479604242 instance=ExtResource("32_p2b7t")]
 transform = Transform3D(0.85034823, 0, 3.9085689, 0, 4, 0, -3.9085689, 0, 0.85034823, -4.8299227, 1.1606054, 1.157711)
 
-[node name="box1" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode" parent_id_path=PackedInt32Array(1479604242, 740427785) index="0" unique_id=358578826]
+[node name="box1" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode" parent_id_path=PackedInt32Array(1479604242, 887556553) index="0" unique_id=1949998489]
 transform = Transform3D(41.0932, 0, 4.7683716e-06, -1.0587912e-21, 41.09321, -1.7962411e-06, -4.7683716e-06, 1.7962409e-06, 41.0932, 48.44746, -29.385597, -51.38475)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode/box1/box1_box_0" parent_id_path=PackedInt32Array(1479604242, 1468191067) index="0" unique_id=587550710]
+[node name="StaticBody3D" type="StaticBody3D" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode/box1/box1_box_0" parent_id_path=PackedInt32Array(1479604242, 983104877) index="0" unique_id=587550710]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7881393e-07, 0.33927813, -1.4901161e-07)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode/box1/box1_box_0/StaticBody3D" unique_id=1714289058]
 shape = SubResource("BoxShape3D_sujk3")
 
-[node name="box2_box_0" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode/box2" parent_id_path=PackedInt32Array(1479604242, 2090849413) index="0" unique_id=1471831560]
+[node name="box2_box_0" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode/box2" parent_id_path=PackedInt32Array(1479604242, 389249286) index="0" unique_id=455127446]
 transform = Transform3D(1, 0, -1.4901161e-08, 0, 1.0000001, -1.9984014e-15, 1.4901161e-08, 1.3322676e-15, 1, 0, -0.14464366, 0)
 
-[node name="box" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode" parent_id_path=PackedInt32Array(1479604242, 740427785) index="2" unique_id=1758797697]
+[node name="box" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode" parent_id_path=PackedInt32Array(1479604242, 887556553) index="2" unique_id=448478313]
 visible = false
 
-[node name="box_box_0" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode/box" index="0" unique_id=1165872137]
+[node name="box_box_0" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode/box" index="0" unique_id=1602003476]
 transform = Transform3D(0.66040826, 3.2823166e-08, 0.7509067, -3.282319e-08, 1, -1.4844019e-08, -0.7509067, -1.4844035e-08, 0.66040826, -3.6338892, -7.986091e-08, -1.8319101)
 
 [node name="wooden_boxes3" parent="Hall" unique_id=1626319346 instance=ExtResource("32_p2b7t")]
 transform = Transform3D(3.4285612, 0, 2.0603318, 0, 4, 0, -2.0603318, 0, 3.4285612, 6.625334, 0, 0)
 
-[node name="box1_box_0" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box1" parent_id_path=PackedInt32Array(1626319346, 358578826) index="0" unique_id=1468191067]
+[node name="box1_box_0" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box1" parent_id_path=PackedInt32Array(1626319346, 1949998489) index="0" unique_id=983104877]
 transform = Transform3D(0.7, -4.417621e-30, -4.172325e-08, 0, 0.7, -7.411538e-23, 4.172325e-08, 7.411538e-23, 0.7, -3.9854965, -1.0477379e-07, -2.395012)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box1/box1_box_0" index="0" unique_id=1339238161]
@@ -1365,7 +1365,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7881393e-07, 0.33927813, -
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box1/box1_box_0/StaticBody3D" unique_id=1031154869]
 shape = SubResource("BoxShape3D_1q30i")
 
-[node name="box2_box_0" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box2" parent_id_path=PackedInt32Array(1626319346, 2090849413) index="0" unique_id=1471831560]
+[node name="box2_box_0" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box2" parent_id_path=PackedInt32Array(1626319346, 389249286) index="0" unique_id=455127446]
 transform = Transform3D(1.0088046, 0.64949083, -0.021830007, 0.027157586, -0.001858714, 1.1996915, 0.6492901, -1.0090383, -0.016261313, 2.2241862, 0.4936609, 4.317635)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box2/box2_box_0" index="0" unique_id=1244240457]
@@ -1374,11 +1374,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-07, 0.33637995, 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box2/box2_box_0/StaticBody3D" unique_id=898963650]
 shape = SubResource("BoxShape3D_8waik")
 
-[node name="box_box_0" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box" parent_id_path=PackedInt32Array(1626319346, 1758797697) index="0" unique_id=1165872137]
+[node name="box_box_0" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box" parent_id_path=PackedInt32Array(1626319346, 448478313) index="0" unique_id=1602003476]
 transform = Transform3D(0.66040826, 3.2823166e-08, 0.7509067, -3.282319e-08, 1, -1.4844019e-08, -0.7509067, -1.4844035e-08, 0.66040826, -3.6338892, -7.986091e-08, -1.8319101)
 visible = false
 
-[node name="box_box_1" type="MeshInstance3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box" parent_id_path=PackedInt32Array(1626319346, 1758797697) index="1" unique_id=454911911]
+[node name="box_box_1" type="MeshInstance3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box" parent_id_path=PackedInt32Array(1626319346, 448478313) index="1" unique_id=454911911]
 transform = Transform3D(0.15367094, 0.5150832, 0.8432524, -0.98379755, -7.195639e-08, 0.17928334, 0.0923459, -0.8571402, 0.5067376, -5.561967, 0.66921055, 1.3765676)
 mesh = SubResource("ArrayMesh_fsyr3")
 
@@ -1403,10 +1403,10 @@ transform = Transform3D(0.42387873, 0.87199706, 0.24484241, 0.05697448, 0.244122
 [node name="JunkEverywhereHall" parent="Hall" unique_id=1609043725 instance=ExtResource("41_4st6g")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.575253)
 
-[node name="Barrel v1 " parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 626689715) index="0" unique_id=1462649742]
+[node name="Barrel v1 " parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="0" unique_id=676345702]
 transform = Transform3D(79.99999, 0, 0, 0, -3.4969112e-06, 79.99999, 0, -79.99999, -3.4969112e-06, 975.9476, 129.88632, 1073.5219)
 
-[node name="Barrel v1 _Barrel v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v1 " index="0" unique_id=2129074013]
+[node name="Barrel v1 _Barrel v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v1 " index="0" unique_id=273864920]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, -1.0658141e-14, 0, 1.0658141e-14, 0.9999999, 0, -2.0614338, -1.1920929e-07)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v1 /Barrel v1 _Barrel v1 low poly_0" index="0" unique_id=1837923]
@@ -1415,10 +1415,10 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v1 /Barrel v1 _Barrel v1 low poly_0/StaticBody3D" unique_id=1558095712]
 shape = SubResource("CylinderShape3D_qk0h3")
 
-[node name="Barrel v2_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 626689715) index="1" unique_id=1770519591]
+[node name="Barrel v2_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="1" unique_id=469150825]
 transform = Transform3D(79.99999, 0, 0, 0, -3.4969112e-06, 79.99999, 0, -79.99999, -3.4969112e-06, 374.29095, 136.52031, -620.8827)
 
-[node name="Barrel v2_001_Barrel v2 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v2_001" index="0" unique_id=1723542268]
+[node name="Barrel v2_001_Barrel v2 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v2_001" index="0" unique_id=342045231]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, -3.5527137e-15, 0, 3.5527137e-15, 0.99999994, -0.003180027, -0.0006933212, -0.018371701)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v2_001/Barrel v2_001_Barrel v2 low poly_0" index="0" unique_id=347115091]
@@ -1427,10 +1427,10 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v2_001/Barrel v2_001_Barrel v2 low poly_0/StaticBody3D" unique_id=731898962]
 shape = SubResource("CylinderShape3D_jrsvk")
 
-[node name="Gear v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 626689715) index="2" unique_id=1763849814]
+[node name="Gear v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="2" unique_id=367363724]
 visible = false
 
-[node name="Metal peice 2 v1_001_Metal peice 2 v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v1_001" parent_id_path=PackedInt32Array(1609043725, 1397123371) index="0" unique_id=889975657]
+[node name="Metal peice 2 v1_001_Metal peice 2 v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v1_001" parent_id_path=PackedInt32Array(1609043725, 837214971) index="0" unique_id=363372738]
 transform = Transform3D(-0.6881355, -0.12044797, 0.04429233, 0.08953556, -0.27751592, 0.6363712, -0.09193968, 0.6312505, 0.28821862, 2.9417162, 0.24558687, 1.450423)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v1_001/Metal peice 2 v1_001_Metal peice 2 v1 low poly_0" index="0" unique_id=971303000]
@@ -1438,26 +1438,26 @@ transform = Transform3D(-0.6881355, -0.12044797, 0.04429233, 0.08953556, -0.2775
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v1_001/Metal peice 2 v1_001_Metal peice 2 v1 low poly_0/StaticBody3D" unique_id=1148007935]
 shape = SubResource("ConcavePolygonShape3D_8waik")
 
-[node name="Metal peice 2 v2_001_Metal peice 2 v2 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v2_001" parent_id_path=PackedInt32Array(1609043725, 1503726776) index="0" unique_id=1570200769]
+[node name="Metal peice 2 v2_001_Metal peice 2 v2 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v2_001" parent_id_path=PackedInt32Array(1609043725, 1198871483) index="0" unique_id=1223856175]
 transform = Transform3D(0.88250476, 0.4703035, 3.5506925e-08, 0.4703035, -0.88250476, 9.629342e-08, 7.6622165e-08, -6.828037e-08, -1, 4.9809217, 16.313568, 0.20000266)
 
-[node name="Metal peice 2 v2_001_Metal peice 2 v2 low poly_1" type="MeshInstance3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v2_001" parent_id_path=PackedInt32Array(1609043725, 1503726776) index="1" unique_id=759286197]
+[node name="Metal peice 2 v2_001_Metal peice 2 v2 low poly_1" type="MeshInstance3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v2_001" parent_id_path=PackedInt32Array(1609043725, 1198871483) index="1" unique_id=759286197]
 transform = Transform3D(-0.9463902, 0.32302552, 2.4387747e-08, -0.32302552, -0.9463902, -3.2179395e-07, -8.086735e-08, -3.1242047e-07, 1, 7.9809217, -21.982449, 0.1999964)
 mesh = SubResource("ArrayMesh_x3t56")
 
-[node name="Metal plank v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 626689715) index="5" unique_id=298444937]
+[node name="Metal plank v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="5" unique_id=495370044]
 visible = false
 
-[node name="Metal sheet v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 626689715) index="6" unique_id=695878637]
+[node name="Metal sheet v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="6" unique_id=105864590]
 transform = Transform3D(100, 0, 0, 0, -1.6292068e-05, 100, 0, -100, -1.6292068e-05, 0, 12.63957, 1129.867)
 
-[node name="Metal sheet v1_001_Metal sheet v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal sheet v1_001" index="0" unique_id=1536502630]
+[node name="Metal sheet v1_001_Metal sheet v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal sheet v1_001" index="0" unique_id=932571372]
 transform = Transform3D(0.84827924, -0.5295492, -8.627451e-08, 0.5295492, 0.84827924, -2.4718446e-08, 8.627451e-08, -2.4718446e-08, 1, 15.6596985, 11.842027, -0.08669338)
 
-[node name="Metal sheet v2_001_Metal sheet v2 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal sheet v2_001" parent_id_path=PackedInt32Array(1609043725, 1116031375) index="0" unique_id=1727884632]
+[node name="Metal sheet v2_001_Metal sheet v2 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal sheet v2_001" parent_id_path=PackedInt32Array(1609043725, 815923967) index="0" unique_id=1808097663]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8183975, 14.565258, 0.14503364)
 
-[node name="Metal spring v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 626689715) index="8" unique_id=1006578179]
+[node name="Metal spring v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 1234890715) index="8" unique_id=227596907]
 visible = false
 
 [node name="GraffitiePrograConcu" type="Sprite3D" parent="Hall" unique_id=481352833]
@@ -1497,22 +1497,22 @@ transform = Transform3D(1.4939141, 0, 0.13498418, 0, 1.5, 0, -0.13498418, 0, 1.4
 [node name="Sketchfab_Scene" parent="." unique_id=1831560731 instance=ExtResource("29_j4o0h")]
 transform = Transform3D(-0.33456534, 0, -0.3715724, 0, 0.5, 0, 0.3715724, 0, -0.33456534, -3.1240387, 0.56643486, -25.225103)
 
-[node name="ELBox_fbx" parent="Sketchfab_Scene/Sketchfab_model" parent_id_path=PackedInt32Array(1831560731, 464817734) index="0" unique_id=1601651370]
+[node name="ELBox_fbx" parent="Sketchfab_Scene/Sketchfab_model" parent_id_path=PackedInt32Array(1831560731, 179401630) index="0" unique_id=591490080]
 transform = Transform3D(0.01, -1.0339758e-25, -4.656613e-10, -4.656613e-10, 0, -0.01, 1.0339758e-25, 0.01, 0, -1.8197556, 2.0210457, -0.9881587)
 
-[node name="BOXBase" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 1912784180) index="0" unique_id=183775973]
+[node name="BOXBase" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 591530272) index="0" unique_id=118107592]
 visible = false
 
-[node name="Box" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 1912784180) index="1" unique_id=2070723351]
+[node name="Box" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 591530272) index="1" unique_id=990048493]
 visible = false
 
-[node name="Box_001" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 1912784180) index="2" unique_id=1765768916]
+[node name="Box_001" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 591530272) index="2" unique_id=1630743110]
 visible = false
 
-[node name="Door" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 1912784180) index="3" unique_id=1184090831]
+[node name="Door" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 591530272) index="3" unique_id=835793495]
 visible = false
 
-[node name="door2" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 1912784180) index="11" unique_id=126269360]
+[node name="door2" parent="Sketchfab_Scene/Sketchfab_model/ELBox_fbx/RootNode" parent_id_path=PackedInt32Array(1831560731, 591530272) index="11" unique_id=444178073]
 visible = false
 
 [node name="ConcreteBlocks" parent="." unique_id=1911702640 instance=ExtResource("10_58ndj")]

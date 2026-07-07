@@ -31,7 +31,7 @@ const WALK_SPEED_THRESHOLD := 0.3
 @export var model_y_offset := -1.0
 @export var step_sound_1: AudioStream
 @export var step_sound_2: AudioStream
-@export var step_volume_db := -16.0
+@export var step_volume_db := -10
 
 @onready var head = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -86,10 +86,10 @@ func _setup_local():
 
 
 func _setup_step_sound() -> void:
-	if step_sound_1 == null and ResourceLoader.exists("res://audio/sfx/step-slow1.mp3"):
-		step_sound_1 = load("res://audio/sfx/step-slow1.mp3")
-	if step_sound_2 == null and ResourceLoader.exists("res://audio/sfx/step-slow2.mp3"):
-		step_sound_2 = load("res://audio/sfx/step-slow2.mp3")
+	if step_sound_1 == null and ResourceLoader.exists("res://audio/sfx/footsteps_hallway_1.mp3"):
+		step_sound_1 = load("res://audio/sfx/footsteps_hallway_1.mp3")
+	if step_sound_2 == null and ResourceLoader.exists("res://audio/sfx/footsteps_hallway_2.mp3"):
+		step_sound_2 = load("res://audio/sfx/footsteps_hallway_2.mp3")
 	_step_player_1 = AudioStreamPlayer.new()
 	_step_player_1.stream = step_sound_1
 	_step_player_1.volume_db = step_volume_db
