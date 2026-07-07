@@ -38,7 +38,6 @@
 [ext_resource type="PackedScene" uid="uid://8v2ndduq6g50" path="res://scenes/map/Props/Columns/Column3/column3.tscn" id="25_xks3a"]
 [ext_resource type="PackedScene" uid="uid://cicxy8ubn48jy" path="res://scenes/map/Props/Wood_Planks/Wood Planks.glb" id="26_dn7yb"]
 [ext_resource type="PackedScene" uid="uid://55ixhvpkdse7" path="res://scenes/map/Props/Debris/Debris Pile.glb" id="27_3ww5u"]
-[ext_resource type="PackedScene" uid="uid://c8cl473dx4011" path="res://scenes/map/Props/Boxes/boxes_atticbasement_covered_with_dirty_sheet.glb" id="27_hs4c0"]
 [ext_resource type="PackedScene" uid="uid://cka3a3rreqp28" path="res://scenes/map/Props/Especiales/fulbo/pelota.glb" id="28_gqklb"]
 [ext_resource type="PackedScene" uid="uid://byojd6ie026de" path="res://scenes/map/Props/Pipes/Pipe5/Pipe5.glb" id="29_2p2ch"]
 [ext_resource type="PackedScene" uid="uid://xjrgqtkhj7iv" path="res://scenes/map/Props/Boxes/urban_fuse_box/urban_fuse_box.glb" id="29_j4o0h"]
@@ -53,15 +52,11 @@
 [ext_resource type="PackedScene" uid="uid://r1p6fsgesoam" path="res://scenes/map/Props/Boxes/wooden_crate.glb" id="34_gqpwe"]
 [ext_resource type="PackedScene" uid="uid://b3u4mcy5bolek" path="res://scenes/map/Lamps/lamp_ceiling_lowpoly.tscn" id="34_l8wof"]
 [ext_resource type="PackedScene" uid="uid://cbnckjmg4f4iw" path="res://scenes/map/Props/Paints/Wall painting.glb" id="35_j1gwu"]
-[ext_resource type="PackedScene" uid="uid://bbk3neh0c8dsy" path="res://scenes/map/Props/Pallets/barrels_on_a_pallet.glb" id="36_f24ks"]
 [ext_resource type="PackedScene" uid="uid://50j13gly2a1c" path="res://scenes/map/Props/Cable_Hanging/Cable.glb" id="36_rdctk"]
-[ext_resource type="PackedScene" uid="uid://bf81gditjve1d" path="res://scenes/map/Props/Pallets/free_wood_palette.glb" id="37_eat5w"]
 [ext_resource type="PackedScene" uid="uid://opqe6ixddqfh" path="res://scenes/map/Props/Boxes/Cardboard Boxes.glb" id="37_t4men"]
 [ext_resource type="PackedScene" uid="uid://cod813ikxi6f2" path="res://scenes/map/Props/Furnitures/CouchLarge/CouchLarge.glb" id="38_iesak"]
-[ext_resource type="PackedScene" uid="uid://dj00evtco5s0m" path="res://scenes/map/Props/Pallets/realistic_wooden_pallet_low-poly.glb" id="38_uo64c"]
 [ext_resource type="PackedScene" uid="uid://blxu3cobhf8ec" path="res://scenes/map/Props/Columns/Column1/column1.glb" id="39_2b0nu"]
-[ext_resource type="PackedScene" uid="uid://c0otql6m7bofy" path="res://scenes/map/Props/Pallets/wooden_box_-_pallet._game_asset.glb" id="39_eat5w"]
-[ext_resource type="PackedScene" uid="uid://b0aljic45qjyy" path="res://scenes/map/Props/Crates/Crate_Tarp/tarp-covered_crate__low-poly.glb" id="40_qcbqi"]
+[ext_resource type="PackedScene" uid="uid://b0aljic45qjyy" path="res://scenes/map/Props/Crates/Crate_Tarp/tarp-covered_crate__low-poly/tarp-covered_crate__low-poly.glb" id="40_qcbqi"]
 [ext_resource type="PackedScene" uid="uid://dlb8ximi28kye" path="res://scenes/map/Props/junkyard_props.glb" id="41_4st6g"]
 [ext_resource type="PackedScene" uid="uid://bqnwy5uin5y27" path="res://scenes/map/Props/Fence/Fence/Fence.glb" id="41_wseh3"]
 [ext_resource type="PackedScene" uid="uid://bwv1ivvp2kt8g" path="res://scenes/map/Props/Plants/Flowerpots/Flower Pot.glb" id="42_6kl12"]
@@ -133,16 +128,19 @@
 [ext_resource type="PackedScene" uid="uid://cm8eppybjhc3i" path="res://scenes/map/Props/Tools/Ladder/Ladder.tscn" id="115_lohkh"]
 [ext_resource type="PackedScene" uid="uid://8suldi80muf0" path="res://scenes/map/Props/Boxes/Box/Box.tscn" id="115_qk0h3"]
 [ext_resource type="PackedScene" uid="uid://crruf7k2014fm" path="res://scenes/map/Props/Boxes/urban_fuse_box/urban_fuse_box.tscn" id="119_lohkh"]
+[ext_resource type="PackedScene" uid="uid://clb34ccau270x" path="res://scenes/map/Props/Pallets/realistic_wooden_pallet_low-poly/realistic_wooden_pallet_low-poly.tscn" id="132_1qxom"]
+[ext_resource type="PackedScene" uid="uid://ddtfeben7jt0m" path="res://scenes/map/Props/Pallets/wooden_box_-_pallet._game_asset/wooden_box_-_pallet._game_asset.tscn" id="132_qk0h3"]
+[ext_resource type="PackedScene" uid="uid://bsk7i3frtclt8" path="res://scenes/map/Props/Pallets/free_wood_palette/free_wood_palette.tscn" id="133_lohkh"]
+[ext_resource type="PackedScene" uid="uid://bniy6gapewkta" path="res://scenes/map/Props/Crates/Crate_Tarp/tarp-covered_crate__low-poly/tarp-covered_crate__low-poly.tscn" id="133_qk0h3"]
+[ext_resource type="PackedScene" uid="uid://d2wuso5fv62t4" path="res://scenes/map/Props/Pallets/barrels_on_a_pallet/barrels_on_a_pallet.tscn" id="133_sujk3"]
+[ext_resource type="PackedScene" uid="uid://6dx1q6ypevnm" path="res://scenes/map/Props/Boxes/boxes_atticbasement_covered_with_dirty_sheet/boxes_atticbasement_covered_with_dirty_sheet.tscn" id="134_lohkh"]
 
 [sub_resource type="Environment" id="Environment_rqo2c"]
 background_mode = 1
 background_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
-glow_enabled = true
-fog_enabled = true
 fog_light_energy = 0.5
 fog_density = 0.005
 fog_sky_affect = 0.0
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bswn0"]
@@ -193,6 +191,32 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_f3scl")
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_lohkh"]
+size = Vector3(0.7572421, 1.5101638, 0.81797373)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sujk3"]
+size = Vector3(0.63932705, 0.6623065, 0.6059378)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1q30i"]
+size = Vector3(0.63932705, 0.6623065, 0.6059378)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8waik"]
+size = Vector3(0.6416315, 0.6709391, 0.82264143)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jrsvk"]
+size = Vector3(0.7572421, 1.5101638, 0.81797373)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_qk0h3"]
+height = 3.144166
+radius = 1.0482799
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_jrsvk"]
+height = 3.2161527
+radius = 1.044222
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8waik"]
+data = PackedVector3Array(-1.4333999, 1.4387, -0.0793, -1.4333999, 1.6163, 0.0793, -1.4333999, 1.4387, 0.0793, -1.4333999, 1.4387, -0.0793, -1.4333999, 1.6163, -0.0793, -1.4333999, 1.6163, 0.0793, -1.4333999, -0.2445, -0.0793, -1.4333999, 1.4387, -0.0793, -1.4333999, 1.4387, 0.0793, -1.4333999, -0.2445, -0.0793, -1.4333999, 1.4387, 0.0793, -1.4333999, -0.2445, 0.0793, -1.4333999, -0.3913, -0.0793, -1.4333999, -0.2445, -0.0793, -1.4333999, -0.2445, 0.0793, -1.4333999, -0.3913, -0.0793, -1.4333999, -0.2445, 0.0793, -1.4333999, -0.3913, 0.0793, -1.4333999, -2.4192998, -0.0793, -1.4333999, -0.3913, -0.0793, -1.4333999, -0.3913, 0.0793, -1.4333999, -2.4192998, -0.0793, -1.4333999, -0.3913, 0.0793, -1.4333999, -2.4192998, 0.0793, 1.2773, 1.6163, -0.0793, 1.4290999, 1.6163, 0.0793, 1.2773, 1.6163, 0.0793, 1.2773, 1.6163, -0.0793, 1.4290999, 1.6163, -0.0793, 1.4290999, 1.6163, 0.0793, -1.2731, 1.6163, -0.0793, 1.2773, 1.6163, -0.0793, 1.2773, 1.6163, 0.0793, -1.2731, 1.6163, -0.0793, 1.2773, 1.6163, 0.0793, -1.2731, 1.6163, 0.0793, -1.4333999, 1.6163, -0.0793, -1.2731, 1.6163, -0.0793, -1.2731, 1.6163, 0.0793, -1.4333999, 1.6163, -0.0793, -1.2731, 1.6163, 0.0793, -1.4333999, 1.6163, 0.0793, 1.4290999, -0.3913, -0.0793, 1.4290999, -2.4192998, 0.0793, 1.4290999, -0.3913, 0.0793, 1.4290999, -0.3913, -0.0793, 1.4290999, -2.4192998, -0.0793, 1.4290999, -2.4192998, 0.0793, 1.4290999, -0.2445, -0.0793, 1.4290999, -0.3913, -0.0793, 1.4290999, -0.3913, 0.0793, 1.4290999, -0.2445, -0.0793, 1.4290999, -0.3913, 0.0793, 1.4290999, -0.2445, 0.0793, 1.4290999, 1.4387, -0.0793, 1.4290999, -0.2445, -0.0793, 1.4290999, -0.2445, 0.0793, 1.4290999, 1.4387, -0.0793, 1.4290999, -0.2445, 0.0793, 1.4290999, 1.4387, 0.0793, 1.4290999, 1.6163, -0.0793, 1.4290999, 1.4387, -0.0793, 1.4290999, 1.4387, 0.0793, 1.4290999, 1.6163, -0.0793, 1.4290999, 1.4387, 0.0793, 1.4290999, 1.6163, 0.0793, -1.2731, -2.4192998, -0.0793, -1.4333999, -2.4192998, 0.0793, -1.2731, -2.4192998, 0.0793, -1.2731, -2.4192998, -0.0793, -1.4333999, -2.4192998, -0.0793, -1.4333999, -2.4192998, 0.0793, 1.2773, -0.3913, -0.0793, 1.4290999, -2.4192998, -0.0793, 1.4290999, -0.3913, -0.0793, 1.2773, -0.3913, -0.0793, 1.2773, -2.4192998, -0.0793, 1.4290999, -2.4192998, -0.0793, -1.2731, -0.2445, -0.0793, 1.2773, -0.3913, -0.0793, 1.2773, -0.2445, -0.0793, -1.2731, -0.2445, -0.0793, -1.2731, -0.3913, -0.0793, 1.2773, -0.3913, -0.0793, -1.4333999, -0.2445, -0.0793, -1.2731, -0.3913, -0.0793, -1.2731, -0.2445, -0.0793, -1.4333999, -0.2445, -0.0793, -1.4333999, -0.3913, -0.0793, -1.2731, -0.3913, -0.0793, -1.4333999, -0.3913, -0.0793, -1.2731, -2.4192998, -0.0793, -1.2731, -0.3913, -0.0793, -1.4333999, -0.3913, -0.0793, -1.4333999, -2.4192998, -0.0793, -1.2731, -2.4192998, -0.0793, -1.4333999, 1.4387, -0.0793, -1.4333999, -0.2445, -0.0793, -1.2731, -0.2445, -0.0793, -1.4333999, 1.4387, -0.0793, -1.2731, -0.2445, -0.0793, -1.2731, 1.4387, -0.0793, -1.4333999, 1.6163, -0.0793, -1.4333999, 1.4387, -0.0793, -1.2731, 1.4387, -0.0793, -1.4333999, 1.6163, -0.0793, -1.2731, 1.4387, -0.0793, -1.2731, 1.6163, -0.0793, -1.2731, 1.6163, -0.0793, -1.2731, 1.4387, -0.0793, 1.2773, 1.4387, -0.0793, -1.2731, 1.6163, -0.0793, 1.2773, 1.4387, -0.0793, 1.2773, 1.6163, -0.0793, 1.2773, 1.6163, -0.0793, 1.2773, 1.4387, -0.0793, 1.4290999, 1.4387, -0.0793, 1.2773, 1.6163, -0.0793, 1.4290999, 1.4387, -0.0793, 1.4290999, 1.6163, -0.0793, -1.2731, -0.3913, 0.0793, -1.4333999, -2.4192998, 0.0793, -1.4333999, -0.3913, 0.0793, -1.2731, -0.3913, 0.0793, -1.2731, -2.4192998, 0.0793, -1.4333999, -2.4192998, 0.0793, 1.2773, -0.2445, 0.0793, -1.2731, -0.3913, 0.0793, -1.2731, -0.2445, 0.0793, 1.2773, -0.2445, 0.0793, 1.2773, -0.3913, 0.0793, -1.2731, -0.3913, 0.0793, 1.4290999, -0.2445, 0.0793, 1.2773, -0.3913, 0.0793, 1.2773, -0.2445, 0.0793, 1.4290999, -0.2445, 0.0793, 1.4290999, -0.3913, 0.0793, 1.2773, -0.3913, 0.0793, 1.4290999, -0.3913, 0.0793, 1.2773, -2.4192998, 0.0793, 1.2773, -0.3913, 0.0793, 1.4290999, -0.3913, 0.0793, 1.4290999, -2.4192998, 0.0793, 1.2773, -2.4192998, 0.0793, 1.4290999, 1.4387, 0.0793, 1.4290999, -0.2445, 0.0793, 1.2773, -0.2445, 0.0793, 1.4290999, 1.4387, 0.0793, 1.2773, -0.2445, 0.0793, 1.2773, 1.4387, 0.0793, 1.4290999, 1.6163, 0.0793, 1.4290999, 1.4387, 0.0793, 1.2773, 1.4387, 0.0793, 1.4290999, 1.6163, 0.0793, 1.2773, 1.4387, 0.0793, 1.2773, 1.6163, 0.0793, 1.2773, 1.6163, 0.0793, 1.2773, 1.4387, 0.0793, -1.2731, 1.4387, 0.0793, 1.2773, 1.6163, 0.0793, -1.2731, 1.4387, 0.0793, -1.2731, 1.6163, 0.0793, -1.2731, 1.6163, 0.0793, -1.2731, 1.4387, 0.0793, -1.4333999, 1.4387, 0.0793, -1.2731, 1.6163, 0.0793, -1.4333999, 1.4387, 0.0793, -1.4333999, 1.6163, 0.0793, 1.4290999, -2.4192998, -0.0793, 1.2773, -2.4192998, 0.0793, 1.4290999, -2.4192998, 0.0793, 1.4290999, -2.4192998, -0.0793, 1.2773, -2.4192998, -0.0793, 1.2773, -2.4192998, 0.0793, -1.2731, 1.4387, 0.0793, -1.4333999, -0.2445, 0.0793, -1.4333999, 1.4387, 0.0793, -1.2731, 1.4387, 0.0793, -1.2731, -0.2445, 0.0793, -1.4333999, -0.2445, 0.0793, 1.2773, 1.4387, -0.0793, 1.4290999, -0.2445, -0.0793, 1.4290999, 1.4387, -0.0793, 1.2773, 1.4387, -0.0793, 1.2773, -0.2445, -0.0793, 1.4290999, -0.2445, -0.0793, -1.2731, -0.2445, 0.0793, -1.4333999, -0.3913, 0.0793, -1.4333999, -0.2445, 0.0793, -1.2731, -0.2445, 0.0793, -1.2731, -0.3913, 0.0793, -1.4333999, -0.3913, 0.0793, 1.2773, -0.2445, -0.0793, 1.4290999, -0.3913, -0.0793, 1.4290999, -0.2445, -0.0793, 1.2773, -0.2445, -0.0793, 1.2773, -0.3913, -0.0793, 1.4290999, -0.3913, -0.0793, -1.2731, -0.3913, 0.0793, 1.2773, -0.3913, -0.0793, -1.2731, -0.3913, -0.0793, -1.2731, -0.3913, 0.0793, 1.2773, -0.3913, 0.0793, 1.2773, -0.3913, -0.0793, -1.2731, -2.4192998, -0.0793, -1.2731, -0.3913, 0.0793, -1.2731, -0.3913, -0.0793, -1.2731, -2.4192998, -0.0793, -1.2731, -2.4192998, 0.0793, -1.2731, -0.3913, 0.0793, 1.2773, -2.4192998, 0.0793, 1.2773, -0.3913, -0.0793, 1.2773, -0.3913, 0.0793, 1.2773, -2.4192998, 0.0793, 1.2773, -2.4192998, -0.0793, 1.2773, -0.3913, -0.0793, -1.2731, -0.2445, 0.0793, 1.2773, -0.2445, -0.0793, 1.2773, -0.2445, 0.0793, -1.2731, -0.2445, 0.0793, -1.2731, -0.2445, -0.0793, 1.2773, -0.2445, -0.0793, 1.2773, -0.2445, 0.0793, 1.2773, 1.4387, -0.0793, 1.2773, 1.4387, 0.0793, 1.2773, -0.2445, 0.0793, 1.2773, -0.2445, -0.0793, 1.2773, 1.4387, -0.0793, -1.2731, 1.4387, 0.0793, 1.2773, 1.4387, -0.0793, -1.2731, 1.4387, -0.0793, -1.2731, 1.4387, 0.0793, 1.2773, 1.4387, 0.0793, 1.2773, 1.4387, -0.0793, -1.2731, -0.2445, -0.0793, -1.2731, 1.4387, 0.0793, -1.2731, 1.4387, -0.0793, -1.2731, -0.2445, -0.0793, -1.2731, -0.2445, 0.0793, -1.2731, 1.4387, 0.0793)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hytel"]
 resource_name = "Metal_peice_2_v2_low_poly"
 cull_mode = 2
@@ -239,6 +263,7 @@ shadow_mesh = SubResource("ArrayMesh_kn57s")
 environment = SubResource("Environment_rqo2c")
 
 [node name="Ceiling_70x70" parent="." unique_id=200950674 instance=ExtResource("6_jcaow")]
+visible = false
 
 [node name="Floor_70x70" parent="." unique_id=1116606908 instance=ExtResource("1_04w0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0023851395, 0.015058994, -0.0025482178)
@@ -1272,11 +1297,6 @@ transform = Transform3D(-0.4479307, 0, 0.89406836, 0, 1, 0, -0.89406836, 0, -0.4
 [node name="MirrorHall4" parent="Hall/MirrorsHall" unique_id=1540975544 instance=ExtResource("11_cumk7")]
 transform = Transform3D(-0.7140208, 0, 0.70012456, 0, 1, 0, -0.70012456, 0, -0.7140208, 0.4236822, 0.011943817, 15.7628355)
 
-[node name="UrbanFuseBox" parent="Hall" unique_id=982956486 instance=ExtResource("119_lohkh")]
-
-[node name="CoveredBoxesBlue" parent="Hall" unique_id=1778715317 instance=ExtResource("40_qcbqi")]
-transform = Transform3D(2.171143, 0, 2.0702991, 0, 3.0000014, 0, -2.0702991, 0, 2.171143, -5.2731457, 0, 2.6554537)
-
 [node name="WC2026Ball" parent="Hall" unique_id=2042036953 instance=ExtResource("28_gqklb")]
 transform = Transform3D(0.21711425, 0, 0.20702985, 0, 0.29999992, 0, -0.20702985, 0, 0.21711425, -5.2511196, 1.1971197, 1.9561391)
 
@@ -1288,12 +1308,6 @@ transform = Transform3D(0.96986353, 0, 1.749104, 0, 2, 0, -1.749104, 0, 0.969863
 
 [node name="CableHall3" parent="Hall" unique_id=83761435 instance=ExtResource("22_omedl")]
 transform = Transform3D(-0.80908215, 0, 1.2630858, 0, 1.5, 0, -1.2630858, 0, -0.80908215, 10.269299, 3.4673014, 6.1864696)
-
-[node name="Boxes_coveredHall" parent="Hall" unique_id=686524456 instance=ExtResource("27_hs4c0")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.700001, -1.2216774, 7.200001)
-
-[node name="Boxes_covered2Hall" parent="Hall" unique_id=450901044 instance=ExtResource("27_hs4c0")]
-transform = Transform3D(-0.70409185, 0, 1.3244829, 0, 1.5, 0, -1.3244829, 0, -0.70409185, -4.268861, -0.8000001, -9.970266)
 
 [node name="wooden_boxes" parent="Hall" unique_id=1210632326 instance=ExtResource("32_p2b7t")]
 transform = Transform3D(3.4285612, 0, 2.0603318, 0, 4, 0, -2.0603318, 0, 3.4285612, 0, 0, 0)
@@ -1311,11 +1325,23 @@ transform = Transform3D(0.66040826, 3.2823166e-08, 0.7509067, -3.282319e-08, 1, 
 transform = Transform3D(0.66040826, 3.2823166e-08, 0.7509067, -3.282319e-08, 1, -1.4844019e-08, -0.7509067, -1.4844035e-08, 0.66040826, -3.6338892, -7.986091e-08, -1.8319101)
 mesh = SubResource("ArrayMesh_fsyr3")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Hall/wooden_boxes/Sketchfab_model/box_fbx/RootNode/box/box_box_1" unique_id=829386321]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-07, 0.7586827, -3.5762787e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/wooden_boxes/Sketchfab_model/box_fbx/RootNode/box/box_box_1/StaticBody3D" unique_id=1151660699]
+shape = SubResource("BoxShape3D_lohkh")
+
 [node name="wooden_boxes2" parent="Hall" unique_id=1479604242 instance=ExtResource("32_p2b7t")]
 transform = Transform3D(0.85034823, 0, 3.9085689, 0, 4, 0, -3.9085689, 0, 0.85034823, -4.8299227, 1.1606054, 1.157711)
 
 [node name="box1" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode" parent_id_path=PackedInt32Array(1479604242, 740427785) index="0" unique_id=358578826]
 transform = Transform3D(41.0932, 0, 4.7683716e-06, -1.0587912e-21, 41.09321, -1.7962411e-06, -4.7683716e-06, 1.7962409e-06, 41.0932, 48.44746, -29.385597, -51.38475)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode/box1/box1_box_0" parent_id_path=PackedInt32Array(1479604242, 1468191067) index="0" unique_id=587550710]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7881393e-07, 0.33927813, -1.4901161e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode/box1/box1_box_0/StaticBody3D" unique_id=1714289058]
+shape = SubResource("BoxShape3D_sujk3")
 
 [node name="box2_box_0" parent="Hall/wooden_boxes2/Sketchfab_model/box_fbx/RootNode/box2" parent_id_path=PackedInt32Array(1479604242, 2090849413) index="0" unique_id=1471831560]
 transform = Transform3D(1, 0, -1.4901161e-08, 0, 1.0000001, -1.9984014e-15, 1.4901161e-08, 1.3322676e-15, 1, 0, -0.14464366, 0)
@@ -1332,8 +1358,20 @@ transform = Transform3D(3.4285612, 0, 2.0603318, 0, 4, 0, -2.0603318, 0, 3.42856
 [node name="box1_box_0" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box1" parent_id_path=PackedInt32Array(1626319346, 358578826) index="0" unique_id=1468191067]
 transform = Transform3D(0.7, -4.417621e-30, -4.172325e-08, 0, 0.7, -7.411538e-23, 4.172325e-08, 7.411538e-23, 0.7, -3.9854965, -1.0477379e-07, -2.395012)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box1/box1_box_0" index="0" unique_id=1339238161]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.7881393e-07, 0.33927813, -1.4901161e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box1/box1_box_0/StaticBody3D" unique_id=1031154869]
+shape = SubResource("BoxShape3D_1q30i")
+
 [node name="box2_box_0" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box2" parent_id_path=PackedInt32Array(1626319346, 2090849413) index="0" unique_id=1471831560]
 transform = Transform3D(1.0088046, 0.64949083, -0.021830007, 0.027157586, -0.001858714, 1.1996915, 0.6492901, -1.0090383, -0.016261313, 2.2241862, 0.4936609, 4.317635)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box2/box2_box_0" index="0" unique_id=1244240457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9802322e-07, 0.33637995, 3.874302e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box2/box2_box_0/StaticBody3D" unique_id=898963650]
+shape = SubResource("BoxShape3D_8waik")
 
 [node name="box_box_0" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box" parent_id_path=PackedInt32Array(1626319346, 1758797697) index="0" unique_id=1165872137]
 transform = Transform3D(0.66040826, 3.2823166e-08, 0.7509067, -3.282319e-08, 1, -1.4844019e-08, -0.7509067, -1.4844035e-08, 0.66040826, -3.6338892, -7.986091e-08, -1.8319101)
@@ -1343,20 +1381,14 @@ visible = false
 transform = Transform3D(0.15367094, 0.5150832, 0.8432524, -0.98379755, -7.195639e-08, 0.17928334, 0.0923459, -0.8571402, 0.5067376, -5.561967, 0.66921055, 1.3765676)
 mesh = SubResource("ArrayMesh_fsyr3")
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box/box_box_1" unique_id=788407830]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4901161e-07, 0.7586827, -3.5762787e-07)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/wooden_boxes3/Sketchfab_model/box_fbx/RootNode/box/box_box_1/StaticBody3D" unique_id=1263229775]
+shape = SubResource("BoxShape3D_jrsvk")
+
 [node name="wooden_crate" parent="Hall" unique_id=1596252803 instance=ExtResource("34_gqpwe")]
 transform = Transform3D(0.90528727, 0, 0.42479995, 0, 1, 0, -0.42479995, 0, 0.90528727, 17.04149, 0.28650403, -4.5077744)
-
-[node name="CoveredPalletHall" parent="Hall" unique_id=518213273 instance=ExtResource("36_f24ks")]
-transform = Transform3D(1.4939141, 0, 0.13498418, 0, 1.5, 0, -0.13498418, 0, 1.4939141, -17.26707, 0, 2.8669167)
-
-[node name="BigDarkPalleteHall" parent="Hall" unique_id=1203203656 instance=ExtResource("37_eat5w")]
-transform = Transform3D(0.24063122, 0, 0.31952563, 0, 0.4, 0, -0.31952563, 0, 0.24063122, 1.1300459, 0, 5.042079)
-
-[node name="SmallPalletHall" parent="Hall" unique_id=1453879188 instance=ExtResource("38_uo64c")]
-transform = Transform3D(0.4964142, 0, -0.05977385, 0, 0.5, 0, 0.05977385, 0, 0.4964142, 16.774504, 0, -4.1337857)
-
-[node name="MediumBrokenPalletteHall" parent="Hall" unique_id=144835660 instance=ExtResource("39_eat5w")]
-transform = Transform3D(0.47575966, 0, 0.15379457, 0, 0.5, 0, -0.15379457, 0, 0.47575966, 9.142458, -0.12264347, -10.317601)
 
 [node name="ConcreteBlocksHall" parent="Hall" unique_id=270706163 instance=ExtResource("10_58ndj")]
 transform = Transform3D(1.4999549, -0.01001683, -0.0059023476, 0.010013918, 1.4999664, -0.0007592263, 0.005907285, 0.0007197998, 1.4999882, -21.353, 0.18330202, -3.512001)
@@ -1376,14 +1408,34 @@ transform = Transform3D(79.99999, 0, 0, 0, -3.4969112e-06, 79.99999, 0, -79.9999
 [node name="Barrel v1 _Barrel v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v1 " index="0" unique_id=2129074013]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, -1.0658141e-14, 0, 1.0658141e-14, 0.9999999, 0, -2.0614338, -1.1920929e-07)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v1 /Barrel v1 _Barrel v1 low poly_0" index="0" unique_id=1837923]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.042925835, 0.006354451, -0.028126478)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v1 /Barrel v1 _Barrel v1 low poly_0/StaticBody3D" unique_id=1558095712]
+shape = SubResource("CylinderShape3D_qk0h3")
+
 [node name="Barrel v2_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 626689715) index="1" unique_id=1770519591]
 transform = Transform3D(79.99999, 0, 0, 0, -3.4969112e-06, 79.99999, 0, -79.99999, -3.4969112e-06, 374.29095, 136.52031, -620.8827)
+
+[node name="Barrel v2_001_Barrel v2 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v2_001" index="0" unique_id=1723542268]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, -3.5527137e-15, 0, 3.5527137e-15, 0.99999994, -0.003180027, -0.0006933212, -0.018371701)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v2_001/Barrel v2_001_Barrel v2 low poly_0" index="0" unique_id=347115091]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -0.07515609, -0.027661443, -0.11540365)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Barrel v2_001/Barrel v2_001_Barrel v2 low poly_0/StaticBody3D" unique_id=731898962]
+shape = SubResource("CylinderShape3D_jrsvk")
 
 [node name="Gear v1_001" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode" parent_id_path=PackedInt32Array(1609043725, 626689715) index="2" unique_id=1763849814]
 visible = false
 
 [node name="Metal peice 2 v1_001_Metal peice 2 v1 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v1_001" parent_id_path=PackedInt32Array(1609043725, 1397123371) index="0" unique_id=889975657]
 transform = Transform3D(-0.6881355, -0.12044797, 0.04429233, 0.08953556, -0.27751592, 0.6363712, -0.09193968, 0.6312505, 0.28821862, 2.9417162, 0.24558687, 1.450423)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v1_001/Metal peice 2 v1_001_Metal peice 2 v1 low poly_0" index="0" unique_id=971303000]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v1_001/Metal peice 2 v1_001_Metal peice 2 v1 low poly_0/StaticBody3D" unique_id=1148007935]
+shape = SubResource("ConcavePolygonShape3D_8waik")
 
 [node name="Metal peice 2 v2_001_Metal peice 2 v2 low poly_0" parent="Hall/JunkEverywhereHall/Sketchfab_model/Junkyard Props_fbx/RootNode/Metal peice 2 v2_001" parent_id_path=PackedInt32Array(1609043725, 1503726776) index="0" unique_id=1570200769]
 transform = Transform3D(0.88250476, 0.4703035, 3.5506925e-08, 0.4703035, -0.88250476, 9.629342e-08, 7.6622165e-08, -6.828037e-08, -1, 4.9809217, 16.313568, 0.20000266)
@@ -1419,6 +1471,27 @@ texture = ExtResource("75_84k81")
 
 [node name="UrbanFuseBox2" parent="Hall" unique_id=246903254 instance=ExtResource("119_lohkh")]
 transform = Transform3D(-1.3113416e-08, 0, -0.29999998, 0, 0.29999998, 0, 0.29999998, 0, -1.3113416e-08, 7.2000003, 0, -26.4)
+
+[node name="RealisticWoodenPalletLowPoly" parent="Hall" unique_id=935885542 instance=ExtResource("132_1qxom")]
+transform = Transform3D(0.4964142, 0, -0.05977385, 0, 0.5, 0, 0.05977385, 0, 0.4964142, 16.774504, 0, -4.1337857)
+
+[node name="WoodenBoxPallet_GameAsset" parent="Hall" unique_id=1401815467 instance=ExtResource("132_qk0h3")]
+transform = Transform3D(0.47575966, 0, 0.15379457, 0, 0.5, 0, -0.15379457, 0, 0.47575966, 9.142458, -0.12264347, -10.317601)
+
+[node name="TarpCoveredCrateLowPoly" parent="Hall" unique_id=222058663 instance=ExtResource("133_qk0h3")]
+transform = Transform3D(2.171143, 0, 2.0702991, 0, 3.0000014, 0, -2.0702991, 0, 2.171143, -5.2731457, 0, 2.6554537)
+
+[node name="FreeWoodPalette" parent="Hall" unique_id=1470340114 instance=ExtResource("133_lohkh")]
+transform = Transform3D(0.24063122, 0, 0.31952563, 0, 0.4, 0, -0.31952563, 0, 0.24063122, 1.1300459, 0, 5.042079)
+
+[node name="BoxesAtticbasementCoveredWithDirtySheet" parent="Hall" unique_id=63885482 instance=ExtResource("134_lohkh")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 14.700001, -1.2216774, 7.200001)
+
+[node name="BoxesAtticbasementCoveredWithDirtySheet2" parent="Hall" unique_id=759750566 instance=ExtResource("134_lohkh")]
+transform = Transform3D(-0.70409185, 0, 1.3244829, 0, 1.5, 0, -1.3244829, 0, -0.70409185, -4.268861, -0.8000001, -9.970266)
+
+[node name="BarrelsOnAPallet" parent="Hall" unique_id=680689430 instance=ExtResource("133_sujk3")]
+transform = Transform3D(1.4939141, 0, 0.13498418, 0, 1.5, 0, -0.13498418, 0, 1.4939141, -17.26707, 0, 2.8669167)
 
 [node name="Sketchfab_Scene" parent="." unique_id=1831560731 instance=ExtResource("29_j4o0h")]
 transform = Transform3D(-0.33456534, 0, -0.3715724, 0, 0.5, 0, 0.3715724, 0, -0.33456534, -3.1240387, 0.56643486, -25.225103)
