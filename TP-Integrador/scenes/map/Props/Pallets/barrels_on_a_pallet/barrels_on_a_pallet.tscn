@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://d2wuso5fv62t4"]
+
+[ext_resource type="PackedScene" uid="uid://bbk3neh0c8dsy" path="res://scenes/map/Props/Pallets/barrels_on_a_pallet/barrels_on_a_pallet.glb" id="1_dupac"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7t7fo"]
+size = Vector3(1.3724976, 1, 1.9022217)
+
+[node name="BarrelsOnAPallet" type="Node3D" unique_id=680689430]
+
+[node name="Sketchfab_Scene" parent="." unique_id=1766491163 instance=ExtResource("1_dupac")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene" unique_id=1861470065]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/StaticBody3D" unique_id=623780856]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0050354004, 0.4482419, 0.002380371)
+shape = SubResource("BoxShape3D_7t7fo")

@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://cg81f3jlwl2k3"]
+
+[ext_resource type="PackedScene" uid="uid://byojd6ie026de" path="res://scenes/map/Props/Pipes/Pipe5/Pipe5.glb" id="1_j70ad"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ci8n2"]
+height = 3.3388672
+radius = 0.37451172
+
+[node name="Pipe5" type="Node3D" unique_id=1483287324]
+
+[node name="Root Scene" parent="." unique_id=801287996 instance=ExtResource("1_j70ad")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=1126637689]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=2137030148]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0.2805612, -0.009277344)
+shape = SubResource("CylinderShape3D_ci8n2")

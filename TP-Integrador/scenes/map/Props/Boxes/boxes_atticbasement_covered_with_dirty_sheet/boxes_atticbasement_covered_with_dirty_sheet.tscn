@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://6dx1q6ypevnm"]
+
+[ext_resource type="PackedScene" uid="uid://c8cl473dx4011" path="res://scenes/map/Props/Boxes/boxes_atticbasement_covered_with_dirty_sheet/boxes_atticbasement_covered_with_dirty_sheet.glb" id="1_l6ihd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_28gl7"]
+size = Vector3(2.2644043, 1, 2.27063)
+
+[node name="BoxesAtticbasementCoveredWithDirtySheet" type="Node3D" unique_id=63885482]
+
+[node name="Sketchfab_Scene" parent="." unique_id=138987802 instance=ExtResource("1_l6ihd")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene" unique_id=59692648]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/StaticBody3D" unique_id=1038696076]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0020751953, 1.311744, 0.2793579)
+shape = SubResource("BoxShape3D_28gl7")
