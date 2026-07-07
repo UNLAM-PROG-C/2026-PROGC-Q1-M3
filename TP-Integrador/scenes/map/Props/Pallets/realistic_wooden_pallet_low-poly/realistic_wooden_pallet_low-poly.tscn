@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://clb34ccau270x"]
+
+[ext_resource type="PackedScene" uid="uid://dj00evtco5s0m" path="res://scenes/map/Props/Pallets/realistic_wooden_pallet_low-poly/realistic_wooden_pallet_low-poly.glb" id="1_ke81f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5crvg"]
+size = Vector3(4.9608765, 1, 4.962036)
+
+[node name="RealisticWoodenPalletLowPoly" type="Node3D" unique_id=935885542]
+
+[node name="Sketchfab_Scene" parent="." unique_id=1184438004 instance=ExtResource("1_ke81f")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene" unique_id=247204028]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/StaticBody3D" unique_id=1780655993]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007904053, 0, 6.1035156e-05)
+shape = SubResource("BoxShape3D_5crvg")

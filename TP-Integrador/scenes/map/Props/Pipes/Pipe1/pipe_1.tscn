@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b4dkcpnovv0wq"]
+
+[ext_resource type="PackedScene" uid="uid://dwa4fy8lfq64x" path="res://scenes/map/Props/Pipes/Pipe1/pipe1.glb" id="1_0fxrt"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ptrlj"]
+height = 2.6965332
+radius = 0.32714844
+
+[node name="pipe1" unique_id=1573316883 instance=ExtResource("1_0fxrt")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh" parent_id_path=PackedInt32Array(478436677) index="0" unique_id=440353523]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/StaticBody3D" index="0" unique_id=392651348]
+transform = Transform3D(-3.2127872e-08, 0.735, -3.2127872e-08, 0, -3.2127872e-08, -0.735, -0.735, -3.2127872e-08, 1.4043538e-15, -0.010430135, -0.0006249845, 0.0018152024)
+shape = SubResource("CylinderShape3D_ptrlj")

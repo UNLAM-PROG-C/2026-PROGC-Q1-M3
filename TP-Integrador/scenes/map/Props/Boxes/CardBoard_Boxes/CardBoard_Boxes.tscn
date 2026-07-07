@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://vy83m7jgbykb"]
+
+[ext_resource type="PackedScene" uid="uid://opqe6ixddqfh" path="res://scenes/map/Props/Boxes/CardBoard_Boxes/Cardboard Boxes.glb" id="1_yeoxo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jd1c2"]
+size = Vector3(1.4077759, 1, 0.94384766)
+
+[node name="CardBoardBoxes" type="Node3D" unique_id=1530223476]
+
+[node name="Root Scene" parent="." unique_id=601948998 instance=ExtResource("1_yeoxo")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=1024095287]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=1385863053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.01889038, 0.694994, 0.028076172)
+shape = SubResource("BoxShape3D_jd1c2")

@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bniy6gapewkta"]
+
+[ext_resource type="PackedScene" uid="uid://b0aljic45qjyy" path="res://scenes/map/Props/Crates/Crate_Tarp/tarp-covered_crate__low-poly/tarp-covered_crate__low-poly.glb" id="1_n1d2f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_74afk"]
+size = Vector3(0.7006836, 0.24102783, 1.3404541)
+
+[node name="TarpCoveredCrateLowPoly" type="Node3D" unique_id=222058663]
+
+[node name="Sketchfab_Scene" parent="." unique_id=2125307536 instance=ExtResource("1_n1d2f")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Sketchfab_Scene" unique_id=1931926816]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sketchfab_Scene/StaticBody3D" unique_id=243973444]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0041503906, 0.1701355, 0.014465332)
+shape = SubResource("BoxShape3D_74afk")

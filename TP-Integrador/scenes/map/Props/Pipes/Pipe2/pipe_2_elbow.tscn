@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cgn2dr0j0eldl"]
+
+[ext_resource type="PackedScene" uid="uid://cy0w4t0ywdvik" path="res://scenes/map/Props/Pipes/Pipe2/pipe2_elbow.glb" id="1_l675p"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lcdvb"]
+size = Vector3(2.6933565, 1.25531, 0.74018097)
+
+[node name="pipe2_elbow" unique_id=17176805 instance=ExtResource("1_l675p")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Mesh" parent_id_path=PackedInt32Array(482704585) index="0" unique_id=1602285899]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/StaticBody3D" index="0" unique_id=911707201]
+transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, -0.033368416, 0.24790049, 0.045247365)
+shape = SubResource("BoxShape3D_lcdvb")

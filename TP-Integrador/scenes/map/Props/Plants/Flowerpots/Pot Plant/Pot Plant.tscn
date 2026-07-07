@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://cm13y77q02mw3"]
+
+[ext_resource type="PackedScene" uid="uid://1l634wgywtiv" path="res://scenes/map/Props/Plants/Flowerpots/Pot Plant/Pot Plant.glb" id="1_td78g"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eibs1"]
+size = Vector3(0.22912598, 0.1171875, 0.17578125)
+
+[node name="PotPlant" type="Node3D" unique_id=789675431]
+
+[node name="Root Scene" parent="." unique_id=2034579328 instance=ExtResource("1_td78g")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=1100394662]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=1379331394]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0021362305, -0.017578125, -0.001953125)
+shape = SubResource("BoxShape3D_eibs1")

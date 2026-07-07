@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dwchmprrqp05j"]
+
+[ext_resource type="PackedScene" uid="uid://tjo1kqgtdhr5" path="res://scenes/map/Props/Boxes/Cardboard Box Open/Cardboard Box Open.glb" id="1_u4jp7"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_6tas3"]
+size = Vector3(0.21324158, 0.20056152, 0.20214844)
+
+[node name="CardboardBoxOpen" type="Node3D" unique_id=822749749]
+
+[node name="Cardboard Box Open" parent="." unique_id=1684199913 instance=ExtResource("1_u4jp7")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Cardboard Box Open" unique_id=1328680953]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Cardboard Box Open/StaticBody3D" unique_id=371243672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.10538483, 0.105285645, 0.106933594)
+shape = SubResource("BoxShape3D_6tas3")

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cnsto6n024cd7"]
 
-[ext_resource type="PackedScene" uid="uid://55ixhvpkdse7" path="res://scenes/map/Props/Debris_Pile/Debris Pile.glb" id="1_s8fqa"]
+[ext_resource type="PackedScene" uid="uid://55ixhvpkdse7" path="res://scenes/map/Props/Debris/Debris Pile.glb" id="1_s8fqa"]
 
 [node name="DebrisPile" type="Node3D" unique_id=475738974]
 

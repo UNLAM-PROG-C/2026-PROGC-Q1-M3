@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://iyqq181eo4i7" path="res://scenes/lobby/host_lobby.gd" id="1"]
 [ext_resource type="FontFile" uid="uid://mjen1qbot6d1" path="res://fonts/connection_ii/ConnectionII.otf" id="2"]
 [ext_resource type="Texture2D" uid="uid://bjmhi5dk381nh" path="res://imagenes/fondo-menu.png" id="3"]
+[ext_resource type="PackedScene" uid="uid://c0mutebtnui01" path="res://scenes/ui/mute_button.tscn" id="4_mute"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 content_margin_left = 8.0
@@ -218,6 +219,18 @@ horizontal_alignment = 1
 [node name="TitleCharGap" type="Control" parent="Content/RightSection" unique_id=2046735864]
 custom_minimum_size = Vector2(0, 24)
 layout_mode = 2
+
+[node name="MuteButton" parent="." instance=ExtResource("4_mute")]
+layout_mode = 1
+anchor_left = 1.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 0.0
+offset_left = -72.0
+offset_top = 16.0
+offset_right = -16.0
+offset_bottom = 72.0
+grow_horizontal = 0
 
 [connection signal="pressed" from="Content/LeftPanel/Margin/LeftSection/SetupButtonsRow/CreateButton" to="." method="_on_create_pressed"]
 [connection signal="pressed" from="Content/LeftPanel/Margin/LeftSection/SetupButtonsRow/BackButton" to="." method="_on_back_pressed"]

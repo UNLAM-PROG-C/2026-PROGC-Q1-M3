@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://6ae6d23af60x"]
+
+[ext_resource type="PackedScene" uid="uid://cfw0d1hd3qqro" path="res://scenes/map/Props/Furnitures/Tables/Table Round Small/Table Round Small.glb" id="1_7xxm6"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_pw3c7"]
+height = 1.0059967
+radius = 0.96240234
+
+[node name="TableRoundSmall" type="Node3D" unique_id=714528286]
+
+[node name="Root Scene" parent="." unique_id=757583652 instance=ExtResource("1_7xxm6")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=44986853]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=663378160]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6391678, 0)
+shape = SubResource("CylinderShape3D_pw3c7")

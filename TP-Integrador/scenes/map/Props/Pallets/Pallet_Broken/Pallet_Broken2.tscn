@@ -2,6 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://df0byre1avtoh" path="res://scenes/map/Props/Pallets/Pallet_Broken/Pallet Broken.glb" id="1_8ud4r"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_8ud4r"]
+size = Vector3(1.4448853, 0.32421875, 1.8198242)
+
 [node name="PalletBroken2" type="Node3D" unique_id=1727151508]
 
 [node name="Root Scene" parent="." unique_id=193354077 instance=ExtResource("1_8ud4r")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Root Scene" unique_id=580225725]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Root Scene/StaticBody3D" unique_id=308267689]
+transform = Transform3D(0.735, 0, 0, 0, 0.735, 0, 0, 0, 0.735, 0.022497714, 0.07526475, 0.03274241)
+shape = SubResource("BoxShape3D_8ud4r")

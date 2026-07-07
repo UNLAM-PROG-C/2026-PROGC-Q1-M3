@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://c4mlrt5wl3kii"]
+
+[ext_resource type="PackedScene" uid="uid://csacppt12i56p" path="res://scenes/map/Props/Rack/Wooden Rack.glb" id="1_kcm5h"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_n0bl7"]
+size = Vector3(1.9221191, 1, 0.35168457)
+
+[node name="Rack" type="Node3D" unique_id=786516775]
+
+[node name="Wooden Rack" parent="." unique_id=717633415 instance=ExtResource("1_kcm5h")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Wooden Rack" unique_id=1112936351]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Wooden Rack/StaticBody3D" unique_id=1538296840]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007446289, 0.7748492, 0.00982666)
+shape = SubResource("BoxShape3D_n0bl7")

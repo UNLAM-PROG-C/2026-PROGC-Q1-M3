@@ -1,0 +1,44 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://c55v3061twsyc"
+path.s3tc="res://.godot/imported/barrels_on_a_pallet_6.png-848886ce79e07a9f52f1cbc55fc79876.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "4f64ffac001b0d1ae3723ece83b35631"
+}
+
+[deps]
+
+source_file="res://scenes/map/Props/Pallets/barrels_on_a_pallet/barrels_on_a_pallet_6.png"
+dest_files=["res://.godot/imported/barrels_on_a_pallet_6.png-848886ce79e07a9f52f1cbc55fc79876.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/uastc_level=0
+compress/rdo_quality_loss=0.0
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/channel_remap/red=0
+process/channel_remap/green=1
+process/channel_remap/blue=2
+process/channel_remap/alpha=3
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

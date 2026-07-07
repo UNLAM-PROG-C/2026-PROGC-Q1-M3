@@ -2,6 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://cbbh4gcfy7tv" path="res://scenes/map/Props/Shelves/Shelves.glb" id="1_am72a"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_am72a"]
+size = Vector3(0.819397, 1.3916016, 2.0898438)
+
 [node name="Shelves" type="Node3D" unique_id=1277375895]
 
 [node name="Shelves" parent="." unique_id=1484195402 instance=ExtResource("1_am72a")]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Shelves" unique_id=1987352235]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shelves/StaticBody3D" unique_id=1355548828]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0043029785, 0.8209696, 0.001953125)
+shape = SubResource("BoxShape3D_am72a")

@@ -13,7 +13,7 @@ transform = Transform3D(32.97865, 0, 0, 0, -5.3729036e-06, 32.97865, 0, -32.9786
 [node name="SpotLight3D" type="SpotLight3D" parent="Sketchfab_Scene3" unique_id=407679238]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, -0.025316715, 0)
 light_energy = 6.0
-shadow_enabled = true
+shadow_enabled = false
 spot_range = 8.0
 spot_attenuation = 1.5
 spot_angle = 60.0

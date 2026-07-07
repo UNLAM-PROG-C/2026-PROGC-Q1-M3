@@ -31,7 +31,7 @@ const WALK_SPEED_THRESHOLD := 0.3
 @export var model_y_offset := -1.0
 @export var step_sound_1: AudioStream
 @export var step_sound_2: AudioStream
-@export var step_volume_db := -16.0
+@export var step_volume_db := -10
 
 @onready var head = $Head
 @onready var camera: Camera3D = $Head/Camera3D
@@ -86,10 +86,10 @@ func _setup_local():
 
 
 func _setup_step_sound() -> void:
-	if step_sound_1 == null and ResourceLoader.exists("res://audio/sfx/step-slow1.mp3"):
-		step_sound_1 = load("res://audio/sfx/step-slow1.mp3")
-	if step_sound_2 == null and ResourceLoader.exists("res://audio/sfx/step-slow2.mp3"):
-		step_sound_2 = load("res://audio/sfx/step-slow2.mp3")
+	if step_sound_1 == null and ResourceLoader.exists("res://audio/sfx/footsteps_hallway_1.mp3"):
+		step_sound_1 = load("res://audio/sfx/footsteps_hallway_1.mp3")
+	if step_sound_2 == null and ResourceLoader.exists("res://audio/sfx/footsteps_hallway_2.mp3"):
+		step_sound_2 = load("res://audio/sfx/footsteps_hallway_2.mp3")
 	_step_player_1 = AudioStreamPlayer.new()
 	_step_player_1.stream = step_sound_1
 	_step_player_1.volume_db = step_volume_db
@@ -118,7 +118,7 @@ func _setup_appearance():
 	_anim_player = CharacterAppearance.find_animation_player(_model)
 	_walk_model_index = model_index
 
-	# Primera persona: el jugador local no ve su propio cuerpo (salvo espejo, futuro).
+	# Primera persona: el jugador local no ve su propio cuerpo (salvo en el espejo)
 	if is_local_player():
 		_set_visual_layer_recursive(_model, FIRST_PERSON_MODEL_LAYER)
 
@@ -257,10 +257,14 @@ func _physics_process(delta):
 func _parse_hit(hit: Dictionary) -> Array:
 	if hit.is_empty():
 		return [null, null]
-	if hit.collider.is_in_group("players"):
-		return [hit.collider, null]
-	if hit.collider.is_in_group("npcs"):
-		return [null, hit.collider.get_parent()]
+	var col = hit.collider
+	if col.is_in_group("players"):
+		return [col, null]
+	# El NPC tiene Area3D (capa 2, grupo "npcs") y StaticBody3D (capa 1) coincidentes; el rayo
+	# (mask 1|2) puede devolver cualquiera. El ThreadedNPC (que expone kill_npc) es padre de ambos.
+	var npc = col.get_parent()
+	if npc != null and npc.has_method("kill_npc"):
+		return [null, npc]
 	return [null, null]
 
 
@@ -333,10 +337,10 @@ func _fire_at_player() -> void:
 func _fire_at_npc() -> void:
 	var game = get_parent()
 	var npc_idx: int = _current_npc_target.npc_index
-	if multiplayer.is_server():
-		game.report_npc_kill(npc_idx)
+	if multiplayer.has_multiplayer_peer() and not multiplayer.is_server():
+		game.report_npc_kill.rpc_id(1, npc_idx)  # cliente → server
 	else:
-		game.report_npc_kill.rpc_id(1, npc_idx)
+		game.report_npc_kill(npc_idx)            # server u offline/solo: directo
 
 
 func set_eliminated() -> void:
