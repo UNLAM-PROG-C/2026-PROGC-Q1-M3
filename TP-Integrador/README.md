@@ -23,7 +23,7 @@ mecanismos de concurrencia funcionando de forma coordinada:
 ## 🕹️ Descripción del juego
 
 En una batalla *todos contra todos*, los jugadores deben eliminarse entre sí, siendo el último en pie el ganador. Para ello, cada jugador debe poder identificar al resto de jugadores,  *camuflados entre la multitud de clones*, para poder eliminarlos.
-Pero hay un problema: *los clones y los jugadores son casi identicos*, por lo que hay que agudizar la vista para detectar los *accesorios* característicos de los jugadores.
+Pero hay un problema: *todos los jugadores tienen exactamente la misma apariencia* -son los únicos clones idénticos entre sí en todo el mapa- y están mezclados en una multitud de NPCs (non-playable-character), por lo que hay que agudizar la vista para detectar los *accesorios* característicos de los jugadores.
 
 
 ### Reglas
@@ -86,7 +86,7 @@ El código se organiza en diferentes módulos y escenas:
 ## ⚙️ Requisitos
 
 ### Software
-- **Godot Engine 4.6 o superior** ([descarga oficial](https://godotengine.org/download)).
+- **Godot Engine 4.6** ([descarga oficial](https://godotengine.org/download)).
   No requiere instalación de dependencias adicionales: Godot es un único ejecutable.
 
 ### Sistema operativo
@@ -118,7 +118,5 @@ Los requisitos son **bajos**, ya que el juego usa geometría simple:
 1. Instalar **Godot 4.6+**.
 2. Abrir el proyecto: `Godot → Importar →` seleccionar el archivo `project.godot`.
 3. Ejecutar con **F5**.
-4. Para probar el multijugador en una sola máquina:
-   `Depurar → Ejecutar múltiples instancias → Ejecutar 2 (o 3/4) instancias`.
-5. En una ventana, hacer clic en **"Crear partida"**; en las otras, **"Unirse"** con la IP
+4. En una ventana, hacer clic en **"Crear partida"**; en las otras, **"Unirse"** con la IP
    del host (en local: `127.0.0.1`).
