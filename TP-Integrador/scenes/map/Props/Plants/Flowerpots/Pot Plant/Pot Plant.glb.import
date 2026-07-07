@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://1l634wgywtiv"
-path="res://.godot/imported/Pot Plant.glb-2bd4fc0348cd880b4477c1fb0cd5a17c.scn"
+path="res://.godot/imported/Pot Plant.glb-0a44a88e7f136ebd6908f21c9b375b15.scn"
 
 [deps]
 
-source_file="res://scenes/map/Props/Plants/Flowerpots/Pot Plant.glb"
-dest_files=["res://.godot/imported/Pot Plant.glb-2bd4fc0348cd880b4477c1fb0cd5a17c.scn"]
+source_file="res://scenes/map/Props/Plants/Flowerpots/Pot Plant/Pot Plant.glb"
+dest_files=["res://.godot/imported/Pot Plant.glb-0a44a88e7f136ebd6908f21c9b375b15.scn"]
 
 [params]
 
