@@ -36,7 +36,6 @@ Pero hay un problema: *los clones y los jugadores son casi identicos*, por lo qu
 | Moverse | `W` `A` `S` `D` |
 | Mirar | Mouse |
 | Correr | `Shift` |
-| Saltar | `Espacio` |
 | Cazar | Clic izquierdo |
 
 ---
