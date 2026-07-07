@@ -9,6 +9,12 @@ const CAPTURE_MAX_DISTANCE := 5.0   ## 3m de alcance del cliente + 2m tolerancia
 ## Modifica este valor para cambiar el tiempo de espera post-victoria.
 const LOBBY_RETURN_DELAY := 10
 
+const SPECTATOR_CAM_DISTANCE := 4.0 
+const SPECTATOR_CAM_HEIGHT := 2.0 
+const SPECTATOR_CAM_LOOK_HEIGHT := 1.2 
+const SPECTATOR_CAM_COLLISION_MASK := 1
+const SPECTATOR_CAM_MARGIN := 0.3
+
 # Combate / fin de ronda (last-man-standing).
 var end_screen
 var _alive: Array[int] = []
@@ -25,6 +31,8 @@ var _total_count := 0
 var _in_spectator_mode := false
 var _spectator_index := 0
 var _active_spectator_cam: Camera3D = null
+var _spectator_cam: Camera3D = null 
+var _spectated_node: Node3D = null
 var _watching_spectated_die := false
 
 
@@ -219,25 +227,53 @@ func _switch_spectator_cam(index: int) -> void:
 	var alive_players := get_tree().get_nodes_in_group("players")
 	if alive_players.is_empty():
 		return
-	if _active_spectator_cam:
+	_ensure_spectator_cam()
+	if _active_spectator_cam and _active_spectator_cam != _spectator_cam:
 		_active_spectator_cam.current = false
 	_spectator_index = posmod(index, alive_players.size())
-	var target := alive_players[_spectator_index]
-	_active_spectator_cam = target.get_camera()
-	if _active_spectator_cam:
-		_active_spectator_cam.current = true
+	var target: Node3D = alive_players[_spectator_index]
+	_spectated_node = target
+	_active_spectator_cam = _spectator_cam
+	_update_spectator_follow(false)
+	_spectator_cam.current = true
 	end_screen.show_spectator_label(target.get_display_name())
 
 
+func _ensure_spectator_cam() -> void:
+	if _spectator_cam != null:
+		return
+	_spectator_cam = Camera3D.new()
+	_spectator_cam.name = "SpectatorCam"
+	add_child(_spectator_cam)
+
+
+func _physics_process(_delta: float) -> void:
+	if _spectator_cam and _spectator_cam.current:
+		_update_spectator_follow()
+
+
+func _update_spectator_follow(avoid_walls: bool = true) -> void:
+	if _spectator_cam == null or _spectated_node == null or not is_instance_valid(_spectated_node):
+		return
+	var pivot := _spectated_node.global_position + Vector3.UP * SPECTATOR_CAM_LOOK_HEIGHT
+	var back := _spectated_node.global_transform.basis.z  # el jugador mira hacia -z
+	var desired := _spectated_node.global_position + Vector3.UP * SPECTATOR_CAM_HEIGHT + back * SPECTATOR_CAM_DISTANCE
+	var cam_pos := desired
+	if avoid_walls:
+		var space := get_world_3d().direct_space_state
+		var query := PhysicsRayQueryParameters3D.create(
+			pivot, desired, SPECTATOR_CAM_COLLISION_MASK, [_spectated_node.get_rid()])
+		var hit := space.intersect_ray(query)
+		if hit:
+			cam_pos = hit.position + (pivot - desired).normalized() * SPECTATOR_CAM_MARGIN
+	_spectator_cam.global_position = cam_pos
+	_spectator_cam.look_at(pivot, Vector3.UP)
+
+
 func _is_spectating_player(victim_id: int) -> bool:
-	if not _in_spectator_mode or _active_spectator_cam == null:
+	if not _in_spectator_mode or _spectated_node == null or not is_instance_valid(_spectated_node):
 		return false
-	var node := _active_spectator_cam as Node
-	while node and node != self:
-		if node.get_parent() == self:
-			return node.name == str(victim_id)
-		node = node.get_parent()
-	return false
+	return _spectated_node.name == str(victim_id)
 
 
 func _spectated_player_died(victim_id: int) -> void:
