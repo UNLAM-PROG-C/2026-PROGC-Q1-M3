@@ -134,9 +134,12 @@
 [sub_resource type="Environment" id="Environment_rqo2c"]
 background_mode = 1
 background_color = Color(0.12591085, 0.12591085, 0.12591082, 1)
+glow_enabled = true
+fog_enabled = true
 fog_light_energy = 0.5
 fog_density = 0.005
 fog_sky_affect = 0.0
+volumetric_fog_enabled = true
 volumetric_fog_density = 0.02
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bswn0"]
@@ -259,7 +262,6 @@ shadow_mesh = SubResource("ArrayMesh_kn57s")
 environment = SubResource("Environment_rqo2c")
 
 [node name="Ceiling_70x70" parent="." unique_id=200950674 instance=ExtResource("6_jcaow")]
-visible = false
 
 [node name="Floor_70x70" parent="." unique_id=1116606908 instance=ExtResource("1_04w0f")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0023851395, 0.015058994, -0.0025482178)
